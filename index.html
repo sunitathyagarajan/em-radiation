@@ -62,7 +62,7 @@ sup,sub{line-height:0}
 p.prose{display:block}
 .muted{color:var(--muted)}
 .mono,.num{font-family:var(--f-num);font-variant-numeric:tabular-nums}
-.eyebrow{font-family:var(--f-body);font-size:calc(.78rem + 2px);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:600}
+.eyebrow{font-family:var(--f-body);font-size:calc(.78rem + 6px);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:600}
 
 /* header */
 header{background:var(--surface);border-bottom:1px solid var(--line)}
@@ -70,15 +70,15 @@ header .wrap{padding-block:36px 30px;display:grid;gap:12px}
 .back{font-weight:600;text-decoration:none;font-size:.95rem}
 .back:hover{text-decoration:underline}
 .lead{font-size:1.15rem;color:var(--muted)}
-.reading{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,380px);gap:18px 32px;align-items:center;margin-top:4px}
+/* Header: the formula beside the wave. Both columns share the same two rows (subgrid), so the caption under the
+   formula starts on the same line as the caption under the wave. Captions are left-aligned, like all figure text. */
+.reading{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,380px);grid-template-rows:auto auto;gap:10px 32px;margin-top:4px}
 .reading > *{min-width:0}
-.rtext{display:grid;gap:8px;align-content:center}
-.reading .big{font-family:var(--f-num);font-size:clamp(1.3rem,4vw,1.8rem);font-weight:600}
-.reading .cap{color:var(--muted);font-size:.95rem}
-@media (max-width:640px){.reading{grid-template-columns:minmax(0,1fr)} .bfig{justify-self:center;width:100%;max-width:380px}}
-.bfig{margin:0;display:grid;gap:6px}
+.rtext,.bfig{display:grid;grid-row:span 2;grid-template-rows:subgrid;gap:10px;margin:0}
+.reading .big{font-family:var(--f-num);font-size:clamp(1.3rem,4vw,1.8rem);font-weight:600;align-self:center}
+.reading .cap,.bfig figcaption{color:var(--muted);font-size:.92rem;line-height:1.5;text-align:left;align-self:start}
+@media (max-width:640px){.reading{grid-template-columns:minmax(0,1fr)} .bfig{width:100%;max-width:380px}}
 .bfig svg{width:100%;height:auto;display:block}
-.bfig figcaption{font-size:.85rem;color:var(--muted);text-align:center}
 
 /* section index */
 nav.index{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--surface);border-bottom:1px solid var(--line)}
@@ -96,8 +96,9 @@ section.block > .wrap{display:grid;gap:22px}
 section.type .sechead{border-left:4px solid var(--rc);padding-left:14px}
 section.type .eyebrow{color:var(--rc)}
 .facts{display:flex;flex-wrap:wrap;gap:6px 8px;margin-top:4px}
-.facts span{background:color-mix(in srgb,var(--rc) 13%,var(--surface));border-radius:999px;padding:3px 12px;font-size:.9rem}
-.facts b{color:var(--rc)}
+/* ">" so the pill style reaches only the pills, never the spans KaTeX uses to build a symbol inside one */
+.facts > span{background:color-mix(in srgb,var(--rc) 13%,var(--surface));border-radius:999px;padding:3px 12px;font-size:.9rem}
+.facts > span > b{color:var(--rc)}
 .partdiv{border-top:1px solid var(--line);margin-top:30px}
 
 /* cards */
@@ -124,6 +125,7 @@ section.type .eyebrow{color:var(--rc)}
 .eqn .note b{color:var(--ink)}
 .eqrow{display:grid;grid-template-columns:minmax(0,1fr);gap:2px;border-top:1px dashed var(--line);padding-top:6px}
 .eqrow:first-of-type{border-top:none;padding-top:0}
+.card.wide{grid-column:1/-1}
 
 /* bench panels: every interactive */
 .bench{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px;display:grid;gap:16px;min-width:0}
@@ -132,7 +134,7 @@ section.type .eyebrow{color:var(--rc)}
 .bench-grid > *{min-width:0}
 @media (max-width:820px){.bench-grid{grid-template-columns:minmax(0,1fr)}}
 .bhead{display:grid;gap:4px}
-.bhead .tagi{font-size:.76rem;letter-spacing:.11em;text-transform:uppercase;font-weight:700;color:var(--accent)}
+.bhead .tagi{font-size:calc(.76rem + 4px);letter-spacing:.11em;text-transform:uppercase;font-weight:700;color:var(--accent)}
 .controls{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:end}
 .ctl{display:grid;gap:4px;font-size:.88rem;color:var(--muted);font-weight:600;min-width:0}
 .ctl output{font-family:var(--f-num);color:var(--ink);font-weight:600}
@@ -251,7 +253,7 @@ footer .wrap{padding-block:20px 48px}
   .eqn .katex-display>.katex,.example .katex-display>.katex{font-size:1em}
   .formula .katex-display>.katex{font-size:1.05em}
   .stat .v{font-size:1rem}
-  .facts span{font-size:.85rem}
+  .facts > span{font-size:.85rem}
   .lead{font-size:1.05rem}
   .stepbar .pos{margin-left:0;width:100%}
 }
@@ -279,8 +281,8 @@ footer .wrap{padding-block:20px 48px}
         <span class="cap">Energy rises as wavelength shrinks. An X-ray photon at 0.1 nm carries ten billion times the energy of a radio photon at 1 m, which is why one only nudges nuclear spins and the other knocks electrons out of atoms.</span>
       </div>
       <figure class="bfig">
-        <svg class="plot" id="heroWave" viewBox="0 0 380 230" role="img" aria-label="An electromagnetic wave: an electric field oscillating up and down and a magnetic field oscillating at right angles to it, both travelling to the right at the speed of light. The wavelength is the distance from one crest to the next."></svg>
-        <figcaption>Light is an electric field (\(E\)) and a magnetic field (\(B\)) oscillating at right angles, travelling together at \(c\).</figcaption>
+        <svg class="plot" id="heroWave" viewBox="0 0 380 230" role="img" aria-label="An animated three-dimensional electromagnetic wave: an electric field oscillating in a vertical plane and a magnetic field oscillating in a horizontal plane at right angles to it, both travelling along the same axis at the speed of light. A bracket marks one wavelength, the distance from one crest to the next. Dragging sideways turns the view."></svg>
+        <figcaption>Light is an electric field (\(E\)) and a magnetic field (\(B\)) oscillating at right angles, travelling together at \(c\). Drag the wave sideways to turn it.</figcaption>
       </figure>
     </div>
   </div>
@@ -342,11 +344,11 @@ footer .wrap{padding-block:20px 48px}
         <p class="mono" style="line-height:1.9">\(c = 2.998 \times 10^{8}\ \text{m s}^{-1}\)<br>\(h = 6.626 \times 10^{-34}\ \text{J s}\)<br>\(N_{\text{A}} = 6.022 \times 10^{23}\ \text{mol}^{-1}\)<br>\(1\ \text{eV} = 1.602 \times 10^{-19}\ \text{J}\)</p>
         <p class="why">Exact SI values (CODATA). A handy shortcut: \(E\,(\text{eV}) = 1240 / \lambda\,(\text{nm})\).</p>
       </div>
-      <div class="card">
+      <div class="card wide">
         <h4>Worked example: green light, 500 nm</h4>
-        <div class="formula">\[ \begin{aligned} \nu &= \frac{c}{\lambda} = \frac{2.998 \times 10^{8}\ \text{m s}^{-1}}{500 \times 10^{-9}\ \text{m}} \\ &= 6.00 \times 10^{14}\ \text{s}^{-1} \end{aligned} \]</div>
-        <div class="formula">\[ \begin{aligned} E &= h\nu \\ &= (6.626 \times 10^{-34}\ \text{J s})(6.00 \times 10^{14}\ \text{s}^{-1}) \\ &= 3.97 \times 10^{-19}\ \text{J} \end{aligned} \]</div>
-        <div class="formula">\[ \begin{aligned} E_{\text{mol}} &= E N_{\text{A}} \\ &= (3.97 \times 10^{-19}\ \text{J})(6.022 \times 10^{23}\ \text{mol}^{-1}) \\ &= 239\ \text{kJ mol}^{-1} \end{aligned} \]</div>
+        <div class="formula">\[ \nu = \frac{c}{\lambda} = \frac{2.998 \times 10^{8}\ \text{m s}^{-1}}{500 \times 10^{-9}\ \text{m}} = 6.00 \times 10^{14}\ \text{s}^{-1} \]</div>
+        <div class="formula">\[ E = h\nu = (6.626 \times 10^{-34}\ \text{J s})(6.00 \times 10^{14}\ \text{s}^{-1}) = 3.97 \times 10^{-19}\ \text{J} \]</div>
+        <div class="formula">\[ E_{\text{mol}} = E N_{\text{A}} = (3.97 \times 10^{-19}\ \text{J})(6.022 \times 10^{23}\ \text{mol}^{-1}) = 239\ \text{kJ mol}^{-1} \]</div>
         <p class="why">About two-thirds of a C–C bond (348 kJ/mol): enough to move an electron, not enough to break the bond.</p>
       </div>
     </div>
@@ -370,17 +372,6 @@ footer .wrap{padding-block:20px 48px}
         <div class="visbar" id="visBar"><span class="vm" id="visMark" hidden></span></div>
         <div class="visaxis"><span>700 nm</span><span>600</span><span>500</span><span>400 nm</span></div>
       </div>
-      <div class="bench-grid">
-        <div class="statgrid">
-          <div class="stat"><div class="k">Wavelength \(\lambda\)</div><div class="v" id="roL"></div></div>
-          <div class="stat"><div class="k">Frequency \(\nu\)</div><div class="v" id="roF"></div></div>
-          <div class="stat"><div class="k">Wavenumber \(\tilde{\nu}\)</div><div class="v" id="roW"></div></div>
-          <div class="stat"><div class="k">Energy per photon</div><div class="v" id="roJ"></div></div>
-          <div class="stat"><div class="k">Energy per photon</div><div class="v" id="roE"></div></div>
-          <div class="stat"><div class="k">Energy per mole of photons</div><div class="v" id="roK"></div></div>
-        </div>
-        <div class="regpanel" id="spReg" aria-live="polite"></div>
-      </div>
       <div class="conv">
         <label class="ctl">Type a value<input type="text" id="cvIn" value="589" inputmode="decimal" autocomplete="off" spellcheck="false"></label>
         <label class="ctl">Unit<select id="cvU">
@@ -393,6 +384,17 @@ footer .wrap{padding-block:20px 48px}
         <span class="note" id="cvMsg" aria-live="polite"></span>
       </div>
       <div class="chips" id="spChips" role="group" aria-label="Real examples to try"></div>
+      <div class="bench-grid">
+        <div class="statgrid">
+          <div class="stat"><div class="k">Wavelength \(\lambda\)</div><div class="v" id="roL"></div></div>
+          <div class="stat"><div class="k">Frequency \(\nu\)</div><div class="v" id="roF"></div></div>
+          <div class="stat"><div class="k">Wavenumber \(\tilde{\nu}\)</div><div class="v" id="roW"></div></div>
+          <div class="stat"><div class="k">Energy per photon</div><div class="v" id="roJ"></div></div>
+          <div class="stat"><div class="k">Energy per photon</div><div class="v" id="roE"></div></div>
+          <div class="stat"><div class="k">Energy per mole of photons</div><div class="v" id="roK"></div></div>
+        </div>
+        <div class="regpanel" id="spReg" aria-live="polite"></div>
+      </div>
     </div>
   </div>
 </section>
@@ -507,7 +509,7 @@ footer .wrap{padding-block:20px 48px}
       <p class="note">No chemical reaction is involved: radio waves are produced electrically. The equation that matters is the resonance condition, which sets the frequency a nucleus absorbs (\(\gamma\) is the nucleus's gyromagnetic ratio; for <sup>1</sup>H, \(\gamma/2\pi = 42.58\ \text{MHz T}^{-1}\)).</p>
       \[ \Delta E = h\nu \]
       \[ \nu = \frac{\gamma B_0}{2\pi} \]
-      \[ \begin{aligned} \nu({}^{1}\text{H}) &= (42.58\ \text{MHz T}^{-1})(9.40\ \text{T}) \\ &= 400\ \text{MHz} \end{aligned} \]
+      \[ \nu({}^{1}\text{H}) = (42.58\ \text{MHz T}^{-1})(9.40\ \text{T}) = 400\ \text{MHz} \]
     </div>
   </div>
 </section>
@@ -532,7 +534,7 @@ footer .wrap{padding-block:20px 48px}
         <div class="example"><b>Carbon monoxide.</b> Lines 3.845 cm<sup>−1</sup> apart give \(B = 1.9225\ \text{cm}^{-1}\). Use \(c = 2.998 \times 10^{10}\ \text{cm s}^{-1}\) so the centimeters cancel.
           \[ I = \frac{h}{8\pi^2 c B} = 1.456 \times 10^{-46}\ \text{kg m}^2 \]
           \[ \mu = \frac{m_{\text{C}}\, m_{\text{O}}}{m_{\text{C}} + m_{\text{O}}} = 1.1385 \times 10^{-26}\ \text{kg} \]
-          \[ \begin{aligned} r &= \sqrt{\frac{I}{\mu}} = \sqrt{\frac{1.456 \times 10^{-46}\ \text{kg m}^2}{1.1385 \times 10^{-26}\ \text{kg}}} \\ &= 1.131 \times 10^{-10}\ \text{m} = 113\ \text{pm} \end{aligned} \]</div>
+          \[ r = \sqrt{\frac{I}{\mu}} = \sqrt{\frac{1.456 \times 10^{-46}\ \text{kg m}^2}{1.1385 \times 10^{-26}\ \text{kg}}} = 1.131 \times 10^{-10}\ \text{m} = 113\ \text{pm} \]</div>
         <p>Radio astronomers identify molecules in interstellar clouds (CO, H<sub>2</sub>O, HCN, even ethanol) from their rotational lines.</p>
         <p><b>Electron paramagnetic resonance (EPR)</b>, at about 9.5 GHz in a 0.34 T field, detects unpaired electrons: free radicals and metal ions such as Cu<sup>2+</sup> and Fe<sup>3+</sup>. The splitting pattern shows which nuclei the unpaired electron sits near.</p>
       </div>
@@ -553,8 +555,8 @@ footer .wrap{padding-block:20px 48px}
 
     <div class="bench">
       <div class="bhead"><span class="tagi">Animated · How it is made</span><h3>Inside a magnetron</h3>
-        <p class="note">Looking down the axis. Electrons (blue) leave the hot cathode and are swept into four rotating spokes by the magnetic field. As the spokes pass the cavity openings, the anode tips alternate between + and − at 2.45 GHz.</p></div>
-      <div class="figscroll"><svg class="plot" id="magSvg" viewBox="0 0 560 300" role="img" aria-label="Cross-section of a magnetron: a hot cathode at the center, a copper anode block around it with eight keyhole-shaped cavities, rotating spokes of electrons between them, and an antenna leading out to a waveguide."></svg></div><p class="swipehint fig">Swipe the figure sideways to see all of it.</p>
+        <p class="note">Looking down the axis. The blue dots are electrons: they leave the hot cathode and are swept into four rotating spokes by the magnetic field. As the spokes pass the cavity openings, the anode tips alternate between + and − at 2.45 GHz.</p></div>
+      <div class="figscroll"><svg class="plot" id="magSvg" viewBox="0 0 560 304" role="img" aria-label="Cross-section of a magnetron: a hot cathode at the center, a copper anode block around it with eight keyhole-shaped cavities, rotating spokes of electrons between them, and an antenna leading out to a waveguide."></svg></div><p class="swipehint fig">Swipe the figure sideways to see all of it.</p>
     </div>
 
     <div class="bench">
@@ -566,7 +568,7 @@ footer .wrap{padding-block:20px 48px}
     <div class="eqn">
       <span class="klabel">Balanced equation</span>
       <p class="note">Microwave photons are far too weak to break bonds (about 0.001 kJ/mol at 2.45 GHz, against about 350 kJ/mol for a C–C bond), but microwave heating speeds reactions up. Analytical labs use <b>sealed-vessel microwave digestion</b> to dissolve soil, tissue or alloy samples in hot nitric acid before trace-metal analysis by ICP. For copper:</p>
-      \[ \begin{aligned} &\ce{3Cu(s) + 8HNO3(aq)} \\ &\qquad \ce{-> 3Cu(NO3)2(aq) + 2NO(g) + 4H2O(l)} \end{aligned} \]
+      \[ \ce{3Cu(s) + 8HNO3(aq) -> 3Cu(NO3)2(aq) + 2NO(g) + 4H2O(l)} \]
     </div>
   </div>
 </section>
@@ -705,9 +707,9 @@ footer .wrap{padding-block:20px 48px}
         \[ \ce{Na(g) ->[heat] Na^{*}(g)} \]
         \[ \ce{Na^{*}(g) -> Na(g) + $h\nu$} \quad (\lambda = 589\ \text{nm}) \]</div>
       <div class="eqrow"><p class="note"><b>Chemiluminescence of luminol.</b> The reaction leaves 3-aminophthalate in an excited state, which emits blue light near 425 nm. Forensic scientists spray it because the iron in hemoglobin catalyzes the reaction, so traces of blood glow.</p>
-        \[ \begin{aligned} &\ce{C8H7N3O2 + 2H2O2 + 2OH-} \\ &\qquad \ce{-> C8H5NO4^{2-} + N2 + 4H2O + $h\nu$} \end{aligned} \]</div>
+        \[ \ce{C8H7N3O2 + 2H2O2 + 2OH- -> C8H5NO4^{2-} + N2 + 4H2O + $h\nu$} \]</div>
       <div class="eqrow"><p class="note"><b>Absorbing visible light: photosynthesis.</b> Chlorophyll absorbs red (about 662 nm) and blue (about 430 nm) light, reflects green, and uses the energy to drive this reaction.</p>
-        \[ \begin{aligned} &\ce{6CO2 + 6H2O} \\ &\qquad \ce{->[light][chlorophyll] C6H12O6 + 6O2} \end{aligned} \]</div>
+        \[ \ce{6CO2 + 6H2O ->[light][chlorophyll] C6H12O6 + 6O2} \]</div>
     </div>
   </div>
 </section>
@@ -758,8 +760,8 @@ footer .wrap{padding-block:20px 48px}
 
     <div class="bench">
       <div class="bhead"><span class="tagi">Animated · How it is made</span><h3>Inside a deuterium lamp</h3>
-        <p class="note">1. A heated filament releases electrons. 2. About 100 V across low-pressure D<sub>2</sub> gas accelerates them into an arc. 3. Collisions excite D<sub>2</sub> molecules. 4. Each excited molecule falls apart into two D atoms, and the photon takes whatever energy is left, so the output is a smooth continuum rather than sharp lines. 5. The UV leaves through a quartz window, because ordinary glass absorbs below about 300 nm.</p></div>
-      <div class="figscroll"><svg class="plot" id="d2Svg" viewBox="0 0 560 230" role="img" aria-label="A deuterium lamp: a glowing filament on the left emits electrons that stream to an anode, colliding with deuterium molecules on the way; ultraviolet photons leave through a quartz window on the right."></svg></div><p class="swipehint fig">Swipe the figure sideways to see all of it.</p>
+        <p class="note">1. A heated filament releases electrons. The filament is a coil of tungsten wire coated with barium and strontium oxides, which give off electrons far more easily than bare metal. 2. About 100 V across low-pressure D<sub>2</sub> gas accelerates them into an arc. 3. Collisions excite D<sub>2</sub> molecules. 4. Each excited molecule falls apart into two D atoms, and the photon takes whatever energy is left, so the output is a smooth continuum rather than sharp lines. 5. The UV leaves through a quartz window, because ordinary glass absorbs below about 300 nm.</p></div>
+      <div class="figscroll"><svg class="plot" id="d2Svg" viewBox="0 0 560 252" role="img" aria-label="A deuterium lamp: a glowing oxide-coated tungsten filament on the left emits electrons that stream to an anode, colliding with deuterium molecules on the way; ultraviolet photons leave through a quartz window on the right."></svg></div><p class="swipehint fig">Swipe the figure sideways to see all of it.</p>
     </div>
 
     <div class="eqn">
@@ -807,14 +809,14 @@ footer .wrap{padding-block:20px 48px}
           <li>20 to 50 kV accelerates them toward the target.</li>
           <li>They slam into the target. About 99% of their energy becomes heat, so the target is water-cooled or spun.</li>
           <li><b>Bremsstrahlung</b> ("braking radiation"): an electron swerves and slows near a nucleus and emits an X-ray of any energy up to its full energy. This gives a continuous spectrum with a sharp short-wavelength limit.</li>
-          <li><b>Characteristic lines:</b> an incoming electron knocks a 1s (K-shell) electron out of a target atom; an electron from the L shell drops into the hole and emits a Kα photon (from the M shell, Kβ). These energies are unique to the target element.</li>
+          <li><b>Characteristic lines:</b> an incoming electron knocks a 1s (K-shell) electron out of a target atom; an electron from the L shell drops into the hole and emits a K<sub>α</sub> photon (from the M shell, K<sub>β</sub>). These energies are unique to the target element.</li>
         </ol>
         <p class="why"><b>Other sources:</b> synchrotrons, where electrons moving near the speed of light are bent by magnets and give off intense, tunable X-rays; and very hot gas in space, such as the Sun's million-kelvin corona.</p>
       </div>
     </div>
 
     <div class="bench">
-      <div class="bhead"><span class="tagi">Interactive · How it is made</span><h3>Inside a target atom: making a Kα X-ray</h3>
+      <div class="bhead"><span class="tagi">Interactive · How it is made</span><h3>Inside a target atom: making a K<sub>α</sub> X-ray</h3>
         <p class="note">Step through what happens when a fast electron hits a copper atom in the target.</p></div>
       <div class="figscroll"><svg class="plot" id="xsSvg" viewBox="0 0 560 300" role="img" aria-label="A copper atom with K, L and M electron shells. Step by step, a fast electron knocks out a K-shell electron, an L-shell electron drops into the hole, and an X-ray photon is emitted."></svg></div><p class="swipehint fig">Swipe the figure sideways to see all of it.</p>
       <div class="stepcap" id="xsCap" aria-live="polite"></div>
@@ -828,7 +830,7 @@ footer .wrap{padding-block:20px 48px}
 
     <div class="bench">
       <div class="bhead"><span class="tagi">Interactive · How it is made</span><h3>The spectrum from an X-ray tube</h3>
-        <p class="note">Raise the voltage: the short-wavelength limit \(\lambda_{\min} = hc/(eV)\) moves left, because no photon can carry more than one electron's energy. The sharp Kα and Kβ lines appear only once the electrons have enough energy to empty the K shell of the target, and their positions depend on the target, not the voltage. Each curve is scaled to its own tallest point.</p></div>
+        <p class="note">Raise the voltage: the short-wavelength limit \(\lambda_{\min} = hc/(eV)\) moves left, because no photon can carry more than one electron's energy. The sharp K<sub>α</sub> and K<sub>β</sub> lines appear only once the electrons have enough energy to empty the K shell of the target, and their positions depend on the target, not the voltage. Each curve is scaled to its own tallest point.</p></div>
       <div class="bench-grid">
         <div class="figscroll"><svg class="plot" id="xrSvg" viewBox="0 0 560 290" role="img" aria-label="X-ray tube output: intensity versus wavelength from 0 to 0.26 nanometers, showing a smooth continuum starting at a minimum wavelength, with sharp characteristic peaks when the voltage is high enough."></svg></div><p class="swipehint fig">Swipe the figure sideways to see all of it.</p>
         <div style="display:grid;gap:12px;align-content:start">
@@ -848,7 +850,7 @@ footer .wrap{padding-block:20px 48px}
           <defs><marker id="bArr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 Z" style="fill:var(--xray)"/></marker></defs>
           <g id="braggG"></g>
         </svg></div><p class="swipehint fig">Swipe the figure sideways to see all of it.</p>
-        <div class="example" style="align-self:center"><b>Worked example: table salt.</b> The (200) planes of NaCl are \(d = 282\) pm apart. With Cu Kα X-rays (\(\lambda = 154\) pm), the first-order reflection (\(n = 1\)) appears at
+        <div class="example" style="align-self:center"><b>Worked example: table salt.</b> The (200) planes of NaCl are \(d = 282\) pm apart. With Cu K<sub>α</sub> X-rays (\(\lambda = 154\) pm), the first-order reflection (\(n = 1\)) appears at
           \[ \sin\theta = \frac{\lambda}{2d} = \frac{154\ \text{pm}}{2(282\ \text{pm})} = 0.273 \]
           \[ \theta = 15.8\degree, \quad 2\theta = 31.7\degree \]
           A powder diffractometer reports this peak at \(2\theta = 31.7\degree\). Measuring the angle and knowing \(\lambda\) gives \(d\), and many such spacings give the crystal structure.</div>
@@ -857,10 +859,10 @@ footer .wrap{padding-block:20px 48px}
 
     <div class="eqn">
       <span class="klabel">Balanced equations (particles and charge)</span>
-      <p class="note">X-ray production is physics, not chemistry, but the process still balances in electrons and charge. A fast electron ionizes a copper atom from its K shell (written as a 1s hole, 1s<sup>−1</sup>); then an L electron fills the hole and a Kα photon leaves.</p>
+      <p class="note">X-ray production is physics, not chemistry, but the process still balances in electrons and charge. A fast electron ionizes a copper atom from its K shell (written as a 1s hole, 1s<sup>−1</sup>); then an L electron fills the hole and a K<sub>α</sub> photon leaves.</p>
       \[ \text{Cu} + \text{e}^{-}_{\text{fast}} \rightarrow \text{Cu}^{+}(\text{1s}^{-1}) + 2\,\text{e}^{-} \]
       \[ \text{Cu}^{+}(\text{1s}^{-1}) \rightarrow \text{Cu}^{+}(\text{2p}^{-1}) + h\nu \]
-      <p class="note">The photon is Cu Kα: \(E = 8.05\ \text{keV}\), \(\lambda = 0.154\ \text{nm}\). The shortest wavelength the tube can make is set by the accelerating voltage \(V\) (\(e\) is the charge of the electron):</p>
+      <p class="note">The photon is Cu K<sub>α</sub>: \(E = 8.05\ \text{keV}\), \(\lambda = 0.154\ \text{nm}\). The shortest wavelength the tube can make is set by the accelerating voltage \(V\) (\(e\) is the charge of the electron):</p>
       \[ \lambda_{\min} = \frac{hc}{eV} = \frac{1.240\ \text{nm}\cdot\text{kV}}{V} \]
     </div>
   </div>
@@ -976,6 +978,25 @@ if (typeof renderMathInElement === 'function') {
     ignoredTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code', 'option', 'svg']
   });
 }
+/* Every equation stays on one line. When a line is wider than its box (on a phone, say), that equation is scaled
+   down just enough to fit; it is never broken onto a second line. Runs again when fonts finish loading and on resize. */
+function fitEquations() {
+  if (!document.querySelectorAll) return;
+  document.querySelectorAll('.katex-display > .katex').forEach(k => {
+    k.style.fontSize = '';
+    const avail = k.parentElement.clientWidth, need = k.scrollWidth;
+    if (avail > 0 && need > avail + 1) {
+      const base = parseFloat(getComputedStyle(k).fontSize);
+      k.style.fontSize = Math.max(base * 0.6, base * avail / need * 0.98).toFixed(2) + 'px';
+    }
+  });
+}
+if (typeof window.addEventListener === 'function') {
+  fitEquations();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitEquations);
+  let fitTimer = null;
+  window.addEventListener('resize', () => { clearTimeout(fitTimer); fitTimer = setTimeout(fitEquations, 120); });
+}
 /* SVG labels: a symbol with a subscript, e.g. subT('λ', 'max') */
 const subT = (sym, s) => `${sym}<tspan dy="3" font-size="0.75em">${s}</tspan><tspan dy="-3"> </tspan>`;
 
@@ -1087,29 +1108,73 @@ requestAnimationFrame(loop);
 const arrowUp = (x, y, cls) => `<path d="M${x - 4.5},${y + 9} L${x},${y} L${x + 4.5},${y + 9} Z" style="fill:${cls}"/>`;
 const arrowDown = (x, y, cls) => `<path d="M${x - 4.5},${y - 9} L${x},${y} L${x + 4.5},${y - 9} Z" style="fill:${cls}"/>`;
 
-/* ==================================================================== HERO WAVE */
+/* ==================================================================== HERO WAVE (3D, animated)
+   The wave is built in 3D: travel along x, electric field in the x–y plane, magnetic field in the x–z plane (E × B points along +x).
+   Each frame it is projected with perspective. The view swings slowly on its own, and dragging sideways turns it. */
 (() => {
-  const svg = $('#heroWave'), X0 = 24, X1 = 324, Y = 118, L = 150;
-  let e = '', b = '', eh = '', bh = '';
-  for (let x = X0; x <= X1; x += 2) {
-    const s = Math.sin(2 * Math.PI * (x - X0) / L), ey = Y - 62 * s, B = 52 * s, bx = x - 0.55 * B, by = Y + 0.42 * B;
-    e += (x === X0 ? 'M' : 'L') + x + ',' + ey.toFixed(1);
-    b += (x === X0 ? 'M' : 'L') + bx.toFixed(1) + ',' + by.toFixed(1);
-    if ((x - X0) % 8 === 0) { eh += `M${x},${Y}L${x},${ey.toFixed(1)}`; bh += `M${x},${Y}L${bx.toFixed(1)},${by.toFixed(1)}`; }
-  }
-  const c1 = X0 + L / 4, c2 = c1 + L;
+  const svg = $('#heroWave'), CX = 178, CY = 120, D = 7, F = 520;
+  const L = 2, A = 0.85, X0 = -2, X1 = 2, K = 2 * Math.PI / L, SPEED = 0.5;
+  let yawBase = -0.55, dragStart = null;
+  const PITCH = 0.38, cp = Math.cos(PITCH), sp = Math.sin(PITCH);
   svg.innerHTML = `
     <defs><marker id="hArr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 Z" style="fill:var(--muted)"/></marker></defs>
-    <path d="${bh}" style="stroke:var(--data);stroke-opacity:.35;stroke-width:1"/>
-    <path d="${eh}" style="stroke:var(--accent);stroke-opacity:.35;stroke-width:1"/>
-    <line x1="${X0}" y1="${Y}" x2="368" y2="${Y}" class="axis" marker-end="url(#hArr)"/>
-    <path d="${b}" style="fill:none;stroke:var(--data);stroke-width:2.4"/>
-    <path d="${e}" style="fill:none;stroke:var(--accent);stroke-width:2.4"/>
-    <path d="M${c1},50 L${c1},42 L${c2},42 L${c2},50" style="fill:none;stroke:var(--ink);stroke-width:1.3"/>
-    <text x="${(c1 + c2) / 2}" y="35" text-anchor="middle" class="t-ink">wavelength, λ</text>
-    <text x="376" y="22" text-anchor="end" class="t-acc">E, electric field</text>
-    <text x="${X0 - 4}" y="196" style="fill:var(--data);font-weight:600">B, magnetic field</text>
-    <text x="372" y="123" class="t-ink">c</text>`;
+    <path id="hvBp" style="fill:var(--data);fill-opacity:.07;stroke:var(--data);stroke-opacity:.3;stroke-dasharray:3 3"/>
+    <path id="hvEp" style="fill:var(--accent);fill-opacity:.06;stroke:var(--accent);stroke-opacity:.3;stroke-dasharray:3 3"/>
+    <path id="hvBh" style="fill:none;stroke:var(--data);stroke-opacity:.35;stroke-width:1"/>
+    <path id="hvEh" style="fill:none;stroke:var(--accent);stroke-opacity:.35;stroke-width:1"/>
+    <line id="hvAx" class="axis" marker-end="url(#hArr)"/>
+    <path id="hvB" style="fill:none;stroke:var(--data);stroke-width:2.4;stroke-linejoin:round"/>
+    <path id="hvE" style="fill:none;stroke:var(--accent);stroke-width:2.4;stroke-linejoin:round"/>
+    <g id="hvBr"><path style="fill:none;stroke:var(--ink);stroke-width:1.3"/><text text-anchor="middle" class="t-ink halo">wavelength, λ</text></g>
+    <text id="hvEt" text-anchor="end" class="t-acc halo">E, electric field</text>
+    <text id="hvBt" class="halo" style="fill:var(--data);font-weight:600">B, magnetic field</text>
+    <text id="hvCt" class="t-ink halo">c</text>`;
+  const el = id => svg.querySelector('#' + id);
+  const [Ep, Bp, Eh, Bh, Ax, Ec, Bc, Br, Et, Bt, Ct] = ['hvEp', 'hvBp', 'hvEh', 'hvBh', 'hvAx', 'hvE', 'hvB', 'hvBr', 'hvEt', 'hvBt', 'hvCt'].map(el);
+  const brPath = Br.querySelector('path'), brText = Br.querySelector('text');
+  const f1 = v => v.toFixed(1);
+  function step(t) {
+    const yaw = yawBase + 0.32 * Math.sin(0.3 * t), ca = Math.cos(yaw), sa = Math.sin(yaw);
+    const P = (x, y, z) => {
+      // turn about the vertical axis (yaw), then tip the far side up so we look down on the wave (pitch)
+      const x1 = x * ca + z * sa, z1 = -x * sa + z * ca, y2 = y * cp + z1 * sp, z2 = -y * sp + z1 * cp, s = F / (D + z2);
+      return [CX + x1 * s, CY - y2 * s];
+    };
+    const pt = p => f1(p[0]) + ',' + f1(p[1]);
+    const ph = x => K * x - K * SPEED * t;          // phase of the travelling wave at position x
+    let e = '', b = '', eh = '', bh = '';
+    for (let i = 0; i <= 160; i++) {
+      const x = X0 + (X1 - X0) * i / 160, v = A * Math.sin(ph(x)), o = pt(P(x, 0, 0));
+      const pe = pt(P(x, v, 0)), pb = pt(P(x, 0, v));
+      e += (i ? 'L' : 'M') + pe; b += (i ? 'L' : 'M') + pb;
+      if (i % 4 === 0) { eh += `M${o}L${pe}`; bh += `M${o}L${pb}`; }
+    }
+    Ec.setAttribute('d', e); Bc.setAttribute('d', b); Eh.setAttribute('d', eh); Bh.setAttribute('d', bh);
+    const R = A * 1.08, quad = c => 'M' + c.map(q => pt(P(...q))).join('L') + 'Z';
+    Ep.setAttribute('d', quad([[X0, -R, 0], [X1, -R, 0], [X1, R, 0], [X0, R, 0]]));
+    Bp.setAttribute('d', quad([[X0, 0, -R], [X1, 0, -R], [X1, 0, R], [X0, 0, R]]));
+    const a0 = P(X0 - 0.15, 0, 0), a1 = P(X1 + 0.45, 0, 0);
+    Ax.setAttribute('x1', f1(a0[0])); Ax.setAttribute('y1', f1(a0[1])); Ax.setAttribute('x2', f1(a1[0])); Ax.setAttribute('y2', f1(a1[1]));
+    Ct.setAttribute('x', f1(a1[0] + 6)); Ct.setAttribute('y', f1(a1[1] + 5));
+    const eL = P(X1, R, 0); Et.setAttribute('x', f1(eL[0])); Et.setAttribute('y', f1(eL[1] - 7));
+    const bL = P(X0, 0, -R); Bt.setAttribute('x', f1(bL[0] - 4)); Bt.setAttribute('y', f1(bL[1] + 18));
+    // λ bracket between two neighbouring crests; it fades out and back in each time a crest leaves the left edge
+    const n = Math.ceil((K * (X0 - SPEED * t) - Math.PI / 2) / (2 * Math.PI));   // first crest at or right of the left edge
+    const xa = (Math.PI / 2 + 2 * Math.PI * n) / K + SPEED * t, xb = xa + L, fr = (xa - X0) / L;
+    const h0 = P(xa, A + 0.12, 0), h1 = P(xa, A + 0.24, 0), h2 = P(xb, A + 0.24, 0), h3 = P(xb, A + 0.12, 0), hm = P((xa + xb) / 2, A + 0.3, 0);
+    brPath.setAttribute('d', `M${pt(h0)}L${pt(h1)}L${pt(h2)}L${pt(h3)}`);
+    brText.setAttribute('x', f1(hm[0])); brText.setAttribute('y', f1(hm[1] - 4));
+    Br.style.opacity = Math.max(0, Math.min(1, fr * 6, (1 - fr) * 6)).toFixed(2);
+  }
+  const a = anim(svg, step);
+  svg.style.cursor = 'grab'; svg.style.touchAction = 'pan-y';
+  svg.addEventListener('pointerdown', e => { dragStart = [e.clientX, yawBase]; try { svg.setPointerCapture(e.pointerId); } catch (_) {} svg.style.cursor = 'grabbing'; });
+  svg.addEventListener('pointermove', e => {
+    if (!dragStart) return;
+    yawBase = Math.max(-1.25, Math.min(0.15, dragStart[1] + (e.clientX - dragStart[0]) * 0.008));
+    a.step(tNow);
+  });
+  ['pointerup', 'pointercancel', 'lostpointercapture'].forEach(ev => svg.addEventListener(ev, () => { dragStart = null; svg.style.cursor = 'grab'; }));
 })();
 
 /* ==================================================================== SPECTRUM EXPLORER */
@@ -1236,7 +1301,7 @@ const arrowDown = (x, y, cls) => `<path d="M${x - 4.5},${y - 9} L${x},${y} L${x 
   $('#cvU').addEventListener('change', convert);
   const PRE = [['AM radio · 1 MHz', '1', 'MHz'], ['FM radio · 100 MHz', '100', 'MHz'], ['¹H NMR · 400 MHz', '400', 'MHz'], ['Microwave oven · 2.45 GHz', '2.45', 'GHz'],
     ['CO rotation · 115 GHz', '115.27', 'GHz'], ['Body heat · 9.4 µm', '9.4', 'um'], ['C=O stretch · 1715 cm⁻¹', '1715', 'cm-1'], ['He–Ne laser · 632.8 nm', '632.8', 'nm'],
-    ['Sodium lamp · 589 nm', '589', 'nm'], ['Germicidal lamp · 253.7 nm', '253.7', 'nm'], ['Cu Kα X-ray · 8.05 keV', '8.05', 'keV'], ['PET photon · 511 keV', '511', 'keV'], ['⁶⁰Co gamma · 1.33 MeV', '1.333', 'MeV']];
+    ['Sodium lamp · 589 nm', '589', 'nm'], ['Germicidal lamp · 253.7 nm', '253.7', 'nm'], ['Cu K<sub>α</sub> X-ray · 8.05 keV', '8.05', 'keV'], ['PET photon · 511 keV', '511', 'keV'], ['⁶⁰Co gamma · 1.33 MeV', '1.333', 'MeV']];
   const chips = $('#spChips');
   chips.innerHTML = PRE.map((p, i) => `<button type="button" data-i="${i}">${p[0]}</button>`).join('');
   chips.addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; const p = PRE[+b.dataset.i]; $('#cvIn').value = p[1]; $('#cvU').value = p[2]; convert(); });
@@ -1339,7 +1404,7 @@ const arrowDown = (x, y, cls) => `<path d="M${x - 4.5},${y - 9} L${x},${y} L${x 
 
 /* ==================================================================== MICROWAVE: MAGNETRON */
 (() => {
-  const svg = $('#magSvg'), cx = 170, cy = 150;
+  const svg = $('#magSvg'), cx = 170, cy = 164;
   let h = `<rect x="${cx + 96}" y="${cy - 5}" width="64" height="10" class="metal"/>`;
   h += `<circle cx="${cx}" cy="${cy}" r="128" class="metal"/>`;
   for (let k = 0; k < 8; k++) h += `<g transform="rotate(${k * 45} ${cx} ${cy})"><rect x="${cx - 5}" y="${cy - 96}" width="10" height="38" class="hole"/><circle cx="${cx}" cy="${cy - 100}" r="17" class="hole"/></g>`;
@@ -1357,13 +1422,17 @@ const arrowDown = (x, y, cls) => `<path d="M${x - 4.5},${y - 9} L${x},${y} L${x 
   h += `<line x1="${cx + 100}" y1="${cy}" x2="${cx + 150}" y2="${cy}" style="stroke:var(--ink);stroke-width:2.5"/>`;
   h += `<rect x="320" y="${cy - 16}" width="110" height="32" rx="3" style="fill:color-mix(in srgb,var(--micro) 15%,var(--surface));stroke:var(--micro)"/>`;
   h += `<path id="magOut" style="fill:none;stroke:var(--micro);stroke-width:2"/>`;
-  h += `<text x="375" y="${cy + 34}" text-anchor="middle" class="t-sm">waveguide</text><text x="440" y="${cy + 4}" class="t-ink" style="fill:var(--micro)">2.45 GHz → food</text>`;
+  h += `<text x="375" y="${cy + 36}" text-anchor="middle">waveguide</text><text x="440" y="${cy + 4}" style="fill:var(--micro)">2.45 GHz → food</text>`;
   const lab = (tx, ty, px, py, t) => `<line x1="${px}" y1="${py}" x2="${tx - 4}" y2="${ty - 4}" style="stroke:var(--muted);stroke-width:.8"/><text x="${tx}" y="${ty}">${t}</text>`;
-  h += lab(330, 36, cx + 86, cy - 86, 'Copper anode block (+)');
-  h += lab(330, 72, cx + 58, cy - 40, 'Electron spoke');
-  h += lab(330, 252, cx + 71, cy + 71, 'Resonant cavity');
-  h += lab(330, 278, cx + 10, cy + 10, 'Hot cathode (−), emits electrons');
-  h += `<text x="12" y="20" class="t-sm">⊙ magnetic field B points out of the page</text>`;
+  h += lab(330, 48, cx + 86, cy - 86, 'Copper anode block (+)');
+  // key for the blue dots: they are electrons, swept into rotating spokes
+  h += `<line x1="${cx + 40}" y1="${cy - 30}" x2="326" y2="80" style="stroke:var(--muted);stroke-width:.8"/>`
+     + `<circle cx="336" cy="80" r="3.5" class="elec"/><circle cx="345" cy="80" r="3.5" class="elec"/><circle cx="354" cy="80" r="3.5" class="elec"/>`
+     + `<text x="364" y="84" style="fill:var(--data)">Electrons (e⁻)</text>`
+     + `<text x="336" y="100">bunched into four rotating spokes</text>`;
+  h += lab(330, 262, cx + 71, cy + 71, 'Resonant cavity');
+  h += lab(330, 290, cx + 10, cy + 10, 'Hot cathode (−), emits electrons');
+  h += `<text x="12" y="18">⊙ magnetic field B points out of the page</text>`;
   svg.innerHTML = h;
   const sp = $('#magSp'), mq = $('#magQ'), out = $('#magOut');
   anim(svg, t => {
@@ -1641,9 +1710,13 @@ const arrowDown = (x, y, cls) => `<path d="M${x - 4.5},${y - 9} L${x},${y} L${x 
   h += `<path d="M66,92 l8,8 l-8,8 l8,8 l-8,8 l8,8 l-8,8 l8,8" style="fill:none;stroke:var(--warn);stroke-width:3;stroke-linejoin:round"/>`;
   h += `<circle cx="70" cy="125" r="26" style="fill:var(--warn);opacity:.12"/>`;
   h += `<rect x="340" y="76" width="10" height="94" style="fill:var(--muted)"/>`;
-  h += `<text x="70" y="188" text-anchor="middle" class="t-sm">hot filament (−)</text><text x="345" y="188" text-anchor="middle" class="t-sm">anode (+)</text>`;
-  h += `<text x="230" y="54" text-anchor="middle" class="t-sm">D₂ gas at low pressure</text>`;
-  h += `<text x="432" y="78" text-anchor="middle" class="t-sm">quartz window</text>`;
+  // what the filament is made of, labelled below the bulb with a pointer to the coil
+  h += `<line x1="70" y1="160" x2="70" y2="212" style="stroke:var(--muted);stroke-width:.8"/>`;
+  h += `<text x="30" y="226">Filament (cathode, −): a tungsten coil coated with barium</text>`;
+  h += `<text x="30" y="243">and strontium oxides, which release electrons easily when hot</text>`;
+  h += `<text x="345" y="188" text-anchor="middle">anode (+)</text>`;
+  h += `<text x="230" y="54" text-anchor="middle">D₂ gas at low pressure</text>`;
+  h += `<text x="432" y="78" text-anchor="middle">quartz window</text>`;
   h += `<text x="552" y="206" text-anchor="end" style="fill:var(--uv);font-weight:600">UV out, 160–400 nm</text>`;
   h += `<g id="d2M"></g><g id="d2E"></g><g id="d2P"></g>`;
   svg.innerHTML = h;
@@ -1682,9 +1755,9 @@ const arrowDown = (x, y, cls) => `<path d="M${x - 4.5},${y - 9} L${x},${y} L${x 
   for (const [r, n] of [[RM, 'M (n = 3)'], [RL, 'L (n = 2)'], [RK, 'K (n = 1)']]) {
     h += `<circle cx="${cx}" cy="${cy}" r="${r}" style="fill:none;stroke:var(--line);stroke-width:1.5"/>`;
     const [lx, ly] = P(r, -62);
-    h += `<text x="${lx + 4}" y="${ly - 3}" class="t-sm">${n}</text>`;
+    h += `<text x="${lx + 4}" y="${ly - 3}">${n}</text>`;
   }
-  h += `<circle cx="${cx}" cy="${cy}" r="14" style="fill:color-mix(in srgb,var(--xray) 30%,var(--surface));stroke:var(--xray)"/><text x="${cx}" y="${cy + 4}" text-anchor="middle" class="t-sm" style="fill:var(--ink);font-weight:700">29+</text>`;
+  h += `<circle cx="${cx}" cy="${cy}" r="14" style="fill:color-mix(in srgb,var(--xray) 30%,var(--surface));stroke:var(--xray)"/><text x="${cx}" y="${cy + 4.5}" text-anchor="middle" style="fill:var(--ink);font-weight:700">29+</text>`;
   for (let k = 0; k < 8; k++) { const [x, y] = P(RM, k * 45); h += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="5" class="elec" style="opacity:.55"/>`; }
   for (let k = 0; k < 8; k++) { if (k === 4) continue; const [x, y] = P(RL, k * 45 + 22.5); h += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="5.5" class="elec"/>`; }
   { const [x, y] = P(RK, 0); h += `<circle cx="${x}" cy="${y}" r="5.5" class="elec"/>`; }
@@ -1694,11 +1767,15 @@ const arrowDown = (x, y, cls) => `<path d="M${x - 4.5},${y - 9} L${x},${y} L${x 
   h += `<circle id="xsHoleL" cx="${Lp[0].toFixed(1)}" cy="${Lp[1].toFixed(1)}" r="7" style="fill:none;stroke:var(--bad);stroke-width:2;stroke-dasharray:3 2"/>`;
   h += `<path id="xsDrop" style="fill:none;stroke:var(--accent);stroke-width:2"/>`;
   h += `<circle id="xsK" r="5.5" class="elec xsm"/><circle id="xsL" r="5.5" class="elec xsm"/>`;
-  h += `<g id="xsIn" class="xsm"><circle r="6.5" style="fill:var(--accent)"/><text y="-11" text-anchor="middle" class="t-sm" style="fill:var(--accent);font-weight:700">e⁻</text></g>`;
+  h += `<g id="xsIn" class="xsm"><circle r="6.5" style="fill:var(--accent)"/><text y="-12" text-anchor="middle" style="fill:var(--accent);font-weight:600">e⁻</text></g>`;
   h += `<g id="xsStar"><path d="M${K[0] - 14},${K[1]} l5,-3 l1,-8 l4,6 l7,-3 l-3,7 l6,4 l-8,1 l-1,8 l-4,-6 l-7,3 l3,-7 Z" style="fill:var(--warn);opacity:.85"/></g>`;
-  h += `<g id="xsPh"><path d="M${cx + 8},${cy - 22} q6,-14 12,-6 t12,-6 t12,-6 t12,-6 t12,-6 t12,-6 t12,-6 t12,-6 t12,-6 t12,-6 t12,-6" style="fill:none;stroke:var(--xray);stroke-width:2.6"/><path d="M${cx + 141},${cy - 88} l-11,-1 l6,9 Z" style="fill:var(--xray)"/><text x="${cx + 120}" y="${cy - 104}" text-anchor="middle" style="fill:var(--xray);font-weight:700">Kα photon, 8.05 keV</text></g>`;
-  h += `<text id="xsLbl1" x="24" y="${cy - 14}" class="t-sm" style="fill:var(--accent)">fast electron from the filament →</text>`;
-  h += `<text id="xsLbl2" x="${K[0] - 82}" y="40" class="t-sm" text-anchor="end">ejected 1s electron</text>`;
+  // the photon leaves to the lower right, clear of the shell labels (upper right) and both electron paths (left)
+  h += `<g id="xsPh"><path d="M${cx + 8},${cy + 22} q6,14 12,6 t12,6 t12,6 t12,6 t12,6 t12,6 t12,6 t12,6 t12,6 t12,6 t12,6" style="fill:none;stroke:var(--xray);stroke-width:2.6"/><path d="M${cx + 141},${cy + 88} l-11,1 l6,-9 Z" style="fill:var(--xray)"/><text x="${cx + 112}" y="${cy + 116}" text-anchor="middle" style="fill:var(--xray);font-weight:700">${subT('K', 'α')} photon, 8.05 keV</text></g>`;
+  // step 1: the incoming electron sits on a dashed path to the atom, with its label underneath so nothing overlaps
+  h += `<g id="xsLbl1"><line x1="50" y1="${cy}" x2="200" y2="${cy}" style="stroke:var(--accent);stroke-width:1.4;stroke-dasharray:4 3"/>`
+     + `<path d="M200,${cy - 4.5} L209,${cy} L200,${cy + 4.5} Z" style="fill:var(--accent)"/>`
+     + `<text x="28" y="${cy + 28}" style="fill:var(--accent)">fast electron</text><text x="28" y="${cy + 45}" style="fill:var(--accent)">from the filament</text></g>`;
+  h += `<text id="xsLbl2" x="${K[0] - 82}" y="40" text-anchor="end">ejected 1s electron</text>`;
   svg.innerHTML = h;
   const st = document.createElement('style');
   st.textContent = '.xsm{transition:transform .7s ease}@media (prefers-reduced-motion:reduce){.xsm{transition:none}}';
@@ -1708,7 +1785,7 @@ const arrowDown = (x, y, cls) => `<path d="M${x - 4.5},${y - 9} L${x},${y} L${x 
     'The fast electron must carry more than <b>8.98 keV</b>, the binding energy of a copper 1s electron. It collides with one of the two K-shell electrons.',
     'The K electron is knocked clean out of the atom, and the fast electron carries on with less energy. The atom is now an ion with a hole in its innermost shell, a very unstable state.',
     'Within about 10<sup>−15</sup> s, an electron from the L shell drops into the K hole. The hole has moved outward to the L shell.',
-    'The energy difference between the L and K levels leaves as one X-ray photon: <b>Cu Kα, 8.05 keV, λ = 0.154 nm</b>. K and L energies depend on the nuclear charge, so every element emits its own Kα energy. If the hole is filled from the M shell instead, the photon is Kβ (8.91 keV for copper).'];
+    'The energy difference between the L and K levels leaves as one X-ray photon: <b>Cu K<sub>α</sub>, 8.05 keV, λ = 0.154 nm</b>. K and L energies depend on the nuclear charge, so every element emits its own K<sub>α</sub> energy. If the hole is filled from the M shell instead, the photon is K<sub>β</sub> (8.91 keV for copper).'];
   let s = 0;
   const mv = (id, x, y) => { $(id).style.transform = `translate(${x.toFixed(1)}px,${y.toFixed(1)}px)`; };
   const show = (id, on) => { $(id).style.display = on ? '' : 'none'; };
@@ -1770,15 +1847,15 @@ const arrowDown = (x, y, cls) => `<path d="M${x - 4.5},${y - 9} L${x},${y} L${x 
     if (lmin < LMAX) m += `<line x1="${xl(lmin)}" y1="${Y1 + 20}" x2="${xl(lmin)}" y2="${Y0}" style="stroke:var(--accent);stroke-dasharray:4 3"/><text x="${xl(lmin) + 5}" y="${Y1 + 30}" class="t-acc halo">${subT('λ', 'min')} = ${num(lmin, 3)} nm</text>`;
     if (on) {
       const ya = Y0 - (ys[Math.round(tg.ka / LMAX * N)] / mx) * (Y0 - Y1 - 14), yb = Y0 - (ys[Math.round(tg.kb / LMAX * N)] / mx) * (Y0 - Y1 - 14);
-      m += `<text x="${xl(tg.ka) + 5}" y="${Math.max(Y1 + 12, ya + 10)}" class="t-ink halo" style="fill:var(--xray)">Kα</text>`;
-      m += `<text x="${xl(tg.kb) - 5}" y="${Math.max(Y1 + 12, yb - 4)}" text-anchor="end" class="t-ink halo" style="fill:var(--xray)">Kβ</text>`;
+      m += `<text x="${xl(tg.ka) + 5}" y="${Math.max(Y1 + 12, ya + 10)}" class="t-ink halo" style="fill:var(--xray)">${subT('K', 'α')}</text>`;
+      m += `<text x="${xl(tg.kb) - 5}" y="${Math.max(Y1 + 12, yb - 4)}" text-anchor="end" class="t-ink halo" style="fill:var(--xray)">${subT('K', 'β')}</text>`;
     } else {
-      m += `<text x="300" y="${Y1 + 52}" text-anchor="middle" class="halo" style="fill:var(--ink)">No Kα or Kβ lines: below the ${tg.edge} keV K-shell energy</text>`;
+      m += `<text x="300" y="${Y1 + 52}" text-anchor="middle" class="halo" style="fill:var(--ink)">No ${subT('K', 'α')} or ${subT('K', 'β')} lines: below the ${tg.edge} keV K-shell energy</text>`;
     }
     $('#xrM').innerHTML = m;
     $('#xrVO').textContent = V + ' kV';
     $('#xrRo').innerHTML = stat('Shortest wavelength, λ<sub>min</sub>',`${num(lmin, 3)} nm`) + stat('Highest photon energy', `${V} keV`)
-      + stat(`${tg.sym} Kα line`, `${tg.ka.toFixed(4)} nm`) + stat('Kα energy', `${num(1.239842 / tg.ka, 3)} keV`)
+      + stat(`${tg.sym} K<sub>α</sub> line`, `${tg.ka.toFixed(4)} nm`) + stat('K<sub>α</sub> energy', `${num(1.239842 / tg.ka, 3)} keV`)
       + statT('Characteristic lines', on ? `Present: ${V} kV is above the ${tg.edge} keV needed to empty the K shell` : `Absent: below ${tg.edge} keV, the electrons cannot empty the K shell`, 'wide');
   }
   rng.addEventListener('input', draw);
