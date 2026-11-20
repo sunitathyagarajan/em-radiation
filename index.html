@@ -72,12 +72,12 @@ header .wrap{padding-block:36px 30px;display:grid;gap:12px}
 .lead{font-size:1.15rem;color:var(--muted)}
 /* Header: the wave on the left, the formula on the right. Both columns share the same two rows (subgrid), so the caption under the
    formula starts on the same line as the caption under the wave. Captions are left-aligned, like all figure text. */
-.reading{display:grid;grid-template-columns:minmax(0,380px) minmax(0,1fr);grid-template-rows:auto auto;gap:10px 32px;margin-top:4px}
+.reading{display:grid;grid-template-columns:minmax(0,560px) minmax(220px,1fr);grid-template-rows:auto auto;gap:10px 32px;margin-top:4px}
 .reading > *{min-width:0}
 .rtext,.bfig{display:grid;grid-row:span 2;grid-template-rows:subgrid;gap:10px;margin:0}
-.reading .big{font-family:var(--f-num);font-size:clamp(1.05rem,2.6vw,1.3rem);font-weight:600;align-self:center}
+.reading .big{font-family:var(--f-num);font-size:clamp(1.05rem,2.6vw,1.3rem);font-weight:600;align-self:center;justify-self:center;text-align:center}
 .reading .cap,.bfig figcaption{color:var(--muted);font-size:.92rem;line-height:1.5;text-align:left;align-self:start}
-@media (max-width:640px){.reading{grid-template-columns:minmax(0,1fr)} .bfig{width:100%;max-width:380px}}
+@media (max-width:760px){.reading{grid-template-columns:minmax(0,1fr)} .bfig{width:100%;max-width:560px}}
 .bfig svg{width:100%;height:auto;display:block}
 
 /* section index */
@@ -277,7 +277,7 @@ footer .wrap{padding-block:20px 48px}
     <p class="lead">Every spectroscopic method shines radiation on a sample and reads what comes back. Which part of the spectrum you choose decides what you can see: spinning nuclei, rotating molecules, vibrating bonds, jumping electrons, the arrangement of atoms in a crystal, or the nucleus itself. This module maps the spectrum, then walks through each type of radiation from the longest wavelength to the shortest: what it tells you about structure and atoms, and how it is made.</p>
     <div class="reading">
       <figure class="bfig">
-        <svg class="plot" id="heroWave" viewBox="0 0 380 230" role="img" aria-label="An animated three-dimensional electromagnetic wave: an electric field oscillating in a vertical plane and a magnetic field oscillating in a horizontal plane at right angles to it, both travelling along the same axis at the speed of light. A bracket marks one wavelength, the distance from one crest to the next. Dragging sideways turns the view."></svg>
+        <svg class="plot" id="heroWave" viewBox="0 0 560 295" role="img" aria-label="An animated three-dimensional electromagnetic wave: an electric field oscillating in a vertical plane and a magnetic field oscillating in a horizontal plane at right angles to it, both travelling along the same axis at the speed of light. A bracket marks one wavelength, the distance from one crest to the next. Dragging sideways turns the view."></svg>
         <figcaption>Light is an electric field (\(E\)) and a magnetic field (\(B\)) oscillating at right angles, travelling together at \(c\). Drag the wave sideways to turn it.</figcaption>
       </figure>
       <div class="rtext">
@@ -1112,8 +1112,9 @@ const arrowDown = (x, y, cls) => `<path d="M${x - 4.5},${y - 9} L${x},${y} L${x 
    The wave is built in 3D: travel along x, electric field in the x–y plane, magnetic field in the x–z plane (E × B points along +x).
    Each frame it is projected with perspective. The view swings slowly on its own, and dragging sideways turns it. */
 (() => {
-  const svg = $('#heroWave'), CX = 178, CY = 120, D = 7, F = 520;
-  const L = 2, A = 0.85, X0 = -2, X1 = 2, K = 2 * Math.PI / L, SPEED = 0.5;
+  // three wavelengths long, sized for a 560 × 295 box (checked over the full swing of the view)
+  const svg = $('#heroWave'), CX = 268, CY = 136, D = 9, F = 600;
+  const L = 2, A = 0.85, X0 = -3, X1 = 3, K = 2 * Math.PI / L, SPEED = 0.5;
   let yawBase = -0.55, dragStart = null;
   const PITCH = 0.38, cp = Math.cos(PITCH), sp = Math.sin(PITCH);
   svg.innerHTML = `
@@ -1143,8 +1144,8 @@ const arrowDown = (x, y, cls) => `<path d="M${x - 4.5},${y - 9} L${x},${y} L${x 
     const pt = p => f1(p[0]) + ',' + f1(p[1]);
     const ph = x => K * x - K * SPEED * t;          // phase of the travelling wave at position x
     let e = '', b = '', eh = '', bh = '';
-    for (let i = 0; i <= 160; i++) {
-      const x = X0 + (X1 - X0) * i / 160, v = A * Math.sin(ph(x)), o = pt(P(x, 0, 0));
+    for (let i = 0; i <= 240; i++) {
+      const x = X0 + (X1 - X0) * i / 240, v = A * Math.sin(ph(x)), o = pt(P(x, 0, 0));
       const pe = pt(P(x, v, 0)), pb = pt(P(x, 0, v));
       e += (i ? 'L' : 'M') + pe; b += (i ? 'L' : 'M') + pb;
       if (i % 4 === 0) { eh += `M${o}L${pe}`; bh += `M${o}L${pb}`; }
