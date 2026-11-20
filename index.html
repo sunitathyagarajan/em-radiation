@@ -70,12 +70,12 @@ header .wrap{padding-block:36px 30px;display:grid;gap:12px}
 .back{font-weight:600;text-decoration:none;font-size:.95rem}
 .back:hover{text-decoration:underline}
 .lead{font-size:1.15rem;color:var(--muted)}
-/* Header: the formula beside the wave. Both columns share the same two rows (subgrid), so the caption under the
+/* Header: the wave on the left, the formula on the right. Both columns share the same two rows (subgrid), so the caption under the
    formula starts on the same line as the caption under the wave. Captions are left-aligned, like all figure text. */
-.reading{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,380px);grid-template-rows:auto auto;gap:10px 32px;margin-top:4px}
+.reading{display:grid;grid-template-columns:minmax(0,380px) minmax(0,1fr);grid-template-rows:auto auto;gap:10px 32px;margin-top:4px}
 .reading > *{min-width:0}
 .rtext,.bfig{display:grid;grid-row:span 2;grid-template-rows:subgrid;gap:10px;margin:0}
-.reading .big{font-family:var(--f-num);font-size:clamp(1.3rem,4vw,1.8rem);font-weight:600;align-self:center}
+.reading .big{font-family:var(--f-num);font-size:clamp(1.05rem,2.6vw,1.3rem);font-weight:600;align-self:center}
 .reading .cap,.bfig figcaption{color:var(--muted);font-size:.92rem;line-height:1.5;text-align:left;align-self:start}
 @media (max-width:640px){.reading{grid-template-columns:minmax(0,1fr)} .bfig{width:100%;max-width:380px}}
 .bfig svg{width:100%;height:auto;display:block}
@@ -109,7 +109,7 @@ section.type .eyebrow{color:var(--rc)}
 .card ul,.card ol{margin:0;padding-left:1.2em;display:grid;gap:5px}
 .card .why{font-size:.93rem;border-top:1px solid var(--line);padding-top:8px;color:var(--muted)}
 .card .why b{color:var(--ink)}
-.klabel{font-size:.76rem;letter-spacing:.11em;text-transform:uppercase;font-weight:700;color:var(--rc,var(--accent))}
+.klabel{font-size:calc(.76rem + 4px);letter-spacing:.11em;text-transform:uppercase;font-weight:700;color:var(--rc,var(--accent))}
 .card.struct{border-top:4px solid var(--rc,var(--accent))}
 .card.make{border-top:4px solid var(--muted)}
 .example{background:var(--surface-2);border-radius:8px;padding:10px 12px;font-size:.95rem}
@@ -276,14 +276,14 @@ footer .wrap{padding-block:20px 48px}
     <h1>Electromagnetic Radiation</h1>
     <p class="lead">Every spectroscopic method shines radiation on a sample and reads what comes back. Which part of the spectrum you choose decides what you can see: spinning nuclei, rotating molecules, vibrating bonds, jumping electrons, the arrangement of atoms in a crystal, or the nucleus itself. This module maps the spectrum, then walks through each type of radiation from the longest wavelength to the shortest: what it tells you about structure and atoms, and how it is made.</p>
     <div class="reading">
-      <div class="rtext">
-        <span class="big">\(E = h\nu = \dfrac{hc}{\lambda}\)</span>
-        <span class="cap">Energy rises as wavelength shrinks. An X-ray photon at 0.1 nm carries ten billion times the energy of a radio photon at 1 m, which is why one only nudges nuclear spins and the other knocks electrons out of atoms.</span>
-      </div>
       <figure class="bfig">
         <svg class="plot" id="heroWave" viewBox="0 0 380 230" role="img" aria-label="An animated three-dimensional electromagnetic wave: an electric field oscillating in a vertical plane and a magnetic field oscillating in a horizontal plane at right angles to it, both travelling along the same axis at the speed of light. A bracket marks one wavelength, the distance from one crest to the next. Dragging sideways turns the view."></svg>
         <figcaption>Light is an electric field (\(E\)) and a magnetic field (\(B\)) oscillating at right angles, travelling together at \(c\). Drag the wave sideways to turn it.</figcaption>
       </figure>
+      <div class="rtext">
+        <span class="big">\(E = h\nu = \dfrac{hc}{\lambda}\)</span>
+        <span class="cap">Energy rises as wavelength shrinks. An X-ray photon at 0.1 nm carries ten billion times the energy of a radio photon at 1 m, which is why one only nudges nuclear spins and the other knocks electrons out of atoms.</span>
+      </div>
     </div>
   </div>
 </header>
