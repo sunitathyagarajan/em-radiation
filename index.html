@@ -75,7 +75,12 @@ header .wrap{padding-block:36px 30px;display:grid;gap:12px}
 .reading{display:grid;grid-template-columns:minmax(0,560px) minmax(220px,1fr);grid-template-rows:auto auto;gap:10px 32px;margin-top:4px}
 .reading > *{min-width:0}
 .rtext,.bfig{display:grid;grid-row:span 2;grid-template-rows:subgrid;gap:10px;margin:0}
-.reading .big{font-family:var(--f-num);font-size:clamp(1.05rem,2.6vw,1.3rem);font-weight:600;align-self:center;justify-self:center;text-align:center}
+.reading .eqblock{align-self:center;justify-self:center;display:flex;flex-direction:column;align-items:center;gap:14px;min-width:0}
+.reading .big{font-family:var(--f-num);font-size:clamp(1.05rem,2.6vw,1.3rem);font-weight:600;text-align:center}
+.reading .terms{display:grid;grid-template-columns:auto minmax(0,1fr);gap:5px 10px;margin:0;font-size:.92rem;line-height:1.4;text-align:left;max-width:340px}
+.reading .terms > div{display:contents}
+.reading .terms dt{font-weight:600;text-align:right;min-width:1.2em}
+.reading .terms dd{margin:0;color:var(--muted)}
 .reading .cap,.bfig figcaption{color:var(--muted);font-size:.92rem;line-height:1.5;text-align:left;align-self:start}
 @media (max-width:760px){.reading{grid-template-columns:minmax(0,1fr)} .bfig{width:100%;max-width:560px}}
 .bfig svg{width:100%;height:auto;display:block}
@@ -281,7 +286,16 @@ footer .wrap{padding-block:20px 48px}
         <figcaption>Light is an electric field (\(E\)) and a magnetic field (\(B\)) oscillating at right angles, travelling together at \(c\). Drag the wave sideways to turn it.</figcaption>
       </figure>
       <div class="rtext">
-        <span class="big">\(E = h\nu = \dfrac{hc}{\lambda}\)</span>
+        <div class="eqblock">
+          <span class="big">\(E = h\nu = \dfrac{hc}{\lambda}\)</span>
+          <dl class="terms" aria-label="What each symbol means">
+            <div><dt>\(E\)</dt><dd>energy of one photon, in joules (J)</dd></div>
+            <div><dt>\(h\)</dt><dd>Planck’s constant, \(6.626 \times 10^{-34}\ \text{J s}\)</dd></div>
+            <div><dt>\(\nu\)</dt><dd>frequency, the number of waves passing a point each second, in s<sup>−1</sup> (Hz)</dd></div>
+            <div><dt>\(c\)</dt><dd>speed of light, \(2.998 \times 10^{8}\ \text{m s}^{-1}\)</dd></div>
+            <div><dt>\(\lambda\)</dt><dd>wavelength, the distance from one crest to the next, in metres (m)</dd></div>
+          </dl>
+        </div>
         <span class="cap">Energy rises as wavelength shrinks. An X-ray photon at 0.1 nm carries ten billion times the energy of a radio photon at 1 m, which is why one only nudges nuclear spins and the other knocks electrons out of atoms.</span>
       </div>
     </div>
@@ -1756,7 +1770,7 @@ const arrowDown = (x, y, cls) => `<path d="M${x - 4.5},${y - 9} L${x},${y} L${x 
   for (const [r, n] of [[RM, 'M (n = 3)'], [RL, 'L (n = 2)'], [RK, 'K (n = 1)']]) {
     h += `<circle cx="${cx}" cy="${cy}" r="${r}" style="fill:none;stroke:var(--line);stroke-width:1.5"/>`;
     const [lx, ly] = P(r, -62);
-    h += `<text x="${lx + 4}" y="${ly - 3}">${n}</text>`;
+    h += `<text x="${lx + 4}" y="${ly - 3}" style="font-size:10px">${n}</text>`;
   }
   h += `<circle cx="${cx}" cy="${cy}" r="14" style="fill:color-mix(in srgb,var(--xray) 30%,var(--surface));stroke:var(--xray)"/><text x="${cx}" y="${cy + 4.5}" text-anchor="middle" style="fill:var(--ink);font-weight:700">29+</text>`;
   for (let k = 0; k < 8; k++) { const [x, y] = P(RM, k * 45); h += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="5" class="elec" style="opacity:.55"/>`; }
