@@ -700,6 +700,19 @@ footer .wrap{padding-block:20px 48px}
     </div>
 
     <div class="bench">
+      <div class="bhead"><span class="tagi">Animation · How each color is made</span><h3>Watch a hydrogen atom make its colors</h3>
+        <p class="note">In a hydrogen discharge tube, collisions keep lifting electrons from the ground state (n = 1) to higher levels. When an electron falls back to n = 2, the atom emits one photon of visible light whose energy is exactly the gap between the two levels, \(\Delta E = E_{\text{upper}} - E_{\text{lower}}\), so its wavelength is \(\lambda = hc/\Delta E\). The bigger the drop, the shorter the wavelength: 3 → 2 gives red, 6 → 2 gives violet. The final drop, 2 → 1, releases an ultraviolet photon that our eyes cannot see. The motion is slowed about a hundred million times; a real excited atom emits within about 10 ns.</p></div>
+      <div class="seg" id="haSel" role="group" aria-label="Which transition to show"></div>
+      <div class="figscroll"><svg class="plot" id="haSvg" viewBox="0 0 560 390" role="img" aria-label="Animation of a hydrogen atom. A fast electron hits the atom and lifts its electron from n = 1 to a higher level. The electron then drops to n = 2 and emits a colored photon, which travels to a spectroscope strip and lights up a line at its wavelength: red 656 nm for 3 to 2, cyan 486 nm for 4 to 2, blue-violet 434 nm for 5 to 2 and violet 410 nm for 6 to 2. A final drop from n = 2 to n = 1 emits an ultraviolet photon. An energy-level ladder beside the atom shows each jump."></svg></div><p class="swipehint fig">Swipe the figure sideways to see all of it.</p>
+      <div class="stepcap" id="haCap" aria-live="polite"></div>
+      <div class="stepbar">
+        <button type="button" class="primary" id="haPlay">Pause</button>
+        <button type="button" id="haRestart">Start over</button>
+      </div>
+      <div class="statgrid" id="haRo"></div>
+    </div>
+
+    <div class="bench">
       <div class="bhead"><span class="tagi">Interactive · How it is made and what it identifies</span><h3>The hydrogen fingerprint</h3>
         <p class="note">An electron in a hydrogen atom can only have the energies \(E_n = -2.179 \times 10^{-18}\ \text{J}/n^2\). When it drops from level \(n_i\) to \(n_f\), it emits one photon with exactly the difference. Drops to \(n = 2\) give the four visible Balmer lines; drops to \(n = 1\) are ultraviolet and to \(n = 3\) are infrared. Pick a transition with the buttons or tap an arrow.</p></div>
       <div class="bench-grid">
@@ -1591,6 +1604,208 @@ const arrowDown = (x, y, cls) => `<path d="M${x - 4.5},${y - 9} L${x},${y} L${x 
   }
   rng.addEventListener('input', draw);
   draw();
+})();
+
+/* ==================================================================== VISIBLE: ANIMATED HYDROGEN EMISSION */
+(() => {
+  const svg = $('#haSvg'), E1 = 2.179e-18;
+  const En = n => -E1 / (n * n);
+  const dE = (ni, nf) => En(ni) - En(nf);
+  const lamNm = (ni, nf) => H * C / dE(ni, nf) * 1e9;
+  const LINES = [
+    {k: 3, name: 'Hα'}, {k: 4, name: 'Hβ'}, {k: 5, name: 'Hγ'}, {k: 6, name: 'Hδ'}];
+  LINES.forEach(L => { L.nm = lamNm(L.k, 2); L.col = wlRGB(L.nm); });
+  const LYA = lamNm(2, 1);
+
+  /* ---- geometry ---- */
+  const AX = 112, AY = 140;                         // atom centre (Bohr picture, orbits not to scale)
+  const rOrb = n => 14 + 17 * (n - 1);
+  const YINF = 30, yLev = n => n === 1 ? 250 : YINF + 175 * 4 / (n * n);   // n >= 2 to true energy scale; n = 1 below a break
+  const LX0 = 270, LX1 = 430;
+  const xUp = 284, xBal = k => 312 + 26 * (k - 3), xLy = 416;
+  const SX0 = 30, SX1 = 530, SY0 = 318, SY1 = 350, LA = 380, LB = 700;
+  const xs = nm => SX0 + (nm - LA) / (LB - LA) * (SX1 - SX0);
+
+  /* ---- timeline of one emission (seconds) ---- */
+  const T = {inA: 0, hit: 0.9, up: 1.5, drop: 2.4, dropEnd: 3.0, land: 4.5, ly: 4.9, lyEnd: 5.4, end: 7.4};
+  const PH_FLIGHT = T.land - T.drop, UV_FLIGHT = 1.3;
+
+  const ease = u => u <= 0 ? 0 : u >= 1 ? 1 : u * u * (3 - 2 * u);
+  const clamp01 = u => Math.max(0, Math.min(1, u));
+  const lerp = (a, b, u) => a + (b - a) * u;
+
+  /* ---- static layer ---- */
+  let g = `<defs><filter id="haGlow" filterUnits="userSpaceOnUse" x="-40" y="-40" width="640" height="470"><feGaussianBlur stdDeviation="2.4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>`
+    + `<linearGradient id="haRain" x1="0" x2="1" y1="0" y2="0">`;
+  for (let i = 0; i <= 16; i++) { const nm = LA + (LB - LA) * i / 16; g += `<stop offset="${(i / 16).toFixed(3)}" stop-color="${wlRGB(nm)}"/>`; }
+  g += `</linearGradient><radialGradient id="haNuc"><stop offset="0" stop-color="#ffd27a"/><stop offset="1" stop-color="#d9822b"/></radialGradient></defs>`;
+  // atom
+  g += `<g id="haOrbits">`;
+  for (let n = 1; n <= 6; n++) g += `<circle cx="${AX}" cy="${AY}" r="${rOrb(n)}" data-n="${n}" style="fill:none;stroke:var(--line);stroke-width:1.3"/>`;
+  g += `</g>`;
+  for (let n = 1; n <= 6; n++) { const a = -2.36; g += `<text x="${(AX + rOrb(n) * Math.cos(a) - 2).toFixed(1)}" y="${(AY + rOrb(n) * Math.sin(a) - 2).toFixed(1)}" text-anchor="end" style="font-size:10px;${'paint-order:stroke;stroke:var(--surface);stroke-width:3px'}">${n === 6 ? 'n = 6' : n}</text>`; }
+  g += `<circle cx="${AX}" cy="${AY}" r="6.5" style="fill:url(#haNuc)"/><text x="${AX}" y="${AY + 3.5}" text-anchor="middle" style="font-size:9px;fill:#4a2a00;font-weight:700">p⁺</text>`;
+  g += `<text x="4" y="12" class="t-sm">Bohr picture, orbits not to scale</text>`;
+  // energy ladder
+  g += `<line class="axis" x1="${LX0 - 10}" y1="${yLev(1) + 6}" x2="${LX0 - 10}" y2="${YINF - 14}"/><path d="M${LX0 - 14},${YINF - 10} L${LX0 - 10},${YINF - 18} L${LX0 - 6},${YINF - 10} Z" style="fill:var(--muted)"/>`;
+  g += `<text x="${LX0 - 16}" y="${YINF - 6}" text-anchor="end" class="t-sm">Energy</text>`;
+  g += `<rect x="${LX0 - 15}" y="222" width="10" height="8" style="fill:var(--surface)"/><path d="M${LX0 - 15},224 l10,-3 M${LX0 - 15},231 l10,-3" style="stroke:var(--muted);stroke-width:1.2"/>`;
+  g += `<text x="${LX0 - 18}" y="230" text-anchor="end" class="t-sm">axis broken</text>`;
+  for (const n of [1, 2, 3, 4, 5, 6, Infinity]) {
+    const y = n === Infinity ? YINF : yLev(n);
+    g += `<line class="halev" data-n="${n}" x1="${LX0}" y1="${y.toFixed(1)}" x2="${LX1}" y2="${y.toFixed(1)}" style="stroke:var(--ink);stroke-width:${n === Infinity ? 1 : n >= 5 ? 0.9 : 1.6};${n === Infinity ? 'stroke-dasharray:4 3' : ''}"/>`;
+    if (n === Infinity) g += `<text x="${LX1 + 6}" y="${y + 3.5}" class="t-sm">n = ∞, 0 eV</text>`;
+    else if (n <= 4) g += `<text x="${LX1 + 6}" y="${y + 4}" class="t-ink" style="font-size:12px">n = ${n}</text><text x="${LX1 + 48}" y="${y + 4}" style="font-size:11px">${num(En(n) / QE, 3)} eV</text>`;
+    else g += `<text x="${LX1 + 6}" y="${y + (n === 5 ? 6.5 : 1)}" style="font-size:10px">n = ${n}</text>`;
+  }
+  // spectrum strip
+
+  g += `<rect x="${SX0}" y="${SY0}" width="${SX1 - SX0}" height="${SY1 - SY0}" rx="3" style="fill:#0b0d13"/>`;
+  g += `<rect x="${SX0}" y="${SY1 - 4}" width="${SX1 - SX0}" height="4" style="fill:url(#haRain);opacity:.55"/>`;
+  for (let v = 400; v <= 700; v += 50) g += `<line class="axis" x1="${xs(v)}" y1="${SY1}" x2="${xs(v)}" y2="${SY1 + 5}"/><text x="${xs(v)}" y="${SY1 + 17}" text-anchor="middle" class="t-sm">${v}</text>`;
+  g += `<text x="${SX0}" y="${SY1 + 33}" class="t-ink" style="font-size:12px">What a spectroscope shows</text><text x="${SX1}" y="${SY1 + 33}" text-anchor="end" class="t-sm">wavelength (nm)</text>`;
+  g += `<g id="haStrip"></g><g id="haDyn"></g>`;
+  svg.innerHTML = g;
+  const dyn = $('#haDyn'), stripG = $('#haStrip'), orbits = [...svg.querySelectorAll('#haOrbits circle')];
+
+  /* ---- state ---- */
+  let mode = 'all', pick = 0, running = true, lt = paused ? 3.6 : 0, prevT = null;
+  const lineAt = t => mode === 'all' ? Math.floor(t / T.end) % 4 : pick;
+  const HALO = 'paint-order:stroke;stroke:var(--surface);stroke-width:3px;stroke-linejoin:round;';
+
+  /* electron radius (as a level number, for interpolation) and position at local time u within one cycle */
+  function levelAt(k, u) {
+    if (u < T.hit) return {a: 1, b: 1, f: 0};
+    if (u < T.up) return {a: 1, b: k, f: ease((u - T.hit) / (T.up - T.hit))};
+    if (u < T.drop) return {a: k, b: k, f: 0};
+    if (u < T.dropEnd) return {a: k, b: 2, f: ease((u - T.drop) / (T.dropEnd - T.drop))};
+    if (u < T.ly) return {a: 2, b: 2, f: 0};
+    if (u < T.lyEnd) return {a: 2, b: 1, f: ease((u - T.ly) / (T.lyEnd - T.ly))};
+    return {a: 1, b: 1, f: 0};
+  }
+  const theta = t => -0.6 + 1.7 * t;
+  function ePos(k, u, t) {
+    const L = levelAt(k, u), r = lerp(rOrb(L.a), rOrb(L.b), L.f), th = theta(t);
+    return [AX + r * Math.cos(th), AY + r * Math.sin(th), lerp(yLev(L.a), yLev(L.b), L.f), L];
+  }
+
+  /* a photon: a glowing wave packet travelling along a cubic Bézier, wavelength on screen ∝ real wavelength */
+  const bez = (p, s) => { const m = 1 - s; return [m * m * m * p[0][0] + 3 * m * m * s * p[1][0] + 3 * m * s * s * p[2][0] + s * s * s * p[3][0], m * m * m * p[0][1] + 3 * m * m * s * p[1][1] + 3 * m * s * s * p[2][1] + s * s * s * p[3][1]]; };
+  function packet(path, head, lamPx, col, amp, t, dashed) {
+    const N = 90, len = 120, pts = [];
+    let total = 0, prev = bez(path, 0); const seg = [0];
+    for (let i = 1; i <= 60; i++) { const q = bez(path, i / 60); total += Math.hypot(q[0] - prev[0], q[1] - prev[1]); seg.push(total); prev = q; }
+    const sAt = d => { d = Math.max(0, Math.min(total, d)); let i = 1; while (i < 60 && seg[i] < d) i++; return (i - 1 + (d - seg[i - 1]) / ((seg[i] - seg[i - 1]) || 1)) / 60; };
+    const dHead = head * (total + len);
+    for (let j = 0; j <= N; j++) {
+      const d = dHead - len + len * j / N; if (d < 0 || d > total) continue;
+      const s = sAt(d), q = bez(path, s), q2 = bez(path, Math.min(1, s + 0.004)), q1 = bez(path, Math.max(0, s - 0.004));
+      let tx = q2[0] - q1[0], ty = q2[1] - q1[1]; const tl = Math.hypot(tx, ty) || 1; tx /= tl; ty /= tl;
+      const env = Math.sin(Math.PI * j / N), o = amp * env * Math.sin(2 * Math.PI * (d / lamPx) - 9 * t);
+      pts.push(`${(q[0] - ty * o).toFixed(1)},${(q[1] + tx * o).toFixed(1)}`);
+    }
+    if (pts.length < 2) return '';
+    return `<polyline points="${pts.join(' ')}" filter="url(#haGlow)" style="fill:none;stroke:${col};stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;${dashed ? 'stroke-dasharray:3 3;' : ''}"/>`;
+  }
+  const arrow = (x, y0, y1, f, col, w, dashed) => {
+    if (f <= 0) return '';
+    const yh = lerp(y0, y1, f), dir = Math.sign(y1 - y0);
+    return `<line x1="${x}" y1="${y0.toFixed(1)}" x2="${x}" y2="${(yh - dir * 7).toFixed(1)}" style="stroke:${col};stroke-width:${w};${dashed ? 'stroke-dasharray:4 3;' : ''}"/>`
+      + `<path d="M${x - 4.5},${(yh - dir * 9).toFixed(1)} L${x},${yh.toFixed(1)} L${x + 4.5},${(yh - dir * 9).toFixed(1)} Z" style="fill:${col}"/>`;
+  };
+
+  let lastCap = '', lastRo = -1;
+  const CAPS = (L) => [
+    [T.hit, `<b>1. Collision.</b> The electron starts in the ground state, n = 1. A fast electron in the discharge tube is about to hit the atom.`],
+    [T.drop, `<b>2. Excitation.</b> The collision lifts the electron to n = ${L.k}. The atom now holds extra energy, an unstable state that lasts only about 10 ns.`],
+    [T.land, `<b>3. Emission.</b> The electron drops from n = ${L.k} to n = 2 and the atom emits one photon carrying exactly the energy gap: ${sci(dE(L.k, 2), 4)} J, so λ = hc/ΔE = ${num(L.nm, 4)} nm, <span class="swatch" style="background:${L.col}"></span>${colorName(L.nm)} (${L.name}).`],
+    [T.ly, `<b>4. The line appears.</b> Every atom making the same drop emits the same wavelength, so the spectroscope shows a sharp ${colorName(L.nm)} line at ${num(L.nm, 3)} nm.`],
+    [T.end + 1, `<b>5. Back to the ground state.</b> The last drop, n = 2 to n = 1, is much larger (${sci(dE(2, 1), 4)} J), so its photon is ultraviolet at ${num(LYA, 3)} nm, invisible to the eye.`]
+  ];
+
+  function render(t) {
+    const c = Math.floor(t / T.end), i = lineAt(t), L = LINES[i], u = t - c * T.end;
+    const [ex, ey, ely, lev] = ePos(L.k, u, t);
+    let d = '';
+    // orbit highlight
+    orbits.forEach(o => { const n = +o.dataset.n, on = n === lev.a || n === lev.b; o.style.stroke = on ? 'var(--ink)' : 'var(--line)'; o.style.strokeWidth = on ? 1.8 : 1.3; o.style.opacity = on ? 0.55 : 1; });
+    // incoming fast electron, flash, and the electron leaving more slowly
+    if (u < T.hit) { const f = u / T.hit, [x0, y0] = [0, 36], p = ePos(L.k, T.hit, c * T.end + T.hit); const x = lerp(x0, p[0], f), y = lerp(y0, p[1], f);
+      d += `<line x1="${x0}" y1="${y0}" x2="${x.toFixed(1)}" y2="${y.toFixed(1)}" style="stroke:var(--accent);stroke-width:1.2;stroke-dasharray:3 3;opacity:.6"/><circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="5" style="fill:var(--accent)"/><text x="${(x + 8).toFixed(1)}" y="${(y - 7).toFixed(1)}" style="fill:var(--accent);font-size:11px;font-weight:600;${HALO}">fast e⁻</text>`; }
+    else if (u < T.hit + 1.1) { const f = (u - T.hit) / 1.1, p = ePos(L.k, T.hit, c * T.end + T.hit), x = lerp(p[0], -10, f), y = lerp(p[1], AY + 120, f);
+      d += `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="5" style="fill:var(--accent);opacity:${(1 - f * 0.6).toFixed(2)}"/>`;
+      const fl = clamp01((u - T.hit) / 0.5); if (fl < 1) d += `<circle cx="${p[0].toFixed(1)}" cy="${p[1].toFixed(1)}" r="${(6 + 22 * fl).toFixed(1)}" style="fill:none;stroke:var(--warn);stroke-width:${(3 * (1 - fl)).toFixed(2)};opacity:${(1 - fl).toFixed(2)}"/>`; }
+    // ladder arrows
+    const fUp = clamp01((u - T.hit) / (T.up - T.hit)), fDn = clamp01((u - T.drop) / (T.dropEnd - T.drop)), fLy = clamp01((u - T.ly) / (T.lyEnd - T.ly));
+    d += arrow(xUp, yLev(1), yLev(L.k), ease(fUp), 'var(--muted)', 1.6, true);
+    if (u >= T.drop) d += `<g filter="url(#haGlow)">${arrow(xBal(L.k), yLev(L.k), yLev(2), ease(fDn), L.col, 3.2)}</g>`;
+    if (u >= T.dropEnd) d += `<text x="${xBal(L.k) + 7}" y="${((yLev(L.k) + yLev(2)) / 2 + 4).toFixed(1)}" style="font-size:11px;fill:var(--ink);font-weight:600">${L.name}</text>`;
+    d += arrow(xLy, yLev(2), yLev(1), ease(fLy), 'var(--uv)', 2.2, true);
+    if (u >= T.lyEnd) d += `<text x="${xLy - 6}" y="${(yLev(1) - 8).toFixed(1)}" text-anchor="end" style="font-size:10px;fill:var(--uv)">UV, ${num(LYA, 3)} nm</text>`;
+    // marker for the electron's current energy on the ladder
+    d += `<circle cx="${LX0}" cy="${ely.toFixed(1)}" r="5" class="elec" filter="url(#haGlow)"/>`;
+    // visible photon
+    if (u >= T.drop && u < T.land) {
+      const p0 = ePos(L.k, T.drop, c * T.end + T.drop), tx = xs(L.nm);
+      const path = [[p0[0], p0[1]], [p0[0] + 10, 292], [tx, 268], [tx, SY0]];
+      d += packet(path, clamp01((u - T.drop) / PH_FLIGHT), Math.max(6, L.nm / 38), L.col, 6, t);
+    }
+    // ultraviolet photon
+    if (u >= T.ly && u < T.ly + UV_FLIGHT) {
+      const p0 = ePos(L.k, T.ly, c * T.end + T.ly);
+      const path = [[p0[0], p0[1]], [p0[0] - 40, p0[1]], [40, AY - 30], [-20, AY - 40]];
+      d += packet(path, clamp01((u - T.ly) / UV_FLIGHT), 4.5, 'var(--uv)', 5, t);
+      d += `<text x="4" y="64" style="font-size:11px;fill:var(--uv);font-weight:600;${HALO}">ultraviolet photon</text><text x="4" y="77" style="font-size:10px;fill:var(--uv);${HALO}">(invisible)</text>`;
+    }
+    // the electron itself
+    const rr = Math.hypot(ex - AX, ey - AY) || 1, lx = ex + (ex - AX) / rr * 13, ly = ey + (ey - AY) / rr * 13 + 4;
+    d += `<circle cx="${ex.toFixed(1)}" cy="${ey.toFixed(1)}" r="5.5" class="elec" filter="url(#haGlow)"/><text x="${lx.toFixed(1)}" y="${ly.toFixed(1)}" text-anchor="middle" style="font-size:11px;fill:var(--data);font-weight:600;${HALO}">e⁻</text>`;
+    dyn.innerHTML = d;
+
+    // spectrum strip: ghost positions, lit lines
+    let s = '';
+    LINES.forEach((Q, j) => {
+      const x = xs(Q.nm).toFixed(1);
+      const lit = mode === 'all' ? (j < i || (j === i && u >= T.land)) : (j === i && (u >= T.land || c > 0));
+      const glow = j === i && u >= T.land ? clamp01((u - T.land) / 0.4) : 1;
+      if (lit) s += `<line x1="${x}" y1="${SY0 + 2}" x2="${x}" y2="${SY1 - 5}" filter="url(#haGlow)" style="stroke:${Q.col};stroke-width:3.4;opacity:${glow.toFixed(2)}"/>`
+        + `<text x="${x}" y="${SY0 - 14}" text-anchor="middle" style="font-size:11px;fill:var(--ink);font-weight:600;opacity:${glow.toFixed(2)}">${Q.name}</text><text x="${x}" y="${SY0 - 3}" text-anchor="middle" style="font-size:10px;opacity:${glow.toFixed(2)}">${Math.round(Q.nm)}</text>`;
+      else s += `<line x1="${x}" y1="${SY0 + 2}" x2="${x}" y2="${SY1 - 5}" style="stroke:#ffffff;stroke-width:1;opacity:.12"/>`;
+    });
+    stripG.innerHTML = s;
+
+    // caption and readout (only rewrite when they change)
+    const caps = CAPS(L);
+    let cap = (caps.find(q => u < q[0]) || caps[caps.length - 1])[1];
+    if (mode === 'all' && i === 3 && u >= T.lyEnd + 0.4) cap = `<b>The hydrogen fingerprint.</b> Drops from n = 3, 4, 5 and 6 to n = 2 give four visible lines: red 656 nm, cyan 486 nm, blue-violet 434 nm and violet 410 nm. In a real tube millions of atoms make all four drops at once, and the mix looks pink-purple.`;
+    if (cap !== lastCap) { $('#haCap').innerHTML = cap; lastCap = cap; }
+    if (i !== lastRo) {
+      lastRo = i;
+      $('#haRo').innerHTML = statT('Transition', `n = ${L.k} → n = 2 (${L.name})`) + statT('Color', `<span class="swatch" style="background:${L.col}"></span>${colorName(L.nm)}`)
+        + stat('Energy gap, ΔE', `${sci(dE(L.k, 2), 4)} J`) + stat('Wavelength, λ = hc/ΔE', `${num(L.nm, 4)} nm`);
+      [...$('#haSel').children].forEach((b, j) => b.setAttribute('aria-pressed', String(mode === 'all' ? b.dataset.i === 'all' : +b.dataset.i === pick)));
+    }
+  }
+
+  /* ---- controls ---- */
+  $('#haSel').innerHTML = `<button type="button" data-i="all" aria-pressed="true">All four, in turn</button>`
+    + LINES.map((L, j) => `<button type="button" data-i="${j}" aria-pressed="false">${L.name} · ${L.k} → 2</button>`).join('');
+  $('#haSel').addEventListener('click', e => {
+    const b = e.target.closest('button'); if (!b) return;
+    if (b.dataset.i === 'all') mode = 'all'; else { mode = 'one'; pick = +b.dataset.i; }
+    lt = paused || !running ? 3.6 : 0; lastRo = -1; render(lt);
+  });
+  const pb = $('#haPlay');
+  const syncPb = () => { pb.textContent = running ? 'Pause' : 'Play'; pb.setAttribute('aria-pressed', String(!running)); };
+  pb.addEventListener('click', () => { running = !running; if (running && paused) $('#motion').click(); syncPb(); });
+  $('#haRestart').addEventListener('click', () => { lt = 0; lastRo = -1; render(lt); });
+  syncPb();
+
+  anim(svg, t => {
+    if (prevT !== null && running) lt += Math.max(0, Math.min(0.05, t - prevT));
+    prevT = t;
+    render(lt);
+  });
 })();
 
 /* ==================================================================== VISIBLE: HYDROGEN ATOM */
