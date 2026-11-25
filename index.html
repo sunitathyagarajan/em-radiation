@@ -218,6 +218,9 @@ button:disabled{opacity:.45;cursor:default}
 #muRo .stat .v{font-weight:400;line-height:1.5}
 #itRo .stat .v{font-weight:400;line-height:1.5}
 #vuRo .stat .v{font-weight:400;line-height:1.5}
+#xuRo .stat .v{font-weight:400;line-height:1.5}
+#pesEl button{min-width:2.7em;padding:4px 8px;font-weight:600}
+#pesEl button[aria-pressed="true"]{background:var(--rc);border-color:var(--rc);color:#fff}
 .note{font-size:1rem;line-height:1.55;color:var(--muted)}
 .hint{font-size:.92rem;border-left:3px solid var(--data);padding:4px 0 4px 12px;color:var(--muted)}
 .hint b{color:var(--ink)}
@@ -1126,6 +1129,32 @@ footer .wrap{padding-block:20px 48px}
       </div>
     </div>
 
+    <div class="bench">
+      <div class="bhead"><span class="tagi">Interactive · Where X-rays are used</span><h3>X-rays at work</h3>
+        <p class="note">X-ray photons carry thousands of times the energy of visible light. That lets them pass through soft materials while heavier atoms stop them, diffract from the planes of atoms in crystals, and knock out core electrons whose energies identify each element. Pick a use to see the photon energies it works with and why.</p></div>
+      <div class="mwuses" id="xuSel" role="group" aria-label="Uses of X-rays"></div>
+      <div class="figscroll"><svg class="plot" id="xuSvg" viewBox="0 0 560 210" role="img" aria-label="A chart of eight uses of X-rays against photon energy from 0.1 keV to 30 MeV: medical X-ray images, CT scans and airport scanners at tens to about 150 keV, crystallography at 8.05 and 17.5 keV, X-ray fluorescence from 1 to 40 keV, photoelectron spectroscopy at 1.25 and 1.49 keV, cancer radiotherapy up to 6 to 18 MeV, and X-ray astronomy from 0.1 to 10 keV. The X-ray region used on these pages, 0.124 to 124 keV, is shaded."></svg></div><p class="swipehint fig">Swipe the figure sideways to see all of it.</p>
+      <div class="statgrid" id="xuRo"></div>
+    </div>
+
+    <div class="bench">
+      <div class="bhead"><span class="tagi">Interactive · What it tells us about atoms</span><h3>Photoelectron spectroscopy: measuring the energy of every orbital</h3>
+        <p class="note">Shine photons of one known energy, \(h\nu\), on a gas of atoms. A photon can knock an electron out of any orbital that holds it less tightly than \(h\nu\); the electron flies off with the energy left over, which the spectrometer measures. So each electron’s binding energy is</p>
+        <div class="formula">\[ E_{\text{binding}} = h\nu - E_{\text{kinetic}} \]</div>
+        <dl class="terms" aria-label="What each symbol means">
+          <div><dt>\(E_{\text{binding}}\)</dt><dd>the energy needed to pull the electron out of its orbital, shown here in MJ per mole of electrons (1 eV per electron is 0.0965 MJ/mol)</dd></div>
+          <div><dt>\(h\nu\)</dt><dd>the energy of one photon of the light used: \(h\) is Planck’s constant and \(\nu\) the light’s frequency</dd></div>
+          <div><dt>\(E_{\text{kinetic}}\)</dt><dd>the kinetic energy of the electron as it leaves, which the spectrometer measures</dd></div>
+        </dl>
+        <p class="note">Every occupied orbital gives a peak at its own binding energy, and the height of the peak counts its electrons. (With a solid sample, a small correction, the spectrometer’s work function, is subtracted as well; see XPS above.) Pick an element and a light source, then choose a peak to see its numbers.</p></div>
+      <div class="ctl"><span>Element</span><div class="chips" id="pesEl" role="group" aria-label="Element"></div></div>
+      <div class="ctl"><span>Light source</span><div class="seg" id="pesSrc" role="group" aria-label="Light source"></div></div>
+      <div class="figscroll"><svg class="plot" id="pesSvg" viewBox="0 0 560 276" role="img" aria-label="A photoelectron spectrum of the chosen element: one narrow peak for each occupied subshell, placed at its binding energy on a scale that rises to the left, with a height equal to the number of electrons in the subshell. A shaded area marks binding energies too large for the chosen light to reach."></svg></div><p class="swipehint fig">Swipe the figure sideways to see all of it.</p>
+      <div class="ctl"><span>Peak</span><div class="seg" id="pesPk" role="group" aria-label="Peak"></div></div>
+      <div class="statgrid" id="pesRo"></div>
+      <p class="note"><b>How PES mapped the orbitals.</b> In the 1950s and 1960s, Kai Siegbahn built X-ray photoelectron spectrometers precise enough to measure the binding energy of every electron in an atom, work that earned him a share of the 1981 Nobel Prize in Physics, and David Turner did the same for outer electrons using ultraviolet light. Their spectra showed directly what had only been inferred from ionization energies: an atom’s electrons come in groups with distinct energies. The groups are shells (1, 2, 3, …), and shells 2 and 3 split into s and p subshells whose peaks stand in the ratio 2 : 6, the number of electrons each subshell holds. Within a shell, s electrons are held more tightly than p electrons, because they spend more of their time close to the nucleus. And as the nuclear charge grows from one element to the next, every peak moves to a higher binding energy. To a good approximation (Koopmans’ theorem), each binding energy is that orbital’s energy with its sign reversed, so a photoelectron spectrum is an experimental energy-level diagram of the atom.</p>
+    </div>
+
     <div class="eqn">
       <span class="klabel">Balanced equations (particles and charge)</span>
       <p class="note">X-ray production is physics, not chemistry, but the process still balances in electrons and charge. A fast electron ionizes a copper atom from its K shell (written as a 1s hole, 1s<sup>−1</sup>); then an L electron fills the hole and a K<sub>α</sub> photon leaves.</p>
@@ -1273,11 +1302,13 @@ footer .wrap{padding-block:20px 48px}
       <div id="g-cones"><dt>Cones and rods</dt><dd>The light-sensing cells of the retina. Three kinds of cone, most sensitive near 420, 534 and 564 nm, give color vision in bright light; rods, most sensitive near 498 nm, work in dim light but see no color.</dd></div>
       <div id="g-conjugation"><dt>Conjugation</dt><dd>A chain of alternating single and double bonds, which lets the π electrons spread over many atoms. The longer the conjugated chain, the smaller the energy gap and the longer the wavelength it absorbs; long chains such as the one in β-carotene absorb visible light and look colored.</dd></div>
       <div id="g-crystalfield"><dt>Crystal-field splitting, \(\Delta_{\text{o}}\)</dt><dd>The energy gap between two sets of d orbitals of a metal ion surrounded by six ligands (an octahedral complex, hence the “o”). The complex absorbs light whose photons match this gap, which gives many transition-metal compounds their color.</dd></div>
+      <div id="g-ct"><dt>CT scan (computed tomography)</dt><dd>An X-ray method in which a tube and detectors spin around the body, taking hundreds of views that a computer combines into cross-sectional slices. It gives a larger radiation dose than an ordinary X-ray image.</dd></div>
       <div id="g-deuterium"><dt>Deuterium, D</dt><dd>Hydrogen-2, \(^{2}\text{H}\): a hydrogen isotope whose nucleus holds one proton and one neutron. Deuterium gas, D<sub>2</sub>, gives off ultraviolet light in a deuterium lamp.</dd></div>
       <div id="g-dielectric"><dt>Dielectric heating</dt><dd>Heating by a rapidly alternating electric field that keeps twisting polar molecules, such as water, back and forth; their jostling against their neighbors turns the motion into heat. It is how a microwave oven warms food.</dd></div>
       <div id="g-diffraction"><dt>Diffraction</dt><dd>The spreading and interference of waves that pass through gaps, or scatter from objects, about the size of their wavelength. X-rays diffract from crystals because their wavelength is similar to the spacing between atoms.</dd></div>
       <div id="g-dipole"><dt>Dipole</dt><dd>Equal and opposite charges a small distance apart. A molecular vibration absorbs infrared only if it changes the molecule’s dipole moment; a dipole antenna is a pair of rods whose ends charge up oppositely as the current swings back and forth.</dd></div>
       <div id="g-doppler"><dt>Doppler shift</dt><dd>The change in the frequency of a wave when its source, or the object reflecting it, moves toward or away from you: higher when it approaches, lower when it moves away. Radar uses it to measure speed.</dd></div>
+      <div id="g-config"><dt>Electron configuration</dt><dd>The list of an atom’s occupied subshells and how many electrons each holds, such as 1s² 2s² 2p⁶ for neon. Photoelectron spectra confirm it peak by peak.</dd></div>
       <div id="g-ev"><dt>Electronvolt, eV</dt><dd>The energy an electron gains moving through a potential difference of one volt: \(1\ \text{eV} = 1.602 \times 10^{-19}\ \text{J}\). A convenient size for one photon: visible photons carry about 1.8 to 3.1 eV.</dd></div>
       <div id="g-charge"><dt>Elementary charge, \(e\)</dt><dd>The charge of one proton, or (negative) of one electron: \(e = 1.602 \times 10^{-19}\) C. An electron pushed through a voltage \(V\) gains an energy \(eV\).</dd></div>
       <div id="g-emissivity"><dt>Emissivity</dt><dd>How well a surface gives off infrared compared with a perfect blackbody at the same temperature, from 0 to 1. Skin, wood and paint are close to 1; polished metal is low, so it can look cooler than it is to a thermal camera.</dd></div>
@@ -1301,6 +1332,7 @@ footer .wrap{padding-block:20px 48px}
       <div id="g-joule"><dt>Joule, J</dt><dd>The SI unit of energy. A single photon of visible light carries only about \(4 \times 10^{-19}\) J.</dd></div>
       <div id="g-kelvin"><dt>Kelvin, K</dt><dd>The SI unit of temperature. It starts at absolute zero, so a temperature in kelvin is the Celsius temperature plus 273.15.</dd></div>
       <div id="g-kinetic"><dt>Kinetic energy</dt><dd>Energy of motion. In X-ray photoelectron spectroscopy, \(E_{\text{kinetic}}\) is the measured energy of the electron that the X-ray knocks out.</dd></div>
+      <div id="g-koopmans"><dt>Koopmans’ theorem</dt><dd>The approximation that the energy needed to remove an electron from an orbital equals that orbital’s energy with the sign reversed, so a photoelectron spectrum maps the orbital energies of an atom or molecule.</dd></div>
       <div id="g-lambdamax"><dt>Lambda max, \(\lambda_{\max}\)</dt><dd>The wavelength at which a substance absorbs most strongly (in UV-visible spectroscopy), or at which a hot object glows most brightly (Wien’s law).</dd></div>
       <div id="g-laser"><dt>Laser</dt><dd>A light source that gives a narrow beam of a single wavelength with all its waves in step. The name stands for light amplification by stimulated emission of radiation.</dd></div>
       <div id="g-led"><dt>LED, light-emitting diode</dt><dd>A semiconductor device that gives off light when electrons drop across its energy gap, so its color is set by the gap: \(\lambda = hc/E_{\text{gap}}\).</dd></div>
@@ -1322,6 +1354,7 @@ footer .wrap{padding-block:20px 48px}
       <div id="g-penetration"><dt>Penetration depth</dt><dd>How far radiation travels into a material before about two-thirds of it (all but 1/e, or 37%) has been absorbed. In skin it is a few millimeters for near-infrared but only a tiny fraction of a millimeter for far-infrared.</dd></div>
       <div id="g-phosphor"><dt>Phosphor</dt><dd>A material that absorbs light of one color and gives off another, usually longer, wavelength. White LEDs use a yellow phosphor over a blue LED.</dd></div>
       <div id="g-pbm"><dt>Photobiomodulation (low-level light therapy)</dt><dd>Treatment with weak red or near-infrared light, from LEDs or lasers, intended to ease pain and help tissue heal. Some trials show modest benefit and others none, so the evidence is mixed.</dd></div>
+      <div id="g-pes"><dt>Photoelectron spectroscopy (PES)</dt><dd>Measuring the kinetic energies of electrons knocked out of atoms by photons of one known energy, to find how tightly each was bound: \(E_{\text{binding}} = h\nu - E_{\text{kinetic}}\). With X-rays it is called XPS; with ultraviolet light, UPS.</dd></div>
       <div id="g-photon"><dt>Photon</dt><dd>A single packet (quantum) of electromagnetic radiation. Its energy depends only on its frequency, \(E = h\nu\), so in equations a photon is often written simply as \(h\nu\).</dd></div>
       <div id="g-phototherapy"><dt>Phototherapy</dt><dd>Treatment with light. Blue light, near 460 nm, treats newborn jaundice: bilirubin in the skin absorbs it and changes into forms the baby can get rid of without the liver.</dd></div>
       <div id="g-pit"><dt>Pit organ</dt><dd>A heat-sensing organ of pit vipers, boas and pythons: a thin membrane over an air space, warmed by the infrared from nearby warm animals and wired to heat-sensitive nerve endings.</dd></div>
@@ -1333,18 +1366,21 @@ footer .wrap{padding-block:20px 48px}
       <div id="g-oximeter"><dt>Pulse oximeter</dt><dd>A clip-on sensor that shines red (660 nm) and infrared (940 nm) light through a finger. Hemoglobin with and without oxygen absorbs these differently, so the ratio of the signals gives the blood’s oxygen level.</dd></div>
       <div id="g-radar"><dt>Radar</dt><dd>Short for radio detection and ranging. A dish sends out short pulses of microwaves or radio waves and times the echoes from objects such as raindrops, aircraft or cars. The delay gives the distance, and the Doppler shift gives the speed.</dd></div>
       <div id="g-bands"><dt>Radio bands: VLF, LF, MF, HF, VHF, UHF</dt><dd>Engineering names for ranges of radio frequency, each ten times higher than the one before: very low (3–30 kHz), low, medium, high, very high and ultra high frequency (300 MHz–3 GHz).</dd></div>
+      <div id="g-radiotherapy"><dt>Radiotherapy</dt><dd>Treating cancer with ionizing radiation, most often beams of high-energy X-rays (several MeV) from a linear accelerator, aimed so that they meet at the tumor.</dd></div>
       <div id="g-reducedmass"><dt>Reduced mass, \(\mu\)</dt><dd>The effective mass of two bonded atoms vibrating or rotating about their center: \(\mu = \dfrac{m_1 m_2}{m_1 + m_2}\). It is always smaller than the lighter of the two masses.</dd></div>
       <div id="g-resonance"><dt>Resonance</dt><dd>Strong absorption that happens only when the frequency of the radiation matches a natural frequency of the system, such as the precession frequency of a nucleus in NMR. There the resonance condition is \(\nu = \gamma B_0/2\pi\): only radio waves of this frequency flip the nuclear spin.</dd></div>
       <div id="g-rotconst"><dt>Rotational constant, \(B\)</dt><dd>A constant for each molecule that sets the spacing of its rotational energy levels: \(B = h/(8\pi^2 c I)\), usually given in cm<sup>−1</sup>. Heavier atoms or a longer bond give a larger moment of inertia \(I\) and so a smaller \(B\). For CO, \(B = 1.9225\ \text{cm}^{-1}\).</dd></div>
       <div id="g-rotj"><dt>Rotational quantum number, \(J\)</dt><dd>The whole number (0, 1, 2, 3, …) that labels the rotational energy levels of a molecule, \(E_J = hcB\,J(J+1)\). When a molecule absorbs a microwave photon it moves up exactly one level. Not to be confused with J, the symbol for joules.</dd></div>
       <div id="g-rydberg"><dt>Rydberg constant, \(R_{\text{H}}\)</dt><dd>The constant in the formula for hydrogen’s spectral lines, \(1/\lambda = R_{\text{H}}(1/n_f^2 - 1/n_i^2)\): \(R_{\text{H}} = 1.0968 \times 10^{7}\ \text{m}^{-1}\).</dd></div>
       <div id="g-serieslimit"><dt>Series limit</dt><dd>The shortest wavelength (highest energy) line of a spectral series, given off when a free electron, from \(n = \infty\), drops straight to the series’ lower level. The lines of a series crowd closer and closer together toward it.</dd></div>
+      <div id="g-shell"><dt>Shell, subshell</dt><dd>A shell is the set of orbitals with the same principal quantum number n (1, 2, 3, …). Each shell splits into subshells of slightly different energy: s (holds 2 electrons), p (6), d (10) and f (14).</dd></div>
       <div id="g-spectroscopy"><dt>Spectroscopy</dt><dd>Measuring which wavelengths a sample absorbs or emits, and using the pattern to identify the substance, work out its structure, or find how much of it is present.</dd></div>
       <div id="g-lightspeed"><dt>Speed of light, \(c\)</dt><dd>The speed of all electromagnetic radiation in a vacuum: \(c = 2.998 \times 10^{8}\ \text{m s}^{-1}\), or \(2.998 \times 10^{10}\ \text{cm s}^{-1}\). It links wavelength and frequency, \(c = \lambda\nu\).</dd></div>
       <div id="g-standing"><dt>Standing wave, hot spot</dt><dd>A wave pattern that stays in one place, made when waves bouncing between walls overlap. In a microwave oven it leaves hot spots about 6 cm apart (half the 12.2 cm wavelength) with cooler spots between them; the turntable carries food through both.</dd></div>
       <div id="g-states-sym"><dt>State symbols</dt><dd>Letters after each formula in a chemical equation that give its physical state: (s) solid, (l) liquid, (g) gas and (aq) dissolved in water.</dd></div>
       <div id="g-stefan"><dt>Stefan–Boltzmann law, \(\sigma\)</dt><dd>The power a hot object gives off from each square meter rises as the fourth power of its temperature: \(P = \sigma T^4\), where \(\sigma = 5.670 \times 10^{-8}\ \text{W m}^{-2}\,\text{K}^{-4}\) and \(T\) is in kelvin.</dd></div>
       <div id="g-superheat"><dt>Superheated water</dt><dd>Water heated above its normal boiling point without boiling, which can happen in a smooth, clean container in a microwave. A small disturbance can then make it boil violently all at once.</dd></div>
+      <div id="g-synchrotron"><dt>Synchrotron</dt><dd>A ring-shaped accelerator in which electrons circling at nearly the speed of light give off intense, tunable light from the infrared to hard X-rays, used for spectroscopy and crystallography.</dd></div>
       <div id="g-tapetum"><dt>Tapetum lucidum</dt><dd>A mirror-like layer behind the retina of many night-active animals, such as foxes, cats and deer. It reflects light back through the retina for a second chance to be seen, which makes their eyes shine in a beam of light.</dd></div>
       <div id="g-tesla"><dt>Tesla, T</dt><dd>The SI unit of magnetic field strength. For scale: the Earth’s field is about 0.00005 T, a fridge magnet about 0.005 T, an MRI scanner 1.5 to 3 T, and research NMR magnets about 7 to 28 T.</dd></div>
       <div id="g-thermal"><dt>Thermal imaging (thermography)</dt><dd>Making a picture from the infrared that objects give off because of their temperature, usually at 8–14 µm. It works in complete darkness, because it does not need any light to be reflected.</dd></div>
@@ -1353,6 +1389,8 @@ footer .wrap{padding-block:20px 48px}
       <div id="g-wavenumber"><dt>Wavenumber, \(\tilde{\nu}\)</dt><dd>The number of waves per centimeter, \(1/\lambda\), in cm<sup>−1</sup>. Infrared and Raman spectra use it because it is proportional to energy.</dd></div>
       <div id="g-wien"><dt>Wien’s law</dt><dd>The wavelength at which a hot object glows most brightly falls as it gets hotter: \(\lambda_{\max} = (2.898 \times 10^{-3}\ \text{m K})/T\), with \(T\) in kelvin.</dd></div>
       <div id="g-workfunction"><dt>Work function, \(\varphi\)</dt><dd>The smallest energy needed to pull an electron out through the surface of a solid. In X-ray photoelectron spectroscopy it is a small, known correction for the spectrometer.</dd></div>
+      <div id="g-xtal"><dt>X-ray crystallography</dt><dd>Finding where every atom in a crystal sits from the pattern of spots made when X-rays diffract from its planes of atoms (Bragg’s law).</dd></div>
+      <div id="g-xrf"><dt>X-ray fluorescence (XRF)</dt><dd>Identifying elements from the X-rays they give off after X-rays knock out their core electrons. Each element’s lines fall at its own energies, as Moseley’s law describes.</dd></div>
     </dl>
     <p class="gloss-empty muted" hidden>No matching terms.</p>
   </div>
@@ -3411,6 +3449,198 @@ const arrowDown = (x, y, cls) => `<path d="M${x - 4.5},${y - 9} L${x},${y} L${x 
   $('#vuSel').innerHTML = USES.map((u, i) => `<button type="button" data-i="${i}" aria-pressed="false"><svg viewBox="0 0 32 32" aria-hidden="true">${ICON[u.icon]}</svg><span>${u.name}</span></button>`).join('');
   $('#vuSel').addEventListener('click', e => { const b = e.target.closest('button'); if (b) pick(+b.dataset.i); });
   pick(0);
+})();
+
+/* ==================================================================== X-RAY: WHERE X-RAYS ARE USED */
+(() => {
+  const svg = $('#xuSvg');
+  if (!svg) return;
+  const ICON = {
+    bone: '<circle cx="7" cy="12" r="3"/><circle cx="7" cy="20" r="3"/><circle cx="25" cy="12" r="3"/><circle cx="25" cy="20" r="3"/><path d="M9.5 13.5h13M9.5 18.5h13"/>',
+    ct: '<circle cx="16" cy="15" r="11"/><circle cx="16" cy="15" r="5"/><path d="M3 28h26"/>',
+    bag: '<rect x="4" y="10" width="24" height="16" rx="2"/><path d="M12 10V6.5h8V10"/><path d="M4 17h24"/>',
+    crystal: '<circle cx="8" cy="8" r="2"/><circle cx="16" cy="8" r="2"/><circle cx="24" cy="8" r="2"/><circle cx="8" cy="16" r="2"/><circle cx="16" cy="16" r="2"/><circle cx="24" cy="16" r="2"/><circle cx="8" cy="24" r="2"/><circle cx="16" cy="24" r="2"/><circle cx="24" cy="24" r="2"/>',
+    xrf: '<path d="M3 8h19v7H12v10H7V15H3z"/><path d="M22 11.5h7M26 8.5l3 3-3 3"/>',
+    xps: '<path d="M3 25h26"/><path d="M6 5l7 18"/><path d="M10 19.5l3 3.5 1-4.5"/><path d="M18 23l6-14"/><circle cx="25" cy="7" r="2.3"/>',
+    linac: '<rect x="9" y="3" width="14" height="9" rx="1.5"/><path d="M13 12l-5 12M19 12l5 12"/><path d="M5 27h22"/>',
+    scope: '<path d="M4 21l15-9 3 5-15 9z"/><path d="M20 12.5l5-3 2.5 4-5 3"/><path d="M10 24l-3 6M13 22.5l3 7"/>'
+  };
+  const USES = [
+    {icon: 'bone', name: 'Medical X-ray images', tag: '20–150 keV', f: [[20, 150]], rep: 60, fr: 'about 20–150 keV',
+     how: 'An X-ray tube sends a brief burst through the body onto a detector. Bone absorbs far more than soft tissue, so it casts a pale shadow; air in the lungs absorbs least and looks dark.',
+     why: 'Photons of tens of keV pass through soft tissue, which is mostly light elements, but the calcium in bone, with many more electrons per atom, stops them far more often: absorption rises steeply with atomic number. A chest X-ray gives about the same dose as ten days of natural background radiation.'},
+    {icon: 'ct', name: 'CT scans', tag: 'up to 140 keV', f: [[30, 140]], rep: 70, fr: 'up to about 80–140 keV',
+     how: 'An X-ray tube and a ring of detectors spin around the patient, taking hundreds of views from different angles, and a computer combines them into cross-sectional slices of the body.',
+     why: 'Seeing the body from many angles lets the computer separate tissues that overlap in a single picture. The cost is a larger dose: a chest CT is equal to about two years of natural background radiation.'},
+    {icon: 'bag', name: 'Airport scanners', tag: 'up to 160 keV', f: [[20, 160]], rep: 70, fr: 'up to about 160 keV',
+     how: 'A belt carries bags through a fan-shaped X-ray beam. Two detector layers measure low- and high-energy X-rays separately, so the machine can estimate each object’s atomic number and color it on screen: orange for organic materials, blue for metals, green for mixtures. The colors are false colors.',
+     why: 'X-rays pass through cloth and plastic but are stopped more by dense materials made of heavier atoms, such as metals, so the shapes inside a bag stand out.'},
+    {icon: 'crystal', name: 'Crystallography', tag: '8.05 and 17.5 keV', f: [[8.05, 8.05], [17.48, 17.48]], rep: 8.05, fr: '8.05 keV (copper Kα) or 17.5 keV (molybdenum Kα)',
+     how: 'A narrow X-ray beam hits a crystal, and its planes of atoms diffract the beam into a pattern of spots (Bragg’s law). From thousands of spots, a computer rebuilds where every atom sits.',
+     why: 'Copper Kα X-rays (0.154 nm) and molybdenum Kα X-rays (0.071 nm) have wavelengths close to the spacing between atoms, which is what diffraction needs.'},
+    {icon: 'xrf', name: 'Element analysis (XRF)', tag: '1–40 keV', f: [[1, 40]], rep: 6.4, fr: 'about 1–40 keV',
+     how: 'X-rays knock core electrons out of the atoms in a sample. As outer electrons drop into the holes, each element gives off X-rays at its own energies (Moseley’s law): iron at 6.40 keV, lead at 10.55 keV.',
+     why: 'Core-electron energies are different for every element and hardly changed by chemical bonding, so XRF identifies elements without damaging the sample: alloys, lead in paint, the pigments of old paintings.'},
+    {icon: 'xps', name: 'Photoelectron spectroscopy (XPS)', tag: '1.25 and 1.49 keV', f: [[1.2536, 1.2536], [1.4867, 1.4867]], rep: 1.4867, fr: '1486.7 eV (aluminum Kα) or 1253.6 eV (magnesium Kα)',
+     how: 'X-rays of an exactly known energy knock electrons out of a surface; measuring each electron’s kinetic energy gives how tightly it was bound. The interactive below shows how this maps the energy of every orbital.',
+     why: 'These soft X-rays carry enough energy to free core electrons, and the freed electrons escape only from the top few nanometers, so XPS reports the elements and their oxidation states at a surface.'},
+    {icon: 'linac', name: 'Cancer radiotherapy', tag: 'up to 6–18 MeV', f: [[300, 18000]], rep: 2000, fr: 'up to about 6–18 MeV',
+     how: 'A linear accelerator speeds electrons up to millions of volts and slams them into a metal target. The high-energy X-rays that result are shaped into beams that meet at the tumor from several directions.',
+     why: 'Photons of several MeV reach deep into the body and deposit most of their dose below the skin. Their energies overlap those of gamma rays; they are called X-rays because they come from electrons, not from nuclei.'},
+    {icon: 'scope', name: 'X-ray astronomy', tag: '0.1–10 keV', f: [[0.1, 10]], rep: 1, fr: 'about 0.1–10 keV',
+     how: 'Telescopes in orbit, such as NASA’s Chandra, focus X-rays with nested mirrors at grazing angles and record gas at millions of degrees around black holes, exploding stars and clusters of galaxies.',
+     why: 'Very hot gas glows mainly in X-rays (Wien’s law). Earth’s atmosphere absorbs X-rays, so these telescopes have to work from space.'}
+  ];
+  const BX0 = 168, BX1 = 540, EMIN = 0.1, EMAX = 30000, DEC = (BX1 - BX0) / Math.log10(EMAX / EMIN);
+  const xe = e => BX0 + Math.log10(e / EMIN) * DEC;
+  const rowY = i => 44 + i * 16;
+  const f1 = v => v.toFixed(1);
+  const wlab = e => { const nm = 1.23984 / e; return nm >= 0.1 ? `${+nm.toPrecision(3)} nm` : `${+(nm * 1000).toPrecision(3)} pm`; };
+  let cur = 0;
+  function chart() {
+    let h = '';
+    const yEnd = rowY(USES.length - 1) + 10;
+    // this module's X-ray region, 10 nm down to 10 pm (0.124 to 124 keV), and the gamma energies beyond it
+    h += `<rect x="${f1(xe(0.124))}" y="26" width="${f1(xe(124) - xe(0.124))}" height="${yEnd - 26}" style="fill:color-mix(in srgb,var(--rc) 9%,transparent)"/>`;
+    h += `<text x="${f1((xe(0.124) + xe(124)) / 2)}" y="${yEnd + 34}" text-anchor="middle" class="t-sm">X-ray region on these pages</text><text x="${f1(xe(124) + 6)}" y="${yEnd + 34}" class="t-sm">gamma energies →</text>`;
+    h += `<rect x="0" y="${rowY(cur) - 8}" width="560" height="16" style="fill:color-mix(in srgb,var(--rc) 14%,transparent)"/>`;
+    [[0.1, '0.1 keV'], [1, '1 keV'], [10, '10 keV'], [100, '100 keV'], [1000, '1 MeV'], [10000, '10 MeV']].forEach(([e, l]) => {
+      const x = f1(xe(e));
+      h += `<line x1="${x}" y1="26" x2="${x}" y2="${yEnd}" style="stroke:var(--grid)"/><text x="${x}" y="18" text-anchor="middle" class="t-sm">${l}</text>`
+        + `<text x="${x}" y="${yEnd + 16}" text-anchor="middle" class="t-sm">${wlab(e)}</text>`;
+    });
+    USES.forEach((u, i) => {
+      const y = rowY(i), on = i === cur, st = on ? 'fill:var(--rc)' : 'fill:var(--muted);opacity:.45';
+      h += `<text x="8" y="${y + 4}" class="${on ? 't-ink' : 't-sm'}" style="font-size:calc(${on ? 12 : 11}px * var(--k, 1))">${u.name}</text>`;
+      u.f.forEach(([a, b]) => { h += b > a * 1.001 ? `<rect x="${f1(xe(a))}" y="${y - 4}" width="${f1(Math.max(4, xe(b) - xe(a)))}" height="8" rx="2" style="${st}"/>` : `<circle cx="${f1(xe(a))}" cy="${y}" r="4" style="${st}"/>`; });
+      if (on) {
+        const last = u.f[u.f.length - 1], xr = xe(last[1]) + 8, right = xr + 6.2 * u.tag.length < BX1 + 16;
+        h += `<text x="${f1(right ? xr : xe(u.f[0][0]) - 8)}" y="${y + 4}" text-anchor="${right ? 'start' : 'end'}" class="t-sm" style="fill:var(--ink)">${u.tag}</text>`;
+      }
+      h += `<rect class="xuHit" data-i="${i}" x="0" y="${y - 8}" width="560" height="16" style="fill:transparent;cursor:pointer"><title>${u.name}</title></rect>`;
+    });
+    h += `<text x="8" y="18" class="t-sm">photon energy</text><text x="8" y="${yEnd + 16}" class="t-sm">wavelength</text>`;
+    svg.innerHTML = h;
+  }
+  function pick(i) {
+    cur = i;
+    const u = USES[i];
+    chart();
+    [...$('#xuSel').children].forEach((b, j) => b.setAttribute('aria-pressed', String(j === i)));
+    $('#xuRo').innerHTML = statT('Use', u.name) + statT('Photon energy', u.fr)
+      + stat('Wavelength at ' + (u.rep >= 1000 ? `${num(u.rep / 1000, 3)} MeV` : `${num(u.rep, 3)} keV`), wlab(u.rep))
+      + statT('How it works', u.how, 'wide') + statT('Why X-rays', u.why, 'wide');
+  }
+  $('#xuSel').innerHTML = USES.map((u, i) => `<button type="button" data-i="${i}" aria-pressed="false"><svg viewBox="0 0 32 32" aria-hidden="true">${ICON[u.icon]}</svg><span>${u.name}</span></button>`).join('');
+  $('#xuSel').addEventListener('click', e => { const b = e.target.closest('button'); if (b) pick(+b.dataset.i); });
+  svg.addEventListener('click', e => { const r = e.target.closest ? e.target.closest('.xuHit') : null; if (r) pick(+r.dataset.i); });
+  pick(0);
+})();
+
+/* ==================================================================== X-RAY: PHOTOELECTRON SPECTROSCOPY OF THE ELEMENTS */
+(() => {
+  const svg = $('#pesSvg');
+  if (!svg) return;
+  // binding energies of free atoms, MJ/mol, rounded; each outermost value equals the first ionization energy
+  const EL = [
+    ['H', 'Hydrogen', [['1s', 1, 1.31]]],
+    ['He', 'Helium', [['1s', 2, 2.37]]],
+    ['Li', 'Lithium', [['1s', 2, 6.26], ['2s', 1, 0.52]]],
+    ['Be', 'Beryllium', [['1s', 2, 11.5], ['2s', 2, 0.90]]],
+    ['B', 'Boron', [['1s', 2, 19.3], ['2s', 2, 1.36], ['2p', 1, 0.80]]],
+    ['C', 'Carbon', [['1s', 2, 28.6], ['2s', 2, 1.72], ['2p', 2, 1.09]]],
+    ['N', 'Nitrogen', [['1s', 2, 39.6], ['2s', 2, 2.45], ['2p', 3, 1.40]]],
+    ['O', 'Oxygen', [['1s', 2, 52.6], ['2s', 2, 3.04], ['2p', 4, 1.31]]],
+    ['F', 'Fluorine', [['1s', 2, 67.2], ['2s', 2, 3.88], ['2p', 5, 1.68]]],
+    ['Ne', 'Neon', [['1s', 2, 84.0], ['2s', 2, 4.68], ['2p', 6, 2.08]]],
+    ['Na', 'Sodium', [['1s', 2, 104], ['2s', 2, 6.84], ['2p', 6, 3.67], ['3s', 1, 0.50]]],
+    ['Mg', 'Magnesium', [['1s', 2, 126], ['2s', 2, 9.07], ['2p', 6, 5.31], ['3s', 2, 0.74]]],
+    ['Al', 'Aluminum', [['1s', 2, 151], ['2s', 2, 12.1], ['2p', 6, 7.19], ['3s', 2, 1.09], ['3p', 1, 0.58]]],
+    ['Si', 'Silicon', [['1s', 2, 178], ['2s', 2, 15.1], ['2p', 6, 10.3], ['3s', 2, 1.46], ['3p', 2, 0.79]]],
+    ['P', 'Phosphorus', [['1s', 2, 208], ['2s', 2, 18.7], ['2p', 6, 13.5], ['3s', 2, 1.95], ['3p', 3, 1.01]]],
+    ['S', 'Sulfur', [['1s', 2, 239], ['2s', 2, 22.7], ['2p', 6, 16.5], ['3s', 2, 2.05], ['3p', 4, 1.00]]],
+    ['Cl', 'Chlorine', [['1s', 2, 273], ['2s', 2, 26.8], ['2p', 6, 20.2], ['3s', 2, 2.44], ['3p', 5, 1.25]]],
+    ['Ar', 'Argon', [['1s', 2, 309], ['2s', 2, 31.5], ['2p', 6, 24.1], ['3s', 2, 2.82], ['3p', 6, 1.52]]],
+    ['K', 'Potassium', [['1s', 2, 347], ['2s', 2, 37.1], ['2p', 6, 29.1], ['3s', 2, 3.93], ['3p', 6, 2.38], ['4s', 1, 0.42]]],
+    ['Ca', 'Calcium', [['1s', 2, 390], ['2s', 2, 42.7], ['2p', 6, 34.0], ['3s', 2, 4.65], ['3p', 6, 2.90], ['4s', 2, 0.59]]]
+  ];
+  const SRC = [{lab: 'UV lamp, 21.2 eV', ev: 21.22, short: 'ultraviolet light from a helium lamp'},
+               {lab: 'X-rays, 1487 eV', ev: 1486.7, short: 'aluminum Kα X-rays'},
+               {lab: 'Synchrotron, 5000 eV', ev: 5000, short: 'synchrotron X-rays'}];
+  const MJ = 0.0964853;                               // MJ/mol per eV
+  const X0 = 48, X1 = 540, YT = 52, YB = 232, BMAX = 600, BMIN = 0.3, PX = (X1 - X0) / Math.log10(BMAX / BMIN), EH = 28;
+  const xb = b => X0 + Math.log10(BMAX / b) * PX;     // binding energy rises to the left, as PES spectra are drawn
+  const f1 = v => v.toFixed(1);
+  const sup = n => String(n).split('').map(d => '⁰¹²³⁴⁵⁶⁷⁸⁹'[+d]).join('');
+  // the subtraction uses the binding energy as displayed, so the numbers on screen add up
+  const kef = v => v < 100 ? v.toFixed(2) : Math.round(v).toLocaleString('en-US');
+  let z = 10, src = 2, sel = -1;
+  function draw() {
+    const [sym, name, P] = EL[z - 1], s = SRC[src], hvMJ = s.ev * MJ;
+    const seen = P.map((q, i) => ({q, i, ok: q[2] < hvMJ}));
+    if (sel < 0 || !seen[sel] || !seen[sel].ok) { const last = seen.filter(o => o.ok).pop(); sel = last ? last.i : -1; }
+    let h = '';
+    // what this light cannot reach
+    if (hvMJ < BMAX) {
+      const xc = xb(hvMJ);
+      h += `<rect x="${X0}" y="28" width="${f1(xc - X0)}" height="${YB - 28}" style="fill:var(--muted);opacity:.13"/>`
+        + `<line x1="${f1(xc)}" y1="26" x2="${f1(xc)}" y2="${YB}" style="stroke:var(--accent);stroke-width:1.4;stroke-dasharray:4 3"/>`
+        + `<text x="${f1(xc + (xc < 300 ? 6 : -6))}" y="20" text-anchor="${xc < 300 ? 'start' : 'end'}" class="t-sm" style="fill:var(--accent)">photon energy hν = ${num(hvMJ, 3)} MJ/mol</text>`;
+      if (xc - X0 > 96) h += `<text x="${f1((X0 + xc) / 2)}" y="${YT + 8}" text-anchor="middle" class="t-sm">out of reach of this light</text>`;
+    }
+    // axes
+    h += `<line class="axis" x1="${X0}" y1="${YB}" x2="${X1}" y2="${YB}"/><line class="axis" x1="${X0}" y1="${YT - 14}" x2="${X0}" y2="${YB}"/>`;
+    [300, 100, 30, 10, 3, 1, 0.3].forEach(b => { const x = f1(xb(b)); h += `<line class="axis" x1="${x}" y1="${YB}" x2="${x}" y2="${YB + 5}"/><text x="${x}" y="${YB + 18}" text-anchor="middle" class="t-sm">${b}</text>`; });
+    h += `<text x="${X1}" y="${YB + 34}" text-anchor="end" class="t-sm">binding energy (MJ/mol), increasing to the left</text>`;
+    h += `<text x="20" y="${(YT + YB) / 2}" text-anchor="middle" transform="rotate(-90 20 ${(YT + YB) / 2})" class="t-sm">number of electrons</text>`;
+    for (let e = 2; e <= 6; e += 2) h += `<line x1="${X0}" y1="${YB - e * EH}" x2="${X1}" y2="${YB - e * EH}" style="stroke:var(--grid)"/><text x="${X0 - 6}" y="${YB - e * EH + 4}" text-anchor="end" class="t-sm">${e}</text>`;
+    // the spectrum: one narrow peak per subshell, as tall as its number of electrons
+    let d = '';
+    for (let x = X0; x <= X1; x += 1.5) {
+      const lb = Math.log10(BMAX) - (x - X0) / PX;
+      let y = 0;
+      seen.forEach(o => { if (o.ok) y += o.q[1] * Math.exp(-0.5 * ((lb - Math.log10(o.q[2])) / 0.016) ** 2); });
+      d += (d ? ' L' : 'M') + f1(x) + ',' + f1(YB - y * EH);
+    }
+    h += `<path d="${d}" style="fill:color-mix(in srgb,var(--rc) 16%,transparent);stroke:var(--rc);stroke-width:1.8;stroke-linejoin:round"/>`;
+    seen.forEach(o => {
+      const [sub, e, b] = o.q, x = xb(b), on = o.i === sel;
+      if (!o.ok) { h += `<text x="${f1(x)}" y="${YB - 8}" text-anchor="middle" class="t-sm">${sub}</text>`; return; }
+      if (on) h += `<line x1="${f1(x)}" y1="${YB}" x2="${f1(x)}" y2="${YB - e * EH}" style="stroke:var(--accent);stroke-width:3"/>`;
+      h += `<text x="${f1(x)}" y="${f1(YB - e * EH - 8)}" text-anchor="middle" class="${on ? 't-acc' : 't-ink'}">${sub}</text>`
+        + `<rect class="pesHit" data-i="${o.i}" x="${f1(x - 6)}" y="${f1(YB - e * EH - 22)}" width="12" height="${f1(e * EH + 22)}" style="fill:transparent;cursor:pointer"><title>${sub} peak</title></rect>`;
+    });
+    svg.innerHTML = h;
+    $('#pesPk').innerHTML = seen.filter(o => o.ok).map(o => `<button type="button" data-i="${o.i}" aria-pressed="${o.i === sel}">${o.q[0]}</button>`).join('') || '<span class="note" style="padding:6px 10px">no peaks with this light</span>';
+    [...$('#pesEl').children].forEach((b, j) => b.setAttribute('aria-pressed', String(j === z - 1)));
+    [...$('#pesSrc').children].forEach((b, j) => b.setAttribute('aria-pressed', String(j === src)));
+    // readout
+    const conf = P.map(q => q[0] + sup(q[1])).join(' ');
+    let ro = statT('Element', `${name} (${sym}, Z = ${z})`) + statT('Electron configuration', conf);
+    if (sel >= 0) {
+      const [sub, e, b] = P[sel], ev = b / MJ;
+      ro += statT('Selected peak', `${sub}: ${e} electron${e > 1 ? 's' : ''}`)
+        + stat('Binding energy', `${num(b, 3)} MJ/mol = ${num(ev, 3)} eV`)
+        + stat('Kinetic energy of the electron', `${num(s.ev, 4)} − ${num(ev, 3)} = ${kef(s.ev - Number(ev.toPrecision(3)))} eV`, 'wide');
+    }
+    const ok = seen.filter(o => o.ok), outer = P[P.length - 1];
+    let cap;
+    if (!ok.length) cap = `This light cannot ionize ${name.toLowerCase()} at all: even its outermost electrons are held by ${num(outer[2], 3)} MJ/mol (${num(outer[2] / MJ, 3)} eV), more than a ${num(s.ev, 3)} eV photon carries.`;
+    else {
+      cap = `${name} shows ${ok.length === P.length ? '' : 'only '}${ok.length} peak${ok.length > 1 ? 's' : ''}` + (ok.length === P.length ? `, one for each occupied subshell` : ` with ${s.short}; the inner ones need more energetic X-rays`) + '. ';
+      if (ok.length > 1) cap += `Their heights, ${ok.map(o => o.q[1]).join(' : ')}, count the electrons in each subshell. `;
+      if (P.length > 1 && ok.length === P.length) cap += `The 1s electrons are held about ${num(P[0][2] / outer[2], 2)} times as tightly as the outermost ${outer[0]} electrons: they sit closest to the nucleus, with almost nothing between them and it. `;
+      if (P.some(q => q[0] === '2p') && ok.some(o => o.q[0] === '2p') && ok.some(o => o.q[0] === '2s')) cap += 'The 2s and 2p peaks are separate even though both belong to shell 2: electrons in the same shell can have different energies, which is the evidence for subshells.';
+    }
+    $('#pesRo').innerHTML = ro + statT('What the spectrum shows', cap, 'wide');
+  }
+  $('#pesEl').innerHTML = EL.map((e, i) => `<button type="button" data-z="${i + 1}" aria-pressed="false" title="${e[1]}">${e[0]}</button>`).join('');
+  $('#pesEl').addEventListener('click', e => { const b = e.target.closest('button'); if (b) { z = +b.dataset.z; sel = -1; draw(); } });
+  $('#pesSrc').innerHTML = SRC.map((s, i) => `<button type="button" data-i="${i}" aria-pressed="false">${s.lab}</button>`).join('');
+  $('#pesSrc').addEventListener('click', e => { const b = e.target.closest('button'); if (b) { src = +b.dataset.i; draw(); } });
+  svg.addEventListener('click', e => { const r = e.target.closest ? e.target.closest('.pesHit') : null; if (r) { sel = +r.dataset.i; draw(); } });
+  $('#pesPk').addEventListener('click', e => { const b = e.target.closest('button'); if (b) { sel = +b.dataset.i; draw(); } });
+  draw();
 })();
 
 /* ==================================================================== GLOSSARY: search */
