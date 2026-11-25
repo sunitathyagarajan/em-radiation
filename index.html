@@ -171,6 +171,51 @@ section.type .eyebrow{color:var(--rc)}
 .eqn .note b{color:var(--ink)}
 .eqrow{display:grid;grid-template-columns:minmax(0,1fr);gap:2px;border-top:1px dashed var(--line);padding-top:6px}
 .eqrow:first-of-type{border-top:none;padding-top:0}
+.eqsteps{display:grid;gap:8px;min-width:0;border-top:1px solid var(--line);padding-top:14px}
+.eqsteps > *{min-width:0}
+.eqsteps .katex-display{margin:.25em 0}
+.eqsteps .katex-display>.katex{text-align:left}
+.eqsteps .note{font-size:1rem;color:var(--muted)}
+.eqsteps .note b{color:var(--ink)}
+.eqsteps .terms{max-width:none;margin-top:4px}
+/* practice questions: the same problem cards as the other modules */
+.practice{display:grid;gap:14px;border-top:1px solid var(--line);padding-top:24px;min-width:0}
+.phead{display:grid;gap:8px}
+.tip{font-size:.92rem;border-left:3px solid var(--data);padding:4px 0 4px 12px;color:var(--muted)}
+.tip b{color:var(--ink)}
+.scorebar{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;font-size:.95rem}
+.score{font-weight:700;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:4px 14px}
+.score b{color:var(--good);font-family:var(--f-num)}
+.problems{display:grid;gap:14px}
+.prob{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:18px;display:grid;gap:12px;min-width:0;scroll-margin-top:60px}
+.prob > *{min-width:0}
+.prob.done{border-left:4px solid var(--good)}
+.prob .ph{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center}
+.prob .ph .no{color:var(--rc,var(--accent));font-weight:700}
+.chip{display:inline-flex;align-items:center;font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 9px;border-radius:999px;background:var(--surface-2);color:var(--muted)}
+.chip.hard{background:var(--accent-soft);color:var(--accent)}
+.prob .q{line-height:1.6}
+.check{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.check input{width:11em}
+.check .unit{color:var(--muted);font-size:.95rem}
+.fb{font-size:.93rem;border-radius:8px;padding:6px 12px}
+.fb:empty{display:none}
+.fb.ok{background:var(--good-soft);color:var(--good);font-weight:600}
+.fb.no{background:var(--bad-soft);color:var(--bad)}
+.fb.warn{background:var(--warn-soft);color:var(--warn)}
+.prob textarea{font:inherit;font-size:.95rem;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:7px 10px;width:100%;resize:vertical;min-height:64px}
+.prob details summary{cursor:pointer;font-weight:700;color:var(--data)}
+details.sol{border-top:1px solid var(--line);padding-top:8px}
+details.sol ol{margin:10px 0 0;padding-left:1.3em;display:grid;gap:6px;font-size:.95rem}
+details.sol .final{margin-top:8px;font-weight:700}
+.prob .model{margin-top:8px;background:var(--surface-2);border-radius:8px;padding:10px 12px;display:grid;gap:8px;font-size:.95rem}
+.prob .katex-display{margin:.3em 0}
+.prob .katex-display>.katex{text-align:left}
+.reflect{display:grid;gap:12px;border-top:1px solid var(--line);padding-top:12px}
+.rq{display:grid;gap:6px}
+.rq label{font-weight:600;font-size:.96rem;line-height:1.5}
+.rq label .rl{color:var(--rc,var(--accent));margin-right:8px;font-size:.8rem;letter-spacing:.06em;text-transform:uppercase}
+.rq details{font-size:.95rem}
 .card.wide{grid-column:1/-1}
 .card .cardfig{max-width:340px;margin:2px 0}
 .card .cardfig text{font-size:16px}
@@ -319,7 +364,8 @@ footer{border-top:1px solid var(--line);color:var(--muted);font-size:.9rem;margi
 footer .wrap{padding-block:20px 48px}
 @media (max-width:520px){
   body{font-size:16px} .bench{padding:14px} .card{padding:14px} .eqn{padding:12px 14px}
-  .eqn .katex-display>.katex,.example .katex-display>.katex{font-size:1em}
+  .eqn .katex-display>.katex,.eqsteps .katex-display>.katex,.example .katex-display>.katex{font-size:1em}
+  .prob{padding:14px} .prob .katex-display>.katex{font-size:1em}
   .formula .katex-display>.katex{font-size:1.05em}
   .stat .v{font-size:1rem}
   .facts > span{font-size:.85rem}
@@ -636,6 +682,56 @@ footer .wrap{padding-block:20px 48px}
         <div><dt>MHz T<sup>−1</sup></dt><dd>megahertz per tesla: how much the resonance frequency rises for each tesla of field (1 MHz = 10<sup>6</sup> Hz); for <sup>1</sup>H, \(\gamma/2\pi = 42.58\ \text{MHz T}^{-1}\)</dd></div>
       </dl>
     </div>
+    <div class="practice" id="radio-practice">
+      <div class="phead">
+        <span class="klabel">Practice</span>
+        <h3>Five questions on radio waves</h3>
+        <p class="note">Questions 1 to 4 practice the main ideas on this page; question 5 is a step harder. For a calculation, type your answer in the unit shown and press Check, then open the worked solution. For the others, write your own answer before you compare it with the model answer.</p>
+        <p class="tip"><b>Entering numbers:</b> type powers of ten as <span class="mono">3.0e-5</span> or <span class="mono">3.0x10^-5</span>. An answer within about 2% counts as correct, so small rounding differences are fine.</p>
+        <div class="scorebar"><span class="score">Calculations correct: <b data-pscore>0</b> / 3</span></div>
+      </div>
+      <div class="problems">
+        <article class="prob" id="pq-radio-1" data-ans="2.9654" data-tol="0.02">
+          <div class="ph"><span class="no">1</span><h4>Wavelength of an FM station</h4><span class="chip">Calculation</span></div>
+          <p class="q">An FM radio station broadcasts at 101.1 MHz. What is the wavelength of its radio waves?</p>
+          <div class="check"><input type="text" id="pq-radio-1-in" inputmode="decimal" autocomplete="off" spellcheck="false" aria-label="Your answer to question 1" placeholder="your answer"><span class="unit">m</span><button type="button" class="primary" data-pcheck>Check</button></div>
+          <p class="fb" aria-live="polite"></p>
+          <details class="sol"><summary>Show solution</summary><ol><li>Convert the frequency to hertz: \(101.1\ \text{MHz} = 1.011 \times 10^{8}\ \text{Hz}\), that is, \(1.011 \times 10^{8}\) waves per second.</li><li>\(\lambda = \dfrac{c}{\nu} = \dfrac{2.998 \times 10^{8}\ \text{m s}^{-1}}{1.011 \times 10^{8}\ \text{s}^{-1}} = 2.965\ \text{m}\), where \(\lambda\) is the wavelength, \(c\) the speed of light and \(\nu\) the frequency.</li><li>An antenna a quarter of a wavelength long, about 0.74 m, picks up this signal well, which is why car antennas are about that length.</li></ol><p class="final">Answer: <span class="num">2.97 m (about 3 m)</span></p></details>
+        </article>
+        <article class="prob" id="pq-radio-2">
+          <div class="ph"><span class="no">2</span><h4>Can a powerful transmitter break bonds?</h4><span class="chip">Concept</span></div>
+          <p class="q">A radio transmitter can broadcast 50,000 W, yet standing near its antenna will not break chemical bonds or cause sunburn the way ultraviolet light can. Explain why, using the energy of one photon.</p>
+          <textarea id="pq-radio-2-a" rows="3" placeholder="Your answer" aria-label="Your answer to question 2"></textarea>
+          <details class="sol"><summary>Compare with a model answer</summary><div class="model"><p>Radiation is absorbed one photon at a time, so what decides whether a bond can break is the energy of each photon, \(E = h\nu\), not the total power. A 100 MHz photon carries \(E = (6.626 \times 10^{-34}\ \text{J s})(1.00 \times 10^{8}\ \text{s}^{-1}) = 6.6 \times 10^{-26}\ \text{J}\), or about \(4 \times 10^{-5}\) kJ/mol: nearly nine million times less than the 348 kJ/mol needed to break a C–C bond.</p><p>A more powerful transmitter sends more photons each second, not more energetic ones, so it still cannot break a single bond. At very high power, radio waves can only warm tissue, which is why safety limits for transmitters are set by heating.</p></div></details>
+        </article>
+        <article class="prob" id="pq-radio-3" data-ans="14.091" data-tol="0.02">
+          <div class="ph"><span class="no">3</span><h4>The magnet in a 600 MHz spectrometer</h4><span class="chip">Calculation</span></div>
+          <p class="q">An NMR spectrometer is sold as a “600 MHz” instrument: hydrogen-1 nuclei resonate at 600 MHz in its magnet. For hydrogen-1, \(\gamma/2\pi = 42.58\) MHz per tesla. What is the magnetic field strength, \(B_0\)?</p>
+          <div class="check"><input type="text" id="pq-radio-3-in" inputmode="decimal" autocomplete="off" spellcheck="false" aria-label="Your answer to question 3" placeholder="your answer"><span class="unit">T</span><button type="button" class="primary" data-pcheck>Check</button></div>
+          <p class="fb" aria-live="polite"></p>
+          <details class="sol"><summary>Show solution</summary><ol><li>The resonance condition is \(\nu = \dfrac{\gamma}{2\pi} B_0\), where \(\nu\) is the frequency at which the nuclei absorb and \(\gamma\) is the gyromagnetic ratio of hydrogen-1. So \(B_0 = \dfrac{\nu}{\gamma/2\pi}\).</li><li>\(B_0 = \dfrac{600\ \text{MHz}}{42.58\ \text{MHz T}^{-1}} = 14.09\ \text{T}\).</li><li>That is about 280,000 times the strength of Earth’s magnetic field (about 50 µT). Fields this strong need superconducting magnets cooled by liquid helium.</li></ol><p class="final">Answer: <span class="num">14.1 T</span></p></details>
+        </article>
+        <article class="prob" id="pq-radio-4">
+          <div class="ph"><span class="no">4</span><h4>AM radio at night</h4><span class="chip">Concept</span></div>
+          <p class="q">At night you can often hear AM stations hundreds of kilometers away that you cannot pick up during the day. What changes at night, and why does it matter for AM (medium-wave) signals?</p>
+          <textarea id="pq-radio-4-a" rows="3" placeholder="Your answer" aria-label="Your answer to question 4"></textarea>
+          <details class="sol"><summary>Compare with a model answer</summary><div class="model"><p>AM stations broadcast medium waves, about 0.5 to 1.7 MHz. By day these travel mainly as a ground wave, which follows the curve of the Earth and fades within a few hundred kilometers, because the lowest layer of the ionosphere, made by the Sun’s ultraviolet light and X-rays, absorbs the waves that head upward.</p><p>At night, with no sunlight, that lowest layer disappears. The waves now reach higher layers of the ionosphere and are bent back down to Earth far away, as a skywave. FM and TV signals (VHF and UHF) pass straight through the ionosphere, so day or night they reach only as far as the horizon.</p></div></details>
+        </article>
+        <article class="prob" id="pq-radio-5" data-alts='[[64.4, "That is ΔE/k&lt;sub&gt;B&lt;/sub&gt;T. The excess fraction is half of that, ΔE/(2k&lt;sub&gt;B&lt;/sub&gt;T)."]]' data-ans="32.2" data-tol="0.03">
+          <div class="ph"><span class="no">5</span><h4>Why NMR signals are weak</h4><span class="chip hard">Challenge</span></div>
+          <p class="q">In a 400 MHz spectrometer, the two spin states of a hydrogen-1 nucleus differ in energy by \(\Delta E = h\nu\). At 25 °C (298 K), of every million hydrogen nuclei, how many more are in the lower state than in the upper state? For a gap this small, the excess fraction is \(\dfrac{N_{\text{lower}} - N_{\text{upper}}}{N_{\text{total}}} \approx \dfrac{\Delta E}{2k_{\text{B}}T}\), where \(N\) counts the nuclei in each state, \(k_{\text{B}} = 1.381 \times 10^{-23}\ \text{J K}^{-1}\) is the Boltzmann constant and \(T\) the temperature.</p>
+          <div class="check"><input type="text" id="pq-radio-5-in" inputmode="decimal" autocomplete="off" spellcheck="false" aria-label="Your answer to question 5" placeholder="your answer"><span class="unit">per million</span><button type="button" class="primary" data-pcheck>Check</button></div>
+          <p class="fb" aria-live="polite"></p>
+          <details class="sol"><summary>Show solution</summary><ol><li>\(\Delta E = h\nu = (6.626 \times 10^{-34}\ \text{J s})(4.00 \times 10^{8}\ \text{s}^{-1}) = 2.650 \times 10^{-25}\ \text{J}\).</li><li>The thermal energy is \(k_{\text{B}}T = (1.381 \times 10^{-23}\ \text{J K}^{-1})(298\ \text{K}) = 4.115 \times 10^{-21}\ \text{J}\), about 15,500 times larger than \(\Delta E\), so the two states are almost equally filled.</li><li>Excess fraction: \(\dfrac{\Delta E}{2k_{\text{B}}T} = \dfrac{2.650 \times 10^{-25}\ \text{J}}{2(4.115 \times 10^{-21}\ \text{J})} = 3.22 \times 10^{-5}\).</li><li>Per million nuclei: \(3.22 \times 10^{-5} \times 10^{6} = 32\).</li></ol><p class="final">Answer: <span class="num">about 32 per million</span></p></details>
+          <div class="reflect"><div class="rq">
+            <label for="pq-radio-5-r"><span class="rl">Follow-up</span>Only those 32 extra nuclei in every million give the net NMR signal. How would an 800 MHz magnet change this, and why do chemists pay for larger magnets?</label>
+            <textarea id="pq-radio-5-r" rows="3" placeholder="Your answer"></textarea>
+            <details><summary>Compare with a model answer</summary><div class="model"><p>The excess is proportional to \(\Delta E\), and \(\Delta E\) is proportional to the field, so doubling the frequency to 800 MHz (an 18.8 T magnet) doubles the excess, to about 64 per million. More excess nuclei give a stronger signal, and the peaks also spread twice as far apart in hertz, so crowded spectra become easier to read. That is why research labs buy the largest magnets they can afford.</p></div></details>
+          </div></div>
+        </article>
+      </div>
+      <p class="src-line">The constants and the gyromagnetic ratio are CODATA values; the ionosphere follows NOAA’s Space Weather Prediction Center. References <a href="references.html#r4">4</a> and <a href="references.html#r14">14</a>.</p>
+    </div>
   </div>
 </section>
 
@@ -767,6 +863,56 @@ footer .wrap{padding-block:20px 48px}
       <p class="note">Microwave photons are far too weak to break bonds (about 0.001 kJ/mol at 2.45 GHz, against about 350 kJ/mol for a C–C bond), but microwave heating speeds reactions up. Analytical labs use <b>sealed-vessel microwave digestion</b> to dissolve soil, tissue or alloy samples in hot nitric acid before trace-metal analysis by ICP. For copper:</p>
       \[ \ce{3Cu(s) + 8HNO3(aq) -> 3Cu(NO3)2(aq) + 2NO(g) + 4H2O(l)} \]
       <p class="note">HNO<sub>3</sub> is nitric acid, Cu(NO<sub>3</sub>)<sub>2</sub> is copper(II) nitrate and NO is nitrogen monoxide (nitric oxide). The state symbols (s), (aq), (g) and (l) mean solid, dissolved in water, gas and liquid.</p>
+    </div>
+    <div class="practice" id="microwave-practice">
+      <div class="phead">
+        <span class="klabel">Practice</span>
+        <h3>Five questions on microwaves</h3>
+        <p class="note">Questions 1 to 4 practice the main ideas on this page; question 5 is a step harder. For a calculation, type your answer in the unit shown and press Check, then open the worked solution. For the others, write your own answer before you compare it with the model answer.</p>
+        <p class="tip"><b>Entering numbers:</b> type powers of ten as <span class="mono">3.0e-5</span> or <span class="mono">3.0x10^-5</span>. An answer within about 2% counts as correct, so small rounding differences are fine.</p>
+        <div class="scorebar"><span class="score">Calculations correct: <b data-pscore>0</b> / 3</span></div>
+      </div>
+      <div class="problems">
+        <article class="prob" id="pq-microwave-1" data-alts='[[12.237, "That is the whole wavelength. The hot spots are half a wavelength apart."]]' data-ans="6.1184" data-tol="0.02">
+          <div class="ph"><span class="no">1</span><h4>Hot spots in a microwave oven</h4><span class="chip">Calculation</span></div>
+          <p class="q">A microwave oven runs at 2.45 GHz. The standing wave inside it has hot spots half a wavelength apart. How far apart are the hot spots, in centimeters?</p>
+          <div class="check"><input type="text" id="pq-microwave-1-in" inputmode="decimal" autocomplete="off" spellcheck="false" aria-label="Your answer to question 1" placeholder="your answer"><span class="unit">cm</span><button type="button" class="primary" data-pcheck>Check</button></div>
+          <p class="fb" aria-live="polite"></p>
+          <details class="sol"><summary>Show solution</summary><ol><li>\(\lambda = \dfrac{c}{\nu} = \dfrac{2.998 \times 10^{8}\ \text{m s}^{-1}}{2.45 \times 10^{9}\ \text{s}^{-1}} = 0.1224\ \text{m} = 12.24\ \text{cm}\), where \(\lambda\) is the wavelength, \(c\) the speed of light and \(\nu\) the frequency.</li><li>Neighboring hot spots are half a wavelength apart: \(12.24\ \text{cm} / 2 = 6.12\ \text{cm}\).</li><li>This is why food heats unevenly without a turntable. It also lets you measure the speed of light with a plate of chocolate: melted spots about 6 cm apart, times 2, times 2.45 GHz, gives about 3 × 10<sup>8</sup> m/s.</li></ol><p class="final">Answer: <span class="num">6.12 cm (about 6 cm)</span></p></details>
+        </article>
+        <article class="prob" id="pq-microwave-2">
+          <div class="ph"><span class="no">2</span><h4>Why the soup heats and the bowl does not</h4><span class="chip">Concept</span></div>
+          <p class="q">In a microwave oven, a bowl of soup gets hot while the glass bowl and the air around it stay fairly cool, and a frozen block of ice warms very slowly. Explain all three in terms of what the molecules can do.</p>
+          <textarea id="pq-microwave-2-a" rows="3" placeholder="Your answer" aria-label="Your answer to question 2"></textarea>
+          <details class="sol"><summary>Compare with a model answer</summary><div class="model"><p>Microwaves heat by dielectric heating: the oscillating electric field keeps twisting polar molecules, such as water, back and forth, and as they jostle their neighbors the motion turns into heat. Liquid water molecules are polar and free to turn, so the soup heats quickly.</p><p>In glass and most ceramics the atoms are locked into a rigid network with nothing free to turn, so the bowl warms mainly by touching the hot soup. Air is mostly N<sub>2</sub> and O<sub>2</sub>, which are nonpolar, so the field has nothing to grip. In ice the water molecules are polar but held in a crystal by hydrogen bonds, so they can barely turn; once a little liquid forms, that part heats fast, which is why defrosting can leave hot patches next to frozen ones.</p></div></details>
+        </article>
+        <article class="prob" id="pq-microwave-3" data-alts='[[1.4943, "That is the time in minutes. The answer is asked in seconds."]]' data-ans="89.657" data-tol="0.02">
+          <div class="ph"><span class="no">3</span><h4>Heating a mug of water</h4><span class="chip">Calculation</span></div>
+          <p class="q">A mug holds 250 g of water at 20 °C. The oven delivers 700 W to the water, that is, 700 J every second. How long does it take to heat the water to 80 °C? The specific heat of water is 4.184 J g<sup>−1</sup> °C<sup>−1</sup>.</p>
+          <div class="check"><input type="text" id="pq-microwave-3-in" inputmode="decimal" autocomplete="off" spellcheck="false" aria-label="Your answer to question 3" placeholder="your answer"><span class="unit">s</span><button type="button" class="primary" data-pcheck>Check</button></div>
+          <p class="fb" aria-live="polite"></p>
+          <details class="sol"><summary>Show solution</summary><ol><li>Heat needed: \(q = m\,c_{\text{s}}\,\Delta T = (250\ \text{g})(4.184\ \text{J g}^{-1}\,{}^{\circ}\text{C}^{-1})(80 - 20)\,{}^{\circ}\text{C} = 62{,}760\ \text{J}\), where \(q\) is the heat, \(m\) the mass, \(c_{\text{s}}\) the specific heat and \(\Delta T\) the rise in temperature.</li><li>Time: \(t = q/P = 62{,}760\ \text{J} \,/\, 700\ \text{J s}^{-1} = 89.7\ \text{s}\), where \(P\) is the power reaching the water: about a minute and a half.</li><li>A real oven takes a little longer, because some of the energy also warms the mug and escapes as steam.</li></ol><p class="final">Answer: <span class="num">89.7 s (about 1.5 minutes)</span></p></details>
+        </article>
+        <article class="prob" id="pq-microwave-4">
+          <div class="ph"><span class="no">4</span><h4>Why astronomers map CO, not H₂</h4><span class="chip">Concept</span></div>
+          <p class="q">Hydrogen, H<sub>2</sub>, is by far the most common molecule in the cold clouds between the stars, yet radio astronomers map those clouds using the rotational lines of carbon monoxide, CO. Why can they not use H<sub>2</sub> (or N<sub>2</sub>) directly?</p>
+          <textarea id="pq-microwave-4-a" rows="3" placeholder="Your answer" aria-label="Your answer to question 4"></textarea>
+          <details class="sol"><summary>Compare with a model answer</summary><div class="model"><p>A molecule can absorb or give off a microwave photon by speeding up or slowing down its rotation only if it has a permanent dipole: as a polar molecule turns, its lopsided charge swings around and couples to the electric field of the wave. H<sub>2</sub> and N<sub>2</sub> are made of two identical atoms, so they have no dipole and no rotational lines in the microwave region.</p><p>CO is polar, so it gives strong lines at 115.27 GHz (\(J = 0 \rightarrow 1\)), 230.54 GHz (\(J = 1 \rightarrow 2\)) and so on, spaced \(2B\) apart, where \(J\) is the rotational quantum number and \(B\) the rotational constant. Because CO forms wherever H<sub>2</sub> is, its lines trace the hidden H<sub>2</sub>.</p></div></details>
+        </article>
+        <article class="prob" id="pq-microwave-5" data-alts='[[108.73, "Check the formula: the line is at 2B, so B is half of 48.99 GHz."], [217.47, "Check the formula: B is half of the line frequency, 48.99 GHz ÷ 2."]]' data-ans="153.77" data-tol="0.02">
+          <div class="ph"><span class="no">5</span><h4>A bond length from a radio telescope</h4><span class="chip hard">Challenge</span></div>
+          <p class="q">Radio astronomers detect carbon monosulfide, CS, in interstellar clouds by its \(J = 0 \rightarrow 1\) rotational line at 48.99 GHz. For this line \(\nu = 2B\), where here the rotational constant \(B\) is in hertz and \(B = h/(8\pi^2 I)\), with \(I\) the moment of inertia. Using atomic masses of 12.000 u for C and 31.972 u for S (1 u = 1.6605 × 10<sup>−27</sup> kg), find the C–S bond length in picometers.</p>
+          <div class="check"><input type="text" id="pq-microwave-5-in" inputmode="decimal" autocomplete="off" spellcheck="false" aria-label="Your answer to question 5" placeholder="your answer"><span class="unit">pm</span><button type="button" class="primary" data-pcheck>Check</button></div>
+          <p class="fb" aria-live="polite"></p>
+          <details class="sol"><summary>Show solution</summary><ol><li>\(B = \nu/2 = (48.99 \times 10^{9}\ \text{Hz})/2 = 2.4495 \times 10^{10}\ \text{Hz}\).</li><li>\(I = \dfrac{h}{8\pi^2 B} = \dfrac{6.626 \times 10^{-34}\ \text{J s}}{8\pi^2 (2.4495 \times 10^{10}\ \text{s}^{-1})} = 3.426 \times 10^{-46}\ \text{kg m}^2\).</li><li>Reduced mass: \(\mu = \dfrac{m_{\text{C}}\, m_{\text{S}}}{m_{\text{C}} + m_{\text{S}}} = \dfrac{(12.000)(31.972)}{43.972}\ \text{u} = 8.725\ \text{u} = 1.4488 \times 10^{-26}\ \text{kg}\), where \(m_{\text{C}}\) and \(m_{\text{S}}\) are the masses of the two atoms.</li><li>Since \(I = \mu r^2\), the bond length is \(r = \sqrt{I/\mu} = \sqrt{\dfrac{3.426 \times 10^{-46}\ \text{kg m}^2}{1.4488 \times 10^{-26}\ \text{kg}}} = 1.538 \times 10^{-10}\ \text{m} = 154\ \text{pm}\).</li></ol><p class="final">Answer: <span class="num">154 pm</span></p></details>
+          <div class="reflect"><div class="rq">
+            <label for="pq-microwave-5-r"><span class="rl">Follow-up</span>The rarer molecule \(^{13}\text{C}^{32}\text{S}\) is also seen in space. Would its \(J = 0 \rightarrow 1\) line be at a higher or a lower frequency than 48.99 GHz? Explain without calculating, then estimate it, using 13.003 u for carbon-13.</label>
+            <textarea id="pq-microwave-5-r" rows="3" placeholder="Your answer"></textarea>
+            <details><summary>Compare with a model answer</summary><div class="model"><p>Lower. Swapping carbon-12 for carbon-13 does not change the bond, so \(r\) stays the same, but the heavier atom raises the reduced mass and so the moment of inertia, \(I = \mu r^2\). A larger \(I\) gives a smaller \(B = h/(8\pi^2 I)\), and the line at \(2B\) moves down.</p><p>The reduced mass rises from 8.725 u to \((13.003)(31.972)/44.975 = 9.244\) u, so the line moves down by the factor \(8.725/9.244\), to about 46.2 GHz. Astronomers do find it at 46.25 GHz.</p></div></details>
+          </div></div>
+        </article>
+      </div>
+      <p class="src-line">The constants are CODATA values; the CO lines are from the NIST Chemistry WebBook and the CS lines from Lovas; the oven follows Metaxas and Meredith. References <a href="references.html#r4">4</a>, <a href="references.html#r5">5</a>, <a href="references.html#r15">15</a> and <a href="references.html#r68">68</a>.</p>
     </div>
   </div>
 </section>
@@ -904,6 +1050,56 @@ footer .wrap{padding-block:20px 48px}
       <p class="note">\(\Delta H^{\degree}\) is the standard enthalpy change: the heat taken in when one mole of methane burns, with everything at standard conditions (the ° sign). The minus sign means 802 kJ of heat is given out. (g) marks a gas.</p>
       <p class="note">The hot CO<sub>2</sub> from a flame emits strongly at 4.3 µm (its asymmetric stretch, 2349 cm<sup>−1</sup>), which is why industrial flame detectors watch that wavelength. The same molecule absorbs Earth's outgoing infrared at 15 µm (its bend, 667 cm<sup>−1</sup>): the greenhouse effect.</p>
     </div>
+    <div class="practice" id="infrared-practice">
+      <div class="phead">
+        <span class="klabel">Practice</span>
+        <h3>Five questions on infrared</h3>
+        <p class="note">Questions 1 to 4 practice the main ideas on this page; question 5 is a step harder. For a calculation, type your answer in the unit shown and press Check, then open the worked solution. For the others, write your own answer before you compare it with the model answer.</p>
+        <p class="tip"><b>Entering numbers:</b> type powers of ten as <span class="mono">3.0e-5</span> or <span class="mono">3.0x10^-5</span>. An answer within about 2% counts as correct, so small rounding differences are fine.</p>
+        <div class="scorebar"><span class="score">Calculations correct: <b data-pscore>0</b> / 3</span></div>
+      </div>
+      <div class="problems">
+        <article class="prob" id="pq-infrared-1" data-ans="5.8309" data-tol="0.02">
+          <div class="ph"><span class="no">1</span><h4>From wavenumber to wavelength</h4><span class="chip">Calculation</span></div>
+          <p class="q">Acetone’s C=O stretch absorbs at 1715 cm<sup>−1</sup>. What is the wavelength of this infrared light, in micrometers?</p>
+          <div class="check"><input type="text" id="pq-infrared-1-in" inputmode="decimal" autocomplete="off" spellcheck="false" aria-label="Your answer to question 1" placeholder="your answer"><span class="unit">µm</span><button type="button" class="primary" data-pcheck>Check</button></div>
+          <p class="fb" aria-live="polite"></p>
+          <details class="sol"><summary>Show solution</summary><ol><li>\(\lambda = 1/\tilde{\nu} = 1/(1715\ \text{cm}^{-1}) = 5.831 \times 10^{-4}\ \text{cm}\), where \(\tilde{\nu}\) is the wavenumber.</li><li>Since \(1\ \text{cm} = 10^{4}\ \mu\text{m}\), \(\lambda = 5.83\ \mu\text{m}\), in the mid-infrared.</li><li>Per mole, these photons carry \(E_{\text{mol}} = N_{\text{A}} h c \tilde{\nu} = 20.5\) kJ/mol, about a seventeenth of a C–C bond (348 kJ/mol): enough to set the bond vibrating, far too little to break it.</li></ol><p class="final">Answer: <span class="num">5.83 µm</span></p></details>
+        </article>
+        <article class="prob" id="pq-infrared-2">
+          <div class="ph"><span class="no">2</span><h4>Which gases trap heat?</h4><span class="chip">Concept</span></div>
+          <p class="q">Carbon dioxide has three kinds of vibration: a symmetric stretch, an asymmetric stretch (2349 cm<sup>−1</sup>) and a bend (667 cm<sup>−1</sup>). Only two of them absorb infrared. Which one does not, and why? Use the same idea to explain why N<sub>2</sub> and O<sub>2</sub>, 99% of the air, are not greenhouse gases.</p>
+          <textarea id="pq-infrared-2-a" rows="3" placeholder="Your answer" aria-label="Your answer to question 2"></textarea>
+          <details class="sol"><summary>Compare with a model answer</summary><div class="model"><p>A vibration absorbs infrared only if it changes the molecule’s dipole moment, because the oscillating dipole is what couples to the electric field of the light. In the symmetric stretch both C=O bonds lengthen and shorten together, so the molecule stays symmetric and its dipole stays zero: no absorption. In the asymmetric stretch and the bend the molecule becomes lopsided as it moves, so a dipole appears and disappears, and these vibrations absorb.</p><p>N<sub>2</sub> and O<sub>2</sub> have only one vibration, a stretch of two identical atoms, which never creates a dipole, so they let Earth’s infrared escape. The CO<sub>2</sub> bend, at 667 cm<sup>−1</sup> (15 µm), lies where the warm ground gives off much of its infrared, which is why CO<sub>2</sub> is such an effective greenhouse gas.</p></div></details>
+        </article>
+        <article class="prob" id="pq-infrared-3" data-alts='[[85.24, "Use the temperature in kelvin (34 + 273.15), not in degrees Celsius."]]' data-ans="9.4351" data-tol="0.02">
+          <div class="ph"><span class="no">3</span><h4>What a thermal camera sees</h4><span class="chip">Calculation</span></div>
+          <p class="q">Human skin is at about 34 °C. At what wavelength does it glow most brightly? Use Wien’s law, \(\lambda_{\max} = (2.898 \times 10^{-3}\ \text{m K})/T\), where \(T\) is the temperature in kelvin.</p>
+          <div class="check"><input type="text" id="pq-infrared-3-in" inputmode="decimal" autocomplete="off" spellcheck="false" aria-label="Your answer to question 3" placeholder="your answer"><span class="unit">µm</span><button type="button" class="primary" data-pcheck>Check</button></div>
+          <p class="fb" aria-live="polite"></p>
+          <details class="sol"><summary>Show solution</summary><ol><li>Convert to kelvin: \(T = 34 + 273.15 = 307\ \text{K}\).</li><li>\(\lambda_{\max} = \dfrac{2.898 \times 10^{-3}\ \text{m K}}{307\ \text{K}} = 9.44 \times 10^{-6}\ \text{m} = 9.44\ \mu\text{m}\).</li><li>This lies in the 8–14 µm band where thermal cameras work, a band in which air is also fairly transparent.</li></ol><p class="final">Answer: <span class="num">9.44 µm</span></p></details>
+        </article>
+        <article class="prob" id="pq-infrared-4">
+          <div class="ph"><span class="no">4</span><h4>Stiff bonds and light atoms</h4><span class="chip">Concept</span></div>
+          <p class="q">Stretching bands appear near 1000–1200 cm<sup>−1</sup> for C–C, 1650 cm<sup>−1</sup> for C=C and 2200 cm<sup>−1</sup> for C≡C, while C–H appears near 2900–3100 cm<sup>−1</sup>. Use the spring model, \(\tilde{\nu} = \frac{1}{2\pi c}\sqrt{k/\mu}\), to explain the order of the three carbon–carbon bonds. Then explain why C–H appears at an even higher wavenumber, although a C–H bond is weaker than C=C.</p>
+          <textarea id="pq-infrared-4-a" rows="3" placeholder="Your answer" aria-label="Your answer to question 4"></textarea>
+          <details class="sol"><summary>Compare with a model answer</summary><div class="model"><p>In the spring model, \(\tilde{\nu}\) is the wavenumber, \(c\) the speed of light, \(k\) the force constant (the stiffness of the bond) and \(\mu\) the reduced mass of the two atoms. A higher bond order makes a stiffer bond, so \(k\) rises from C–C (about 450 N/m) to C=C (about 950 N/m) to C≡C (about 1600 N/m). All three join two carbon atoms, so \(\mu\) is the same, 6.0 u, and the wavenumber rises with \(\sqrt{k}\): C–C &lt; C=C &lt; C≡C.</p><p>A C–H bond is no stiffer than C–C (about 500 N/m), but hydrogen is so light that the reduced mass drops to 0.93 u, about a sixth of the C–C value. Because \(\tilde{\nu}\) depends on \(\sqrt{k/\mu}\), the small \(\mu\) pushes C–H up to about 3000 cm<sup>−1</sup>.</p></div></details>
+        </article>
+        <article class="prob" id="pq-infrared-5" data-alts='[[1617.6, "The wavenumber goes as 1/√μ, so multiply by the square root of μ&lt;sub&gt;C–H&lt;/sub&gt;/μ&lt;sub&gt;C–D&lt;/sub&gt;, not by the ratio itself."], [2122.4, "Use the reduced masses of the C–H and C–D pairs, not just the masses of H and D."], [4085.5, "Deuterium is heavier, so the C–D stretch must be at a lower wavenumber: multiply by √(μ&lt;sub&gt;C–H&lt;/sub&gt;/μ&lt;sub&gt;C–D&lt;/sub&gt;)."]]' data-ans="2202.9" data-tol="0.02">
+          <div class="ph"><span class="no">5</span><h4>Swapping hydrogen for deuterium</h4><span class="chip hard">Challenge</span></div>
+          <p class="q">A C–H stretch absorbs at 3000 cm<sup>−1</sup>. When the hydrogen is replaced by deuterium (D, mass 2.014 u), the force constant of the bond stays the same. At what wavenumber does the C–D stretch appear? Use masses of 12.000 u for C and 1.008 u for H.</p>
+          <div class="check"><input type="text" id="pq-infrared-5-in" inputmode="decimal" autocomplete="off" spellcheck="false" aria-label="Your answer to question 5" placeholder="your answer"><span class="unit">cm⁻¹</span><button type="button" class="primary" data-pcheck>Check</button></div>
+          <p class="fb" aria-live="polite"></p>
+          <details class="sol"><summary>Show solution</summary><ol><li>With the force constant \(k\) fixed, \(\tilde{\nu} \propto 1/\sqrt{\mu}\), so \(\tilde{\nu}_{\text{C–D}} = \tilde{\nu}_{\text{C–H}} \sqrt{\mu_{\text{C–H}}/\mu_{\text{C–D}}}\), where \(\mu\) is the reduced mass of each pair of atoms.</li><li>\(\mu_{\text{C–H}} = \dfrac{(12.000)(1.008)}{13.008}\ \text{u} = 0.9299\ \text{u}\) and \(\mu_{\text{C–D}} = \dfrac{(12.000)(2.014)}{14.014}\ \text{u} = 1.7246\ \text{u}\).</li><li>\(\tilde{\nu}_{\text{C–D}} = (3000\ \text{cm}^{-1})\sqrt{0.9299/1.7246} = (3000\ \text{cm}^{-1})(0.7343) = 2203\ \text{cm}^{-1}\).</li></ol><p class="final">Answer: <span class="num">about 2200 cm<sup>−1</sup> (2203 cm<sup>−1</sup>)</span></p></details>
+          <div class="reflect"><div class="rq">
+            <label for="pq-infrared-5-r"><span class="rl">Follow-up</span>Why does the force constant stay the same when hydrogen is replaced by deuterium, and how can chemists put this shift to use?</label>
+            <textarea id="pq-infrared-5-r" rows="3" placeholder="Your answer"></textarea>
+            <details><summary>Compare with a model answer</summary><div class="model"><p>The force constant comes from the electrons that make the bond, and deuterium has the same single electron and the same nuclear charge as hydrogen; only its nucleus is heavier, by one neutron. So the spring is just as stiff and only the mass changes.</p><p>Because the shift is large and predictable (a factor of 0.73, close to 1/√2), chemists replace one particular hydrogen with deuterium and watch which band moves, to find out which vibrations involve that bond. The C–D stretch lands near 2200 cm<sup>−1</sup>, a region where few other bonds absorb.</p></div></details>
+          </div></div>
+        </article>
+      </div>
+      <p class="src-line">Band positions follow Pavia et al.; Wien’s law and the spring model, Atkins; the constants are CODATA values. References <a href="references.html#r2">2–4</a>.</p>
+    </div>
   </div>
 </section>
 
@@ -1001,6 +1197,56 @@ footer .wrap{padding-block:20px 48px}
         \[ \ce{6CO2 + 6H2O ->[light][chlorophyll] C6H12O6 + 6O2} \]
         <p class="note">C<sub>6</sub>H<sub>12</sub>O<sub>6</sub> is glucose.</p></div>
     </div>
+    <div class="practice" id="visible-practice">
+      <div class="phead">
+        <span class="klabel">Practice</span>
+        <h3>Five questions on visible light</h3>
+        <p class="note">Questions 1 to 4 practice the main ideas on this page; question 5 is a step harder. For a calculation, type your answer in the unit shown and press Check, then open the worked solution. For the others, write your own answer before you compare it with the model answer.</p>
+        <p class="tip"><b>Entering numbers:</b> type powers of ten as <span class="mono">3.0e-5</span> or <span class="mono">3.0x10^-5</span>. An answer within about 2% counts as correct, so small rounding differences are fine.</p>
+        <div class="scorebar"><span class="score">Calculations correct: <b data-pscore>0</b> / 3</span></div>
+      </div>
+      <div class="problems">
+        <article class="prob" id="pq-visible-1" data-alts='[[3.3726e-19, "That is the energy of one photon, in joules. Multiply by Avogadro’s number, then convert to kJ."], [203099, "That is in J/mol. Divide by 1000 for kJ/mol."]]' data-ans="203.1" data-tol="0.02">
+          <div class="ph"><span class="no">1</span><h4>The energy of sodium’s yellow light</h4><span class="chip">Calculation</span></div>
+          <p class="q">Sodium street lamps and sodium flame tests give off yellow light at 589 nm. What is the energy of one mole of these photons, in kJ/mol?</p>
+          <div class="check"><input type="text" id="pq-visible-1-in" inputmode="decimal" autocomplete="off" spellcheck="false" aria-label="Your answer to question 1" placeholder="your answer"><span class="unit">kJ/mol</span><button type="button" class="primary" data-pcheck>Check</button></div>
+          <p class="fb" aria-live="polite"></p>
+          <details class="sol"><summary>Show solution</summary><ol><li>One photon: \(E = \dfrac{hc}{\lambda} = \dfrac{(6.626 \times 10^{-34}\ \text{J s})(2.998 \times 10^{8}\ \text{m s}^{-1})}{589 \times 10^{-9}\ \text{m}} = 3.373 \times 10^{-19}\ \text{J}\), where \(h\) is Planck’s constant, \(c\) the speed of light and \(\lambda\) the wavelength.</li><li>One mole: \(E_{\text{mol}} = E N_{\text{A}} = (3.373 \times 10^{-19}\ \text{J})(6.022 \times 10^{23}\ \text{mol}^{-1}) = 2.031 \times 10^{5}\ \text{J mol}^{-1} = 203\ \text{kJ mol}^{-1}\), where \(N_{\text{A}}\) is Avogadro’s number.</li><li>This is the energy of the drop from the 3p to the 3s level in a sodium atom.</li></ol><p class="final">Answer: <span class="num">203 kJ/mol</span></p></details>
+        </article>
+        <article class="prob" id="pq-visible-2">
+          <div class="ph"><span class="no">2</span><h4>Why leaves are green, and why they change</h4><span class="chip">Concept</span></div>
+          <p class="q">Chlorophyll absorbs most strongly near 430 nm and 662 nm. Explain why leaves look green. In autumn the chlorophyll breaks down and many leaves turn yellow and orange; what does that tell you about the other pigments in the leaf?</p>
+          <textarea id="pq-visible-2-a" rows="3" placeholder="Your answer" aria-label="Your answer to question 2"></textarea>
+          <details class="sol"><summary>Compare with a model answer</summary><div class="model"><p>Chlorophyll absorbs blue-violet light (430 nm) and red light (662 nm) and absorbs little of the green in between, so green is what the leaf reflects and lets through to our eyes.</p><p>The other pigments were there all along. Carotenoids such as β-carotene absorb blue light, near 450 nm, and so look yellow-orange, but in summer the far larger amount of chlorophyll hides them. When the chlorophyll breaks down in autumn, the carotenoids show through. (Reds come from anthocyanins, which some trees make in autumn.)</p></div></details>
+        </article>
+        <article class="prob" id="pq-visible-3" data-ans="3e-05" data-tol="0.02">
+          <div class="ph"><span class="no">3</span><h4>Concentration from absorbance</h4><span class="chip">Calculation</span></div>
+          <p class="q">A dye solution in a 1.00 cm cuvette has an absorbance of 0.450 at its \(\lambda_{\max}\), where its molar absorptivity is \(1.50 \times 10^{4}\ \text{L mol}^{-1}\,\text{cm}^{-1}\). What is the molar concentration of the dye?</p>
+          <div class="check"><input type="text" id="pq-visible-3-in" inputmode="text" autocomplete="off" spellcheck="false" aria-label="Your answer to question 3" placeholder="your answer"><span class="unit">mol/L</span><button type="button" class="primary" data-pcheck>Check</button></div>
+          <p class="fb" aria-live="polite"></p>
+          <details class="sol"><summary>Show solution</summary><ol><li>Beer’s law: \(A = \varepsilon b c\), so \(c = \dfrac{A}{\varepsilon b}\), where \(A\) is the absorbance, \(\varepsilon\) the molar absorptivity, \(b\) the path length and \(c\) the concentration.</li><li>\(c = \dfrac{0.450}{(1.50 \times 10^{4}\ \text{L mol}^{-1}\,\text{cm}^{-1})(1.00\ \text{cm})} = 3.00 \times 10^{-5}\ \text{mol L}^{-1}\).</li><li>Measuring at \(\lambda_{\max}\) gives the largest absorbance for each unit of concentration, so the reading is as sensitive as it can be.</li></ol><p class="final">Answer: <span class="num">3.00 × 10<sup>−5</sup> M</span></p></details>
+        </article>
+        <article class="prob" id="pq-visible-4">
+          <div class="ph"><span class="no">4</span><h4>Red LEDs first, blue LEDs later</h4><span class="chip">Concept</span></div>
+          <p class="q">A red LED gives off light at about 630 nm and a blue LED at about 460 nm. Use the photon energies to explain what each LED needs from its semiconductor, and suggest why bright blue LEDs, and so white LEDs, arrived about thirty years after red ones.</p>
+          <textarea id="pq-visible-4-a" rows="3" placeholder="Your answer" aria-label="Your answer to question 4"></textarea>
+          <details class="sol"><summary>Compare with a model answer</summary><div class="model"><p>An LED gives off photons whose energy matches its band gap, \(E_{\text{gap}} = hc/\lambda\). With the shortcut \(E\,(\text{eV}) = 1240/\lambda\,(\text{nm})\), that is 1240/630 = 1.97 eV for red and 1240/460 = 2.70 eV for blue, so a blue LED needs a semiconductor with a much wider gap.</p><p>Red LEDs could be made from gallium arsenide phosphide in the 1960s, but the wide-gap material needed for blue, gallium nitride (alloyed with indium as InGaN), was very hard to grow as good crystals. Bright blue LEDs arrived only in the early 1990s, work honored with the 2014 Nobel Prize in Physics. A white LED is a blue LED coated with a yellow phosphor, so white LEDs had to wait for blue ones.</p></div></details>
+        </article>
+        <article class="prob" id="pq-visible-5" data-ans="6" data-tol="0.02" data-int="1">
+          <div class="ph"><span class="no">5</span><h4>Which jump makes the violet line?</h4><span class="chip hard">Challenge</span></div>
+          <p class="q">The fourth visible line of hydrogen is violet, at 410.2 nm. It belongs to the Balmer series, in which the electron ends in level \(n_f = 2\). From which level, \(n_i\), does the electron fall? Use \(1/\lambda = R_{\text{H}}(1/n_f^2 - 1/n_i^2)\), where \(R_{\text{H}} = 1.0968 \times 10^{7}\ \text{m}^{-1}\) is the Rydberg constant.</p>
+          <div class="check"><span class="unit">n<sub>i</sub> =</span><input type="text" id="pq-visible-5-in" inputmode="decimal" autocomplete="off" spellcheck="false" aria-label="Your answer to question 5" placeholder="your answer"><button type="button" class="primary" data-pcheck>Check</button></div>
+          <p class="fb" aria-live="polite"></p>
+          <details class="sol"><summary>Show solution</summary><ol><li>\(R_{\text{H}}\lambda = (1.0968 \times 10^{7}\ \text{m}^{-1})(410.2 \times 10^{-9}\ \text{m}) = 4.4991\).</li><li>Rearranging, \(\dfrac{1}{n_f^2} - \dfrac{1}{n_i^2} = \dfrac{1}{R_{\text{H}}\lambda} = \dfrac{1}{4.4991} = 0.22227\).</li><li>\(\dfrac{1}{n_i^2} = \dfrac{1}{4} - 0.22227 = 0.02773\), so \(n_i^2 = 36.06\) and \(n_i = 6\).</li></ol><p class="final">Answer: <span class="num">\(n_i = 6\): the 6 → 2 jump</span></p></details>
+          <div class="reflect"><div class="rq">
+            <label for="pq-visible-5-r"><span class="rl">Follow-up</span>Why does hydrogen show only four visible lines, even though the electron can fall to n = 2 from any higher level?</label>
+            <textarea id="pq-visible-5-r" rows="3" placeholder="Your answer"></textarea>
+            <details><summary>Compare with a model answer</summary><div class="model"><p>Falls to n = 2 from levels 3, 4, 5 and 6 give lines at 656, 486, 434 and 410 nm. The levels crowd closer and closer together near the top, so falls from still higher levels release only a little more energy each time: their lines bunch up just below 410 nm, in the violet and the ultraviolet, ending at the series limit, 365 nm, where the electron falls from very far away. Our eyes see little below about 400 nm, so we see only the first four lines.</p></div></details>
+          </div></div>
+        </article>
+      </div>
+      <p class="src-line">Line wavelengths are from the NIST Atomic Spectra Database; chlorophyll follows Lichtenthaler; LEDs, Schubert; the Rydberg formula, Atkins; the constants are CODATA values. References <a href="references.html#r3">3</a>, <a href="references.html#r4">4</a>, <a href="references.html#r6">6</a>, <a href="references.html#r30">30</a> and <a href="references.html#r32">32</a>.</p>
+    </div>
   </div>
 </section>
 
@@ -1082,6 +1328,56 @@ footer .wrap{padding-block:20px 48px}
         \[ \ce{O2 + $h\nu$ -> 2O} \quad (\lambda < 242\ \text{nm}) \]
         \[ \ce{O + O2 -> O3} \]
         \[ \ce{O3 + $h\nu$ -> O2 + O} \quad (\lambda < 320\ \text{nm}) \]</div>
+    </div>
+    <div class="practice" id="ultraviolet-practice">
+      <div class="phead">
+        <span class="klabel">Practice</span>
+        <h3>Five questions on ultraviolet light</h3>
+        <p class="note">Questions 1 to 4 practice the main ideas on this page; question 5 is a step harder. For a calculation, type your answer in the unit shown and press Check, then open the worked solution. For the others, write your own answer before you compare it with the model answer.</p>
+        <p class="tip"><b>Entering numbers:</b> type powers of ten as <span class="mono">3.0e-5</span> or <span class="mono">3.0x10^-5</span>. An answer within about 2% counts as correct, so small rounding differences are fine.</p>
+        <div class="scorebar"><span class="score">Calculations correct: <b data-pscore>0</b> / 3</span></div>
+      </div>
+      <div class="problems">
+        <article class="prob" id="pq-ultraviolet-1" data-alts='[[0.2402, "Check the units: give the wavelength in nanometers."]]' data-ans="240.21" data-tol="0.02">
+          <div class="ph"><span class="no">1</span><h4>The light that splits oxygen</h4><span class="chip">Calculation</span></div>
+          <p class="q">The O=O bond energy is 498 kJ/mol. What is the longest wavelength of light that can break this bond?</p>
+          <div class="check"><input type="text" id="pq-ultraviolet-1-in" inputmode="decimal" autocomplete="off" spellcheck="false" aria-label="Your answer to question 1" placeholder="your answer"><span class="unit">nm</span><button type="button" class="primary" data-pcheck>Check</button></div>
+          <p class="fb" aria-live="polite"></p>
+          <details class="sol"><summary>Show solution</summary><ol><li>Energy per photon: \(E = \dfrac{498 \times 10^{3}\ \text{J mol}^{-1}}{6.022 \times 10^{23}\ \text{mol}^{-1}} = 8.270 \times 10^{-19}\ \text{J}\).</li><li>\(\lambda = \dfrac{hc}{E} = \dfrac{(6.626 \times 10^{-34}\ \text{J s})(2.998 \times 10^{8}\ \text{m s}^{-1})}{8.270 \times 10^{-19}\ \text{J}} = 2.402 \times 10^{-7}\ \text{m} = 240\ \text{nm}\), where \(h\) is Planck’s constant and \(c\) the speed of light.</li><li>Longer wavelengths carry less energy, so only UVC shorter than about 240 nm can split O<sub>2</sub>. This is the first step of the Chapman cycle, which makes the ozone layer.</li></ol><p class="final">Answer: <span class="num">240 nm</span></p></details>
+        </article>
+        <article class="prob" id="pq-ultraviolet-2">
+          <div class="ph"><span class="no">2</span><h4>Colorless butadiene, orange carotene</h4><span class="chip">Concept</span></div>
+          <p class="q">1,3-Butadiene, with two conjugated C=C bonds, absorbs at 217 nm and is colorless. β-Carotene, with eleven, absorbs near 450 nm and looks orange. Explain the difference using the HOMO–LUMO gap.</p>
+          <textarea id="pq-ultraviolet-2-a" rows="3" placeholder="Your answer" aria-label="Your answer to question 2"></textarea>
+          <details class="sol"><summary>Compare with a model answer</summary><div class="model"><p>In a conjugated chain the π electrons spread over the whole chain, and the longer the chain, the more closely spaced its π orbitals become, so the gap between the highest occupied (HOMO) and lowest unoccupied (LUMO) orbitals shrinks.</p><p>Butadiene’s gap matches a 217 nm photon (5.7 eV), in the ultraviolet, so it absorbs no visible light and looks colorless. β-Carotene’s much longer chain closes the gap to about 2.8 eV, which matches blue light near 450 nm. Taking blue out of white light leaves the complementary color, orange.</p></div></details>
+        </article>
+        <article class="prob" id="pq-ultraviolet-3" data-alts='[[32.5, "That is the diluted solution. Multiply by 10 to undo the dilution."]]' data-ans="325" data-tol="0.02">
+          <div class="ph"><span class="no">3</span><h4>How much DNA is in the tube?</h4><span class="chip">Calculation</span></div>
+          <p class="q">A DNA sample is diluted tenfold, and the diluted solution has an absorbance of 0.65 at 260 nm in a 1 cm cuvette. An absorbance of 1.0 corresponds to 50 µg/mL of double-stranded DNA. What is the DNA concentration of the original, undiluted sample?</p>
+          <div class="check"><input type="text" id="pq-ultraviolet-3-in" inputmode="decimal" autocomplete="off" spellcheck="false" aria-label="Your answer to question 3" placeholder="your answer"><span class="unit">µg/mL</span><button type="button" class="primary" data-pcheck>Check</button></div>
+          <p class="fb" aria-live="polite"></p>
+          <details class="sol"><summary>Show solution</summary><ol><li>Diluted solution: \(0.65 \times 50\ \mu\text{g/mL} = 32.5\ \mu\text{g/mL}\).</li><li>Undo the tenfold dilution: \(32.5\ \mu\text{g/mL} \times 10 = 325\ \mu\text{g/mL}\).</li><li>Labs also read the absorbance at 280 nm: a ratio \(A_{260}/A_{280}\) of about 1.8 shows that little protein is left in the sample.</li></ol><p class="final">Answer: <span class="num">325 µg/mL</span></p></details>
+        </article>
+        <article class="prob" id="pq-ultraviolet-4">
+          <div class="ph"><span class="no">4</span><h4>What SPF does not tell you</h4><span class="chip">Concept</span></div>
+          <p class="q">A sunscreen labeled SPF 50, but not “broad spectrum,” can still let you tan and age your skin over a summer. Explain what SPF measures, and why a sunscreen needs filters for both UVB and UVA.</p>
+          <textarea id="pq-ultraviolet-4-a" rows="3" placeholder="Your answer" aria-label="Your answer to question 4"></textarea>
+          <details class="sol"><summary>Compare with a model answer</summary><div class="model"><p>SPF compares how long protected and unprotected skin take to redden, and sunburn is caused mostly by UVB (280–315 nm), so SPF is essentially a UVB rating. Sunlight carries far more UVA (315–400 nm) than UVB; UVA reaches deeper into the skin, darkens melanin (a tan) and ages the skin, and it also contributes to skin cancer.</p><p>Each sunscreen filter absorbs only a band of wavelengths, set by its own energy gap: octinoxate near 311 nm (UVB), avobenzone near 357 nm (UVA). A product needs filters for both bands, or a mineral such as zinc oxide that absorbs across both, to earn the “broad spectrum” label.</p></div></details>
+        </article>
+        <article class="prob" id="pq-ultraviolet-5" data-alts='[[93.633, "That is the share the ozone absorbs. The question asks how much gets through."]]' data-ans="6.3673" data-tol="0.03">
+          <div class="ph"><span class="no">5</span><h4>How much UV gets through the ozone layer?</h4><span class="chip hard">Challenge</span></div>
+          <p class="q">For a column of gas, Beer’s law can be written \(I/I_0 = e^{-\sigma N}\), where \(I_0\) is the light arriving at the top, \(I\) the light reaching the ground, \(\sigma\) the absorption cross-section of one molecule and \(N\) the number of molecules above each square centimeter of ground. A typical ozone layer, 300 Dobson units, holds \(N = 8.1 \times 10^{18}\) ozone molecules per cm<sup>2</sup>. Taking \(\sigma = 3.4 \times 10^{-19}\ \text{cm}^2\) for ozone at 300 nm, what percentage of 300 nm sunlight reaches the ground when the Sun is overhead?</p>
+          <div class="check"><input type="text" id="pq-ultraviolet-5-in" inputmode="decimal" autocomplete="off" spellcheck="false" aria-label="Your answer to question 5" placeholder="your answer"><span class="unit">%</span><button type="button" class="primary" data-pcheck>Check</button></div>
+          <p class="fb" aria-live="polite"></p>
+          <details class="sol"><summary>Show solution</summary><ol><li>\(\sigma N = (3.4 \times 10^{-19}\ \text{cm}^2)(8.1 \times 10^{18}\ \text{cm}^{-2}) = 2.75\), a pure number.</li><li>\(I/I_0 = e^{-2.75} = 0.064\).</li><li>About 6.4% of the 300 nm sunlight gets through; the ozone layer absorbs the other 94%.</li></ol><p class="final">Answer: <span class="num">about 6.4%</span></p></details>
+          <div class="reflect"><div class="rq">
+            <label for="pq-ultraviolet-5-r"><span class="rl">Follow-up</span>At 250 nm, ozone’s cross-section is about \(1.1 \times 10^{-17}\ \text{cm}^2\). What fraction gets through there? And if the ozone layer thinned by 10%, how much more 300 nm light would reach the ground?</label>
+            <textarea id="pq-ultraviolet-5-r" rows="3" placeholder="Your answer"></textarea>
+            <details><summary>Compare with a model answer</summary><div class="model"><p>At 250 nm, \(\sigma N = (1.1 \times 10^{-17})(8.1 \times 10^{18}) = 89\), and \(e^{-89} \approx 2 \times 10^{-39}\): in effect, none. That is why no UVC from the Sun reaches the ground.</p><p>If the ozone thinned by 10%, \(\sigma N\) at 300 nm would fall from 2.75 to 2.48, and the light getting through would rise from 6.4% to \(e^{-2.48} = 8.4\%\), about a third more. Because the transmission is exponential, a small loss of ozone causes a large rise in UVB, which is why ozone depletion matters for sunburn and skin cancer.</p></div></details>
+          </div></div>
+        </article>
+      </div>
+      <p class="src-line">Absorption maxima follow Pavia et al.; DNA absorbance, Sambrook and Russell; sunscreens, Shaath; ozone, Molina and Molina; the constants are CODATA values. References <a href="references.html#r2">2</a>, <a href="references.html#r4">4</a>, <a href="references.html#r35">35</a>, <a href="references.html#r40">40</a> and <a href="references.html#r44">44</a>.</p>
     </div>
   </div>
 </section>
@@ -1207,6 +1503,56 @@ footer .wrap{padding-block:20px 48px}
       <p class="note">The photon is Cu K<sub>α</sub>: \(E = 8.05\ \text{keV}\), \(\lambda = 0.154\ \text{nm}\). The shortest wavelength the tube can make is set by the accelerating voltage \(V\) (\(e\) is the charge of the electron; \(h\) is Planck’s constant and \(c\) the speed of light):</p>
       \[ \lambda_{\min} = \frac{hc}{eV} = \frac{1.240\ \text{nm}\cdot\text{kV}}{V} \]
     </div>
+    <div class="practice" id="xray-practice">
+      <div class="phead">
+        <span class="klabel">Practice</span>
+        <h3>Five questions on X-rays</h3>
+        <p class="note">Questions 1 to 4 practice the main ideas on this page; question 5 is a step harder. For a calculation, type your answer in the unit shown and press Check, then open the worked solution. For the others, write your own answer before you compare it with the model answer.</p>
+        <p class="tip"><b>Entering numbers:</b> type powers of ten as <span class="mono">3.0e-5</span> or <span class="mono">3.0x10^-5</span>. An answer within about 2% counts as correct, so small rounding differences are fine.</p>
+        <div class="scorebar"><span class="score">Calculations correct: <b data-pscore>0</b> / 3</span></div>
+      </div>
+      <div class="problems">
+        <article class="prob" id="pq-xray-1" data-ans="0.041333" data-tol="0.02">
+          <div class="ph"><span class="no">1</span><h4>The shortest X-ray from a tube</h4><span class="chip">Calculation</span></div>
+          <p class="q">An X-ray tube runs at 30 kV, so each electron reaching the target has gained 30 keV of kinetic energy. What is the shortest wavelength of X-ray the tube can produce, in nanometers?</p>
+          <div class="check"><input type="text" id="pq-xray-1-in" inputmode="decimal" autocomplete="off" spellcheck="false" aria-label="Your answer to question 1" placeholder="your answer"><span class="unit">nm</span><button type="button" class="primary" data-pcheck>Check</button></div>
+          <p class="fb" aria-live="polite"></p>
+          <details class="sol"><summary>Show solution</summary><ol><li>The shortest wavelength comes from an electron that turns all of its kinetic energy, \(eV\), into a single photon: \(\lambda_{\min} = \dfrac{hc}{eV}\), where \(e\) is the charge of an electron and \(V\) the tube voltage.</li><li>\(\lambda_{\min} = \dfrac{(6.626 \times 10^{-34}\ \text{J s})(2.998 \times 10^{8}\ \text{m s}^{-1})}{(1.602 \times 10^{-19}\ \text{C})(3.0 \times 10^{4}\ \text{V})} = 4.13 \times 10^{-11}\ \text{m} = 0.0413\ \text{nm}\).</li><li>With the shortcut \(\lambda\,(\text{nm}) = 1240/E\,(\text{eV})\): \(1240/30{,}000 = 0.0413\ \text{nm}\).</li></ol><p class="final">Answer: <span class="num">0.0413 nm (41.3 pm)</span></p></details>
+        </article>
+        <article class="prob" id="pq-xray-2">
+          <div class="ph"><span class="no">2</span><h4>Reading neon’s photoelectron spectrum</h4><span class="chip">Concept</span></div>
+          <p class="q">The photoelectron spectrum of neon (1s<sup>2</sup> 2s<sup>2</sup> 2p<sup>6</sup>) has three peaks, at binding energies of 84.0, 4.68 and 2.08 MJ/mol. Assign each peak to a subshell, explain the order of the energies, and predict the relative heights of the peaks.</p>
+          <textarea id="pq-xray-2-a" rows="3" placeholder="Your answer" aria-label="Your answer to question 2"></textarea>
+          <details class="sol"><summary>Compare with a model answer</summary><div class="model"><p>84.0 MJ/mol is the 1s peak. These core electrons are closest to the nucleus and feel almost its full charge of +10, so they are held far more tightly than the rest: about 18 times more than the 2s electrons.</p><p>4.68 MJ/mol is 2s and 2.08 MJ/mol is 2p. Both are in the second shell, but 2s electrons spend more of their time close to the nucleus, so they are held more tightly than 2p electrons. The heights count the electrons in each subshell: 1s : 2s : 2p = 2 : 2 : 6.</p></div></details>
+        </article>
+        <article class="prob" id="pq-xray-3" data-alts='[[14.177, "That is θ. The diffractometer reports 2θ, twice that angle."]]' data-ans="28.354" data-tol="0.02">
+          <div class="ph"><span class="no">3</span><h4>A diffraction peak from potassium chloride</h4><span class="chip">Calculation</span></div>
+          <p class="q">In potassium chloride, KCl, one set of planes of atoms is 0.3146 nm apart. With copper K\(_\alpha\) X-rays (\(\lambda = 0.1541\) nm), at what angle \(2\theta\) does a powder diffractometer record the first-order (\(n = 1\)) reflection from these planes?</p>
+          <div class="check"><span class="unit">2θ =</span><input type="text" id="pq-xray-3-in" inputmode="decimal" autocomplete="off" spellcheck="false" aria-label="Your answer to question 3" placeholder="your answer"><span class="unit">°</span><button type="button" class="primary" data-pcheck>Check</button></div>
+          <p class="fb" aria-live="polite"></p>
+          <details class="sol"><summary>Show solution</summary><ol><li>Bragg’s law: \(n\lambda = 2d\sin\theta\), where \(n\) is the order, \(\lambda\) the wavelength, \(d\) the spacing between planes and \(\theta\) the angle between the beam and the planes. So \(\sin\theta = \dfrac{n\lambda}{2d} = \dfrac{(1)(0.1541\ \text{nm})}{2(0.3146\ \text{nm})} = 0.2449\).</li><li>\(\theta = \sin^{-1}(0.2449) = 14.18\degree\).</li><li>The instrument reports \(2\theta\), the angle between the incoming and the diffracted beams: \(2\theta = 28.35\degree\).</li></ol><p class="final">Answer: <span class="num">2θ = 28.4°</span></p></details>
+        </article>
+        <article class="prob" id="pq-xray-4">
+          <div class="ph"><span class="no">4</span><h4>Why bones show up on an X-ray</h4><span class="chip">Concept</span></div>
+          <p class="q">On a chest X-ray, bones look white, the lungs look dark and soft tissue is gray. Explain this in terms of the atoms that absorb X-rays. Then explain why a drink of barium sulfate lets doctors see the stomach and intestines.</p>
+          <textarea id="pq-xray-4-a" rows="3" placeholder="Your answer" aria-label="Your answer to question 4"></textarea>
+          <details class="sol"><summary>Compare with a model answer</summary><div class="model"><p>The image is a shadow: wherever X-rays are absorbed, fewer reach the detector, and that area looks white. Absorption rises steeply with atomic number. Soft tissue is mostly hydrogen, carbon, nitrogen and oxygen (Z = 1 to 8) and lets most X-rays through; bone contains calcium (Z = 20) and phosphorus (Z = 15), which absorb far more; the lungs are mostly air, which absorbs almost nothing.</p><p>The stomach and intestines are soft tissue, like everything around them, so they barely show. Barium (Z = 56) absorbs X-rays strongly, so a coating of barium sulfate outlines them clearly. Barium sulfate is so insoluble that the barium is not absorbed into the body.</p></div></details>
+        </article>
+        <article class="prob" id="pq-xray-5" data-alts='[[25, "That is Z − 1. Add 1 to get the atomic number."]]' data-ans="26" data-tol="0.02" data-int="1">
+          <div class="ph"><span class="no">5</span><h4>Identifying a metal by its X-rays</h4><span class="chip hard">Challenge</span></div>
+          <p class="q">An XRF analyzer pointed at an unknown metal records a strong K\(_\alpha\) line at 6.40 keV. For K\(_\alpha\) X-rays, Moseley’s law gives approximately \(E = (10.2\ \text{eV})(Z - 1)^2\), where \(E\) is the energy of the X-ray, \(Z\) the atomic number and 10.2 eV the energy of hydrogen’s n = 2 → 1 jump. What is the atomic number of the metal?</p>
+          <div class="check"><span class="unit">Z =</span><input type="text" id="pq-xray-5-in" inputmode="decimal" autocomplete="off" spellcheck="false" aria-label="Your answer to question 5" placeholder="your answer"><button type="button" class="primary" data-pcheck>Check</button></div>
+          <p class="fb" aria-live="polite"></p>
+          <details class="sol"><summary>Show solution</summary><ol><li>\((Z - 1)^2 = \dfrac{E}{10.2\ \text{eV}} = \dfrac{6400\ \text{eV}}{10.2\ \text{eV}} = 627.5\).</li><li>\(Z - 1 = \sqrt{627.5} = 25.05\), so \(Z = 26.05 \approx 26\).</li><li>Element 26 is iron, whose K\(_\alpha\) line is indeed at 6.40 keV.</li></ol><p class="final">Answer: <span class="num">Z = 26: iron</span></p></details>
+          <div class="reflect"><div class="rq">
+            <label for="pq-xray-5-r"><span class="rl">Follow-up</span>Why does Moseley’s law use Z − 1 rather than Z? And why does an XRF analyzer find the same iron line in rust and in steel, even though the iron is bonded differently?</label>
+            <textarea id="pq-xray-5-r" rows="3" placeholder="Your answer"></textarea>
+            <details><summary>Compare with a model answer</summary><div class="model"><p>A K\(_\alpha\) X-ray is made when an L-shell electron drops into a hole in the K shell. One 1s electron is still there, and it shields the falling electron from one unit of the nuclear charge, so the electron feels a charge of about \(Z - 1\). The energy of a one-electron jump from n = 2 to n = 1 is 10.2 eV times the square of that charge, hence \((10.2\ \text{eV})(Z - 1)^2\).</p><p>Core electrons sit deep inside the atom and hardly take part in bonding, so the K\(_\alpha\) energy is set by the nucleus, not by the chemistry: iron in rust and iron in steel give the same line.</p></div></details>
+          </div></div>
+        </article>
+      </div>
+      <p class="src-line">K<sub>α</sub> energies are from Deslattes et al.; the neon binding energies, Bearden and Burr and the NIST Atomic Spectra Database; the methods follow Skoog et al.; X-ray imaging, RadiologyInfo. References <a href="references.html#r1">1</a>, <a href="references.html#r6">6</a>, <a href="references.html#r7">7</a>, <a href="references.html#r52">52</a> and <a href="references.html#r54">54</a>.</p>
+    </div>
   </div>
 </section>
 
@@ -1246,7 +1592,30 @@ footer .wrap{padding-block:20px 48px}
       <div class="bhead"><span class="tagi">Diagram · How it is made</span><h3>Decay scheme of cobalt-60</h3>
         <p class="note">Nuclear energy levels work like atomic ones, only about a million times farther apart. Each gamma photon carries exactly the gap between two levels of the nickel nucleus.</p></div>
       <div class="figscroll"><svg class="plot" id="coDecay" viewBox="0 0 560 290" role="img" aria-label="Decay scheme of cobalt-60. Cobalt-60 beta decays to an excited nickel-60 level at 2.506 MeV, which emits a 1.173 MeV gamma ray to the 1.333 MeV level, which emits a 1.333 MeV gamma ray to the ground state."></svg></div><p class="swipehint fig">Swipe the figure sideways to see all of it.</p>
-      <p class="src-line">Level energies are from NuDat. Reference <a href="references.html#r8">8</a>.</p>
+      <div class="eqsteps">
+        <span class="klabel">The decay in equations</span>
+        <div class="eqrow"><p class="note"><b>1. Beta decay</b> (half-life 5.27 years). A neutron in the cobalt nucleus turns into a proton, so the atomic number rises from 27 to 28 and the cobalt becomes nickel; the mass number stays 60. The nucleus throws out a beta particle and an antineutrino, which share about 0.32 MeV, and the nickel nucleus is left excited, 2.506 MeV above its ground state.</p>
+          \[ \ce{^{60}_{27}Co -> ^{60}_{28}Ni^{*} $[2.506\ \text{MeV}]$ + ^{0}_{-1}e + $\bar{\nu}_{\text{e}}$} \]</div>
+        <div class="eqrow"><p class="note"><b>2. First gamma ray.</b> Within a few trillionths of a second, the nickel nucleus drops to its 1.333 MeV level and gives off the difference as a gamma ray: 2.506 − 1.333 = 1.173 MeV.</p>
+          \[ \ce{^{60}_{28}Ni^{*} $[2.506\ \text{MeV}]$ -> ^{60}_{28}Ni^{*} $[1.333\ \text{MeV}]$ + $\gamma$} \quad (1.173\ \text{MeV}) \]</div>
+        <div class="eqrow"><p class="note"><b>3. Second gamma ray.</b> It then drops to its ground state and gives off a second gamma ray, of 1.333 MeV.</p>
+          \[ \ce{^{60}_{28}Ni^{*} $[1.333\ \text{MeV}]$ -> ^{60}_{28}Ni + $\gamma$} \quad (1.333\ \text{MeV}) \]</div>
+        <div class="eqrow"><p class="note"><b>Overall.</b> Adding the three steps, the excited nickel cancels out: one cobalt-60 nucleus becomes stable nickel-60 and gives off a beta particle, an antineutrino and two gamma rays. Together the two gamma rays carry exactly the energy that the beta decay left in the nucleus.</p>
+          \[ \ce{^{60}_{27}Co -> ^{60}_{28}Ni + ^{0}_{-1}e + $\bar{\nu}_{\text{e}}$ + 2$\gamma$} \]
+          \[ E_{\gamma 1} + E_{\gamma 2} = 1.173\ \text{MeV} + 1.333\ \text{MeV} = 2.506\ \text{MeV} \]</div>
+        <dl class="terms" aria-label="What each symbol means">
+          <div><dt>\(^{60}_{27}\text{Co}\)</dt><dd>cobalt-60: the mass number, 60 (protons plus neutrons), on top and the atomic number, 27 (protons), below</dd></div>
+          <div><dt>\(^{60}_{28}\text{Ni}\)</dt><dd>nickel-60, with 28 protons and 32 neutrons</dd></div>
+          <div><dt>\(^{\;\,0}_{-1}\text{e}\)</dt><dd>a beta particle: an electron made in the nucleus and thrown out of it</dd></div>
+          <div><dt>\(\bar{\nu}_{\text{e}}\)</dt><dd>an electron antineutrino, an uncharged, nearly massless particle that carries off part of the energy</dd></div>
+          <div><dt>*</dt><dd>an excited nucleus</dd></div>
+          <div><dt>[ ]</dt><dd>how far the excited nucleus sits above its ground state</dd></div>
+          <div><dt>\(\gamma\)</dt><dd>a gamma-ray photon; its energy is shown in parentheses</dd></div>
+          <div><dt>\(E_{\gamma 1},\ E_{\gamma 2}\)</dt><dd>the energies of the first and second gamma rays</dd></div>
+          <div><dt>MeV</dt><dd>a million electronvolts: \(1\ \text{MeV} = 1.602 \times 10^{-13}\ \text{J}\) for one nucleus, or \(9.65 \times 10^{7}\ \text{kJ}\) per mole of nuclei</dd></div>
+        </dl>
+      </div>
+      <p class="src-line">Level energies, the half-life and the energy of the beta decay are from NuDat. Reference <a href="references.html#r8">8</a>.</p>
     </div>
 
     <div class="bench">
@@ -1301,6 +1670,56 @@ footer .wrap{padding-block:20px 48px}
         \[ \ce{^{24}_{11}Na -> ^{24}_{12}Mg + ^{0}_{-1}e + $\bar{\nu}_{\text{e}}$ + $\gamma$} \]</div>
       <div class="eqrow"><p class="note"><b>Fusion in the Sun.</b> One step of the proton–proton chain.</p>
         \[ \ce{^{2}_{1}H + ^{1}_{1}H -> ^{3}_{2}He + $\gamma$} \quad (5.5\ \text{MeV}) \]</div>
+    </div>
+    <div class="practice" id="gamma-practice">
+      <div class="phead">
+        <span class="klabel">Practice</span>
+        <h3>Five questions on gamma rays</h3>
+        <p class="note">Questions 1 to 4 practice the main ideas on this page; question 5 is a step harder. For a calculation, type your answer in the unit shown and press Check, then open the worked solution. For the others, write your own answer before you compare it with the model answer.</p>
+        <p class="tip"><b>Entering numbers:</b> type powers of ten as <span class="mono">3.0e-5</span> or <span class="mono">3.0x10^-5</span>. An answer within about 2% counts as correct, so small rounding differences are fine.</p>
+        <div class="scorebar"><span class="score">Calculations correct: <b data-pscore>0</b> / 3</span></div>
+      </div>
+      <div class="problems">
+        <article class="prob" id="pq-gamma-1" data-ans="511.06" data-tol="0.02">
+          <div class="ph"><span class="no">1</span><h4>Mass into energy</h4><span class="chip">Calculation</span></div>
+          <p class="q">When a positron meets an electron, both vanish and their mass becomes two gamma-ray photons of equal energy. Using \(E = mc^2\), with \(9.109 \times 10^{-31}\) kg as the mass of the electron (and of the positron), calculate the energy of each photon in keV.</p>
+          <div class="check"><input type="text" id="pq-gamma-1-in" inputmode="decimal" autocomplete="off" spellcheck="false" aria-label="Your answer to question 1" placeholder="your answer"><span class="unit">keV</span><button type="button" class="primary" data-pcheck>Check</button></div>
+          <p class="fb" aria-live="polite"></p>
+          <details class="sol"><summary>Show solution</summary><ol><li>Each photon carries the rest energy of one particle: \(E = mc^2 = (9.109 \times 10^{-31}\ \text{kg})(2.998 \times 10^{8}\ \text{m s}^{-1})^2 = 8.187 \times 10^{-14}\ \text{J}\), where \(m\) is the mass and \(c\) the speed of light.</li><li>Convert to electronvolts: \(\dfrac{8.187 \times 10^{-14}\ \text{J}}{1.602 \times 10^{-19}\ \text{J eV}^{-1}} = 5.11 \times 10^{5}\ \text{eV} = 511\ \text{keV}\).</li><li>The two photons fly off in opposite directions, so that momentum is conserved. PET scanners look for exactly these pairs.</li></ol><p class="final">Answer: <span class="num">511 keV</span></p></details>
+        </article>
+        <article class="prob" id="pq-gamma-2">
+          <div class="ph"><span class="no">2</span><h4>Writing a nuclear equation</h4><span class="chip">Concept</span></div>
+          <p class="q">Iodine-131 (\(^{131}_{\;53}\text{I}\)), used to treat thyroid disease, undergoes beta decay, and the product nucleus then gives off a 364 keV gamma ray. Write balanced equations for both steps, and explain why the gamma ray changes neither the mass number nor the atomic number.</p>
+          <textarea id="pq-gamma-2-a" rows="3" placeholder="Your answer" aria-label="Your answer to question 2"></textarea>
+          <details class="sol"><summary>Compare with a model answer</summary><div class="model"><p>Beta decay turns a neutron into a proton, so the atomic number rises by one (53 → 54, xenon) while the mass number stays 131:</p>\[ \ce{^{131}_{53}I -> ^{131}_{54}Xe^{*} + ^{0}_{-1}e + $\bar{\nu}_{\text{e}}$} \]\[ \ce{^{131}_{54}Xe^{*} -> ^{131}_{54}Xe + $\gamma$} \quad (364\ \text{keV}) \]<p>Check: the mass numbers (top) give 131 = 131 + 0, and the atomic numbers (bottom) give 53 = 54 + (−1). Here \(^{\;\,0}_{-1}\text{e}\) is the beta particle, \(\bar{\nu}_{\text{e}}\) an antineutrino and * an excited nucleus. A gamma ray is a photon, with no mass number and no charge, so it carries away only energy: the nucleus drops from an excited state to its ground state, just as an excited atom gives off light.</p></div></details>
+        </article>
+        <article class="prob" id="pq-gamma-3" data-alts='[[93.721, "That is the share that has decayed. The question asks how much is left."]]' data-ans="6.2789" data-tol="0.02">
+          <div class="ph"><span class="no">3</span><h4>How much technetium is left?</h4><span class="chip">Calculation</span></div>
+          <p class="q">Technetium-99m has a half-life of 6.01 hours. A patient receives a dose in the morning. What percentage of the technetium-99m is still left 24.0 hours later?</p>
+          <div class="check"><input type="text" id="pq-gamma-3-in" inputmode="decimal" autocomplete="off" spellcheck="false" aria-label="Your answer to question 3" placeholder="your answer"><span class="unit">%</span><button type="button" class="primary" data-pcheck>Check</button></div>
+          <p class="fb" aria-live="polite"></p>
+          <details class="sol"><summary>Show solution</summary><ol><li>Number of half-lives: \(24.0\ \text{h} / 6.01\ \text{h} = 3.99\).</li><li>Each half-life halves what is left, so the fraction remaining is \((1/2)^{3.99} = 0.0628\).</li><li>About 6.3% remains, roughly a sixteenth of the dose, which is why scans are done within hours and little radioactivity lingers.</li></ol><p class="final">Answer: <span class="num">6.28%</span></p></details>
+        </article>
+        <article class="prob" id="pq-gamma-4">
+          <div class="ph"><span class="no">4</span><h4>Irradiated food versus activated samples</h4><span class="chip">Concept</span></div>
+          <p class="q">Food treated with cobalt-60 gamma rays does not become radioactive. Yet in neutron activation analysis, a sample bathed in neutrons does become radioactive. Explain the difference.</p>
+          <textarea id="pq-gamma-4-a" rows="3" placeholder="Your answer" aria-label="Your answer to question 4"></textarea>
+          <details class="sol"><summary>Compare with a model answer</summary><div class="model"><p>A gamma ray is a photon. It can ionize atoms and break chemical bonds, which is what kills the microbes, but it adds no protons or neutrons to a nucleus. To make a nucleus radioactive, a gamma ray would have to knock a neutron out of it, and that takes more energy than cobalt-60’s 1.17 and 1.33 MeV gamma rays carry, for every nucleus.</p><p>A neutron, by contrast, has no charge, so it slips into a nucleus and is captured, making a new, heavier isotope, often an unstable one: \(\ce{^{23}_{11}Na + ^{1}_{0}n -> ^{24}_{11}Na}\). That new isotope then decays and gives off the gamma rays that identify the element.</p></div></details>
+        </article>
+        <article class="prob" id="pq-gamma-5" data-alts='[[9.9658, "That is the number of half-thicknesses. Multiply by 10 mm."]]' data-ans="99.658" data-tol="0.03">
+          <div class="ph"><span class="no">5</span><h4>Shielding a cobalt-60 source</h4><span class="chip hard">Challenge</span></div>
+          <p class="q">A sealed cobalt-60 source sits in a lead container. About 10 mm of lead stops half of its gamma rays (its half-thickness). How thick must the lead be so that only 0.10% of the gamma rays get through?</p>
+          <div class="check"><input type="text" id="pq-gamma-5-in" inputmode="decimal" autocomplete="off" spellcheck="false" aria-label="Your answer to question 5" placeholder="your answer"><span class="unit">mm</span><button type="button" class="primary" data-pcheck>Check</button></div>
+          <p class="fb" aria-live="polite"></p>
+          <details class="sol"><summary>Show solution</summary><ol><li>Each half-thickness halves the beam, so after \(n\) of them the fraction left is \((1/2)^n\). We need \((1/2)^n = 0.0010\).</li><li>Take logarithms: \(n = \dfrac{\log(1/0.0010)}{\log 2} = \dfrac{3.000}{0.3010} = 9.97\).</li><li>Thickness: \(9.97 \times 10\ \text{mm} = 99.7\ \text{mm}\), about 10 cm of lead.</li></ol><p class="final">Answer: <span class="num">about 100 mm (10 cm) of lead</span></p></details>
+          <div class="reflect"><div class="rq">
+            <label for="pq-gamma-5-r"><span class="rl">Follow-up</span>The 140 keV gamma rays of technetium-99m have a half-thickness in lead of only 0.26 mm. How thick would the lead need to be for the same 0.10%, and why does the difference matter in a hospital?</label>
+            <textarea id="pq-gamma-5-r" rows="3" placeholder="Your answer"></textarea>
+            <details><summary>Compare with a model answer</summary><div class="model"><p>The same 9.97 half-thicknesses are needed: \(9.97 \times 0.26\ \text{mm} = 2.6\ \text{mm}\) of lead. Low-energy gamma rays are stopped far more easily, so a thin lead apron, syringe shield or vial holder protects staff who handle technetium-99m, while cobalt-60 sources for radiotherapy or sterilization sit behind many centimeters of lead, or about 2 m of concrete.</p><p>Half-thicknesses are measured for a narrow beam; real shields are made somewhat thicker, because gamma rays scattered inside the shield add to the dose.</p></div></details>
+          </div></div>
+        </article>
+      </div>
+      <p class="src-line">Half-lives and gamma energies are from NuDat; the electron mass is the CODATA value; half-thicknesses, Hubbell and Seltzer; food irradiation, the FDA. References <a href="references.html#r4">4</a>, <a href="references.html#r8">8</a>, <a href="references.html#r63">63</a> and <a href="references.html#r67">67</a>.</p>
     </div>
   </div>
 </section>
@@ -4027,6 +4446,59 @@ const arrowDown = (x, y, cls) => `<path d="M${x - 4.5},${y - 9} L${x},${y} L${x 
   $('#guSel').addEventListener('click', e => { const b = e.target.closest('button'); if (b) pick(+b.dataset.i); });
   svg.addEventListener('click', e => { const r = e.target.closest ? e.target.closest('.guHit') : null; if (r) pick(+r.dataset.i); });
   pick(0);
+})();
+
+/* ==================================================================== PRACTICE QUESTIONS: checking the calculations */
+(() => {
+  if (!document.querySelectorAll || !document.addEventListener) return;
+  const SUP = {'⁰': '0', '¹': '1', '²': '2', '³': '3', '⁴': '4', '⁵': '5', '⁶': '6', '⁷': '7', '⁸': '8', '⁹': '9', '⁻': '-', '⁺': '+'};
+  // read "5.83", "3.0e-5", "3.0x10^-5", "3.0 × 10⁻⁵" or "154 pm"
+  const parse = raw => {
+    const t = String(raw).trim()
+      .replace(/^[^=]*=\s*/, '')                                   // "Z = 26", "2θ = 28.4"
+      .replace(/\s*(?:[A-Za-zµμ°%Å][^\d]*)$/, '')                   // a unit at the end: "154 pm", "6.12cm", "6.4%"
+      .replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹⁻⁺]+/g, m => '^' + [...m].map(c => SUP[c]).join(''))
+      .replace(/[−–]/g, '-').replace(/,(?=\d{3}\b)/g, '').replace(/\s+/g, '');
+    const m = t.match(/^([+-]?)(\d+\.?\d*|\.\d+)(?:[eE]([+-]?\d+)|[x×X*·]10\^?\(?([+-]?\d+)\)?)?$/);
+    if (!m) return null;
+    return (m[1] === '-' ? -1 : 1) * parseFloat(m[2]) * Math.pow(10, +(m[3] ?? m[4] ?? 0));
+  };
+  const judge = (card, raw) => {
+    if (!raw.trim()) return {k: 'no', m: 'Type your answer first.'};
+    const v = parse(raw);
+    if (v === null || !isFinite(v)) return {k: 'no', m: 'Type a number only, for example 2.97, 3.0e-5 or 3.0x10^-5.'};
+    const ans = parseFloat(card.dataset.ans), tol = parseFloat(card.dataset.tol || '0.02');
+    const alts = card.dataset.alts ? JSON.parse(card.dataset.alts) : [];
+    if (card.dataset.int) {
+      if (v === ans) return {k: 'ok', m: 'Correct.'};
+      for (const [a, msg] of alts) if (v === a) return {k: 'warn', m: msg};
+      if (Math.abs(v - ans) < 0.5) return {k: 'warn', m: 'Nearly there: round to a whole number, because energy levels and atomic numbers are whole numbers.'};
+      return {k: 'no', m: 'That value does not match. Check the arithmetic, then open the solution if you are stuck.'};
+    }
+    const rel = Math.abs(v - ans) / Math.abs(ans);
+    if (rel <= tol) return {k: 'ok', m: 'Correct.'};
+    for (const [a, msg] of alts) if (Math.abs(v - a) <= tol * Math.abs(a)) return {k: 'warn', m: msg};
+    if (rel <= 3 * tol) return {k: 'warn', m: 'Close, but not quite. Check your rounding and the constants you used.'};
+    if (v && Math.abs(Math.abs(v) - Math.abs(ans)) / Math.abs(ans) <= tol) return {k: 'no', m: 'Check the sign.'};
+    const r = v ? Math.log10(Math.abs(v / ans)) : NaN;
+    if (isFinite(r) && Math.abs(r) > 0.5 && Math.abs(r - Math.round(r)) < 0.03) return {k: 'no', m: 'The digits look right, but the power of ten is off. Check the unit conversions.'};
+    return {k: 'no', m: 'That value does not match. Check the arithmetic, then open the solution if you are stuck.'};
+  };
+  const check = card => {
+    const input = card.querySelector('.check input'), fb = card.querySelector('.fb');
+    if (!input || !fb) return;
+    const res = judge(card, input.value);
+    fb.className = 'fb ' + res.k; fb.innerHTML = res.m;
+    card.classList.toggle('done', res.k === 'ok');
+    const box = card.closest('.practice'), score = box && box.querySelector('[data-pscore]');
+    if (score) score.textContent = box.querySelectorAll('.prob.done').length;
+  };
+  document.addEventListener('click', e => { const b = e.target.closest ? e.target.closest('[data-pcheck]') : null; if (b) check(b.closest('.prob')); });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Enter' && e.target.matches && e.target.matches('.prob .check input')) check(e.target.closest('.prob'));
+  });
+  // an equation inside an answer cannot be measured while the answer is closed
+  document.querySelectorAll('.prob details').forEach(d => d.addEventListener('toggle', () => { if (d.open && typeof fitEquations === 'function') fitEquations(); }));
 })();
 
 /* ==================================================================== GLOSSARY: search */
