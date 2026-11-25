@@ -112,12 +112,30 @@ nav.index a[aria-current]{background:var(--surface-2);color:var(--ink)}
 .pager .pos{color:var(--muted);font-size:.88rem;white-space:nowrap}
 @media (max-width:600px){ .pager{grid-template-columns:1fr 1fr} .pager .pos{grid-column:1/-1;grid-row:3;justify-self:center} .pager a{padding:10px 12px;gap:8px} }
 @media print{ body.paged section.block[hidden], body.paged header[hidden]{display:block !important} .pager{display:none} }
+/* glossary */
+.gloss-tools{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.gloss-search{font:inherit;font-size:.95rem;padding:9px 14px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--ink);width:min(360px,100%);box-sizing:border-box}
+.gloss-search:focus{outline:2px solid var(--accent);outline-offset:1px}
+.gloss-count{font-size:.9rem;color:var(--muted)}
+.gloss{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 18px;margin:0}
+.gloss > div{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 14px;min-width:0}
+.gloss > div[hidden]{display:none}
+.gloss > div:target{border-color:var(--accent);box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 28%,transparent)}
+.gloss dt{font-weight:700;color:var(--ink)}
+.gloss dd{margin:3px 0 0;font-size:.94rem;color:var(--muted);line-height:1.5}
+@media (max-width:640px){ .gloss{grid-template-columns:minmax(0,1fr)} }
+@media print{ .gloss-tools{display:none} }
+a.gl{color:inherit;text-decoration:underline dotted;text-underline-offset:3px;text-decoration-thickness:1.5px}
+a.gl:hover{color:var(--data)}
 section.block > .wrap{display:grid;gap:22px}
 .sechead{display:grid;gap:8px}
 
 /* each type of radiation carries its region color in --rc */
 section.type .sechead{border-left:4px solid var(--rc);padding-left:14px}
 section.type .eyebrow{color:var(--rc)}
+/* the note that region colors are only labels */
+.caveat{margin:0;font-size:.93rem;line-height:1.5;color:var(--muted);border-left:3px solid var(--line);padding:2px 0 2px 12px}
+.caveat b{color:var(--ink)}
 .facts{display:flex;flex-wrap:wrap;gap:6px 8px;margin-top:4px}
 /* ">" so the pill style reaches only the pills, never the spans KaTeX uses to build a symbol inside one */
 .facts > span{background:color-mix(in srgb,var(--rc) 13%,var(--surface));border-radius:999px;padding:3px 12px;font-size:.9rem}
@@ -340,6 +358,7 @@ footer .wrap{padding-block:20px 48px}
     <a href="#xray">X-ray</a>
     <a href="#gamma">Gamma</a>
     <a href="#summary">Summary</a>
+    <a href="#glossary">Glossary</a>
     <a href="references.html">References</a>
     <button type="button" id="motion" aria-pressed="false">Pause motion</button>
   </div>
@@ -415,6 +434,7 @@ footer .wrap{padding-block:20px 48px}
     <div class="bench">
       <div class="scrollx"><svg class="plot" id="spec" viewBox="0 0 1000 190" role="img" aria-label="The electromagnetic spectrum on a logarithmic scale from 10 kilometers on the left to 10 femtometers on the right: radio, microwave, infrared, visible, ultraviolet, X-ray and gamma. A frequency scale runs above it and a photon energy scale below. A marker shows the selected wavelength."></svg></div>
       <p class="swipehint spec">Swipe the spectrum sideways to see all of it. Tap it, or use the slider, to pick a wavelength.</p>
+      <p class="caveat"><b>About the colors:</b> each region of the spectrum has its own color in this module only to tell the regions apart; it is not the color of the radiation. Only visible light (400–700 nm) can be seen. Radio waves, microwaves, infrared, ultraviolet, X-rays and gamma rays are all invisible.</p>
       <label class="ctl slider" for="spRange">Wavelength (long ← → short)
         <input type="range" id="spRange" min="0" max="1800" step="1" value="1030"></label>
       <div class="visrow">
@@ -493,6 +513,7 @@ footer .wrap{padding-block:20px 48px}
       <a href="#xray" style="--rc:var(--xray)"><b>X-ray</b><span>10 pm – 10 nm</span>Core electrons</a>
       <a href="#gamma" style="--rc:var(--gamma)"><b>Gamma</b><span>&lt; 10 pm</span>The nucleus</a>
     </nav>
+    <p class="caveat"><b>About the colors:</b> each region of the spectrum has its own color in this module only to tell the regions apart; it is not the color of the radiation. Only visible light (400–700 nm) can be seen. Radio waves, microwaves, infrared, ultraviolet, X-rays and gamma rays are all invisible.</p>
   </div>
 </section>
 
@@ -504,7 +525,7 @@ footer .wrap{padding-block:20px 48px}
       <h2>Radio waves</h2>
       <div class="facts"><span><b><i>λ</i></b> &gt; 1 m</span><span><b><i>ν</i></b> &lt; 3 × 10<sup>8</sup> Hz</span><span><b><i>E</i></b> &lt; 1.2 × 10<sup>−4</sup> kJ/mol</span><span><b>Excites</b> nuclear spin flips</span></div>
     </div>
-    <p class="prose">Radio waves run from about a meter to many kilometers. They carry the least energy of any radiation: a 400 MHz photon has about \(2.7 \times 10^{-25}\) J, or \(1.6 \times 10^{-4}\) kJ/mol, roughly two million times less than it takes to break a C–C bond. That is far too little to move an electron or stretch a bond. It does match one very small energy gap: the gap between the two orientations of a spinning nucleus held in a strong magnet.</p>
+    <p class="prose">Radio waves run from about a meter to many kilometers. <b>They carry the least energy of any radiation</b>: a 400 MHz photon has about \(2.7 \times 10^{-25}\) J, or \(1.6 \times 10^{-4}\) kJ/mol, roughly two million times less than it takes to break a C–C bond. That is far too little to move an electron or stretch a bond. It does match one very small energy gap: the gap between the two orientations of a spinning nucleus held in a strong magnet.</p>
     <div class="two">
       <div class="card struct">
         <span class="klabel">What it tells us about structure</span>
@@ -523,7 +544,7 @@ footer .wrap{padding-block:20px 48px}
         <span class="klabel" style="color:var(--muted)">How it is made</span>
         <h3>Oscillating electric current</h3>
         <p>Radio waves are made with electric current that reverses direction very quickly. An electronic oscillator (often a quartz-crystal circuit) pushes electrons back and forth along an antenna millions of times per second. Charges that accelerate radiate: each reversal sends a ripple of electric and magnetic field away from the wire at the speed of light, at the same frequency as the current.</p>
-        <p>In an NMR spectrometer a transmitter sends a short, strong radio pulse into a coil wrapped around the sample tube. Afterwards the tipped nuclei precess like spinning tops and induce a faint radio signal in the same coil, so for a moment the sample itself is a radio transmitter. A computer Fourier-transforms that signal into the spectrum.</p>
+        <p>In an NMR spectrometer a transmitter sends a short, strong radio pulse into a coil wrapped around the sample tube. Afterwards the tipped nuclei <a class="gl" href="#g-precess">precess</a> like spinning tops and induce a faint radio signal in the same coil, so for a moment the sample itself is a radio transmitter. A computer Fourier-transforms that signal into the spectrum.</p>
         <p class="why"><b>Natural sources:</b> lightning, the Sun, pulsars and distant galaxies.</p>
       </div>
     </div>
@@ -537,6 +558,14 @@ footer .wrap{padding-block:20px 48px}
           <input type="range" id="antF" min="50" max="300" step="10" value="100"></label>
         <p class="note" id="antTxt" style="flex:1 1 220px"></p>
       </div>
+    </div>
+
+    <div class="bench">
+      <div class="bhead"><span class="tagi">Interactive · Where radio waves are used</span><h3>Radio bands: from submarines to satellites</h3>
+        <p class="note">Radio is split into bands, each covering ten times the frequency of the one before. The frequency decides how a radio wave travels and how big its antenna has to be (about a quarter of a wavelength). The longest waves follow the curve of the Earth and even reach submarines under the sea. Medium and short waves can bounce off the ionosphere, a layer of charged gas 60 to 300 km up. The shortest waves pass straight through it to satellites. Pick a band to see how it travels and what it is used for.</p></div>
+      <div class="seg" id="rbSel" role="group" aria-label="Radio band"></div>
+      <div class="figscroll"><svg class="plot" id="rbSvg" viewBox="0 0 560 340" role="img" aria-label="The radio bands on a frequency scale from 3 kilohertz to 3 gigahertz, VLF, LF, MF, HF, VHF and UHF, with everyday uses of the chosen band marked. Below, a sketch of the curved Earth, a stretch of sea and the ionosphere shows how the chosen band travels from a transmitter: guided between the ground and the ionosphere, following the ground, bouncing off the ionosphere, or going in straight lines to the horizon and to satellites."></svg></div><p class="swipehint fig">Swipe the figure sideways to see all of it.</p>
+      <div class="statgrid" id="rbRo"></div>
     </div>
 
     <div class="bench">
@@ -1024,6 +1053,49 @@ footer .wrap{padding-block:20px 48px}
     </table></div>
     <p class="swipehint tblw">Swipe the table sideways to see every column; the first column stays in place.</p>
     <p class="src-line">Spectroscopic ranges, sources and techniques follow Skoog, Holler and Crouch; Pavia et al.; and Atkins. Atomic lines are from the NIST Atomic Spectra Database, X-ray energies from Deslattes et al., gamma energies and half-lives from NuDat, and the CO rotational constant from the NIST Chemistry WebBook. <a href="references.html">References 1–10.</a></p>
+  </div>
+</section>
+
+<!-- ======================== GLOSSARY ======================== -->
+<section class="block" id="glossary">
+  <div class="wrap">
+    <div class="sechead">
+      <span class="eyebrow">A–Z</span>
+      <h2>Glossary</h2>
+      <p class="prose muted">Short definitions of the technical words used in this module.</p>
+    </div>
+    <div class="gloss-tools"><input type="search" class="gloss-search" placeholder="Search terms…" aria-label="Search the glossary"><span class="gloss-count"></span></div>
+    <dl class="gloss">
+      <div id="g-absorption"><dt>Absorption and emission</dt><dd>An atom or molecule absorbs a photon when it uses the photon’s energy to jump to a higher energy level, and emits a photon when it drops back down. Either way the photon’s energy equals the gap between the two levels, \(\Delta E = h\nu\).</dd></div>
+      <div id="g-annihilation"><dt>Annihilation</dt><dd>When a positron (the antimatter partner of the electron) meets an electron, both disappear and their mass becomes two gamma-ray photons of 511 keV each, flying off in opposite directions.</dd></div>
+      <div id="g-antenna"><dt>Antenna</dt><dd>A rod, wire or coil that turns an alternating current into radio waves, or radio waves back into a current. It works best when it is about a quarter or a half of a wavelength long.</dd></div>
+      <div id="g-blackbody"><dt>Blackbody radiation</dt><dd>The glow that any object gives off because of its temperature. The hotter the object, the shorter the wavelength at which it glows most brightly: a stove ring glows red, while the much hotter Sun looks white.</dd></div>
+      <div id="g-bragg"><dt>Bragg’s law</dt><dd>\(n\lambda = 2d\sin\theta\). X-rays reflected from neighboring planes of atoms in a crystal reinforce each other only at angles where the extra path, \(2d\sin\theta\), is a whole number of wavelengths. Measuring \(\theta\) gives the spacing \(d\) between the planes.</dd></div>
+      <div id="g-bremsstrahlung"><dt>Bremsstrahlung</dt><dd>German for “braking radiation”: X-rays given off when fast electrons are slowed down by the nuclei of the target in an X-ray tube. It makes the smooth, continuous part of the X-ray spectrum.</dd></div>
+      <div id="g-shift"><dt>Chemical shift, \(\delta\)</dt><dd>Where an NMR signal appears, in parts per million (ppm) from the reference compound TMS. Nearby electronegative atoms and π bonds move a hydrogen’s signal to higher \(\delta\).</dd></div>
+      <div id="g-conjugation"><dt>Conjugation</dt><dd>A chain of alternating single and double bonds, which lets the π electrons spread over many atoms. The longer the conjugated chain, the smaller the energy gap and the longer the wavelength it absorbs; long chains such as the one in β-carotene absorb visible light and look colored.</dd></div>
+      <div id="g-diffraction"><dt>Diffraction</dt><dd>The spreading and interference of waves that pass through gaps, or scatter from objects, about the size of their wavelength. X-rays diffract from crystals because their wavelength is similar to the spacing between atoms.</dd></div>
+      <div id="g-dipole"><dt>Dipole</dt><dd>Equal and opposite charges a small distance apart. A molecular vibration absorbs infrared only if it changes the molecule’s dipole; a dipole antenna is a pair of rods whose ends charge up oppositely as the current swings back and forth.</dd></div>
+      <div id="g-ev"><dt>Electronvolt, eV</dt><dd>The energy an electron gains moving through a potential difference of one volt: \(1\ \text{eV} = 1.602 \times 10^{-19}\ \text{J}\). A convenient size for one photon: visible photons carry about 1.8 to 3.1 eV.</dd></div>
+      <div id="g-states"><dt>Ground state, excited state</dt><dd>The ground state is the lowest-energy arrangement of an atom, molecule or nucleus. An excited state is any higher one. It usually lasts only a short time before the system drops back and gives off the extra energy, often as a photon.</dd></div>
+      <div id="g-frequency"><dt>Frequency, \(\nu\)</dt><dd>The number of wave crests passing a point each second, in hertz (1 Hz = 1 s<sup>−1</sup>). Frequency and wavelength are linked by \(c = \lambda\nu\).</dd></div>
+      <div id="g-ground-wave"><dt>Ground wave, skywave, line of sight</dt><dd>The three ways radio waves get from place to place. A ground wave follows the curve of the Earth (long waves). A skywave bounces off the ionosphere and comes down far away (medium and short waves). Line-of-sight waves go in straight lines, so they reach only to the horizon or up to satellites (VHF and above).</dd></div>
+      <div id="g-gamma-ratio"><dt>Gyromagnetic ratio, \(\gamma\)</dt><dd>A constant for each kind of nucleus that sets how fast it precesses in a magnetic field, and so which radio frequency it absorbs: \(\nu = \gamma B_0/2\pi\). For <sup>1</sup>H, \(\gamma/2\pi = 42.58\) MHz per tesla.</dd></div>
+      <div id="g-ionizing"><dt>Ionizing radiation</dt><dd>Radiation whose photons carry enough energy to knock electrons out of atoms and molecules, turning them into ions: the short-wavelength end of the ultraviolet, X-rays and gamma rays. It can break bonds in DNA, which is why exposure is kept low.</dd></div>
+      <div id="g-ionosphere"><dt>Ionosphere</dt><dd>A layer of the upper atmosphere, about 60 to 300 km up, where sunlight has knocked electrons off gas molecules. Its free electrons bend medium and short radio waves back down to the ground, but let VHF and higher frequencies pass straight through.</dd></div>
+      <div id="g-isotope"><dt>Isotope</dt><dd>Atoms of the same element with different numbers of neutrons, such as carbon-12 and carbon-13. A radioactive isotope such as cobalt-60 can be identified by the energies of the gamma rays it emits.</dd></div>
+      <div id="g-magnetron"><dt>Magnetron</dt><dd>The vacuum tube that makes the microwaves in a microwave oven. Electrons circling in a magnetic field sweep past cavities cut into a copper block and set them ringing at 2.45 GHz, rather like air blown across the top of a bottle.</dd></div>
+      <div id="g-nmr"><dt>NMR, nuclear magnetic resonance</dt><dd>A technique that puts a sample in a strong magnet and finds the radio frequencies at which its nuclei (usually <sup>1</sup>H or <sup>13</sup>C) flip their spins. The pattern of signals shows how the atoms in a molecule are connected. MRI uses the same physics to image the body.</dd></div>
+      <div id="g-oscillator"><dt>Oscillator</dt><dd>An electronic circuit that makes an alternating current at a steady frequency, often kept exact by a vibrating quartz crystal. It drives the antenna of a radio transmitter.</dd></div>
+      <div id="g-photon"><dt>Photon</dt><dd>A single packet (quantum) of electromagnetic radiation. Its energy depends only on its frequency, \(E = h\nu\).</dd></div>
+      <div id="g-precess"><dt>Precess, precession</dt><dd>To precess is to wobble so that the axis of a spinning object sweeps out a cone. A tilted spinning top does this: instead of falling over, its axis slowly circles around the vertical. A nucleus spinning in a magnetic field precesses around the field direction in the same way, at exactly the frequency it absorbs, \(\nu = \gamma B_0/2\pi\) (400 MHz for <sup>1</sup>H in a 9.40 T magnet). After a radio pulse tips the nuclei, their precessing magnetism induces the faint radio signal that an NMR spectrometer records.</dd></div>
+      <div id="g-bands"><dt>Radio bands: VLF, LF, MF, HF, VHF, UHF</dt><dd>Engineering names for ranges of radio frequency, each ten times higher than the one before: very low (3–30 kHz), low, medium, high, very high and ultra high frequency (300 MHz–3 GHz).</dd></div>
+      <div id="g-resonance"><dt>Resonance</dt><dd>Strong absorption that happens only when the frequency of the radiation matches a natural frequency of the system, such as the precession frequency of a nucleus in NMR.</dd></div>
+      <div id="g-spectroscopy"><dt>Spectroscopy</dt><dd>Measuring which wavelengths a sample absorbs or emits, and using the pattern to identify the substance, work out its structure, or find how much of it is present.</dd></div>
+      <div id="g-wavelength"><dt>Wavelength, \(\lambda\)</dt><dd>The distance from one crest of a wave to the next.</dd></div>
+      <div id="g-wavenumber"><dt>Wavenumber, \(\tilde{\nu}\)</dt><dd>The number of waves per centimeter, \(1/\lambda\), in cm<sup>−1</sup>. Infrared and Raman spectra use it because it is proportional to energy.</dd></div>
+    </dl>
+    <p class="gloss-empty muted" hidden>No matching terms.</p>
   </div>
 </section>
 
@@ -2248,6 +2320,232 @@ const arrowDown = (x, y, cls) => `<path d="M${x - 4.5},${y - 9} L${x},${y} L${x 
   draw();
 })();
 
+/* ==================================================================== RADIO: THE BANDS, HOW EACH TRAVELS, WHAT IT IS USED FOR */
+(() => {
+  const svg = $('#rbSvg');
+  if (!svg) return;
+  const BANDS = [
+    {lab: 'VLF', name: 'Very low frequency (VLF)', f0: 3e3, f1: 3e4, fr: '3–30 kHz', wl: '10–100 km', lam: 58, amp: 12, scene: 'vlf',
+     ant: 'Kilometers of wire strung between tall masts; a quarter wave at 24 kHz is 3.1 km.',
+     how: 'Guided right around the planet in the gap between the ground and the ionosphere. It also reaches 10–40 m down into seawater, deeper than any higher frequency.',
+     use: 'Navy transmitters near 20–24 kHz send messages to submarines while they stay submerged. Lightning gives off bursts of VLF too.',
+     marks: [[2.4e4, 'submarines', 'middle', 0]]},
+    {lab: 'LF', name: 'Low frequency (LF)', f0: 3e4, f1: 3e5, fr: '30–300 kHz', wl: '1–10 km', lam: 44, amp: 9, scene: 'lf',
+     ant: 'Tall masts topped with wires; a quarter wave at 60 kHz is 1.25 km.',
+     how: 'Travels as a ground wave that follows the curve of the Earth for well over 1000 km, steadily, day and night.',
+     use: 'Radio clocks and watches set themselves from time signals such as WWVB (60 kHz, Colorado) and DCF77 (77.5 kHz, Germany). Pet microchips and many access cards also use LF (125–134 kHz), over just a few centimeters.',
+     marks: [[6e4, 'radio clocks', 'end', 0], [1.342e5, 'pet microchips', 'start', 0]]},
+    {lab: 'MF', name: 'Medium frequency (MF)', f0: 3e5, f1: 3e6, fr: '300 kHz–3 MHz', wl: '100 m–1 km', lam: 32, amp: 8, scene: 'mf',
+     ant: 'A mast 50 to 200 m tall; a quarter wave at 1 MHz is 75 m.',
+     how: 'By day a ground wave reaches a few hundred kilometers. At night the lowest layer of the ionosphere fades away, so signals bounce off the higher layers and come down far away.',
+     use: 'AM radio (530–1700 kHz), which is why distant AM stations come in at night; also navigation beacons for ships and aircraft.',
+     marks: [[1e6, 'AM radio', 'middle', 0]]},
+    {lab: 'HF', name: 'High frequency (HF), “shortwave”', f0: 3e6, f1: 3e7, fr: '3–30 MHz', wl: '10–100 m', lam: 22, amp: 7, scene: 'hf',
+     ant: 'Wires or masts several meters long; a quarter wave at 10 MHz is 7.5 m.',
+     how: 'Bounces between the ionosphere and the ground (skywave), so a signal can hop across an ocean to another continent.',
+     use: 'Shortwave broadcasting, amateur (ham) radio, and radio for ships and for aircraft over oceans. Contactless bank cards, NFC phones and library tags use 13.56 MHz, but only over a few centimeters.',
+     marks: [[1e7, 'shortwave', 'end', 0], [1.356e7, 'NFC cards', 'start', 0]]},
+    {lab: 'VHF', name: 'Very high frequency (VHF)', f0: 3e7, f1: 3e8, fr: '30–300 MHz', wl: '1–10 m', lam: 15, amp: 6, scene: 'vhf',
+     ant: 'A rod about 75 cm long, like a car radio antenna (a quarter wave at 100 MHz).',
+     how: 'Travels in straight lines and passes through the ionosphere instead of bouncing, so it reaches only to the horizon, roughly 50–100 km from a tall mast.',
+     use: 'FM radio (88–108 MHz) and aircraft voice radio (118–137 MHz). MRI scanners work here too: hydrogen nuclei in the body absorb 64 MHz in a 1.5 T magnet and 128 MHz at 3 T.',
+     marks: [[6.4e7, 'MRI 1.5 T', 'end', 0], [1e8, 'FM radio', 'middle', 1], [1.28e8, 'MRI 3 T', 'start', 0]]},
+    {lab: 'UHF', name: 'Ultra high frequency (UHF)', f0: 3e8, f1: 3e9, fr: '300 MHz–3 GHz', wl: '10 cm–1 m', lam: 10, amp: 5, scene: 'uhf',
+     ant: 'Small enough to hide inside a phone; a quarter wave at 1.9 GHz is about 4 cm.',
+     how: 'Line of sight, like VHF, and it passes easily through the ionosphere, so it can link the ground with satellites.',
+     use: 'TV, most mobile-phone bands (about 0.6–2.7 GHz), GPS satellites (1.575 GHz), Wi-Fi and Bluetooth (2.4 GHz), and NMR spectrometers (300–1200 MHz). Radio telescopes map hydrogen gas across the galaxy by its 21 cm line at 1.42 GHz. With wavelengths under 1 m, UHF overlaps the microwave region on the next page; engineers still call it radio.',
+     marks: [[4e8, 'NMR 400 MHz', 'end', 0], [9e8, 'phones', 'end', 1], [1.575e9, 'GPS', 'end', 2], [2.4e9, 'Wi-Fi', 'end', 3]]}
+  ];
+
+  /* ---- frequency strip ---- */
+  const X0 = 20, X1 = 540, DEC = (X1 - X0) / 6;
+  const xf = f => X0 + (Math.log10(f) - Math.log10(3e3)) * DEC;
+
+  /* ---- scene: the Earth as a big circle, a stretch of sea, the ionosphere above (not to scale) ---- */
+  const EX = 280, EY = 1240, RE = 1000, RI0 = 1075, RI1 = 1092, RSEA = 974, SEA0 = 330, SEA1 = 440;
+  const P = (R, th) => [EX + R * Math.sin(th), EY - R * Math.cos(th)];
+  const thAt = x => Math.asin((x - EX) / RE);
+  const sy = x => EY - Math.sqrt(RE * RE - (x - EX) * (x - EX));
+  const TH = p => Math.atan2(p[0] - EX, EY - p[1]);
+  const arc = (R, a, b, n = 48) => Array.from({length: n + 1}, (_, i) => P(R, a + (b - a) * i / n));
+  const MX = 70, MT = [MX, sy(MX) - 40];
+  const f1 = v => v.toFixed(1);
+  const ptsStr = pts => pts.map(p => f1(p[0]) + ',' + f1(p[1])).join(' ');
+  const INK = 'stroke:var(--ink);stroke-width:1.3;fill:var(--surface)';
+
+  const icon = {
+    mast: x => { const b = sy(x), t = b - 40;
+      return `<path d="M${x - 8},${f1(b)} L${x},${f1(t)} L${x + 8},${f1(b)} M${x - 5.4},${f1(b - 13)} H${x + 5.4} M${x - 2.8},${f1(b - 26)} H${x + 2.8} M${x - 5.4},${f1(b - 13)} L${x + 2.8},${f1(b - 26)} M${x + 5.4},${f1(b - 13)} L${x - 2.8},${f1(b - 26)}" style="fill:none;stroke:var(--ink);stroke-width:1.3;stroke-linejoin:round"/><circle cx="${x}" cy="${f1(t)}" r="2.6" style="fill:var(--ink)"/>`; },
+    radio: (x, o = 1) => { const y = sy(x);
+      return `<g style="opacity:${o}"><rect x="${x - 11}" y="${f1(y - 14)}" width="22" height="13" rx="2.5" style="${INK}"/><circle cx="${x - 4.5}" cy="${f1(y - 7.5)}" r="3.3" style="fill:none;stroke:var(--ink);stroke-width:1.2"/><path d="M${x + 2},${f1(y - 10)} h6 M${x + 2},${f1(y - 6)} h6 M${x + 7},${f1(y - 14)} l5,-10" style="stroke:var(--ink);stroke-width:1.2"/></g>`; },
+    clock: x => { const y = sy(x) - 10;
+      return `<circle cx="${x}" cy="${f1(y)}" r="8.5" style="${INK}"/><path d="M${x},${f1(y)} V${f1(y - 5.5)} M${x},${f1(y)} L${x + 4},${f1(y + 2)}" style="stroke:var(--ink);stroke-width:1.3;stroke-linecap:round"/>`; },
+    phone: x => { const y = sy(x);
+      return `<rect x="${x - 4.5}" y="${f1(y - 16)}" width="9" height="15" rx="2" style="${INK}"/><path d="M${x - 1.5},${f1(y - 3.6)} h3" style="stroke:var(--ink);stroke-width:1.1"/>`; },
+    sub: (x, y, th) => `<g transform="rotate(${f1(th * 180 / Math.PI)} ${f1(x)} ${f1(y)})"><ellipse cx="${f1(x)}" cy="${f1(y)}" rx="15" ry="4.2" style="fill:var(--ink)"/><rect x="${f1(x - 2)}" y="${f1(y - 8.5)}" width="6" height="5" rx="1" style="fill:var(--ink)"/></g>`,
+    sat: (x, y) => `<rect x="${x - 4.5}" y="${y - 3.5}" width="9" height="7" rx="1" style="fill:var(--ink)"/><rect x="${x - 19}" y="${y - 2.5}" width="12" height="5" style="fill:none;stroke:var(--ink);stroke-width:1.1"/><rect x="${x + 7}" y="${y - 2.5}" width="12" height="5" style="fill:none;stroke:var(--ink);stroke-width:1.1"/><path d="M${x - 7},${y} h2.5 M${x + 4.5},${y} h2.5" style="stroke:var(--ink);stroke-width:1.1"/>`
+  };
+  const under = (x, s, dy = 16) => `<text x="${x}" y="${f1(sy(x) + dy)}" text-anchor="middle" class="t-sm" style="fill:var(--ink)">${s}</text>`;
+  const head = pts => { const a = pts[pts.length - 2], b = pts[pts.length - 1], L = Math.hypot(b[0] - a[0], b[1] - a[1]) || 1, ux = (b[0] - a[0]) / L, uy = (b[1] - a[1]) / L;
+    return `<path d="M${f1(b[0])},${f1(b[1])} l${f1(-ux * 8 - uy * 4)},${f1(-uy * 8 + ux * 4)} l${f1(uy * 8)},${f1(-ux * 8)} Z" style="fill:var(--radio)"/>`; };
+  const hitEarth = (a, b) => { for (let t = 0; t <= 1; t += 0.002) { const x = a[0] + (b[0] - a[0]) * t, y = a[1] + (b[1] - a[1]) * t; if (Math.hypot(x - EX, y - EY) < RE) return [x, y]; } return b; };
+
+  /* each scene: the routes the waves take (sampled into paths below), plus icons and labels */
+  function scene(key) {
+    const R = [], t0 = TH(MT);
+    let h = '', cap = '', mastLab = 'transmitter';
+    if (key === 'vlf') {
+      const ts = thAt(385), A = arc(1039, t0, ts);
+      R.push({pts: A.concat([P(986, ts)]), decay: 1039 * (ts - t0) + 39});
+      const s = P(986, ts);
+      h += icon.sub(s[0], s[1], ts) + `<text x="385" y="${f1(sy(385) + 42)}" text-anchor="middle" class="t-sm" style="fill:var(--ink)">submarine</text>`;
+      cap = 'Guided between the ground and the ionosphere, and down into the sea';
+    } else if (key === 'lf') {
+      R.push({pts: [MT].concat(arc(1007, t0 + 0.012, thAt(495) - 0.012))});
+      h += icon.clock(495) + under(495, 'radio clock');
+      cap = 'Ground wave: follows the curve of the Earth';
+    } else if (key === 'mf') {
+      R.push({pts: [MT].concat(arc(1007, t0 + 0.012, thAt(255) - 0.012))});
+      const tm = (t0 + thAt(495)) / 2;
+      R.push({pts: [MT, P(RI0, tm), P(1006, thAt(495) - 0.004)], faint: true});
+      h += icon.radio(255) + under(255, 'AM radio') + icon.radio(495) + under(495, 'far away, at night');
+      h += `<text x="430" y="203" class="t-sm" style="fill:var(--ink)">at night</text>`;
+      cap = 'Ground wave by day; at night it also bounces off the ionosphere';
+    } else if (key === 'hf') {
+      R.push({pts: [MT, P(RI0, -0.105), P(1001, 0), P(RI0, 0.108), P(1004, thAt(495) - 0.004)]});
+      h += icon.radio(495) + under(495, 'another continent');
+      cap = 'Skywave: hops between the ionosphere and the ground';
+    } else if (key === 'vhf') {
+      R.push({pts: [MT, [144, sy(144) - 9]]});
+      const far = [495, sy(495)], hit = hitEarth(MT, far);
+      R.push({pts: [MT, hit], noHead: true});
+      R.push({pts: [MT, [262, 128]]});
+      h += `<path d="M${f1(hit[0] - 4)},${f1(hit[1] - 4)} l8,8 M${f1(hit[0] + 4)},${f1(hit[1] - 4)} l-8,8" style="stroke:var(--ink);stroke-width:1.6"/>`;
+      h += icon.radio(152) + under(152, 'FM radio') + icon.radio(495, 0.35) + under(495, 'beyond the horizon');
+      h += `<text x="268" y="132" class="t-sm" style="fill:var(--ink)">escapes into space</text>`;
+      cap = 'Line of sight: reaches only to the horizon, and passes through the ionosphere';
+    } else {
+      R.push({pts: [MT, [201, sy(201) - 10]]});
+      R.push({pts: [[455, 141], [495, sy(495) - 17]]});
+      h += icon.sat(455, 136) + `<text x="432" y="140" text-anchor="end" class="t-sm" style="fill:var(--ink)">GPS satellite</text>`;
+      h += icon.phone(205) + under(205, 'phone') + icon.phone(495) + under(495, 'GPS receiver');
+      mastLab = 'phone mast'; cap = 'Line of sight, and straight through the ionosphere to and from satellites';
+    }
+    let g = '';
+    R.forEach(r => { g += `<polyline points="${ptsStr(r.pts)}" style="fill:none;stroke:var(--muted);stroke-opacity:.45;stroke-width:1;stroke-dasharray:3 3"/>`; if (!r.noHead) g += head(r.pts); });
+    h = g + icon.mast(MX) + under(MX, mastLab) + h;
+    h += `<text x="280" y="307" text-anchor="middle" class="t-ink" style="font-size:12.5px">${cap}</text>`;
+    return {svg: h, routes: R};
+  }
+
+  /* sample a route every 2 px; remember how far each sample is from a sharp corner so the wave can taper there */
+  function prep(r) {
+    const pts = r.pts, out = [], corners = [0];
+    let s = 0;
+    for (let i = 1; i < pts.length; i++) {
+      const a = pts[i - 1], b = pts[i], L = Math.hypot(b[0] - a[0], b[1] - a[1]);
+      if (L < 1e-6) continue;
+      const tx = (b[0] - a[0]) / L, ty = (b[1] - a[1]) / L;
+      if (i > 1) { const p = pts[i - 2], Lp = Math.hypot(a[0] - p[0], a[1] - p[1]) || 1; if (((a[0] - p[0]) * tx + (a[1] - p[1]) * ty) / Lp < 0.97) corners.push(s); }
+      for (let d = 0; d < L; d += 2) out.push({s: s + d, x: a[0] + tx * d, y: a[1] + ty * d, nx: -ty, ny: tx});
+      s += L;
+    }
+    const z = pts[pts.length - 1], l = out[out.length - 1];
+    out.push({s, x: z[0], y: z[1], nx: l.nx, ny: l.ny});
+    corners.push(s);
+    out.forEach(q => { q.dj = Math.min(...corners.map(c => Math.abs(q.s - c))); });
+    return {q: out, faint: r.faint, decay: r.decay};
+  }
+
+  /* ---- static layers ---- */
+  let base = '';
+  base += `<circle cx="${EX}" cy="${EY}" r="${RE}" style="fill:var(--surface-2);stroke:var(--muted);stroke-width:1"/>`;
+  const sea = arc(RE, thAt(SEA0), thAt(SEA1), 24).concat(arc(RSEA, thAt(SEA1), thAt(SEA0), 24));
+  base += `<path d="M${ptsStr(sea)} Z" style="fill:color-mix(in srgb,var(--muted) 30%,var(--surface-2))"/>`;
+  const swell = arc(RE + 1, thAt(SEA0 + 3), thAt(SEA1 - 3), 110).map((p, i) => [p[0], p[1] - 1.3 * Math.sin(i * 0.9)]);
+  base += `<polyline points="${ptsStr(swell)}" style="fill:none;stroke:var(--muted);stroke-width:1.1;stroke-linejoin:round"/>`;
+  base += `<text x="425" y="${f1(sy(425) + 14)}" text-anchor="middle" class="t-sm">sea</text>`;
+  base += `<circle cx="${EX}" cy="${EY}" r="${(RI0 + RI1) / 2}" style="fill:none;stroke:var(--muted);stroke-opacity:.22;stroke-width:${RI1 - RI0}"/>`;
+  base += `<text x="12" y="${f1(EY - Math.sqrt(RI1 * RI1 - (12 - EX) * (12 - EX)) - 22)}" class="t-sm">ionosphere, 60–300 km up</text>`;
+  base += `<text x="12" y="331" class="t-sm">Not to scale. Lower frequency = longer wave; every band travels at the speed of light.</text>`;
+  svg.innerHTML = `<g id="rbStrip"></g>${base}<g id="rbScene"></g><g id="rbDyn"></g>`;
+  const stripG = $('#rbStrip'), sceneG = $('#rbScene'), dyn = $('#rbDyn');
+
+  let cur = 4, routes = [];
+  function strip() {
+    let h = '';
+    BANDS.forEach((b, i) => {
+      const x = X0 + i * DEC, on = i === cur;
+      h += `<rect x="${f1(x)}" y="24" width="${f1(DEC)}" height="34" style="fill:${on ? 'color-mix(in srgb,var(--radio) 24%,var(--surface))' : 'var(--surface)'};stroke:var(--line)"/>`
+        + `<text x="${f1(x + DEC / 2)}" y="39" text-anchor="middle" class="t-ink" style="font-size:12.5px;${on ? '' : 'fill:var(--muted)'}">${b.lab}</text>`
+        + `<text x="${f1(x + DEC / 2)}" y="52" text-anchor="middle" style="font-size:10px">${b.wl}</text>`;
+    });
+    h += `<rect x="${X0}" y="24" width="${X1 - X0}" height="34" style="fill:none;stroke:var(--muted)"/>`;
+    ['3 kHz', '30 kHz', '300 kHz', '3 MHz', '30 MHz', '300 MHz', '3 GHz'].forEach((s, k) => { h += `<text x="${f1(X0 + k * DEC)}" y="17" text-anchor="middle" class="t-sm">${s}</text>`; });
+    BANDS[cur].marks.forEach(([f, s, an, row]) => {
+      const x = xf(f), y = 79 + 13 * row, tx = an === 'end' ? x - 3 : an === 'start' ? x + 3 : x;
+      h += `<path d="M${f1(x)},58 V${an === 'middle' ? y - 11 : y - 3}" style="stroke:var(--radio);stroke-width:1.2"/><circle cx="${f1(x)}" cy="58" r="2.6" style="fill:var(--radio)"/>`
+        + `<text x="${f1(tx)}" y="${y}" text-anchor="${an}" class="t-sm" style="fill:var(--ink)">${s}</text>`;
+    });
+    BANDS.forEach((b, i) => { h += `<rect class="rbHit" data-i="${i}" x="${f1(X0 + i * DEC)}" y="8" width="${f1(DEC)}" height="52" style="fill:transparent;cursor:pointer"><title>${b.name}</title></rect>`; });
+    stripG.innerHTML = h;
+  }
+  function pick(i) {
+    cur = i;
+    const b = BANDS[i], sc = scene(b.scene);
+    strip();
+    sceneG.innerHTML = sc.svg;
+    routes = sc.routes.map(prep);
+    [...$('#rbSel').children].forEach((el, j) => el.setAttribute('aria-pressed', String(j === i)));
+    $('#rbRo').innerHTML = statT('Band', b.name) + statT('Frequency', b.fr) + statT('Wavelength', b.wl)
+      + stat('Energy per photon', `${sci(H * b.f0, 2)} to ${sci(H * b.f1, 2)} J`)
+      + statT('Antenna', b.ant, 'wide') + statT('How it travels', b.how, 'wide') + statT('Used for', b.use, 'wide');
+    draw(tNow);
+  }
+
+  /* ---- the moving waves: every band moves across the screen at the same speed, as all radio waves travel at c ---- */
+  const SPEED = 42;
+  function draw(t) {
+    const b = BANDS[cur], k = 2 * Math.PI / b.lam, w = k * SPEED;
+    let h = '';
+    routes.forEach(r => {
+      let d = '';
+      for (const q of r.q) {
+        let e = Math.min(1, q.dj / 9);
+        if (r.decay != null && q.s > r.decay) e *= Math.exp(-(q.s - r.decay) / 9);
+        const o = b.amp * e * Math.sin(k * q.s - w * t);
+        d += (d ? ' ' : 'M') + f1(q.x + q.nx * o) + ',' + f1(q.y + q.ny * o);
+      }
+      h += `<path d="${d}" style="fill:none;stroke:var(--radio);stroke-width:2;stroke-linejoin:round;stroke-linecap:round;${r.faint ? 'opacity:.5' : ''}"/>`;
+    });
+    dyn.innerHTML = h;
+  }
+
+  $('#rbSel').innerHTML = BANDS.map((b, i) => `<button type="button" data-i="${i}" aria-pressed="false">${b.lab}</button>`).join('');
+  $('#rbSel').addEventListener('click', e => { const el = e.target.closest('button'); if (el) pick(+el.dataset.i); });
+  svg.addEventListener('click', e => { const el = e.target.closest ? e.target.closest('.rbHit') : null; if (el) pick(+el.dataset.i); });
+  pick(cur);
+  anim(svg, draw);
+})();
+
+/* ==================================================================== GLOSSARY: search */
+(() => {
+  const sec = $('#glossary');
+  if (!sec || !sec.querySelector) return;
+  const input = sec.querySelector('.gloss-search'), items = [...sec.querySelectorAll('.gloss > div')];
+  const count = sec.querySelector('.gloss-count'), empty = sec.querySelector('.gloss-empty');
+  if (!input || !count || !empty) return;
+  const run = () => {
+    const q = input.value.trim().toLowerCase();
+    let n = 0;
+    items.forEach(it => { const hit = !q || it.textContent.toLowerCase().includes(q); it.hidden = !hit; if (hit) n++; });
+    count.textContent = q ? `${n} of ${items.length} terms` : `${items.length} terms`;
+    empty.hidden = n > 0;
+  };
+  input.addEventListener('input', run);
+  run();
+})();
+
 /* ==================================================================== PAGES: one part per page, with previous / next arrows */
 (() => {
   if (!document.querySelectorAll || !document.getElementById || typeof window.addEventListener !== 'function') return;
@@ -2261,7 +2559,8 @@ const arrowDown = (x, y, cls) => `<path d="M${x - 4.5},${y - 9} L${x},${y} L${x 
     {ids: ['ultraviolet'], title: 'Part B · 5 of 7 · Ultraviolet', short: 'Ultraviolet'},
     {ids: ['xray'], title: 'Part B · 6 of 7 · X-rays', short: 'X-rays'},
     {ids: ['gamma'], title: 'Part B · 7 of 7 · Gamma rays', short: 'Gamma rays'},
-    {ids: ['summary'], title: 'Summary', short: 'Summary'}
+    {ids: ['summary'], title: 'Summary', short: 'Summary'},
+    {ids: ['glossary'], title: 'Glossary', short: 'Glossary'}
   ];
   const secs = PAGES.map(p => p.ids.map(id => document.getElementById(id)).filter(Boolean));
   if (secs.some(s => !s.length)) return;                       // markup changed: leave the long page as it is
