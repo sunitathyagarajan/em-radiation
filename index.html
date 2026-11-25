@@ -216,6 +216,7 @@ button:disabled{opacity:.45;cursor:default}
 .mwuses button[aria-pressed="true"]{border-color:var(--rc);background:color-mix(in srgb,var(--rc) 12%,var(--surface))}
 .mwuses button[aria-pressed="true"] svg{stroke:var(--rc)}
 #muRo .stat .v{font-weight:400;line-height:1.5}
+#itRo .stat .v{font-weight:400;line-height:1.5}
 .note{font-size:1rem;line-height:1.55;color:var(--muted)}
 .hint{font-size:.92rem;border-left:3px solid var(--data);padding:4px 0 4px 12px;color:var(--muted)}
 .hint b{color:var(--ink)}
@@ -397,7 +398,7 @@ footer .wrap{padding-block:20px 48px}
       </div>
       <div class="card">
         <h4>Frequency, \(\nu\)</h4>
-        <p>How many crests pass a point each second, in hertz (1 Hz = 1 s<sup>−1</sup>). All radiation travels at the same speed in a vacuum, so a shorter wave must oscillate faster:</p>
+        <p>How many crests pass a point each second, in hertz (1 Hz = 1 s<sup>−1</sup>). All radiation travels at the same speed in a vacuum, the speed of light \(c\), so a shorter wave must oscillate faster:</p>
         <svg class="plot cardfig" viewBox="0 0 280 122" role="img" aria-label="A wave plotted against time. Three crests, numbered 1 to 3, pass within a bracket marked one second, so the frequency is 3 hertz."><line x1="24" y1="50" x2="268" y2="50" style="stroke:var(--line);stroke-width:1;stroke-dasharray:3 3"/><path d="M24.0,68.0 L25.5,67.9 L27.0,67.5 L28.5,66.8 L30.0,65.9 L31.5,64.8 L33.0,63.4 L34.5,61.8 L36.0,60.1 L37.5,58.2 L39.0,56.2 L40.5,54.1 L42.0,51.9 L43.5,49.8 L45.0,47.6 L46.5,45.4 L48.0,43.3 L49.5,41.4 L51.0,39.5 L52.5,37.8 L54.0,36.3 L55.5,35.0 L57.0,33.9 L58.5,33.0 L60.0,32.4 L61.5,32.1 L63.0,32.0 L64.5,32.2 L66.0,32.7 L67.5,33.4 L69.0,34.3 L70.5,35.5 L72.0,36.9 L73.5,38.5 L75.0,40.3 L76.5,42.2 L78.0,44.3 L79.5,46.4 L81.0,48.5 L82.5,50.7 L84.0,52.9 L85.5,55.0 L87.0,57.1 L88.5,59.1 L90.0,60.9 L91.5,62.6 L93.0,64.0 L94.5,65.3 L96.0,66.3 L97.5,67.1 L99.0,67.7 L100.5,68.0 L102.0,68.0 L103.5,67.7 L105.0,67.2 L106.5,66.4 L108.0,65.4 L109.5,64.2 L111.0,62.7 L112.5,61.1 L114.0,59.3 L115.5,57.3 L117.0,55.3 L118.5,53.2 L120.0,51.0 L121.5,48.8 L123.0,46.6 L124.5,44.5 L126.0,42.4 L127.5,40.5 L129.0,38.7 L130.5,37.1 L132.0,35.7 L133.5,34.5 L135.0,33.5 L136.5,32.7 L138.0,32.2 L139.5,32.0 L141.0,32.1 L142.5,32.4 L144.0,32.9 L145.5,33.8 L147.0,34.8 L148.5,36.1 L150.0,37.6 L151.5,39.3 L153.0,41.1 L154.5,43.1 L156.0,45.2 L157.5,47.3 L159.0,49.5 L160.5,51.7 L162.0,53.9 L163.5,56.0 L165.0,58.0 L166.5,59.9 L168.0,61.7 L169.5,63.2 L171.0,64.6 L172.5,65.8 L174.0,66.7 L175.5,67.4 L177.0,67.8 L178.5,68.0 L180.0,67.9 L181.5,67.5 L183.0,66.9 L184.5,66.0 L186.0,64.9 L187.5,63.6 L189.0,62.0 L190.5,60.3 L192.0,58.4 L193.5,56.4 L195.0,54.3 L196.5,52.2 L198.0,50.0 L199.5,47.8 L201.0,45.7 L202.5,43.6 L204.0,41.6 L205.5,39.7 L207.0,38.0 L208.5,36.4 L210.0,35.1 L211.5,34.0 L213.0,33.1 L214.5,32.5 L216.0,32.1 L217.5,32.0 L219.0,32.2 L220.5,32.6 L222.0,33.3 L223.5,34.2 L225.0,35.4 L226.5,36.8 L228.0,38.3 L229.5,40.1 L231.0,42.0 L232.5,44.0 L234.0,46.1 L235.5,48.3 L237.0,50.5 L238.5,52.7 L240.0,54.8 L241.5,56.9 L243.0,58.9 L244.5,60.7 L246.0,62.4 L247.5,63.9 L249.0,65.2 L250.5,66.2 L252.0,67.1 L253.5,67.6 L255.0,67.9" style="fill:none;stroke:var(--data);stroke-width:2.2;stroke-linecap:round"/><circle cx="62.7" cy="32" r="3.2" style="fill:var(--accent)"/><text x="62.7" y="23" text-anchor="middle" class="t-ink">1</text><circle cx="140.0" cy="32" r="3.2" style="fill:var(--accent)"/><text x="140.0" y="23" text-anchor="middle" class="t-ink">2</text><circle cx="217.3" cy="32" r="3.2" style="fill:var(--accent)"/><text x="217.3" y="23" text-anchor="middle" class="t-ink">3</text><path d="M24,75 V85 M24,80 H256 M256,75 V85" style="fill:none;stroke:var(--ink);stroke-width:1.3"/><text x="140.0" y="97" text-anchor="middle" class="t-sm">1 second →</text><text x="140.0" y="116" text-anchor="middle" class="t-ink">3 crests per second = 3 Hz</text></svg>
         <div class="formula">\[ c = \lambda\nu \]</div>
         <p class="why"><b>Most used for</b> radio waves and microwaves, in megahertz (MHz) and gigahertz (GHz). <i>Example:</i> a “400 MHz” NMR spectrometer is named for the frequency at which hydrogen nuclei resonate in its magnet, and a microwave oven runs at 2.45 GHz.</p>
@@ -411,14 +412,19 @@ footer .wrap{padding-block:20px 48px}
       </div>
       <div class="card">
         <h4>Energy of a photon, \(E\)</h4>
-        <p>Radiation is absorbed and emitted in packets called photons. Each carries an energy set by its frequency. Multiply by Avogadro's number for the energy of a mole of photons, which you can compare directly with bond energies.</p>
+        <p>Radiation is absorbed and emitted in packets called photons. Each carries an energy set by its frequency through Planck’s constant, \(h\). Multiply by Avogadro's number for the energy of a mole of photons, which you can compare directly with bond energies.</p>
         <svg class="plot cardfig" viewBox="0 0 280 130" role="img" aria-label="Two waves drawn to the same scale: red light at 700 nanometers with long waves, 1.77 electronvolts per photon, and violet light at 400 nanometers with shorter waves, 3.10 electronvolts per photon."><line x1="8" y1="30" x2="152" y2="30" style="stroke:var(--line);stroke-width:1;stroke-dasharray:3 3"/><path d="M10.0,15.0 L11.5,15.1 L13.0,15.5 L14.5,16.2 L16.0,17.1 L17.5,18.3 L19.0,19.6 L20.5,21.2 L22.0,22.9 L23.5,24.7 L25.0,26.7 L26.5,28.7 L28.0,30.7 L29.5,32.7 L31.0,34.6 L32.5,36.5 L34.0,38.3 L35.5,39.9 L37.0,41.3 L38.5,42.5 L40.0,43.5 L41.5,44.3 L43.0,44.8 L44.5,45.0 L46.0,44.9 L47.5,44.6 L49.0,44.0 L50.5,43.2 L52.0,42.1 L53.5,40.8 L55.0,39.4 L56.5,37.7 L58.0,35.9 L59.5,34.0 L61.0,32.0 L62.5,30.0 L64.0,28.0 L65.5,26.0 L67.0,24.1 L68.5,22.3 L70.0,20.6 L71.5,19.2 L73.0,17.9 L74.5,16.8 L76.0,16.0 L77.5,15.4 L79.0,15.1 L80.5,15.0 L82.0,15.2 L83.5,15.7 L85.0,16.5 L86.5,17.5 L88.0,18.7 L89.5,20.1 L91.0,21.7 L92.5,23.5 L94.0,25.4 L95.5,27.3 L97.0,29.3 L98.5,31.3 L100.0,33.3 L101.5,35.3 L103.0,37.1 L104.5,38.8 L106.0,40.4 L107.5,41.7 L109.0,42.9 L110.5,43.8 L112.0,44.5 L113.5,44.9 L115.0,45.0 L116.5,44.9 L118.0,44.5 L119.5,43.8 L121.0,42.9 L122.5,41.7 L124.0,40.4 L125.5,38.8 L127.0,37.1 L128.5,35.3 L130.0,33.3 L131.5,31.3 L133.0,29.3 L134.5,27.3 L136.0,25.4 L137.5,23.5 L139.0,21.7 L140.5,20.1 L142.0,18.7 L143.5,17.5 L145.0,16.5 L146.5,15.7 L148.0,15.2 L149.5,15.0" style="fill:none;stroke:var(--ir);stroke-width:2.4;stroke-linecap:round"/><text x="162" y="27" class="t-ink" style="fill:var(--ir)">red, 700 nm</text><text x="162" y="45" class="t-sm">E = 1.77 eV</text><line x1="8" y1="86" x2="152" y2="86" style="stroke:var(--line);stroke-width:1;stroke-dasharray:3 3"/><path d="M10.0,71.0 L11.5,71.4 L13.0,72.6 L14.5,74.6 L16.0,77.2 L17.5,80.3 L19.0,83.7 L20.5,87.2 L22.0,90.6 L23.5,93.8 L25.0,96.6 L26.5,98.8 L28.0,100.3 L29.5,101.0 L31.0,100.8 L32.5,99.9 L34.0,98.1 L35.5,95.7 L37.0,92.8 L38.5,89.5 L40.0,86.0 L41.5,82.5 L43.0,79.2 L44.5,76.3 L46.0,73.9 L47.5,72.1 L49.0,71.2 L50.5,71.0 L52.0,71.7 L53.5,73.2 L55.0,75.4 L56.5,78.2 L58.0,81.4 L59.5,84.8 L61.0,88.3 L62.5,91.7 L64.0,94.8 L65.5,97.4 L67.0,99.4 L68.5,100.6 L70.0,101.0 L71.5,100.6 L73.0,99.4 L74.5,97.4 L76.0,94.8 L77.5,91.7 L79.0,88.3 L80.5,84.8 L82.0,81.4 L83.5,78.2 L85.0,75.4 L86.5,73.2 L88.0,71.7 L89.5,71.0 L91.0,71.2 L92.5,72.1 L94.0,73.9 L95.5,76.3 L97.0,79.2 L98.5,82.5 L100.0,86.0 L101.5,89.5 L103.0,92.8 L104.5,95.7 L106.0,98.1 L107.5,99.9 L109.0,100.8 L110.5,101.0 L112.0,100.3 L113.5,98.8 L115.0,96.6 L116.5,93.8 L118.0,90.6 L119.5,87.2 L121.0,83.7 L122.5,80.3 L124.0,77.2 L125.5,74.6 L127.0,72.6 L128.5,71.4 L130.0,71.0 L131.5,71.4 L133.0,72.6 L134.5,74.6 L136.0,77.2 L137.5,80.3 L139.0,83.7 L140.5,87.2 L142.0,90.6 L143.5,93.8 L145.0,96.6 L146.5,98.8 L148.0,100.3 L149.5,101.0" style="fill:none;stroke:var(--uv);stroke-width:2.4;stroke-linecap:round"/><text x="162" y="83" class="t-ink" style="fill:var(--uv)">violet, 400 nm</text><text x="162" y="101" class="t-sm">E = 3.10 eV</text><text x="8" y="124" class="t-sm">Shorter wave = more energy per photon</text></svg>
         <div class="formula">\[ E = h\nu = \frac{hc}{\lambda} = hc\tilde{\nu} \]</div>
         <p class="why"><b>Most used for</b> X-rays and gamma rays, in electronvolts (eV, keV, MeV), and in kJ mol<sup>−1</sup> when comparing light with bond energies. <i>Example:</i> cobalt-60 emits gamma rays of 1.17 and 1.33 MeV, and in X-ray photoelectron spectroscopy a carbon 1s electron has a binding energy of about 285 eV.</p>
       </div>
       <div class="card">
         <h4>Constants</h4>
-        <p class="mono" style="line-height:1.9">\(c = 2.998 \times 10^{8}\ \text{m s}^{-1}\)<br>\(h = 6.626 \times 10^{-34}\ \text{J s}\)<br>\(N_{\text{A}} = 6.022 \times 10^{23}\ \text{mol}^{-1}\)<br>\(1\ \text{eV} = 1.602 \times 10^{-19}\ \text{J}\)</p>
+        <dl class="terms" aria-label="The constants used on this page">
+          <div><dt>\(c\)</dt><dd>the speed of light in a vacuum, \(2.998 \times 10^{8}\ \text{m s}^{-1}\)</dd></div>
+          <div><dt>\(h\)</dt><dd>Planck’s constant, \(6.626 \times 10^{-34}\ \text{J s}\)</dd></div>
+          <div><dt>\(N_{\text{A}}\)</dt><dd>Avogadro’s number, \(6.022 \times 10^{23}\ \text{mol}^{-1}\)</dd></div>
+          <div><dt>eV</dt><dd>the electronvolt, \(1\ \text{eV} = 1.602 \times 10^{-19}\ \text{J}\)</dd></div>
+        </dl>
         <p class="why">Rounded from the exact SI values (CODATA). A handy shortcut: \(E\,(\text{eV}) = 1240 / \lambda\,(\text{nm})\).</p>
       </div>
       <div class="card wide">
@@ -427,6 +433,10 @@ footer .wrap{padding-block:20px 48px}
         <div class="formula">\[ E = h\nu = (6.626 \times 10^{-34}\ \text{J s})(5.996 \times 10^{14}\ \text{s}^{-1}) = 3.97 \times 10^{-19}\ \text{J} \]</div>
         <div class="formula">\[ E_{\text{mol}} = E N_{\text{A}} = (3.97 \times 10^{-19}\ \text{J})(6.022 \times 10^{23}\ \text{mol}^{-1}) = 239\ \text{kJ mol}^{-1} \]</div>
         <dl class="terms" aria-label="What each symbol means">
+          <div><dt>\(\nu\)</dt><dd>the frequency of the light, in s<sup>−1</sup> (Hz)</dd></div>
+          <div><dt>\(\lambda\)</dt><dd>the wavelength, here 500 nm, which is \(500 \times 10^{-9}\) m</dd></div>
+          <div><dt>\(c\)</dt><dd>the speed of light, \(2.998 \times 10^{8}\ \text{m s}^{-1}\)</dd></div>
+          <div><dt>\(h\)</dt><dd>Planck’s constant, \(6.626 \times 10^{-34}\ \text{J s}\)</dd></div>
           <div><dt>\(E\)</dt><dd>energy of one photon, in joules (J): the energy a single molecule absorbs when it takes in one photon of this light</dd></div>
           <div><dt>\(N_{\text{A}}\)</dt><dd>Avogadro’s number, \(6.022 \times 10^{23}\ \text{mol}^{-1}\): the number of photons (or molecules) in one mole</dd></div>
           <div><dt>\(E_{\text{mol}}\)</dt><dd>energy of one mole of photons, \(E \times N_{\text{A}}\), in kJ mol<sup>−1</sup> (\(2.39 \times 10^{5}\) J mol<sup>−1</sup> = 239 kJ mol<sup>−1</sup>): the same unit as bond energies, so the two can be compared directly</dd></div>
@@ -502,7 +512,7 @@ footer .wrap{padding-block:20px 48px}
       </tbody>
     </table></div>
     <p class="swipehint tblw">Swipe the table sideways to see every column; the first column stays in place.</p>
-    <p class="src-line">Every row follows from \(c = \lambda\nu\) and \(E = hc/\lambda\) applied to the boundary wavelengths. Region boundaries follow Skoog, Holler and Crouch and the NASA spectrum tour; constants are CODATA values. <a href="references.html">References 1, 4 and 9.</a></p>
+    <p class="src-line">Every row follows from \(c = \lambda\nu\) and \(E = hc/\lambda\) applied to the boundary wavelengths (\(c\) is the speed of light, \(\lambda\) the wavelength, \(\nu\) the frequency, \(E\) the energy of one photon and \(h\) Planck’s constant). Region boundaries follow Skoog, Holler and Crouch and the NASA spectrum tour; constants are CODATA values. <a href="references.html">References 1, 4 and 9.</a></p>
   </div>
 </section>
 
@@ -564,7 +574,7 @@ footer .wrap{padding-block:20px 48px}
 
     <div class="bench">
       <div class="bhead"><span class="tagi">Interactive · How it is made</span><h3>An antenna making radio waves</h3>
-        <p class="note">Alternating current drives charge up and down the two rods. Each reversal launches a crest (solid) or trough (dashed) of field outward. Raise the frequency: the wavelength shrinks, because \(\lambda\nu\) must always equal \(c\).</p></div>
+        <p class="note">Alternating current drives charge up and down the two rods. Each reversal launches a crest (solid) or trough (dashed) of field outward. Raise the frequency: the wavelength shrinks, because wavelength times frequency, \(\lambda\nu\), must always equal \(c\), the speed of light.</p></div>
       <div class="figscroll"><svg class="plot" id="antSvg" viewBox="0 0 560 240" role="img" aria-label="A dipole antenna fed by an alternating current source. Positive and negative charge swap between the two ends, and curved wavefronts spread to the right."></svg></div><p class="swipehint fig">Swipe the figure sideways to see all of it.</p>
       <div class="controls">
         <label class="ctl slider" for="antF">Oscillator frequency: <output id="antFO"></output>
@@ -583,7 +593,7 @@ footer .wrap{padding-block:20px 48px}
 
     <div class="bench">
       <div class="bhead"><span class="tagi">Interactive · Structure</span><h3>NMR: the energy gap grows with the magnet</h3>
-        <p class="note">Choose a nucleus and a field strength. The two spin states split apart in proportion to \(B_0\); the radio frequency that flips them is the instrument's "MHz" rating. The gap is so small that only a few nuclei per million more sit in the lower state, which is why NMR needs strong magnets and concentrated samples.</p></div>
+        <p class="note">Choose a nucleus and a field strength. The two spin states split apart in proportion to the field strength \(B_0\); the radio frequency that flips them is the instrument's "MHz" rating. The gap is so small that only a few nuclei per million more sit in the lower state, which is why NMR needs strong magnets and concentrated samples.</p></div>
       <div class="bench-grid">
         <div class="figscroll"><svg class="plot" id="nmrSvg" data-kmax="1.2" viewBox="0 0 520 290" role="img" aria-label="Energy of the two nuclear spin states versus magnetic field. The lines start together at zero field and spread apart as the field grows. An arrow marks the gap at the chosen field."></svg></div><p class="swipehint fig">Swipe the figure sideways to see all of it.</p>
         <div style="display:grid;gap:12px">
@@ -632,11 +642,21 @@ footer .wrap{padding-block:20px 48px}
       <div class="card struct">
         <span class="klabel">What it tells us about structure</span>
         <h3>Bond lengths from rotation, and unpaired electrons</h3>
-        <p><b>Rotational (microwave) spectroscopy</b> measures bond lengths more precisely than almost any other method. The lines of a diatomic molecule are evenly spaced by \(2B\), and the rotational constant \(B\) depends on the moment of inertia \(I = \mu r^2\). Measure the spacing, solve for \(r\).</p>
+        <p><b>Rotational (microwave) spectroscopy</b> measures bond lengths more precisely than almost any other method. The lines of a diatomic molecule are evenly spaced by \(2B\), and the rotational constant \(B\) depends on the moment of inertia \(I = \mu r^2\), where \(\mu\) is the reduced mass of the two atoms and \(r\) is the bond length. Measure the spacing, solve for \(r\).</p>
         <div class="example"><b>Carbon monoxide.</b> Lines 3.845 cm<sup>−1</sup> apart give \(B = 1.9225\ \text{cm}^{-1}\). Use \(c = 2.998 \times 10^{10}\ \text{cm s}^{-1}\) so the centimeters cancel.
           \[ I = \frac{h}{8\pi^2 c B} = 1.456 \times 10^{-46}\ \text{kg m}^2 \]
           \[ \mu = \frac{m_{\text{C}}\, m_{\text{O}}}{m_{\text{C}} + m_{\text{O}}} = 1.1385 \times 10^{-26}\ \text{kg} \]
-          \[ r = \sqrt{\frac{I}{\mu}} = \sqrt{\frac{1.456 \times 10^{-46}\ \text{kg m}^2}{1.1385 \times 10^{-26}\ \text{kg}}} = 1.131 \times 10^{-10}\ \text{m} = 113\ \text{pm} \]</div>
+          \[ r = \sqrt{\frac{I}{\mu}} = \sqrt{\frac{1.456 \times 10^{-46}\ \text{kg m}^2}{1.1385 \times 10^{-26}\ \text{kg}}} = 1.131 \times 10^{-10}\ \text{m} = 113\ \text{pm} \]
+          <dl class="terms" aria-label="What each symbol means">
+            <div><dt>\(I\)</dt><dd>the moment of inertia of the molecule, in kg m<sup>2</sup></dd></div>
+            <div><dt>\(h\)</dt><dd>Planck’s constant, \(6.626 \times 10^{-34}\ \text{J s}\)</dd></div>
+            <div><dt>\(c\)</dt><dd>the speed of light, in cm s<sup>−1</sup> here</dd></div>
+            <div><dt>\(B\)</dt><dd>the rotational constant, half the line spacing: 3.845 cm<sup>−1</sup> ÷ 2</dd></div>
+            <div><dt>\(\mu\)</dt><dd>the reduced mass of the two atoms, in kg</dd></div>
+            <div><dt>\(m_{\text{C}}, m_{\text{O}}\)</dt><dd>the masses of one carbon-12 atom, \(1.993 \times 10^{-26}\) kg, and one oxygen-16 atom, \(2.656 \times 10^{-26}\) kg</dd></div>
+            <div><dt>\(r\)</dt><dd>the C–O bond length, in m (1 pm = 10<sup>−12</sup> m)</dd></div>
+          </dl>
+        </div>
         <p>Radio astronomers identify molecules in interstellar clouds (CO, H<sub>2</sub>O, HCN, even ethanol) from their rotational lines.</p>
         <p><b>Electron paramagnetic resonance (EPR)</b>, at about 9.5 GHz in a 0.34 T field, detects unpaired electrons: free radicals and metal ions such as Cu<sup>2+</sup> and Fe<sup>3+</sup>. The splitting pattern shows which nuclei the unpaired electron sits near.</p>
       </div>
@@ -688,8 +708,8 @@ footer .wrap{padding-block:20px 48px}
         <span class="klabel">Common question</span>
         <h3>Is microwaved food bad for your health?</h3>
         <p><b>No.</b> A microwave oven only heats food. It does not make food radioactive or change it in some special way. A 2.45 GHz photon carries about 10<sup>−5</sup> eV: more than a hundred thousand times too little to break a chemical bond, and far too little to knock out an electron. The microwaves are gone the instant the oven switches off.</p>
-        <p>Because it cooks quickly with little water, microwaving keeps as many vitamins as other cooking methods, and often more than boiling, which washes vitamin C and some B vitamins out into the water.</p>
-        <p>What does deserve care:</p>
+        <p>Because it cooks quickly with little water, microwaving keeps as many vitamins as other cooking methods, and often more effectively than boiling, which washes vitamin C and some B vitamins out into the water.</p>
+        <p><u style="text-underline-offset:3px">What deserves care</u>:</p>
         <ul>
           <li><b>Cold spots.</b> Food heats unevenly, and bacteria can survive in the cool parts. Stir, let it stand for a minute, and heat leftovers until they reach 74 °C (165 °F) all the way through.</li>
           <li><b>Containers.</b> Use glass, ceramic, or plastic labeled microwave-safe. Other plastics can warp, melt or let small amounts of chemicals pass into food, especially fatty food.</li>
@@ -727,6 +747,7 @@ footer .wrap{padding-block:20px 48px}
       <span class="klabel">Balanced equation</span>
       <p class="note">Microwave photons are far too weak to break bonds (about 0.001 kJ/mol at 2.45 GHz, against about 350 kJ/mol for a C–C bond), but microwave heating speeds reactions up. Analytical labs use <b>sealed-vessel microwave digestion</b> to dissolve soil, tissue or alloy samples in hot nitric acid before trace-metal analysis by ICP. For copper:</p>
       \[ \ce{3Cu(s) + 8HNO3(aq) -> 3Cu(NO3)2(aq) + 2NO(g) + 4H2O(l)} \]
+      <p class="note">HNO<sub>3</sub> is nitric acid, Cu(NO<sub>3</sub>)<sub>2</sub> is copper(II) nitrate and NO is nitrogen monoxide (nitric oxide). The state symbols (s), (aq), (g) and (l) mean solid, dissolved in water, gas and liquid.</p>
     </div>
   </div>
 </section>
@@ -747,6 +768,13 @@ footer .wrap{padding-block:20px 48px}
         <p>A bond behaves like a spring joining two masses. Stiffer bonds (larger force constant \(k\)) and lighter atoms (smaller reduced mass \(\mu\)) vibrate at higher wavenumbers:</p>
         <div class="formula">\[ \tilde{\nu} = \frac{1}{2\pi c}\sqrt{\frac{k}{\mu}} \]</div>
         <div class="formula">\[ \mu = \frac{m_1 m_2}{m_1 + m_2} \]</div>
+        <dl class="terms" aria-label="What each symbol means">
+          <div><dt>\(\tilde{\nu}\)</dt><dd>the wavenumber of the vibration, in cm<sup>−1</sup></dd></div>
+          <div><dt>\(c\)</dt><dd>the speed of light, \(2.998 \times 10^{10}\ \text{cm s}^{-1}\), so that \(\tilde{\nu}\) comes out in cm<sup>−1</sup></dd></div>
+          <div><dt>\(k\)</dt><dd>the force constant: how stiff the bond is, in N m<sup>−1</sup></dd></div>
+          <div><dt>\(\mu\)</dt><dd>the reduced mass of the two bonded atoms, in kg</dd></div>
+          <div><dt>\(m_1, m_2\)</dt><dd>the masses of the two atoms</dd></div>
+        </dl>
         <div class="tbl"><table>
           <thead><tr><th>Bond</th><th>\(\tilde{\nu}\) (cm<sup>−1</sup>)</th><th>Look for</th></tr></thead>
           <tbody>
@@ -765,7 +793,7 @@ footer .wrap{padding-block:20px 48px}
       <div class="card make">
         <span class="klabel" style="color:var(--muted)">How it is made</span>
         <h3>Hot objects, lasers and flames</h3>
-        <p><b>Heat.</b> In a hot solid the atoms jiggle, and their vibrating charges radiate a broad, continuous spectrum called blackbody radiation. The hotter the object, the shorter the wavelength of peak output (Wien's law): \(\lambda_{\max} = \dfrac{2.898 \times 10^{-3}\ \text{m}\cdot\text{K}}{T}\).</p>
+        <p><b>Heat.</b> In a hot solid the atoms jiggle, and their vibrating charges radiate a broad, continuous spectrum called blackbody radiation. The hotter the object, the shorter the wavelength of peak output (Wien's law): \(\lambda_{\max} = \dfrac{2.898 \times 10^{-3}\ \text{m}\cdot\text{K}}{T}\), where \(T\) is the temperature in kelvin (K) and \(\lambda_{\max}\) is the wavelength of peak output, in meters.</p>
         <p>IR spectrometers use electrically heated sources:</p>
         <ul>
           <li><b>Globar:</b> a silicon carbide rod at about 1500 K.</li>
@@ -791,7 +819,7 @@ footer .wrap{padding-block:20px 48px}
 
     <div class="bench">
       <div class="bhead"><span class="tagi">Interactive · How it is made</span><h3>Heat makes infrared: blackbody sources</h3>
-        <p class="note">Set the temperature of a hot object. The curve shows how its emitted light spreads over wavelength (each curve scaled to its own peak). Below about 800 K almost everything is infrared; even a tungsten bulb at 3000 K puts most of its output into infrared, not light.</p></div>
+        <p class="note">Set the temperature of a hot object. The curve shows how its emitted light spreads over wavelength (each curve scaled to its own peak). Below about 800 K almost everything is infrared; even a tungsten bulb at 3000 K puts most of its output into infrared, not light. The power readout uses the Stefan–Boltzmann law, \(P = \sigma T^4\): the power given off by each square meter of surface, where \(\sigma = 5.670 \times 10^{-8}\ \text{W m}^{-2}\,\text{K}^{-4}\) is the Stefan–Boltzmann constant and \(T\) is the temperature in kelvin.</p></div>
       <div class="bench-grid">
         <div class="figscroll"><svg class="plot" id="bbSvg" data-kmax="1.2" viewBox="0 0 560 290" role="img" aria-label="Blackbody emission curve on a logarithmic wavelength axis from 0.1 to 100 micrometers, with the visible band shaded and the peak wavelength marked."></svg></div><p class="swipehint fig">Swipe the figure sideways to see all of it.</p>
         <div style="display:grid;gap:12px">
@@ -803,10 +831,52 @@ footer .wrap{padding-block:20px 48px}
       </div>
     </div>
 
+    <div class="bench">
+      <div class="bhead"><span class="tagi">Interactive · Where infrared is used</span><h3>Infrared therapy: warming tissue to ease pain</h3>
+        <p class="note">Heat lamps, infrared saunas, and red or near-infrared LED and laser devices are all used to ease aching muscles and stiff joints. The body absorbs the radiation and it turns into heat. Warmth widens small blood vessels, so more blood flows through the area; tight muscles relax, and nerves send fewer pain signals. How deep the energy goes depends on the wavelength: near-infrared slips a few millimeters into the skin, while longer infrared is soaked up by water at the very surface. Pick a source to see where its energy ends up.</p></div>
+      <div class="seg" id="itSel" role="group" aria-label="Infrared source"></div>
+      <div class="figscroll"><svg class="plot" id="itSvg" viewBox="0 0 560 300" role="img" aria-label="A cross-section of skin: the thin epidermis, the dermis down to about 2 millimeters, fat, and muscle below. A beam from the chosen source enters from above and fades with depth: near-infrared reaches 2 to 4 millimeters, red light 1 to 2, and mid- and far-infrared are absorbed within a small fraction of a millimeter at the surface."></svg></div><p class="swipehint fig">Swipe the figure sideways to see all of it.</p>
+      <p class="note">About two-thirds of the energy is absorbed above the dashed line (the 1/e depth). The depths are rough and vary from person to person.</p>
+      <div class="statgrid" id="itRo"></div>
+      <p class="note"><b>Safety.</b> Infrared can burn the skin and, over long exposure, harm the eyes (glassblowers once developed cataracts from years of staring into hot furnaces), so never look into an infrared lamp or laser. People with reduced feeling in their skin, for example from diabetes, should take extra care. For a fresh injury with swelling, cold is usually better than heat for the first day or two.</p>
+    </div>
+
+    <div class="bench">
+      <div class="bhead"><span class="tagi">Interactive · Where infrared is used</span><h3>Seeing in the dark</h3>
+        <p class="note">Everything warm gives off infrared, and the warmer it is, the more it gives off (the blackbody curve above). Our eyes cannot detect it, but a thermal camera can, and some animals have heat sensors of their own. Here is a moonless night in the woods: a fox, an owl on a branch, a mouse, and a rattlesnake hunting it. Compare what each kind of “eye” picks up.</p></div>
+      <div class="seg" id="nvSel" role="group" aria-label="How to look"></div>
+      <div class="figscroll"><svg class="plot" id="nvSvg" viewBox="0 0 560 320" role="img" aria-label="A night scene in the woods with a fox, an owl on a branch, a mouse and a rattlesnake, shown four ways: as the eye sees it (almost black), through a thermal camera (the warm fox, mouse and owl's face glow in false color while the cold-blooded snake nearly vanishes), through night-vision goggles (a green image in which leaves look bright and the fox's eyes shine), and as a pit viper's fuzzy heat picture in which the mouse stands out."></svg></div><p class="swipehint fig">Swipe the figure sideways to see all of it.</p>
+      <div class="stepcap" id="nvCap" aria-live="polite"></div>
+    </div>
+
+    <div class="two">
+      <div class="card struct">
+        <span class="klabel">Common question</span>
+        <h3>How do some animals sense heat?</h3>
+        <ul>
+          <li><b>Pit vipers</b> (rattlesnakes, copperheads) have a pit between each eye and nostril. Inside, a membrane only about 15 µm thick hangs over an air space, so the infrared from warm prey warms it quickly. Heat-sensitive nerve endings in the membrane fire, and the snake’s brain merges this fuzzy heat picture with what its eyes see. Boas and pythons have similar pits along their lips, which evolved separately.</li>
+          <li><b>Vampire bats</b> have heat-sensing pits around the nose. Up close, they help the bat find spots where warm blood flows just under the skin.</li>
+          <li><b>Fire-chaser beetles</b> carry infrared sensors on their bodies and fly toward forest fires from many kilometers away, to lay their eggs in freshly burnt trees.</li>
+        </ul>
+        <p class="why"><b>Why can’t our eyes do this?</b> The pigment in the retina needs a photon of at least about 1.7 eV, the energy of deep red light. Infrared near 10 µm, where warm bodies glow most, carries only about 0.12 eV per photon. And an eye at 37 °C glows in that same infrared, which would swamp any image. Heat-sensing animals use separate, insulated organs that feel warming rather than catching single photons.</p>
+      </div>
+      <div class="card struct">
+        <span class="klabel">Common question</span>
+        <h3>What do we really see in the dark?</h3>
+        <p><b>With a thermal camera,</b> we see a map of how much infrared each surface gives off, which mostly tracks its temperature: brighter means warmer. The colors are not real. The camera assigns them, and the same scene can be shown in grey or in any palette.</p>
+        <ul>
+          <li><b>Glass blocks it.</b> Ordinary glass absorbs long-wave infrared, so a thermal camera cannot see through a window, and a person’s glasses look dark. Smoke, though, lets it through better than visible light, which is why firefighters use these cameras.</li>
+          <li><b>Shiny metal fools it.</b> Polished metal gives off little infrared and reflects its surroundings, so a hot, shiny pan can look cool. How well a surface gives off infrared is called its emissivity.</li>
+          <li><b>Night-vision goggles and trail cameras are different.</b> They see reflected light, often near-infrared from their own infrared lamp. An 850 nm lamp glows faintly red to us; at 940 nm it is invisible to people and to most animals.</li>
+        </ul>
+      </div>
+    </div>
+
     <div class="eqn">
       <span class="klabel">Balanced equation</span>
       \[ \ce{CH4(g) + 2O2(g) -> CO2(g) + 2H2O(g)} \]
       \[ \Delta H^{\degree} = -802\ \text{kJ mol}^{-1} \]
+      <p class="note">\(\Delta H^{\degree}\) is the standard enthalpy change: the heat taken in when one mole of methane burns, with everything at standard conditions (the ° sign). The minus sign means 802 kJ of heat is given out. (g) marks a gas.</p>
       <p class="note">The hot CO<sub>2</sub> from a flame emits strongly at 4.3 µm (its asymmetric stretch, 2349 cm<sup>−1</sup>), which is why industrial flame detectors watch that wavelength. The same molecule absorbs Earth's outgoing infrared at 15 µm (its bend, 667 cm<sup>−1</sup>): the greenhouse effect.</p>
     </div>
   </div>
@@ -825,8 +895,8 @@ footer .wrap{padding-block:20px 48px}
       <div class="card struct">
         <span class="klabel">What it tells us about structure</span>
         <h3>Color, concentration and the identity of elements</h3>
-        <p><b>UV-visible absorption spectrophotometry.</b> The wavelength of strongest absorption (\(\lambda_{\max}\)) identifies the light-absorbing group, and Beer's law, \(A = \varepsilon b c\), turns absorbance into concentration. It is the most common quantitative method in analytical and clinical labs.</p>
-        <p><b>Transition-metal complexes.</b> [Ti(H<sub>2</sub>O)<sub>6</sub>]<sup>3+</sup> absorbs near 500 nm (green) and looks purple. The absorbed energy is the d-orbital splitting, \(\Delta_{\text{o}} = hcN_{\text{A}}/\lambda \approx 240\ \text{kJ mol}^{-1}\), which ranks how strongly each ligand binds.</p>
+        <p><b>UV-visible absorption spectrophotometry.</b> The wavelength of strongest absorption (\(\lambda_{\max}\)) identifies the light-absorbing group, and Beer's law, \(A = \varepsilon b c\), turns absorbance into concentration. Here \(A\) is the absorbance, \(\varepsilon\) the molar absorptivity (how strongly the substance absorbs, in L mol<sup>−1</sup> cm<sup>−1</sup>), \(b\) the path length of light through the sample (in cm) and \(c\) the concentration (in mol L<sup>−1</sup>; this \(c\) is not the speed of light). It is the most common quantitative method in analytical and clinical labs.</p>
+        <p><b>Transition-metal complexes.</b> [Ti(H<sub>2</sub>O)<sub>6</sub>]<sup>3+</sup> absorbs near 500 nm (green) and looks purple. The absorbed energy is the d-orbital splitting, \(\Delta_{\text{o}} = hcN_{\text{A}}/\lambda \approx 240\ \text{kJ mol}^{-1}\), which ranks how strongly each ligand binds. (\(\Delta_{\text{o}}\) is the splitting in an octahedral complex; \(h\) is Planck’s constant, \(c\) the speed of light, \(N_{\text{A}}\) Avogadro’s number and \(\lambda\) = 500 nm, the wavelength absorbed.)</p>
         <p><b>Atomic emission and absorption.</b> Each element emits its own set of wavelengths. Flame tests, atomic absorption (AAS) and ICP optical emission identify metals and measure them down to parts per billion. Helium was found in the Sun's spectrum in 1868, decades before anyone found it on Earth.</p>
       </div>
       <div class="card make">
@@ -846,7 +916,7 @@ footer .wrap{padding-block:20px 48px}
 
     <div class="bench">
       <div class="bhead"><span class="tagi">Animation · How each color is made</span><h3>Watch a hydrogen atom make its colors</h3>
-        <p class="note">In a hydrogen discharge tube, collisions keep lifting electrons from the ground state (n = 1) to higher levels. When an electron falls from n = 3, 4, 5 or 6 back to n = 2, the atom emits one photon of visible light whose energy is exactly the gap between the two levels, \(\Delta E = E_{\text{upper}} - E_{\text{lower}}\), so its wavelength is \(\lambda = hc/\Delta E\). The bigger the drop, the shorter the wavelength: 3 → 2 gives red, 6 → 2 gives violet. The final drop, 2 → 1, releases an ultraviolet photon that our eyes cannot see. The motion is slowed ten to a hundred million times; a real excited atom emits within about 10 to 100 ns.</p></div>
+        <p class="note">In a hydrogen discharge tube, collisions keep lifting electrons from the ground state (n = 1) to higher levels. When an electron falls from n = 3, 4, 5 or 6 back to n = 2, the atom emits one photon of visible light whose energy is exactly the gap between the two levels, \(\Delta E = E_{\text{upper}} - E_{\text{lower}}\), so its wavelength is \(\lambda = hc/\Delta E\), where \(h\) is Planck’s constant and \(c\) the speed of light. The bigger the drop, the shorter the wavelength: 3 → 2 gives red, 6 → 2 gives violet. The final drop, 2 → 1, releases an ultraviolet photon that our eyes cannot see. The motion is slowed ten to a hundred million times; a real excited atom emits within about 10 to 100 ns.</p></div>
       <div class="seg" id="haSel" role="group" aria-label="Which transition to show"></div>
       <div class="figscroll"><svg class="plot" id="haSvg" viewBox="0 0 560 390" role="img" aria-label="Animation of a hydrogen atom on a dark background, with its electron shells drawn as soft glowing clouds; the occupied shell glows brightest. A fast electron hits the atom and lifts its electron from n = 1 to a higher level. The electron then drops to n = 2 and emits a colored photon, which travels to a spectroscope strip and lights up a line at its wavelength: red 656 nm for 3 to 2, cyan 486 nm for 4 to 2, blue-violet 434 nm for 5 to 2 and violet 410 nm for 6 to 2. A final drop from n = 2 to n = 1 emits an ultraviolet photon. An energy-level ladder beside the atom shows each jump."></svg></div><p class="swipehint fig">Swipe the figure sideways to see all of it.</p>
       <div class="stepcap" id="haCap" aria-live="polite"></div>
@@ -859,7 +929,7 @@ footer .wrap{padding-block:20px 48px}
 
     <div class="bench">
       <div class="bhead"><span class="tagi">Interactive · How it is made and what it identifies</span><h3>The hydrogen fingerprint</h3>
-        <p class="note">An electron in a hydrogen atom can only have the energies \(E_n = -2.179 \times 10^{-18}\ \text{J}/n^2\). When it drops from level \(n_i\) to \(n_f\), it emits one photon with exactly the difference. Drops to \(n = 2\) give the four visible Balmer lines; drops to \(n = 1\) are ultraviolet and to \(n = 3\) are infrared. Pick a transition with the buttons or tap an arrow.</p></div>
+        <p class="note">An electron in a hydrogen atom can only have the energies \(E_n = -2.179 \times 10^{-18}\ \text{J}/n^2\), where \(n = 1, 2, 3, \ldots\) is the level, called the principal quantum number. When it drops from an upper level \(n_i\) (i for initial) to a lower level \(n_f\) (f for final), it emits one photon with exactly the difference. Drops to \(n = 2\) give the four visible Balmer lines; drops to \(n = 1\) are ultraviolet and to \(n = 3\) are infrared. Pick a transition with the buttons or tap an arrow.</p></div>
       <div class="bench-grid">
         <div style="display:grid;gap:10px">
           <div class="figscroll"><svg class="plot" id="hSvg" data-kmax="1.3" viewBox="0 0 560 380" role="img" aria-label="Energy levels of the hydrogen atom from n equals 1 to 7 with downward arrows for the Lyman, Balmer and Paschen series. The selected transition is highlighted."></svg></div><p class="swipehint fig">Swipe the figure sideways to see all of it.</p>
@@ -875,13 +945,16 @@ footer .wrap{padding-block:20px 48px}
 
     <div class="eqn">
       <span class="klabel">Balanced equations</span>
+      <p class="note">In these equations an asterisk (*) marks an atom or molecule in an excited state, \(h\nu\) is a photon of frequency \(\nu\), and (g) marks a gas.</p>
       <div class="eqrow"><p class="note"><b>Flame emission of sodium.</b> Heat lifts the 3s electron to 3p; the drop back gives the yellow 589 nm line.</p>
         \[ \ce{Na(g) ->[heat] Na^{*}(g)} \]
         \[ \ce{Na^{*}(g) -> Na(g) + $h\nu$} \quad (\lambda = 589\ \text{nm}) \]</div>
       <div class="eqrow"><p class="note"><b>Chemiluminescence of luminol.</b> The reaction leaves 3-aminophthalate in an excited state, which emits blue light near 425 nm. Forensic scientists spray it because the iron in hemoglobin catalyzes the reaction, so traces of blood glow.</p>
-        \[ \ce{C8H7N3O2 + 2H2O2 + 2OH- -> C8H5NO4^{2-} + N2 + 4H2O + $h\nu$} \]</div>
+        \[ \ce{C8H7N3O2 + 2H2O2 + 2OH- -> C8H5NO4^{2-} + N2 + 4H2O + $h\nu$} \]
+        <p class="note">C<sub>8</sub>H<sub>7</sub>N<sub>3</sub>O<sub>2</sub> is luminol, H<sub>2</sub>O<sub>2</sub> is hydrogen peroxide, OH<sup>−</sup> is hydroxide and C<sub>8</sub>H<sub>5</sub>NO<sub>4</sub><sup>2−</sup> is 3-aminophthalate.</p></div>
       <div class="eqrow"><p class="note"><b>Absorbing visible light: photosynthesis.</b> Chlorophyll absorbs red (about 662 nm) and blue (about 430 nm) light, reflects green, and uses the energy to drive this reaction.</p>
-        \[ \ce{6CO2 + 6H2O ->[light][chlorophyll] C6H12O6 + 6O2} \]</div>
+        \[ \ce{6CO2 + 6H2O ->[light][chlorophyll] C6H12O6 + 6O2} \]
+        <p class="note">C<sub>6</sub>H<sub>12</sub>O<sub>6</sub> is glucose.</p></div>
     </div>
   </div>
 </section>
@@ -899,8 +972,8 @@ footer .wrap{padding-block:20px 48px}
       <div class="card struct">
         <span class="klabel">What it tells us about structure</span>
         <h3>Conjugation, aromatic rings and orbital energies</h3>
-        <p><b>UV-vis spectroscopy of conjugated systems.</b> The more C=C bonds alternate with single bonds, the smaller the gap between the highest occupied and lowest unoccupied π orbitals (HOMO and LUMO), and the longer \(\lambda_{\max}\). The interactive below shows this. Benzene rings absorb near 254 nm, which is why HPLC detectors often read at 254 nm.</p>
-        <p><b>Biomolecules.</b> Proteins absorb at 280 nm (the tryptophan and tyrosine rings); DNA and RNA absorb at 260 nm (the bases). A ratio \(A_{260}/A_{280} \approx 1.8\) marks clean DNA.</p>
+        <p><b>UV-vis spectroscopy of conjugated systems.</b> The more C=C bonds alternate with single bonds, the smaller the gap between the highest occupied and lowest unoccupied π orbitals (HOMO and LUMO), and the longer \(\lambda_{\max}\), the wavelength of strongest absorption. The interactive below shows this. Benzene rings absorb near 254 nm, which is why HPLC detectors often read at 254 nm.</p>
+        <p><b>Biomolecules.</b> Proteins absorb at 280 nm (the tryptophan and tyrosine rings); DNA and RNA absorb at 260 nm (the bases). A ratio \(A_{260}/A_{280} \approx 1.8\), the absorbance at 260 nm divided by the absorbance at 280 nm, marks clean DNA.</p>
         <p><b>Photoelectron spectroscopy (UPS).</b> A helium lamp (21.2 eV) knocks valence electrons out of a molecule; their kinetic energies give the energies of the molecular orbitals directly.</p>
       </div>
       <div class="card make">
@@ -938,6 +1011,7 @@ footer .wrap{padding-block:20px 48px}
 
     <div class="eqn">
       <span class="klabel">Balanced equations</span>
+      <p class="note">An asterisk (*) marks an excited atom or molecule, \(h\nu\) is a photon, e<sup>−</sup> is an electron, and D is deuterium (hydrogen-2).</p>
       <div class="eqrow"><p class="note"><b>Deuterium lamp.</b> Electron impact excites D<sub>2</sub>; the excited molecule dissociates and emits a UV photon (160–400 nm).</p>
         \[ \ce{D2 + e- -> D2^{*} + e-} \]
         \[ \ce{D2^{*} -> 2D + $h\nu$} \]</div>
@@ -946,7 +1020,7 @@ footer .wrap{padding-block:20px 48px}
       <div class="eqrow"><p class="note"><b>KrF excimer laser.</b> The excited complex KrF* exists only in the excited state; when it emits, it falls apart.</p>
         \[ \ce{Kr^{*} + F2 -> KrF^{*} + F} \]
         \[ \ce{KrF^{*} -> Kr + F + $h\nu$} \quad (\lambda = 248\ \text{nm}) \]</div>
-      <div class="eqrow"><p class="note"><b>The ozone layer (Chapman cycle).</b> Short UV splits O<sub>2</sub> (the O=O bond, 498 kJ/mol, matches 240 nm); ozone then absorbs longer UV. The net effect turns harmful UV into heat in the stratosphere.</p>
+      <div class="eqrow"><p class="note"><b>The ozone layer (Chapman cycle).</b> Short UV splits O<sub>2</sub> (the O=O bond, 498 kJ/mol, matches 240 nm) into single oxygen atoms, O; ozone, O<sub>3</sub>, then absorbs longer UV. The net effect turns harmful UV into heat in the stratosphere.</p>
         \[ \ce{O2 + $h\nu$ -> 2O} \quad (\lambda < 242\ \text{nm}) \]
         \[ \ce{O + O2 -> O3} \]
         \[ \ce{O3 + $h\nu$ -> O2 + O} \quad (\lambda < 320\ \text{nm}) \]</div>
@@ -969,8 +1043,14 @@ footer .wrap{padding-block:20px 48px}
         <h3>Where every atom sits, and which elements are present</h3>
         <p><b>X-ray crystallography.</b> X-rays scattered by parallel planes of atoms reinforce each other only at angles where the extra path is a whole number of wavelengths (Bragg's law). From the angles and intensities of thousands of diffracted spots, a computer rebuilds the electron density and places every atom: bond lengths, bond angles, the shape of an enzyme's active site. Rosalind Franklin's diffraction photograph of DNA (1952) revealed its helix. Powder diffraction (XRD) identifies crystalline phases, such as which crystal form of a drug is in a tablet.</p>
         <div class="formula">\[ n\lambda = 2d\sin\theta \]</div>
-        <p><b>X-ray fluorescence (XRF).</b> Knock out a core electron and the atom emits X-rays at energies unique to the element (Moseley's law, \(\sqrt{\nu} \propto (Z - 1)\)). Handheld XRF analyzers check alloys, lead in paint, and the pigments in paintings without damaging them.</p>
-        <p><b>X-ray photoelectron spectroscopy (XPS).</b> \(E_{\text{binding}} = h\nu - E_{\text{kinetic}} - \varphi\), where \(\varphi\) is the spectrometer's work function. The binding energy of the ejected electron identifies the element and its oxidation state: the Fe 2p peak shifts between Fe metal, Fe<sup>2+</sup> and Fe<sup>3+</sup>.</p>
+        <dl class="terms" aria-label="What each symbol means">
+          <div><dt>\(n\)</dt><dd>the order of the reflection, a whole number (1, 2, 3, …)</dd></div>
+          <div><dt>\(\lambda\)</dt><dd>the wavelength of the X-rays</dd></div>
+          <div><dt>\(d\)</dt><dd>the spacing between neighboring planes of atoms in the crystal</dd></div>
+          <div><dt>\(\theta\)</dt><dd>the angle between the X-ray beam and the planes</dd></div>
+        </dl>
+        <p><b>X-ray fluorescence (XRF).</b> Knock out a core electron and the atom emits X-rays at energies unique to the element (Moseley's law, \(\sqrt{\nu} \propto (Z - 1)\), where \(\nu\) is the frequency of the element’s K\(\alpha\) X-ray, \(Z\) its atomic number, and \(\propto\) means “is proportional to”). Handheld XRF analyzers check alloys, lead in paint, and the pigments in paintings without damaging them.</p>
+        <p><b>X-ray photoelectron spectroscopy (XPS).</b> \(E_{\text{binding}} = h\nu - E_{\text{kinetic}} - \varphi\), where \(E_{\text{binding}}\) is the energy holding the electron in its orbital, \(h\nu\) the energy of the X-ray photon, \(E_{\text{kinetic}}\) the measured kinetic energy of the ejected electron, and \(\varphi\) the spectrometer's work function. The binding energy of the ejected electron identifies the element and its oxidation state: the Fe 2p peak shifts between Fe metal, Fe<sup>2+</sup> and Fe<sup>3+</sup>.</p>
       </div>
       <div class="card make">
         <span class="klabel" style="color:var(--muted)">How it is made</span>
@@ -1002,7 +1082,7 @@ footer .wrap{padding-block:20px 48px}
 
     <div class="bench">
       <div class="bhead"><span class="tagi">Interactive · How it is made</span><h3>The spectrum from an X-ray tube</h3>
-        <p class="note">Raise the voltage: the short-wavelength limit \(\lambda_{\min} = hc/(eV)\) moves left, because no photon can carry more than one electron's energy. The sharp K<sub>α</sub> and K<sub>β</sub> lines appear only once the electrons have enough energy to empty the K shell of the target, and their positions depend on the target, not the voltage. Each curve is scaled to its own tallest point.</p></div>
+        <p class="note">Raise the voltage: the short-wavelength limit \(\lambda_{\min} = hc/(eV)\) (\(e\) is the charge of an electron and \(V\) the tube voltage) moves left, because no photon can carry more than one electron's energy. The sharp K<sub>α</sub> and K<sub>β</sub> lines appear only once the electrons have enough energy to empty the K shell of the target, and their positions depend on the target, not the voltage. Each curve is scaled to its own tallest point.</p></div>
       <div class="bench-grid">
         <div class="figscroll"><svg class="plot" id="xrSvg" data-kmax="1.2" viewBox="0 0 560 290" role="img" aria-label="X-ray tube output: intensity versus wavelength from 0 to 0.26 nanometers, showing a smooth continuum starting at a minimum wavelength, with sharp characteristic peaks when the voltage is high enough."></svg></div><p class="swipehint fig">Swipe the figure sideways to see all of it.</p>
         <div style="display:grid;gap:12px;align-content:start">
@@ -1025,7 +1105,7 @@ footer .wrap{padding-block:20px 48px}
         <div class="example" style="align-self:center"><b>Worked example: table salt.</b> The (200) planes of NaCl are \(d = 282\) pm apart. With Cu K<sub>α</sub> X-rays (\(\lambda = 154\) pm), the first-order reflection (\(n = 1\)) appears at
           \[ \sin\theta = \frac{\lambda}{2d} = \frac{154\ \text{pm}}{2(282\ \text{pm})} = 0.273 \]
           \[ \theta = 15.8\degree, \quad 2\theta = 31.7\degree \]
-          A powder diffractometer reports this peak at \(2\theta = 31.7\degree\). Measuring the angle and knowing \(\lambda\) gives \(d\), and many such spacings give the crystal structure.</div>
+          A powder diffractometer reports this peak at \(2\theta = 31.7\degree\), the angle between the incoming and the diffracted beams. Measuring the angle and knowing \(\lambda\) gives \(d\), and many such spacings give the crystal structure.</div>
       </div>
     </div>
 
@@ -1034,7 +1114,7 @@ footer .wrap{padding-block:20px 48px}
       <p class="note">X-ray production is physics, not chemistry, but the process still balances in electrons and charge. A fast electron ionizes a copper atom from its K shell (written as a 1s hole, 1s<sup>−1</sup>); then an L electron fills the hole and a K<sub>α</sub> photon leaves.</p>
       \[ \text{Cu} + \text{e}^{-}_{\text{fast}} \rightarrow \text{Cu}^{+}(\text{1s}^{-1}) + 2\,\text{e}^{-} \]
       \[ \text{Cu}^{+}(\text{1s}^{-1}) \rightarrow \text{Cu}^{+}(\text{2p}^{-1}) + h\nu \]
-      <p class="note">The photon is Cu K<sub>α</sub>: \(E = 8.05\ \text{keV}\), \(\lambda = 0.154\ \text{nm}\). The shortest wavelength the tube can make is set by the accelerating voltage \(V\) (\(e\) is the charge of the electron):</p>
+      <p class="note">The photon is Cu K<sub>α</sub>: \(E = 8.05\ \text{keV}\), \(\lambda = 0.154\ \text{nm}\). The shortest wavelength the tube can make is set by the accelerating voltage \(V\) (\(e\) is the charge of the electron; \(h\) is Planck’s constant and \(c\) the speed of light):</p>
       \[ \lambda_{\min} = \frac{hc}{eV} = \frac{1.240\ \text{nm}\cdot\text{kV}}{V} \]
     </div>
   </div>
@@ -1093,6 +1173,16 @@ footer .wrap{padding-block:20px 48px}
     <div class="eqn">
       <span class="klabel">Balanced nuclear equations</span>
       <p class="note">In a nuclear equation, mass numbers (top) and atomic numbers (bottom) must each add up to the same total on both sides. A gamma photon has neither, so it changes only the energy.</p>
+      <dl class="terms" aria-label="What each symbol means">
+        <div><dt>\(^{A}_{Z}\text{X}\)</dt><dd>a nucleus of element X: the mass number \(A\) (protons plus neutrons) on top, the atomic number \(Z\) (protons) below</dd></div>
+        <div><dt>\(^{1}_{0}\text{n}\)</dt><dd>a neutron</dd></div>
+        <div><dt>\(^{\;\,0}_{-1}\text{e}\)</dt><dd>a beta particle: an electron made in the nucleus and thrown out of it</dd></div>
+        <div><dt>\(^{\;\,0}_{+1}\text{e}\)</dt><dd>a positron, the antimatter partner of the electron</dd></div>
+        <div><dt>\(\bar{\nu}_{\text{e}},\ \nu_{\text{e}}\)</dt><dd>an electron antineutrino and an electron neutrino: uncharged, nearly massless particles that carry off part of the energy of beta decay</dd></div>
+        <div><dt>\(\gamma\)</dt><dd>a gamma-ray photon</dd></div>
+        <div><dt>*</dt><dd>an excited nucleus, which then gives off a gamma ray</dd></div>
+        <div><dt>m</dt><dd>metastable: an excited nucleus that lasts unusually long, as in <sup>99m</sup>Tc (half-life 6.0 h)</dd></div>
+      </dl>
       <div class="eqrow"><p class="note"><b>Making and decaying cobalt-60.</b> Neutron capture in a reactor, beta decay to excited nickel (marked *), then two gammas of 1.173 and 1.333 MeV.</p>
         \[ \ce{^{59}_{27}Co + ^{1}_{0}n -> ^{60}_{27}Co} \]
         \[ \ce{^{60}_{27}Co -> ^{60}_{28}Ni^{*} + ^{0}_{-1}e + $\bar{\nu}_{\text{e}}$} \]
@@ -1146,24 +1236,41 @@ footer .wrap{padding-block:20px 48px}
     </div>
     <div class="gloss-tools"><input type="search" class="gloss-search" placeholder="Search terms…" aria-label="Search the glossary"><span class="gloss-count"></span></div>
     <dl class="gloss">
+      <div id="g-absorbance"><dt>Absorbance, \(A\)</dt><dd>How much light a sample absorbs: \(A = \log_{10}(I_0/I)\), where \(I_0\) is the light going in and \(I\) the light coming out. It rises in step with concentration (Beer’s law). \(A_{260}/A_{280}\) is the ratio of the absorbances at 260 nm and 280 nm.</dd></div>
       <div id="g-absorption"><dt>Absorption and emission</dt><dd>An atom or molecule absorbs a photon when it uses the photon’s energy to jump to a higher energy level, and emits a photon when it drops back down. Either way the photon’s energy equals the gap between the two levels, \(\Delta E = h\nu\).</dd></div>
       <div id="g-annihilation"><dt>Annihilation</dt><dd>When a positron (the antimatter partner of the electron) meets an electron, both disappear and their mass becomes two gamma-ray photons of 511 keV each, flying off in opposite directions.</dd></div>
       <div id="g-antenna"><dt>Antenna</dt><dd>A rod, wire or coil that turns an alternating current into radio waves, or radio waves back into a current. It works best when it is about a quarter or a half of a wavelength long.</dd></div>
       <div id="g-arc"><dt>Arcing (sparks)</dt><dd>A spark that jumps through air when the electric field becomes strong enough to tear electrons off air molecules. In a microwave oven it happens at the sharp points and thin edges of metal objects, where charge piles up.</dd></div>
+      <div id="g-atomicnumber"><dt>Atomic number, \(Z\)</dt><dd>The number of protons in an atom’s nucleus, which decides which element it is. In a nuclear symbol it is written at the bottom left, as in \(^{60}_{27}\text{Co}\).</dd></div>
+      <div id="g-avogadro"><dt>Avogadro’s number, \(N_{\text{A}}\)</dt><dd>The number of particles in one mole: \(N_{\text{A}} = 6.022 \times 10^{23}\ \text{mol}^{-1}\). Multiplying the energy of one photon by \(N_{\text{A}}\) gives the energy of a mole of photons, \(E_{\text{mol}}\).</dd></div>
+      <div id="g-beer"><dt>Beer’s law</dt><dd>\(A = \varepsilon b c\): absorbance equals the molar absorptivity \(\varepsilon\) times the path length \(b\) times the concentration \(c\). It lets a UV-visible spectrophotometer measure concentration.</dd></div>
+      <div id="g-beta"><dt>Beta decay</dt><dd>A nucleus turns a neutron into a proton and throws out an electron (a beta particle, \(^{\;\,0}_{-1}\text{e}\)) and an antineutrino. In positron (β<sup>+</sup>) decay a proton becomes a neutron and a positron (\(^{\;\,0}_{+1}\text{e}\)) and a neutrino leave instead.</dd></div>
+      <div id="g-binding"><dt>Binding energy</dt><dd>The energy needed to pull an electron out of its orbital in an atom. In X-ray photoelectron spectroscopy, \(E_{\text{binding}} = h\nu - E_{\text{kinetic}} - \varphi\).</dd></div>
       <div id="g-blackbody"><dt>Blackbody radiation</dt><dd>The glow that any object gives off because of its temperature. The hotter the object, the shorter the wavelength at which it glows most brightly: an electric stove burner glows red, while the much hotter Sun looks white.</dd></div>
-      <div id="g-bragg"><dt>Bragg’s law</dt><dd>\(n\lambda = 2d\sin\theta\). X-rays reflected from neighboring planes of atoms in a crystal reinforce each other only at angles where the extra path, \(2d\sin\theta\), is a whole number of wavelengths. Measuring \(\theta\) gives the spacing \(d\) between the planes.</dd></div>
+      <div id="g-bondlength"><dt>Bond length, \(r\)</dt><dd>The distance between the nuclei of two bonded atoms. For carbon monoxide it is 113 pm.</dd></div>
+      <div id="g-bragg"><dt>Bragg’s law</dt><dd>\(n\lambda = 2d\sin\theta\), where \(n\) is the order (a whole number), \(\lambda\) the X-ray wavelength, \(d\) the spacing between planes of atoms and \(\theta\) the angle between the beam and the planes. X-rays reflected from neighboring planes of atoms in a crystal reinforce each other only at angles where the extra path, \(2d\sin\theta\), is a whole number of wavelengths. Measuring \(\theta\) gives the spacing \(d\). Diffractometers report \(2\theta\), the angle between the incoming and diffracted beams.</dd></div>
       <div id="g-bremsstrahlung"><dt>Bremsstrahlung</dt><dd>German for “braking radiation”: X-rays given off when fast electrons are slowed down by the nuclei of the target in an X-ray tube. It makes the smooth, continuous part of the X-ray spectrum.</dd></div>
       <div id="g-shift"><dt>Chemical shift, \(\delta\)</dt><dd>Where an NMR signal appears, in parts per million (ppm) from the reference compound TMS (tetramethylsilane). Nearby electronegative atoms and π bonds move a hydrogen’s signal to higher \(\delta\).</dd></div>
       <div id="g-conjugation"><dt>Conjugation</dt><dd>A chain of alternating single and double bonds, which lets the π electrons spread over many atoms. The longer the conjugated chain, the smaller the energy gap and the longer the wavelength it absorbs; long chains such as the one in β-carotene absorb visible light and look colored.</dd></div>
+      <div id="g-crystalfield"><dt>Crystal-field splitting, \(\Delta_{\text{o}}\)</dt><dd>The energy gap between two sets of d orbitals of a metal ion surrounded by six ligands (an octahedral complex, hence the “o”). The complex absorbs light whose photons match this gap, which gives many transition-metal compounds their color.</dd></div>
+      <div id="g-deuterium"><dt>Deuterium, D</dt><dd>Hydrogen-2, \(^{2}\text{H}\): a hydrogen isotope whose nucleus holds one proton and one neutron. Deuterium gas, D<sub>2</sub>, gives off ultraviolet light in a deuterium lamp.</dd></div>
       <div id="g-dielectric"><dt>Dielectric heating</dt><dd>Heating by a rapidly alternating electric field that keeps twisting polar molecules, such as water, back and forth; their jostling against their neighbors turns the motion into heat. It is how a microwave oven warms food.</dd></div>
       <div id="g-diffraction"><dt>Diffraction</dt><dd>The spreading and interference of waves that pass through gaps, or scatter from objects, about the size of their wavelength. X-rays diffract from crystals because their wavelength is similar to the spacing between atoms.</dd></div>
       <div id="g-dipole"><dt>Dipole</dt><dd>Equal and opposite charges a small distance apart. A molecular vibration absorbs infrared only if it changes the molecule’s dipole moment; a dipole antenna is a pair of rods whose ends charge up oppositely as the current swings back and forth.</dd></div>
       <div id="g-doppler"><dt>Doppler shift</dt><dd>The change in the frequency of a wave when its source, or the object reflecting it, moves toward or away from you: higher when it approaches, lower when it moves away. Radar uses it to measure speed.</dd></div>
       <div id="g-ev"><dt>Electronvolt, eV</dt><dd>The energy an electron gains moving through a potential difference of one volt: \(1\ \text{eV} = 1.602 \times 10^{-19}\ \text{J}\). A convenient size for one photon: visible photons carry about 1.8 to 3.1 eV.</dd></div>
+      <div id="g-charge"><dt>Elementary charge, \(e\)</dt><dd>The charge of one proton, or (negative) of one electron: \(e = 1.602 \times 10^{-19}\) C. An electron pushed through a voltage \(V\) gains an energy \(eV\).</dd></div>
+      <div id="g-emissivity"><dt>Emissivity</dt><dd>How well a surface gives off infrared compared with a perfect blackbody at the same temperature, from 0 to 1. Skin, wood and paint are close to 1; polished metal is low, so it can look cooler than it is to a thermal camera.</dd></div>
       <div id="g-gap"><dt>Energy gap, \(\Delta E\)</dt><dd>The difference in energy between two levels of an atom, molecule or nucleus, \(\Delta E = E_{\text{upper}} - E_{\text{lower}}\). A photon is absorbed or emitted only if its energy, \(h\nu\), equals this gap. In NMR it is the gap between the two orientations of a spinning nucleus in the magnet, and it grows in proportion to \(B_0\).</dd></div>
+      <div id="g-molenergy"><dt>Energy per mole of photons, \(E_{\text{mol}}\)</dt><dd>The energy of one photon times Avogadro’s number, \(E_{\text{mol}} = E N_{\text{A}}\), usually in kJ mol<sup>−1</sup>, so it can be compared directly with bond energies.</dd></div>
+      <div id="g-enthalpy"><dt>Enthalpy change, \(\Delta H^{\degree}\)</dt><dd>The heat taken in at constant pressure when a reaction happens as written, per mole; the ° sign means standard conditions. A negative value means heat is given out, as when methane burns (−802 kJ mol<sup>−1</sup>).</dd></div>
       <div id="g-epr"><dt>EPR, electron paramagnetic resonance</dt><dd>A technique like NMR, but for unpaired electrons: in a magnetic field of about 0.34 T, an unpaired electron absorbs microwaves near 9.5 GHz. It detects free radicals and metal ions such as Cu<sup>2+</sup> and Fe<sup>3+</sup>.</dd></div>
+      <div id="g-excimer"><dt>Excimer</dt><dd>A molecule, such as KrF, that exists only in an excited state: once it gives off its photon, it falls apart. Excimer lasers use such molecules to make intense ultraviolet light.</dd></div>
+      <div id="g-falsecolor"><dt>False color</dt><dd>Colors added to an image to show something we cannot see, such as temperature in a thermal image. They are chosen by the camera or the person making the picture, not by the radiation itself.</dd></div>
+      <div id="g-forceconstant"><dt>Force constant, \(k\)</dt><dd>The stiffness of a bond pictured as a spring, in N m<sup>−1</sup>. Stiffer bonds (double and triple bonds) have a larger \(k\) and vibrate at higher wavenumbers: \(\tilde{\nu} = \frac{1}{2\pi c}\sqrt{k/\mu}\).</dd></div>
       <div id="g-frequency"><dt>Frequency, \(\nu\)</dt><dd>The number of wave crests passing a point each second, in hertz (1 Hz = 1 s<sup>−1</sup>). Frequency and wavelength are linked by \(c = \lambda\nu\).</dd></div>
-      <div id="g-states"><dt>Ground state, excited state</dt><dd>The ground state is the lowest-energy arrangement of an atom, molecule or nucleus. An excited state is any higher one. It usually lasts only a short time before the system drops back and gives off the extra energy, often as a photon.</dd></div>
+      <div id="g-gammaray"><dt>Gamma ray, \(\gamma\)</dt><dd>A very high-energy photon given off by an excited nucleus. Written γ in nuclear equations.</dd></div>
+      <div id="g-states"><dt>Ground state, excited state</dt><dd>The ground state is the lowest-energy arrangement of an atom, molecule or nucleus. An excited state is any higher one. It usually lasts only a short time before the system drops back and gives off the extra energy, often as a photon. An asterisk marks an excited state, as in Na* or <sup>60</sup>Ni*.</dd></div>
       <div id="g-ground-wave"><dt>Ground wave, skywave, line of sight</dt><dd>The main ways radio waves get from place to place. A ground wave follows the curve of the Earth (long waves, and medium waves by day). A skywave bounces off the ionosphere and comes down far away (short waves, and medium waves at night). Line-of-sight waves go in straight lines, so they reach only to the horizon or up to satellites (VHF and above). The very longest waves (VLF) are also guided around the planet in the gap between the ground and the ionosphere.</dd></div>
       <div id="g-gamma-ratio"><dt>Gyromagnetic ratio, \(\gamma\)</dt><dd>A constant for each kind of nucleus that sets how fast it precesses in a magnetic field, and so which radio frequency it absorbs: \(\nu = \gamma B_0/2\pi\). For <sup>1</sup>H, \(\gamma/2\pi = 42.58\) MHz per tesla. Dividing by \(2\pi\) turns \(\gamma B_0\), which is in radians per second, into cycles per second (Hz).</dd></div>
       <div id="g-hertz"><dt>Hertz, Hz; megahertz, MHz</dt><dd>The unit of frequency: 1 Hz is one cycle per second (1 s<sup>−1</sup>). 1 kHz = 10<sup>3</sup> Hz, 1 MHz = 10<sup>6</sup> Hz and 1 GHz = 10<sup>9</sup> Hz. An NMR spectrometer’s “MHz” rating is the frequency at which <sup>1</sup>H nuclei resonate in its magnet.</dd></div>
@@ -1171,27 +1278,53 @@ footer .wrap{padding-block:20px 48px}
       <div id="g-ionizing"><dt>Ionizing radiation</dt><dd>Radiation whose photons carry enough energy to knock electrons out of atoms and molecules, turning them into ions: the short-wavelength end of the ultraviolet, X-rays and gamma rays. It can break bonds in DNA, which is why exposure is kept low.</dd></div>
       <div id="g-ionosphere"><dt>Ionosphere</dt><dd>A region of the upper atmosphere, from about 60 km up to several hundred kilometers, where ultraviolet light and X-rays from the Sun knock electrons off gas atoms and molecules. Its free electrons bend medium and short radio waves back down to the ground, but let VHF and higher frequencies pass straight through.</dd></div>
       <div id="g-isotope"><dt>Isotope</dt><dd>Atoms of the same element with different numbers of neutrons, such as carbon-12 and carbon-13. A radioactive isotope such as cobalt-60 can be identified by the energies of the gamma rays it emits.</dd></div>
+      <div id="g-joule"><dt>Joule, J</dt><dd>The SI unit of energy. A single photon of visible light carries only about \(4 \times 10^{-19}\) J.</dd></div>
+      <div id="g-kelvin"><dt>Kelvin, K</dt><dd>The SI unit of temperature. It starts at absolute zero, so a temperature in kelvin is the Celsius temperature plus 273.15.</dd></div>
+      <div id="g-kinetic"><dt>Kinetic energy</dt><dd>Energy of motion. In X-ray photoelectron spectroscopy, \(E_{\text{kinetic}}\) is the measured energy of the electron that the X-ray knocks out.</dd></div>
+      <div id="g-lambdamax"><dt>Lambda max, \(\lambda_{\max}\)</dt><dd>The wavelength at which a substance absorbs most strongly (in UV-visible spectroscopy), or at which a hot object glows most brightly (Wien’s law).</dd></div>
       <div id="g-b0"><dt>Magnetic field strength, \(B_0\)</dt><dd>How strong the steady magnetic field of an NMR spectrometer or MRI scanner is, measured in tesla (T). The subscript 0 marks this main field, to tell it apart from the much weaker oscillating field of the radio pulse. Both the energy gap between the spin states and the resonance frequency grow in proportion to \(B_0\).</dd></div>
       <div id="g-magnetron"><dt>Magnetron</dt><dd>The vacuum tube that makes the microwaves in a microwave oven. Electrons circling in a magnetic field sweep past cavities cut into a copper block and set them ringing at 2.45 GHz, rather like air blown across the top of a bottle.</dd></div>
+      <div id="g-massnumber"><dt>Mass number, \(A\)</dt><dd>The total number of protons and neutrons in a nucleus, written at the top left of a nuclear symbol, as in \(^{60}\text{Co}\).</dd></div>
+      <div id="g-metastable"><dt>Metastable nucleus (m)</dt><dd>A nucleus in an excited state that lasts unusually long before giving off its gamma ray, marked with an m, as in \(^{99\text{m}}\text{Tc}\) (half-life 6.0 h).</dd></div>
+      <div id="g-absorptivity"><dt>Molar absorptivity, \(\varepsilon\)</dt><dd>How strongly a substance absorbs light of a given wavelength, in L mol<sup>−1</sup> cm<sup>−1</sup>: the absorbance of a 1 mol L<sup>−1</sup> solution in a 1 cm cell.</dd></div>
+      <div id="g-mole"><dt>Mole, mol</dt><dd>The amount of substance that contains Avogadro’s number of particles, \(6.022 \times 10^{23}\).</dd></div>
       <div id="g-inertia"><dt>Moment of inertia, \(I\)</dt><dd>How hard it is to set something spinning, which depends on its mass and how far that mass sits from the axis. For a diatomic molecule \(I = \mu r^2\), where \(\mu\) is the reduced mass of the two atoms and \(r\) is the bond length.</dd></div>
+      <div id="g-moseley"><dt>Moseley’s law</dt><dd>The frequency of an element’s characteristic X-rays rises with its atomic number: for K\(\alpha\) lines, \(\sqrt{\nu} \propto (Z - 1)\), where \(\propto\) means “is proportional to”. In 1913 it let Henry Moseley order the elements by atomic number.</dd></div>
+      <div id="g-neutrino"><dt>Neutrino, antineutrino</dt><dd>Uncharged, nearly massless particles that carry away part of the energy of beta decay. An electron antineutrino, \(\bar{\nu}_{\text{e}}\), comes out with a beta particle; an electron neutrino, \(\nu_{\text{e}}\), comes out with a positron.</dd></div>
+      <div id="g-neutron"><dt>Neutron, n</dt><dd>An uncharged particle in the nucleus, written \(^{1}_{0}\text{n}\). When a nucleus captures a neutron, it becomes a heavier isotope of the same element.</dd></div>
+      <div id="g-nvg"><dt>Night-vision goggles (image intensifier)</dt><dd>A device that amplifies the faint light around, including near-infrared, thousands of times and shows it on a green screen. It sees reflected light, not heat, and often carries its own infrared lamp.</dd></div>
       <div id="g-nmr"><dt>NMR, nuclear magnetic resonance</dt><dd>A technique that puts a sample in a strong magnet and finds the radio frequencies at which its nuclei (usually <sup>1</sup>H or <sup>13</sup>C) flip their spins. The pattern of signals shows how the atoms in a molecule are connected. MRI uses the same physics to image the body.</dd></div>
       <div id="g-oscillator"><dt>Oscillator</dt><dd>An electronic circuit that makes an alternating current at a steady frequency, often kept exact by a vibrating quartz crystal. It drives the antenna of a radio transmitter.</dd></div>
-      <div id="g-photon"><dt>Photon</dt><dd>A single packet (quantum) of electromagnetic radiation. Its energy depends only on its frequency, \(E = h\nu\).</dd></div>
+      <div id="g-penetration"><dt>Penetration depth</dt><dd>How far radiation travels into a material before about two-thirds of it (all but 1/e, or 37%) has been absorbed. In skin it is a few millimeters for near-infrared but only a tiny fraction of a millimeter for far-infrared.</dd></div>
+      <div id="g-pbm"><dt>Photobiomodulation (low-level light therapy)</dt><dd>Treatment with weak red or near-infrared light, from LEDs or lasers, intended to ease pain and help tissue heal. Some trials show modest benefit and others none, so the evidence is mixed.</dd></div>
+      <div id="g-photon"><dt>Photon</dt><dd>A single packet (quantum) of electromagnetic radiation. Its energy depends only on its frequency, \(E = h\nu\), so in equations a photon is often written simply as \(h\nu\).</dd></div>
+      <div id="g-pit"><dt>Pit organ</dt><dd>A heat-sensing organ of pit vipers, boas and pythons: a thin membrane over an air space, warmed by the infrared from nearby warm animals and wired to heat-sensitive nerve endings.</dd></div>
       <div id="g-planck"><dt>Planck’s constant, \(h\)</dt><dd>The constant that links the energy of a photon to its frequency, \(E = h\nu\): \(h = 6.626 \times 10^{-34}\ \text{J s}\).</dd></div>
       <div id="g-polar"><dt>Polar molecule</dt><dd>A molecule with a permanent dipole: one end slightly negative (δ−) and the other slightly positive (δ+), as in H<sub>2</sub>O and HCl. Polar molecules absorb microwaves; nonpolar ones such as N<sub>2</sub>, O<sub>2</sub> and CO<sub>2</sub> do not.</dd></div>
+      <div id="g-positron"><dt>Positron</dt><dd>The antimatter partner of the electron: the same mass, but a positive charge. Written \(^{\;\,0}_{+1}\text{e}\) or e<sup>+</sup>.</dd></div>
       <div id="g-precess"><dt>Precess, precession</dt><dd>To precess is to wobble so that the axis of a spinning object sweeps out a cone. A tilted spinning top does this: instead of falling over, its axis slowly circles around the vertical. A nucleus spinning in a magnetic field precesses around the field direction in the same way, at exactly the frequency it absorbs, \(\nu = \gamma B_0/2\pi\) (400 MHz for <sup>1</sup>H in a 9.40 T magnet). After a radio pulse tips the nuclei, their precessing magnetism induces the faint radio signal that an NMR spectrometer records.</dd></div>
+      <div id="g-principal"><dt>Principal quantum number, \(n\)</dt><dd>The whole number (1, 2, 3, …) that labels the energy levels of an electron in an atom. In hydrogen, \(E_n = -2.179 \times 10^{-18}\ \text{J}/n^2\). A jump from an upper level \(n_i\) to a lower level \(n_f\) gives off one photon.</dd></div>
       <div id="g-radar"><dt>Radar</dt><dd>Short for radio detection and ranging. A dish sends out short pulses of microwaves or radio waves and times the echoes from objects such as raindrops, aircraft or cars. The delay gives the distance, and the Doppler shift gives the speed.</dd></div>
       <div id="g-bands"><dt>Radio bands: VLF, LF, MF, HF, VHF, UHF</dt><dd>Engineering names for ranges of radio frequency, each ten times higher than the one before: very low (3–30 kHz), low, medium, high, very high and ultra high frequency (300 MHz–3 GHz).</dd></div>
+      <div id="g-reducedmass"><dt>Reduced mass, \(\mu\)</dt><dd>The effective mass of two bonded atoms vibrating or rotating about their center: \(\mu = \dfrac{m_1 m_2}{m_1 + m_2}\). It is always smaller than the lighter of the two masses.</dd></div>
       <div id="g-resonance"><dt>Resonance</dt><dd>Strong absorption that happens only when the frequency of the radiation matches a natural frequency of the system, such as the precession frequency of a nucleus in NMR. There the resonance condition is \(\nu = \gamma B_0/2\pi\): only radio waves of this frequency flip the nuclear spin.</dd></div>
       <div id="g-rotconst"><dt>Rotational constant, \(B\)</dt><dd>A constant for each molecule that sets the spacing of its rotational energy levels: \(B = h/(8\pi^2 c I)\), usually given in cm<sup>−1</sup>. Heavier atoms or a longer bond give a larger moment of inertia \(I\) and so a smaller \(B\). For CO, \(B = 1.9225\ \text{cm}^{-1}\).</dd></div>
       <div id="g-rotj"><dt>Rotational quantum number, \(J\)</dt><dd>The whole number (0, 1, 2, 3, …) that labels the rotational energy levels of a molecule, \(E_J = hcB\,J(J+1)\). When a molecule absorbs a microwave photon it moves up exactly one level. Not to be confused with J, the symbol for joules.</dd></div>
+      <div id="g-rydberg"><dt>Rydberg constant, \(R_{\text{H}}\)</dt><dd>The constant in the formula for hydrogen’s spectral lines, \(1/\lambda = R_{\text{H}}(1/n_f^2 - 1/n_i^2)\): \(R_{\text{H}} = 1.0968 \times 10^{7}\ \text{m}^{-1}\).</dd></div>
       <div id="g-spectroscopy"><dt>Spectroscopy</dt><dd>Measuring which wavelengths a sample absorbs or emits, and using the pattern to identify the substance, work out its structure, or find how much of it is present.</dd></div>
       <div id="g-lightspeed"><dt>Speed of light, \(c\)</dt><dd>The speed of all electromagnetic radiation in a vacuum: \(c = 2.998 \times 10^{8}\ \text{m s}^{-1}\), or \(2.998 \times 10^{10}\ \text{cm s}^{-1}\). It links wavelength and frequency, \(c = \lambda\nu\).</dd></div>
       <div id="g-standing"><dt>Standing wave, hot spot</dt><dd>A wave pattern that stays in one place, made when waves bouncing between walls overlap. In a microwave oven it leaves hot spots about 6 cm apart (half the 12.2 cm wavelength) with cooler spots between them; the turntable carries food through both.</dd></div>
+      <div id="g-states-sym"><dt>State symbols</dt><dd>Letters after each formula in a chemical equation that give its physical state: (s) solid, (l) liquid, (g) gas and (aq) dissolved in water.</dd></div>
+      <div id="g-stefan"><dt>Stefan–Boltzmann law, \(\sigma\)</dt><dd>The power a hot object gives off from each square meter rises as the fourth power of its temperature: \(P = \sigma T^4\), where \(\sigma = 5.670 \times 10^{-8}\ \text{W m}^{-2}\,\text{K}^{-4}\) and \(T\) is in kelvin.</dd></div>
       <div id="g-superheat"><dt>Superheated water</dt><dd>Water heated above its normal boiling point without boiling, which can happen in a smooth, clean container in a microwave. A small disturbance can then make it boil violently all at once.</dd></div>
+      <div id="g-tapetum"><dt>Tapetum lucidum</dt><dd>A mirror-like layer behind the retina of many night-active animals, such as foxes, cats and deer. It reflects light back through the retina for a second chance to be seen, which makes their eyes shine in a beam of light.</dd></div>
       <div id="g-tesla"><dt>Tesla, T</dt><dd>The SI unit of magnetic field strength. For scale: the Earth’s field is about 0.00005 T, a fridge magnet about 0.005 T, an MRI scanner 1.5 to 3 T, and research NMR magnets about 7 to 28 T.</dd></div>
+      <div id="g-thermal"><dt>Thermal imaging (thermography)</dt><dd>Making a picture from the infrared that objects give off because of their temperature, usually at 8–14 µm. It works in complete darkness, because it does not need any light to be reflected.</dd></div>
+      <div id="g-vasodilation"><dt>Vasodilation</dt><dd>Widening of small blood vessels, which lets more blood flow through. Warming tissue, for example with infrared heat, causes it.</dd></div>
       <div id="g-wavelength"><dt>Wavelength, \(\lambda\)</dt><dd>The distance from one crest of a wave to the next.</dd></div>
       <div id="g-wavenumber"><dt>Wavenumber, \(\tilde{\nu}\)</dt><dd>The number of waves per centimeter, \(1/\lambda\), in cm<sup>−1</sup>. Infrared and Raman spectra use it because it is proportional to energy.</dd></div>
+      <div id="g-wien"><dt>Wien’s law</dt><dd>The wavelength at which a hot object glows most brightly falls as it gets hotter: \(\lambda_{\max} = (2.898 \times 10^{-3}\ \text{m K})/T\), with \(T\) in kelvin.</dd></div>
+      <div id="g-workfunction"><dt>Work function, \(\varphi\)</dt><dd>The smallest energy needed to pull an electron out through the surface of a solid. In X-ray photoelectron spectroscopy it is a small, known correction for the spectrometer.</dd></div>
     </dl>
     <p class="gloss-empty muted" hidden>No matching terms.</p>
   </div>
@@ -1722,7 +1855,7 @@ const arrowDown = (x, y, cls) => `<path d="M${x - 4.5},${y - 9} L${x},${y} L${x 
   }
   h += `<line class="axis" x1="${X0}" y1="296" x2="${X1}" y2="296"/>`;
   for (let f = 0; f <= 600; f += 100) h += `<line class="axis" x1="${xf(f)}" y1="296" x2="${xf(f)}" y2="301"/><text x="${xf(f)}" y="314" text-anchor="middle">${f}</text>`;
-  h += `<text x="${X1}" y="328" text-anchor="end">Frequency of absorbed microwaves (GHz)</text>`;
+  h += `<text x="${X1}" y="328" text-anchor="end" class="t-sm">Frequency of absorbed microwaves (GHz)</text>`;
   h += `<text x="${X0}" y="16" class="t-sm">Rotational energy, E<tspan dy="3" font-size="0.82em">J</tspan><tspan dy="-3"> = hcB·J(J+1)</tspan></text>`;
   svg.innerHTML = h;
 })();
@@ -2130,7 +2263,7 @@ const arrowDown = (x, y, cls) => `<path d="M${x - 4.5},${y - 9} L${x},${y} L${x 
       + statT('Region', reg, 'wide')
       + stat('Photon energy', `${sci(dE, 4)} J`) + stat('', `${num(dE / QE, 3)} eV`)
       + stat('Per mole of photons', `${num(dE * NA / 1000, 3)} kJ/mol`, 'wide')
-      + `<p class="note" style="grid-column:1/-1">\\(1/\\lambda = R_{\\text{H}}\\left(1/n_f^2 - 1/n_i^2\\right)\\), with \\(R_{\\text{H}} = 1.0968 \\times 10^{7}\\ \\text{m}^{-1}\\). Vacuum wavelengths; lines measured in air read about 0.03% shorter (656.3 nm for 3 → 2).</p>`;
+      + `<p class="note" style="grid-column:1/-1">\\(1/\\lambda = R_{\\text{H}}\\left(1/n_f^2 - 1/n_i^2\\right)\\), where \\(R_{\\text{H}} = 1.0968 \\times 10^{7}\\ \\text{m}^{-1}\\) is the Rydberg constant for hydrogen, \\(n_i\\) the upper level and \\(n_f\\) the lower one. Vacuum wavelengths; lines measured in air read about 0.03% shorter (656.3 nm for 3 → 2).</p>`;
     if (typeof renderMathInElement === 'function') renderMathInElement($('#hRo'), {delimiters: [{left: '\\(', right: '\\)', display: false}], throwOnError: false});
   }
   buildUp(); draw();
@@ -2325,6 +2458,7 @@ const arrowDown = (x, y, cls) => `<path d="M${x - 4.5},${y - 9} L${x},${y} L${x 
       if (on) I += cmax * A * (3.2 * Math.exp(-0.5 * Math.pow((l - tg.ka) / sg, 2)) + 0.6 * Math.exp(-0.5 * Math.pow((l - tg.kb) / sg, 2)));
       ys.push(I); if (I > mx) mx = I;
     }
+    if (!mx) mx = 1;      // at the lowest voltages even the shortest wavelength lies past the plotted range: a flat line
     let d = `M${X0},${Y0}`;
     ys.forEach((I, i) => { d += `L${xl(LMAX * i / N).toFixed(1)},${(Y0 - I / mx * (Y0 - Y1 - 14)).toFixed(1)}`; });
     $('#xrA').setAttribute('d', d + `L${X1},${Y0} Z`);
@@ -2974,6 +3108,182 @@ const arrowDown = (x, y, cls) => `<path d="M${x - 4.5},${y - 9} L${x},${y} L${x 
     prevT = t;
     draw(t);
   });
+})();
+
+/* ==================================================================== INFRARED: THERAPY, HOW DEEP EACH SOURCE REACHES */
+(() => {
+  const svg = $('#itSvg');
+  if (!svg) return;
+  // rough 1/e penetration depths in typical skin; they vary with skin type and with how they are measured
+  const SRC = [
+    {lab: 'Red LED', name: 'Red LED panel', nm: 660, wl: '660 nm (visible red)', depth: 1.5, dtext: 'about 1–2 mm', beam: '', reach: 'the dermis',
+     by: 'blood (hemoglobin) and the skin pigment melanin',
+     use: '“Red light therapy” panels sold for skin and joints. Good evidence that it relieves pain is still limited.'},
+    {lab: 'Near-IR LED', name: 'Near-infrared LED or laser', nm: 850, wl: '850 nm', depth: 3, dtext: 'about 2–4 mm, the deepest of all', beam: '', reach: 'the fat under the dermis',
+     by: 'very little: blood, melanin and water all absorb weakly here, so this light travels deepest (the “optical window” of tissue)',
+     use: 'Low-level light therapy, also called photobiomodulation, for neck, back and joint pain. Some clinical trials find modest relief and others find none, so the evidence is mixed.'},
+    {lab: 'Heat lamp', name: 'Infrared heat lamp', nm: 1000, wl: 'about 1 µm (peak; a broad spread)', depth: 2.5, dtext: 'about 2–3 mm, and the heat then spreads deeper', beam: '', reach: 'the lower dermis',
+     by: 'water and blood',
+     use: 'Physiotherapy clinics warm stiff muscles and joints with infrared lamps before exercise or massage. Heat is well supported for short-term relief of muscle aches and back pain.'},
+    {lab: 'Mid-IR, 3 µm', name: 'Mid-infrared at 3 µm', nm: 3000, wl: '3 µm', depth: 0.001, dtext: 'about 0.001 mm', beam: '', reach: 'only the outer surface of the skin',
+     by: 'water, at one of its strongest absorption bands',
+     use: 'No therapy uses this band: all of its energy stays within about a thousandth of a millimeter of the surface.'},
+    {lab: 'Far-IR sauna', name: 'Far-infrared sauna heater', nm: 9000, wl: 'about 5–15 µm (peak near 9 µm)', depth: 0.02, dtext: 'about 0.02 mm', beam: '', reach: 'the epidermis',
+     by: 'water in the outermost layer of skin',
+     use: 'Infrared saunas and heating pads warm the skin surface; the blood then carries the heat deeper, much as in a hot bath.'}
+  ];
+  const X0 = 150, X1 = 470, Y0 = 78, PX = 20, BX0 = 250, BX1 = 370;
+  const yd = mm => Y0 + mm * PX;
+  const LAY = [
+    {name: 'epidermis', a: 0, b: 0.1, fill: 'color-mix(in srgb,var(--muted) 34%,var(--surface))'},
+    {name: 'dermis', a: 0.1, b: 2, fill: 'color-mix(in srgb,var(--bad) 13%,var(--surface))'},
+    {name: 'fat', a: 2, b: 7, fill: 'color-mix(in srgb,var(--warn) 20%,var(--surface))'},
+    {name: 'muscle', a: 7, b: 10.6, fill: 'color-mix(in srgb,var(--bad) 26%,var(--surface-2))'}
+  ];
+  let g = '<defs><linearGradient id="itBeamG" x1="0" x2="0" y1="0" y2="1"><stop id="itS0" offset="0"/><stop id="itS1" offset="1"/></linearGradient></defs>';
+  LAY.forEach(l => {
+    g += `<rect x="${X0}" y="${yd(l.a).toFixed(1)}" width="${X1 - X0}" height="${Math.max(2, (l.b - l.a) * PX).toFixed(1)}" style="fill:${l.fill}"/>`;
+  });
+  g += `<rect x="${X0}" y="${Y0}" width="${X1 - X0}" height="${(10.6 * PX).toFixed(1)}" style="fill:none;stroke:var(--line)"/>`;
+  // layer names on the left; the epidermis is too thin to label in place, so it gets a leader
+  g += `<path d="M${X0 - 4},${Y0 + 1} L${X0 - 16},${Y0 - 8}" style="stroke:var(--muted);stroke-width:1"/><text x="${X0 - 18}" y="${Y0 - 6}" text-anchor="end" class="t-sm">epidermis, 0.1 mm</text>`;
+  [['dermis', 1.05], ['fat', 4.5], ['muscle', 8.8]].forEach(([n, z]) => { g += `<text x="${X0 - 10}" y="${(yd(z) + 4).toFixed(1)}" text-anchor="end" class="t-ink">${n}</text>`; });
+  for (let z = 0; z <= 10; z += 2) g += `<line class="axis" x1="${X1}" y1="${yd(z)}" x2="${X1 + 5}" y2="${yd(z)}"/><text x="${X1 + 9}" y="${yd(z) + 4}" class="t-sm">${z} mm</text>`;
+  g += `<text x="${X1 + 9}" y="${Y0 - 10}" class="t-sm">depth</text>`;
+  g += `<g id="itDyn"></g>`;
+  svg.innerHTML = g;
+  const dyn = $('#itDyn');
+  let cur = 1;
+  function pick(i) {
+    cur = i;
+    const s = SRC[i], col = s.nm <= 700 ? wlRGB(s.nm) : 'var(--ir)';
+    $('#itS0').setAttribute('style', `stop-color:${col};stop-opacity:.85`);
+    $('#itS1').setAttribute('style', `stop-color:${col};stop-opacity:0`);
+    let d = `<rect x="200" y="12" width="220" height="28" rx="6" style="fill:var(--surface);stroke:var(--ink);stroke-width:1.3"/><text x="310" y="31" text-anchor="middle" class="t-ink">${s.name}</text>`;
+    d += `<rect x="${BX0}" y="40" width="${BX1 - BX0}" height="${Y0 - 40}" style="fill:${col};opacity:.22"/>`;
+    for (let k = 0; k < 3; k++) d += `<path d="M${BX0 + 30 + 30 * k},44 V${Y0 - 6}" style="stroke:${col};stroke-width:1.6;opacity:.7"/><path d="M${BX0 + 26 + 30 * k},${Y0 - 12} L${BX0 + 30 + 30 * k},${Y0 - 5} L${BX0 + 34 + 30 * k},${Y0 - 12}" style="fill:none;stroke:${col};stroke-width:1.6;opacity:.7"/>`;
+    const h = Math.min(10.6, 3 * s.depth) * PX;
+    if (h > 3) {
+      d += `<rect x="${BX0}" y="${Y0}" width="${BX1 - BX0}" height="${h.toFixed(1)}" style="fill:url(#itBeamG)"/>`;
+      const y = yd(s.depth);
+      d += `<line x1="${BX0 - 14}" y1="${y.toFixed(1)}" x2="${BX1 + 14}" y2="${y.toFixed(1)}" style="stroke:var(--ink);stroke-width:1.2;stroke-dasharray:4 3"/>`
+        + `<text x="${BX0 - 8}" y="${(y - 5).toFixed(1)}" text-anchor="end" class="t-sm halo" style="fill:var(--ink)">1/e depth</text>`;
+    } else {
+      d += `<rect x="${BX0}" y="${Y0}" width="${BX1 - BX0}" height="3" style="fill:${col}"/>`
+        + `<text x="${(BX0 + BX1) / 2}" y="${Y0 + 22}" text-anchor="middle" class="t-sm halo" style="fill:var(--ink)">all absorbed in the top ${s.dtext.replace('about ', '')}</text>`;
+    }
+    dyn.innerHTML = d;
+    [...$('#itSel').children].forEach((b, j) => b.setAttribute('aria-pressed', String(j === i)));
+    $('#itRo').innerHTML = statT('Source', s.name) + statT('Wavelength', s.wl) + stat('Energy per photon', `${num(1239.84 / s.nm, 3)} eV`)
+      + statT('Penetration depth', s.dtext) + statT('Reaches', s.reach, 'wide') + statT('Mostly absorbed by', s.by, 'wide') + statT('Used for', s.use, 'wide');
+  }
+  $('#itSel').innerHTML = SRC.map((s, i) => `<button type="button" data-i="${i}" aria-pressed="false">${s.lab}</button>`).join('');
+  $('#itSel').addEventListener('click', e => { const b = e.target.closest('button'); if (b) pick(+b.dataset.i); });
+  pick(cur);
+})();
+
+/* ==================================================================== INFRARED: SEEING IN THE DARK */
+(() => {
+  const svg = $('#nvSvg');
+  if (!svg) return;
+  const MODES = ['Your eyes', 'Thermal camera', 'Night-vision goggles', 'Pit viper’s heat sense'];
+  // every piece of the scene: its shape, its temperature (°C), how much near-infrared it reflects (0–1), and how bright it is to the eye at night
+  const P = [
+    {k: 'sky', s: 'rect', a: 'x="0" y="0" width="560" height="262"', T: -25, nir: 0.16, eye: 0.075},
+    {k: 'trees', s: 'path', a: 'd="M0,226 L14,196 L26,214 L40,170 L56,208 L70,182 L86,212 L100,160 L118,206 L134,186 L150,214 L168,176 L184,210 L200,190 L216,216 L236,184 L252,212 L270,168 L290,208 L306,188 L322,214 L342,180 L360,212 L380,192 L398,214 L520,214 L536,186 L548,206 L560,196 V262 H0 Z"', T: 6, nir: 0.55, eye: 0.022},
+    {k: 'ground', s: 'path', a: 'd="M0,252 Q140,244 280,251 T560,248 V320 H0 Z"', T: 8, nir: 0.32, eye: 0.016},
+    {k: 'bush', s: 'path', a: 'd="M0,252 Q4,214 30,218 Q38,196 62,206 Q84,196 92,218 Q114,220 112,252 Z"', T: 7, nir: 0.78, eye: 0.02},
+    {k: 'trunk', s: 'path', a: 'd="M436,252 L441,62 L453,62 L459,252 Z"', T: 9, nir: 0.4, eye: 0.022},
+    {k: 'branch', s: 'path', a: 'd="M442,114 Q400,106 350,110 L350,117 Q400,114 442,123 Z"', T: 9, nir: 0.4, eye: 0.022},
+    {k: 'leaves', s: 'path', a: 'd="M392,70 Q384,40 410,34 Q414,8 446,12 Q470,0 488,22 Q516,24 512,52 Q526,74 498,82 Q476,94 452,80 Q424,92 404,82 Q390,82 392,70 Z"', T: 6, nir: 0.8, eye: 0.024},
+    {k: 'rock', s: 'ellipse', a: 'cx="250" cy="266" rx="46" ry="15"', T: 14, nir: 0.45, eye: 0.02},
+    // the fox
+    {k: 'fox', s: 'path', a: 'd="M116,226 Q86,214 76,236 Q92,246 118,232 Z"', T: 18, nir: 0.42, eye: 0.02},
+    {k: 'fox', s: 'ellipse', a: 'cx="150" cy="224" rx="38" ry="15"', T: 22, nir: 0.45, eye: 0.02},
+    {k: 'fox', s: 'path', a: 'd="M126,232 h6 v22 h-6 Z M139,234 h6 v20 h-6 Z M160,234 h6 v20 h-6 Z M172,230 h6 v24 h-6 Z"', T: 25, nir: 0.42, eye: 0.02},
+    {k: 'fox', s: 'ellipse', a: 'cx="192" cy="208" rx="14" ry="10.5"', T: 27, nir: 0.45, eye: 0.02},
+    {k: 'fox', s: 'path', a: 'd="M200,203 L218,210 L201,217 Z M184,202 L187,186 L194,199 Z M194,200 L200,186 L203,202 Z"', T: 27, nir: 0.45, eye: 0.02},
+    {k: 'foxeye', s: 'circle', a: 'cx="197" cy="206" r="2.4"', T: 34, nir: 1, eye: 0.02},
+    {k: 'foxnose', s: 'circle', a: 'cx="217" cy="210" r="2.1"', T: 30, nir: 0.3, eye: 0.02},
+    // the owl on its branch
+    {k: 'owl', s: 'ellipse', a: 'cx="384" cy="92" rx="14" ry="20"', T: 15, nir: 0.4, eye: 0.022},
+    {k: 'owl', s: 'path', a: 'd="M373,64 L375,52 L381,60 Z M395,64 L393,52 L387,60 Z"', T: 15, nir: 0.4, eye: 0.022},
+    {k: 'owl', s: 'circle', a: 'cx="384" cy="68" r="12"', T: 17, nir: 0.4, eye: 0.022},
+    {k: 'owlface', s: 'ellipse', a: 'cx="384" cy="69" rx="9" ry="8"', T: 23, nir: 0.5, eye: 0.022},
+    {k: 'owleye', s: 'path', a: 'd="M380,68 m-2.4,0 a2.4,2.4 0 1,0 4.8,0 a2.4,2.4 0 1,0 -4.8,0 M388,68 m-2.4,0 a2.4,2.4 0 1,0 4.8,0 a2.4,2.4 0 1,0 -4.8,0"', T: 30, nir: 0.3, eye: 0.02},
+    // the mouse
+    {k: 'mouse', s: 'path', a: 'd="M331,276 Q344,280 350,270" ', stroke: true, T: 21, nir: 0.3, eye: 0.02},
+    {k: 'mouse', s: 'ellipse', a: 'cx="321" cy="275" rx="11" ry="6.5"', T: 27, nir: 0.35, eye: 0.02},
+    {k: 'mouse', s: 'circle', a: 'cx="310" cy="272" r="5.2"', T: 29, nir: 0.35, eye: 0.02},
+    {k: 'mouse', s: 'circle', a: 'cx="313" cy="266.5" r="2.6"', T: 29, nir: 0.35, eye: 0.02},
+    {k: 'mouseeye', s: 'circle', a: 'cx="307.5" cy="271" r="1.1"', T: 32, nir: 0.3, eye: 0.02},
+    // the rattlesnake, coiled, its head toward the mouse
+    {k: 'snake', s: 'path', a: 'd="M470,298 C486,306 506,298 500,286 C494,274 466,280 452,288 C436,296 414,294 404,286"', stroke: true, T: 10.5, nir: 0.3, eye: 0.018},
+    {k: 'snake', s: 'ellipse', a: 'cx="397" cy="284" rx="8" ry="4.8"', T: 11, nir: 0.3, eye: 0.018}
+  ];
+  // perceptually even "inferno" palette for the thermal view: the colors are chosen by the camera, not by the infrared
+  const INF = [[0, [0, 0, 4]], [0.2, [50, 10, 94]], [0.4, [120, 28, 109]], [0.6, [188, 55, 84]], [0.8, [237, 105, 37]], [0.92, [251, 182, 26]], [1, [252, 255, 164]]];
+  const TLO = -10, THI = 36;
+  const inferno = T => {
+    const u = Math.max(0, Math.min(1, (T - TLO) / (THI - TLO)));
+    let i = 1;
+    while (i < INF.length - 1 && INF[i][0] < u) i++;
+    const [a, ca] = INF[i - 1], [b, cb] = INF[i], f = (u - a) / (b - a || 1);
+    return `rgb(${ca.map((c, k) => Math.round(c + (cb[k] - c) * f)).join(',')})`;
+  };
+  const eyeCol = b => { const v = Math.min(1, b * 6); return `rgb(${Math.round(4 + 52 * v)},${Math.round(6 + 58 * v)},${Math.round(11 + 72 * v)})`; };
+  const nvgCol = b => `rgb(${Math.round(10 + 120 * b)},${Math.round(20 + 230 * b)},${Math.round(10 + 96 * b)})`;
+  // starlight and night-vision grain, drawn once with a fixed seed
+  let seed = 5;
+  const rnd = () => { seed = (seed * 16807) % 2147483647; return seed / 2147483647; };
+  let stars = '', grain = '';
+  for (let i = 0; i < 70; i++) stars += `<circle cx="${(rnd() * 560).toFixed(1)}" cy="${(rnd() * 190).toFixed(1)}" r="${(0.5 + rnd() * 0.8).toFixed(2)}" style="fill:#c9d3e6;opacity:${(0.35 + rnd() * 0.5).toFixed(2)}"/>`;
+  for (let i = 0; i < 420; i++) grain += `<circle cx="${(rnd() * 560).toFixed(1)}" cy="${(rnd() * 320).toFixed(1)}" r="0.9" style="fill:#d8ffd8;opacity:${(0.08 + rnd() * 0.22).toFixed(2)}"/>`;
+  const defs = `<defs><filter id="nvBlur" filterUnits="userSpaceOnUse" x="-20" y="-20" width="600" height="360"><feGaussianBlur stdDeviation="5"/></filter>`
+    + `<radialGradient id="nvTube" gradientUnits="userSpaceOnUse" cx="280" cy="168" r="270"><stop offset=".72" style="stop-color:#000;stop-opacity:0"/><stop offset="1" style="stop-color:#000;stop-opacity:.92"/></radialGradient>`
+    + `<radialGradient id="nvPit" gradientUnits="userSpaceOnUse" cx="320" cy="262" r="300"><stop offset=".35" style="stop-color:#000;stop-opacity:0"/><stop offset="1" style="stop-color:#000;stop-opacity:.85"/></radialGradient>`
+    + `<linearGradient id="nvScale" x1="0" x2="0" y1="1" y2="0">${INF.map(([o, c]) => `<stop offset="${o}" style="stop-color:rgb(${c.join(',')})"/>`).join('')}</linearGradient></defs>`;
+  const H = 'paint-order:stroke;stroke:#000;stroke-width:calc(3px * var(--k, 1));stroke-linejoin:round';
+  const lab = (x, y, t, an = 'start', c = '#fff') => `<text x="${x}" y="${y}" text-anchor="${an}" class="t-sm" style="fill:${c};font-weight:600;${H}">${t}</text>`;
+  let mode = 1;
+  function draw() {
+    const pieceCol = p => mode === 0 ? eyeCol(p.eye) : mode === 2 ? nvgCol(p.nir) : inferno(p.T);
+    let scene = '';
+    P.forEach(p => {
+      if (mode === 3 && p.k === 'snake') return;                     // the snake is the one looking
+      const c = pieceCol(p);
+      scene += p.stroke ? `<${p.s} ${p.a} style="fill:none;stroke:${c};stroke-width:${p.k === 'snake' ? 8 : 2.2};stroke-linecap:round"/>` : `<${p.s} ${p.a} style="fill:${c}"/>`;
+    });
+    let h = defs;
+    h += mode === 3 ? `<g filter="url(#nvBlur)">${scene}</g>` : `<g>${scene}</g>`;
+    if (mode === 0) h += stars + `<text x="280" y="150" text-anchor="middle" class="t-sm" style="fill:#7d889c">Almost nothing to see.</text>`;
+    if (mode === 1) {
+      h += lab(118, 182, 'fox: fur 22 °C, eyes 34 °C') + lab(346, 46, 'owl: feathers 15 °C, face 23 °C', 'end') + lab(356, 274, 'mouse 27 °C')
+        + lab(500, 316, 'rattlesnake 11 °C', 'end') + lab(250, 296, 'rock 14 °C, warm from the day', 'middle') + lab(12, 22, 'clear sky: the coldest thing in view');
+      h += `<rect x="532" y="60" width="12" height="150" style="fill:url(#nvScale);stroke:#000;stroke-width:.5"/>`;
+      [[36, 60], [13, 135], [-10, 210]].forEach(([t, y]) => { h += `<text x="528" y="${y + 4}" text-anchor="end" class="t-sm" style="fill:#fff;${H}">${t} °C</text>`; });
+      h += lab(544, 52, '8–14 µm', 'end');
+    }
+    if (mode === 2) {
+      h += grain + `<circle cx="197" cy="206" r="6" style="fill:#e8ffe8;opacity:.55"/>`;
+      h += lab(214, 196, 'eyeshine', 'start', '#eaffea') + lab(472, 100, 'leaves reflect near-infrared', 'end', '#eaffea');
+      h += `<rect x="0" y="0" width="560" height="320" style="fill:url(#nvTube)"/>`;
+    }
+    if (mode === 3) {
+      h += `<rect x="0" y="0" width="560" height="320" style="fill:url(#nvPit)"/>` + lab(322, 300, 'the mouse', 'middle') + lab(150, 180, 'a fox', 'middle');
+    }
+    svg.innerHTML = h;
+    [...$('#nvSel').children].forEach((b, j) => b.setAttribute('aria-pressed', String(j === mode)));
+    $('#nvCap').innerHTML = [
+      '<b>Your eyes.</b> On a moonless night there is almost no visible light, only faint starlight, so you see little more than the outline of the trees against the sky. The animals are there, giving off plenty of infrared, but an infrared photon carries too little energy to trigger the light-sensitive pigment in your retina.',
+      '<b>Thermal camera (8–14 µm).</b> It records the infrared each object gives off because of its own temperature, not reflected light, so it works in total darkness. The camera turns temperature into color; the colors are false, chosen by the camera. The fox and mouse glow, the owl’s feathers hold its heat in so mostly its face shows, the rock still holds the day’s warmth, and the clear sky is coldest of all. The rattlesnake, a cold-blooded animal at nearly the temperature of the ground, almost disappears.',
+      '<b>Night-vision goggles.</b> These do not see heat. They amplify the faint light that is around, including near-infrared from a built-in infrared lamp, and show it on a green screen (green because our eyes tell more shades of green apart). Leaves look bright because they reflect near-infrared strongly, and the fox’s eyes shine because a mirror-like layer behind its retina, the tapetum, bounces the light back.',
+      '<b>A pit viper’s heat sense.</b> A rattlesnake has a pit on each side of its face, lined with a membrane only about 15 µm thick. Infrared from warm prey warms the membrane, and heat-sensitive nerve endings fire. Each pit works like a pinhole camera, so the heat picture is fuzzy, and the snake’s brain lays it over what its eyes see. A warm mouse stands out even in complete darkness.'
+    ][mode];
+  }
+  $('#nvSel').innerHTML = MODES.map((m, i) => `<button type="button" data-i="${i}" aria-pressed="false">${m}</button>`).join('');
+  $('#nvSel').addEventListener('click', e => { const b = e.target.closest('button'); if (b) { mode = +b.dataset.i; draw(); } });
+  draw();
 })();
 
 /* ==================================================================== GLOSSARY: search */
