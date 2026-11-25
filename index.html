@@ -206,6 +206,15 @@ button:disabled{opacity:.45;cursor:default}
 .stat.wide{grid-column:1/-1}
 /* the radio-bands readout is mostly sentences, so its values are set in regular weight */
 #rbRo .stat .v{font-weight:400;line-height:1.5}
+/* microwave uses: buttons with small pictures */
+.mwuses{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+@media (max-width:700px){ .mwuses{grid-template-columns:repeat(2,minmax(0,1fr))} }
+.mwuses button{display:flex;align-items:center;gap:10px;text-align:left;padding:8px 10px;background:var(--surface);border:1px solid var(--line);border-radius:10px;color:var(--ink);font-size:.9rem;line-height:1.25;min-width:0}
+.mwuses button svg{flex:none;width:30px;height:30px;fill:none;stroke:var(--muted);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.mwuses button:hover{border-color:var(--rc)}
+.mwuses button[aria-pressed="true"]{border-color:var(--rc);background:color-mix(in srgb,var(--rc) 12%,var(--surface))}
+.mwuses button[aria-pressed="true"] svg{stroke:var(--rc)}
+#muRo .stat .v{font-weight:400;line-height:1.5}
 .note{font-size:.9rem;color:var(--muted)}
 .hint{font-size:.92rem;border-left:3px solid var(--data);padding:4px 0 4px 12px;color:var(--muted)}
 .hint b{color:var(--ink)}
@@ -652,6 +661,55 @@ footer .wrap{padding-block:20px 48px}
     </div>
 
     <div class="bench">
+      <div class="bhead"><span class="tagi">Interactive · Where microwaves are used</span><h3>Microwaves at work</h3>
+        <p class="note">Microwaves run from 300 MHz to 300 GHz, wavelengths from 1 m down to 1 mm. They pass through air, clouds and smoke, bounce off metal, and can be focused into narrow beams by dishes and small antennas. That makes them useful for carrying signals, finding objects by radar, heating food and probing molecules. Pick a use to see where it sits in the microwave range and why it uses that frequency.</p></div>
+      <div class="mwuses" id="muSel" role="group" aria-label="Uses of microwaves"></div>
+      <div class="figscroll"><svg class="plot" id="muSvg" viewBox="0 0 560 194" role="img" aria-label="A chart of eight uses of microwaves against frequency from 300 megahertz to 300 gigahertz: microwave ovens at 2.45 GHz, Wi-Fi and Bluetooth at 2.4 and 5 GHz, phones from 0.6 to 2.7 GHz with 5G up to 40 GHz, weather radar near 3 GHz, EPR spectroscopy at 9.5 GHz, satellite TV from 10.7 to 12.75 GHz, car radar from 76 to 81 GHz, and the rotational lines of carbon monoxide in space at 115 and 231 GHz."></svg></div><p class="swipehint fig">Swipe the figure sideways to see all of it.</p>
+      <div class="statgrid" id="muRo"></div>
+    </div>
+
+    <div class="bench">
+      <div class="bhead"><span class="tagi">Interactive · How a microwave oven heats food</span><h3>Heating food with microwaves</h3>
+        <p class="note">The magnetron sends 2.45 GHz microwaves through a short waveguide into the metal box, where they bounce off the walls. Water molecules are polar: the oxygen end is slightly negative (δ−) and the hydrogen end slightly positive (δ+). The microwaves’ electric field reverses direction about five billion times a second, and each reversal tugs the molecules around. In liquid water they are held to their neighbors by hydrogen bonds, so they can only twist back and forth, a little behind the field, bumping into each other; that jostling is heat. Dissolved salt adds to it, because its ions are pushed back and forth too. This is not a special resonance of water: water absorbs microwaves across a wide range of frequencies, and 2.45 GHz is used because it reaches a centimeter or two into food. Pick what to put in the oven, then start it.</p></div>
+      <div class="seg" id="ovSel" role="group" aria-label="What is in the oven"></div>
+      <div class="figscroll"><svg class="plot" id="ovSvg" viewBox="0 0 560 300" role="img" aria-label="Top view of a microwave oven with a turntable, hot spots about 6 centimeters apart and the magnetron on the right wall, next to a zoomed-in view of what is in the oven: water molecules in soup twisting back and forth with the electric field, water molecules locked in ice, atoms in a ceramic plate that the microwaves pass through, or free electrons in a metal fork, which sparks at its tips."></svg></div><p class="swipehint fig">Swipe the figure sideways to see all of it.</p>
+      <div class="stepbar">
+        <button type="button" class="primary" id="ovGo">Start the oven</button>
+        <button type="button" id="ovTurn" aria-pressed="true">Turntable: on</button>
+        <button type="button" id="ovReset">Start over</button>
+      </div>
+      <div class="stepcap" id="ovCap" aria-live="polite"></div>
+      <div class="statgrid" id="ovRo"></div>
+    </div>
+
+    <div class="two">
+      <div class="card struct">
+        <span class="klabel">Common question</span>
+        <h3>Is microwaved food bad for your health?</h3>
+        <p><b>No.</b> A microwave oven only heats food. It does not make food radioactive or change it in some special way. A 2.45 GHz photon carries about 10<sup>−5</sup> eV: more than a hundred thousand times too little to break a chemical bond, and far too little to knock out an electron. The microwaves are gone the instant the oven switches off.</p>
+        <p>Because it cooks quickly with little water, microwaving keeps as many vitamins as other cooking methods, and often more than boiling, which washes vitamin C and some B vitamins out into the water.</p>
+        <p>What does deserve care:</p>
+        <ul>
+          <li><b>Cold spots.</b> Food heats unevenly, and bacteria can survive in the cool parts. Stir, let it stand for a minute, and heat leftovers until they reach 74 °C (165 °F) all the way through.</li>
+          <li><b>Containers.</b> Use glass, ceramic, or plastic labeled microwave-safe. Other plastics can warp, melt or let small amounts of chemicals pass into food, especially fatty food.</li>
+          <li><b>Superheated water.</b> Water heated in a clean, smooth cup can get hotter than 100 °C without boiling, then erupt when the cup is moved or something is added. Don’t overheat it, and let it stand before taking it out.</li>
+          <li><b>A damaged door.</b> The door’s metal mesh and seals keep the microwaves inside. In the US an oven may leak no more than 5 mW per cm<sup>2</sup>, measured 5 cm from its surface, far below a level known to harm people. Don’t use an oven whose door is bent or doesn’t close properly.</li>
+        </ul>
+      </div>
+      <div class="card struct">
+        <span class="klabel">Common question</span>
+        <h3>Why should metal stay out of the microwave?</h3>
+        <p>Metals are full of <b>free electrons</b>. Instead of soaking up microwaves the way water does, metal reflects them, and the field drives strong currents back and forth in it.</p>
+        <ul>
+          <li><b>Sparks.</b> Charge piles up at sharp points and thin edges: fork tines, crumpled foil, the gold or silver trim on a plate. There the electric field becomes strong enough to tear electrons off air molecules, and a spark (an arc) jumps. Sparks can scorch the oven and set food or paper alight.</li>
+          <li><b>Burning.</b> Very thin metal, such as foil or metallic paint, carries so much current that it heats up fast and can burn.</li>
+          <li><b>Cold food and a stressed oven.</b> A metal container shields the food, so it barely warms, and the microwaves bounced back toward the magnetron can overheat it.</li>
+        </ul>
+        <p>The oven’s own metal walls are safe: they are designed to reflect microwaves back into the food. The door is metal too, a mesh with holes a millimeter or two across. That is far smaller than the 12 cm wavelength, so the microwaves cannot get out, while visible light, with a wavelength of only about 0.0005 mm, passes through and lets you see inside. Some ovens come with a metal rack designed for them, and some manuals allow small, smooth pieces of foil to shield thin parts of food: follow the manual.</p>
+      </div>
+    </div>
+
+    <div class="bench">
       <div class="bhead"><span class="tagi">Diagram · Structure</span><h3>Rotational levels of CO and the spectrum they give</h3>
         <p class="note">Rotational energy grows as \(E_J = hcB\,J(J+1)\), so the steps get bigger as \(J\) climbs. Each absorption raises \(J\) by exactly one, so the lines fall at \(2B, 4B, 6B, \ldots\): evenly spaced, 115.3 GHz apart. The spacing is the measurement that gives the bond length.</p></div>
       <div class="figscroll"><svg class="plot" id="coSvg" viewBox="0 0 580 330" role="img" aria-label="Rotational energy levels J equals 0 to 5 for carbon monoxide, spreading further apart as J increases, with upward arrows for each absorption dropping to evenly spaced lines at 115, 231, 346, 461 and 576 gigahertz."></svg></div><p class="swipehint fig">Swipe the figure sideways to see all of it.</p>
@@ -1082,15 +1140,19 @@ footer .wrap{padding-block:20px 48px}
       <div id="g-absorption"><dt>Absorption and emission</dt><dd>An atom or molecule absorbs a photon when it uses the photon’s energy to jump to a higher energy level, and emits a photon when it drops back down. Either way the photon’s energy equals the gap between the two levels, \(\Delta E = h\nu\).</dd></div>
       <div id="g-annihilation"><dt>Annihilation</dt><dd>When a positron (the antimatter partner of the electron) meets an electron, both disappear and their mass becomes two gamma-ray photons of 511 keV each, flying off in opposite directions.</dd></div>
       <div id="g-antenna"><dt>Antenna</dt><dd>A rod, wire or coil that turns an alternating current into radio waves, or radio waves back into a current. It works best when it is about a quarter or a half of a wavelength long.</dd></div>
+      <div id="g-arc"><dt>Arcing (sparks)</dt><dd>A spark that jumps through air when the electric field becomes strong enough to tear electrons off air molecules. In a microwave oven it happens at the sharp points and thin edges of metal objects, where charge piles up.</dd></div>
       <div id="g-blackbody"><dt>Blackbody radiation</dt><dd>The glow that any object gives off because of its temperature. The hotter the object, the shorter the wavelength at which it glows most brightly: an electric stove burner glows red, while the much hotter Sun looks white.</dd></div>
       <div id="g-bragg"><dt>Bragg’s law</dt><dd>\(n\lambda = 2d\sin\theta\). X-rays reflected from neighboring planes of atoms in a crystal reinforce each other only at angles where the extra path, \(2d\sin\theta\), is a whole number of wavelengths. Measuring \(\theta\) gives the spacing \(d\) between the planes.</dd></div>
       <div id="g-bremsstrahlung"><dt>Bremsstrahlung</dt><dd>German for “braking radiation”: X-rays given off when fast electrons are slowed down by the nuclei of the target in an X-ray tube. It makes the smooth, continuous part of the X-ray spectrum.</dd></div>
       <div id="g-shift"><dt>Chemical shift, \(\delta\)</dt><dd>Where an NMR signal appears, in parts per million (ppm) from the reference compound TMS (tetramethylsilane). Nearby electronegative atoms and π bonds move a hydrogen’s signal to higher \(\delta\).</dd></div>
       <div id="g-conjugation"><dt>Conjugation</dt><dd>A chain of alternating single and double bonds, which lets the π electrons spread over many atoms. The longer the conjugated chain, the smaller the energy gap and the longer the wavelength it absorbs; long chains such as the one in β-carotene absorb visible light and look colored.</dd></div>
+      <div id="g-dielectric"><dt>Dielectric heating</dt><dd>Heating by a rapidly alternating electric field that keeps twisting polar molecules, such as water, back and forth; their jostling against their neighbors turns the motion into heat. It is how a microwave oven warms food.</dd></div>
       <div id="g-diffraction"><dt>Diffraction</dt><dd>The spreading and interference of waves that pass through gaps, or scatter from objects, about the size of their wavelength. X-rays diffract from crystals because their wavelength is similar to the spacing between atoms.</dd></div>
       <div id="g-dipole"><dt>Dipole</dt><dd>Equal and opposite charges a small distance apart. A molecular vibration absorbs infrared only if it changes the molecule’s dipole moment; a dipole antenna is a pair of rods whose ends charge up oppositely as the current swings back and forth.</dd></div>
+      <div id="g-doppler"><dt>Doppler shift</dt><dd>The change in the frequency of a wave when its source, or the object reflecting it, moves toward or away from you: higher when it approaches, lower when it moves away. Radar uses it to measure speed.</dd></div>
       <div id="g-ev"><dt>Electronvolt, eV</dt><dd>The energy an electron gains moving through a potential difference of one volt: \(1\ \text{eV} = 1.602 \times 10^{-19}\ \text{J}\). A convenient size for one photon: visible photons carry about 1.8 to 3.1 eV.</dd></div>
       <div id="g-gap"><dt>Energy gap, \(\Delta E\)</dt><dd>The difference in energy between two levels of an atom, molecule or nucleus, \(\Delta E = E_{\text{upper}} - E_{\text{lower}}\). A photon is absorbed or emitted only if its energy, \(h\nu\), equals this gap. In NMR it is the gap between the two orientations of a spinning nucleus in the magnet, and it grows in proportion to \(B_0\).</dd></div>
+      <div id="g-epr"><dt>EPR, electron paramagnetic resonance</dt><dd>A technique like NMR, but for unpaired electrons: in a magnetic field of about 0.34 T, an unpaired electron absorbs microwaves near 9.5 GHz. It detects free radicals and metal ions such as Cu<sup>2+</sup> and Fe<sup>3+</sup>.</dd></div>
       <div id="g-frequency"><dt>Frequency, \(\nu\)</dt><dd>The number of wave crests passing a point each second, in hertz (1 Hz = 1 s<sup>−1</sup>). Frequency and wavelength are linked by \(c = \lambda\nu\).</dd></div>
       <div id="g-states"><dt>Ground state, excited state</dt><dd>The ground state is the lowest-energy arrangement of an atom, molecule or nucleus. An excited state is any higher one. It usually lasts only a short time before the system drops back and gives off the extra energy, often as a photon.</dd></div>
       <div id="g-ground-wave"><dt>Ground wave, skywave, line of sight</dt><dd>The main ways radio waves get from place to place. A ground wave follows the curve of the Earth (long waves, and medium waves by day). A skywave bounces off the ionosphere and comes down far away (short waves, and medium waves at night). Line-of-sight waves go in straight lines, so they reach only to the horizon or up to satellites (VHF and above). The very longest waves (VLF) are also guided around the planet in the gap between the ground and the ionosphere.</dd></div>
@@ -1106,10 +1168,14 @@ footer .wrap{padding-block:20px 48px}
       <div id="g-oscillator"><dt>Oscillator</dt><dd>An electronic circuit that makes an alternating current at a steady frequency, often kept exact by a vibrating quartz crystal. It drives the antenna of a radio transmitter.</dd></div>
       <div id="g-photon"><dt>Photon</dt><dd>A single packet (quantum) of electromagnetic radiation. Its energy depends only on its frequency, \(E = h\nu\).</dd></div>
       <div id="g-planck"><dt>Planck’s constant, \(h\)</dt><dd>The constant that links the energy of a photon to its frequency, \(E = h\nu\): \(h = 6.626 \times 10^{-34}\ \text{J s}\).</dd></div>
+      <div id="g-polar"><dt>Polar molecule</dt><dd>A molecule with a permanent dipole: one end slightly negative (δ−) and the other slightly positive (δ+), as in H<sub>2</sub>O and HCl. Polar molecules absorb microwaves; nonpolar ones such as N<sub>2</sub>, O<sub>2</sub> and CO<sub>2</sub> do not.</dd></div>
       <div id="g-precess"><dt>Precess, precession</dt><dd>To precess is to wobble so that the axis of a spinning object sweeps out a cone. A tilted spinning top does this: instead of falling over, its axis slowly circles around the vertical. A nucleus spinning in a magnetic field precesses around the field direction in the same way, at exactly the frequency it absorbs, \(\nu = \gamma B_0/2\pi\) (400 MHz for <sup>1</sup>H in a 9.40 T magnet). After a radio pulse tips the nuclei, their precessing magnetism induces the faint radio signal that an NMR spectrometer records.</dd></div>
+      <div id="g-radar"><dt>Radar</dt><dd>Short for radio detection and ranging. A dish sends out short pulses of microwaves or radio waves and times the echoes from objects such as raindrops, aircraft or cars. The delay gives the distance, and the Doppler shift gives the speed.</dd></div>
       <div id="g-bands"><dt>Radio bands: VLF, LF, MF, HF, VHF, UHF</dt><dd>Engineering names for ranges of radio frequency, each ten times higher than the one before: very low (3–30 kHz), low, medium, high, very high and ultra high frequency (300 MHz–3 GHz).</dd></div>
       <div id="g-resonance"><dt>Resonance</dt><dd>Strong absorption that happens only when the frequency of the radiation matches a natural frequency of the system, such as the precession frequency of a nucleus in NMR. There the resonance condition is \(\nu = \gamma B_0/2\pi\): only radio waves of this frequency flip the nuclear spin.</dd></div>
       <div id="g-spectroscopy"><dt>Spectroscopy</dt><dd>Measuring which wavelengths a sample absorbs or emits, and using the pattern to identify the substance, work out its structure, or find how much of it is present.</dd></div>
+      <div id="g-standing"><dt>Standing wave, hot spot</dt><dd>A wave pattern that stays in one place, made when waves bouncing between walls overlap. In a microwave oven it leaves hot spots about 6 cm apart (half the 12.2 cm wavelength) with cooler spots between them; the turntable carries food through both.</dd></div>
+      <div id="g-superheat"><dt>Superheated water</dt><dd>Water heated above its normal boiling point without boiling, which can happen in a smooth, clean container in a microwave. A small disturbance can then make it boil violently all at once.</dd></div>
       <div id="g-tesla"><dt>Tesla, T</dt><dd>The SI unit of magnetic field strength. For scale: the Earth’s field is about 0.00005 T, a fridge magnet about 0.005 T, an MRI scanner 1.5 to 3 T, and research NMR magnets about 7 to 28 T.</dd></div>
       <div id="g-wavelength"><dt>Wavelength, \(\lambda\)</dt><dd>The distance from one crest of a wave to the next.</dd></div>
       <div id="g-wavenumber"><dt>Wavenumber, \(\tilde{\nu}\)</dt><dd>The number of waves per centimeter, \(1/\lambda\), in cm<sup>−1</sup>. Infrared and Raman spectra use it because it is proportional to energy.</dd></div>
@@ -2549,6 +2615,323 @@ const arrowDown = (x, y, cls) => `<path d="M${x - 4.5},${y - 9} L${x},${y} L${x 
   svg.addEventListener('click', e => { const el = e.target.closest ? e.target.closest('.rbHit') : null; if (el) pick(+el.dataset.i); });
   pick(cur);
   anim(svg, draw);
+})();
+
+/* ==================================================================== MICROWAVE: WHERE MICROWAVES ARE USED */
+(() => {
+  const svg = $('#muSvg');
+  if (!svg) return;
+  const ICON = {
+    oven: '<rect x="3" y="7" width="26" height="18" rx="2"/><rect x="6" y="10" width="15" height="12" rx="1"/><circle cx="25" cy="12" r="1.4"/><circle cx="25" cy="17.5" r="1.4"/><path d="M7 27v-2M25 27v-2"/>',
+    wifi: '<path d="M4.5 13a16 16 0 0 1 23 0"/><path d="M8.8 17.2a10 10 0 0 1 14.4 0"/><path d="M13 21.4a4.5 4.5 0 0 1 6 0"/><circle cx="16" cy="25.5" r="1.4"/>',
+    phone: '<rect x="8" y="3" width="12" height="26" rx="2.5"/><path d="M12.5 25.5h3"/><path d="M23.5 11a5 5 0 0 1 0 6M26.5 8a9.5 9.5 0 0 1 0 12"/>',
+    radar: '<path d="M6 21a11 11 0 0 0 15-15z"/><path d="M13.5 13.5l6-6"/><path d="M11 21l-2.5 7h10l-2.5-7"/><path d="M25 17l-1.2 3M28.5 12l-1.2 3M28.5 21l-1.2 3"/>',
+    epr: '<rect x="3" y="8" width="8" height="16" rx="1.5"/><rect x="21" y="8" width="8" height="16" rx="1.5"/><path d="M16 3v19"/><circle cx="16" cy="24.5" r="2.3"/><path d="M12.5 12.5h1.5M18 12.5h1.5M12.5 19.5h1.5M18 19.5h1.5"/>',
+    sattv: '<path d="M4 23a11 11 0 0 0 13-13z"/><path d="M10.5 16.5l7.5-2"/><path d="M9 24l-2 5h8l-2-5"/><rect x="22.5" y="3.5" width="4" height="4" rx=".6"/><path d="M20 5.5h2.5M26.5 5.5h2.5"/>',
+    car: '<path d="M2 21l3-6.5h10.5L20 21h1.5v3.5H2z"/><circle cx="6.5" cy="25" r="2.2"/><circle cx="16.5" cy="25" r="2.2"/><path d="M24.5 17.5a5 5 0 0 1 0 6M27.5 14.5a9.5 9.5 0 0 1 0 12"/>',
+    space: '<circle cx="11" cy="19" r="4.5"/><circle cx="21.5" cy="19" r="3.4"/><path d="M15.5 19h2.6"/><path d="M5.5 11a12.5 12.5 0 0 1 21 0"/><path d="M26.5 11l.3-3.4M26.5 11l-3.3-.6"/>'
+  };
+  const USES = [
+    {icon: 'oven', name: 'Microwave ovens', tag: '2.45 GHz', f: [[2.45e9, 2.45e9]], rep: 2.45e9, fr: '2.45 GHz', wl: '12.2 cm',
+     how: 'A magnetron fills a metal box with microwaves that bounce off the walls until water, fat and sugar in the food absorb them. Each water molecule twists back and forth billions of times a second, and the jostling becomes heat.',
+     why: '2.45 GHz is one of the bands set aside worldwide for heating rather than for communication. It reaches about 1–2 cm into most foods: absorbed well enough to heat quickly, but not so strongly that only the surface cooks.'},
+    {icon: 'wifi', name: 'Wi-Fi and Bluetooth', tag: '2.4 and 5 GHz', f: [[2.4e9, 2.5e9], [5.15e9, 5.85e9]], rep: 2.44e9, fr: '2.4–2.5 GHz and 5.2–5.8 GHz', wl: 'about 12 cm and 5–6 cm',
+     how: 'A router and a phone or laptop swap data by switching a weak microwave signal (about 0.1 W, roughly ten thousand times weaker than an oven) in complex patterns.',
+     why: 'These bands can be used without a license. The 2.4 GHz band reaches farther through walls; the 5 GHz band carries more data over shorter distances. A running microwave oven can interrupt 2.4 GHz Wi-Fi because it uses the same band.'},
+    {icon: 'phone', name: 'Phones and 5G', tag: '5G up to 40 GHz', f: [[0.6e9, 2.7e9], [3.3e9, 3.8e9], [24e9, 40e9]], rep: 1.9e9, fr: '0.6–2.7 GHz; 5G also near 3.5 GHz and 24–40 GHz', wl: '11–50 cm; about 8.5 cm; 7.5–12.5 mm',
+     how: 'A phone talks to a mast that may be several kilometers away, sending well under a watt of power.',
+     why: 'Lower frequencies travel farther and get into buildings better; higher frequencies carry more data. The fastest 5G uses millimeter waves (24–40 GHz), which walls and even leaves block, so it needs many small masts close together.'},
+    {icon: 'radar', name: 'Weather radar', tag: '2.7–3.0 GHz', f: [[2.7e9, 3.0e9]], rep: 2.85e9, fr: '2.7–3.0 GHz', wl: 'about 10 cm',
+     how: 'A turning dish sends out short pulses and listens for echoes from raindrops, hail and snow. The delay of an echo gives the distance; its Doppler shift gives how fast the wind is carrying the rain toward or away from the radar.',
+     why: 'Waves about 10 cm long pass through heavy rain without being absorbed much, so the radar can see deep into storms hundreds of kilometers away.'},
+    {icon: 'epr', name: 'EPR spectroscopy', tag: '9.5 GHz', f: [[9.5e9, 9.5e9]], rep: 9.5e9, fr: 'about 9.5 GHz', wl: '3.2 cm',
+     how: 'The sample sits in a small metal cavity between the poles of a magnet. Microwaves flip the spin of unpaired electrons when the field is tuned to the right strength, about 0.34 T.',
+     why: 'At about 0.34 T, the energy gap between the two spin states of an unpaired electron matches a 9.5 GHz photon. EPR detects free radicals and metal ions such as Cu<sup>2+</sup> and Fe<sup>3+</sup>.'},
+    {icon: 'sattv', name: 'Satellite TV', tag: '10.7–12.75 GHz', f: [[10.7e9, 12.75e9]], rep: 11.7e9, fr: '10.7–12.75 GHz', wl: 'about 2.5 cm',
+     how: 'A satellite 36,000 km above the equator beams TV down. The curved dish collects the very weak signal and focuses it onto a small receiver held in front of it.',
+     why: 'These waves pass through the atmosphere and clouds, and their short wavelength lets a dish only about 60 cm across focus them. Very heavy rain can still absorb enough to freeze the picture.'},
+    {icon: 'car', name: 'Car radar', tag: '76–81 GHz', f: [[76e9, 81e9]], rep: 77e9, fr: '76–81 GHz', wl: 'about 4 mm',
+     how: 'A small radar behind the bumper measures the distance and speed of the cars ahead, for adaptive cruise control and automatic emergency braking.',
+     why: 'Millimeter waves let a palm-sized antenna make a narrow beam and tell apart objects only a few centimeters apart. They keep working in fog, dust and darkness, where cameras struggle.'},
+    {icon: 'space', name: 'Molecules in space', tag: '115 and 231 GHz', f: [[115.27e9, 115.27e9], [230.54e9, 230.54e9]], rep: 115.27e9, fr: '115.3 and 230.5 GHz (CO lines)', wl: '2.6 mm and 1.3 mm',
+     how: 'Radio telescopes pick up the rotational lines of molecules such as carbon monoxide in the cold gas clouds between the stars: the same lines shown in the CO spectrum below.',
+     why: 'Each molecule has its own set of rotational lines, so the frequencies show which molecules are there, and their Doppler shifts show how the gas is moving. CO traces the cold hydrogen clouds where new stars form.'}
+  ];
+  const BX0 = 132, BX1 = 540, DEC = (BX1 - BX0) / 3;
+  const xf = f => BX0 + (Math.log10(f) - Math.log10(3e8)) * DEC;
+  const rowY = i => 36 + i * 16;
+  const f1 = v => v.toFixed(1);
+  let cur = 0;
+
+  function chart() {
+    let h = '';
+    const ticks = [[3e8, '300 MHz', '1 m'], [1e9, '1 GHz', '30 cm'], [3e9, '3 GHz', '10 cm'], [1e10, '10 GHz', '3 cm'], [3e10, '30 GHz', '1 cm'], [1e11, '100 GHz', '3 mm'], [3e11, '300 GHz', '1 mm']];
+    h += `<rect x="0" y="${rowY(cur) - 8}" width="560" height="16" style="fill:color-mix(in srgb,var(--rc) 12%,transparent)"/>`;
+    ticks.forEach(([f, a, b], k) => {
+      const x = f1(xf(f)), an = k === 0 ? 'start' : k === ticks.length - 1 ? 'end' : 'middle';
+      h += `<line x1="${x}" y1="26" x2="${x}" y2="${rowY(USES.length - 1) + 10}" style="stroke:var(--grid);stroke-width:1"/>`
+        + `<text x="${x}" y="17" text-anchor="${an}" class="t-sm">${a}</text><text x="${x}" y="${rowY(USES.length - 1) + 24}" text-anchor="${an}" class="t-sm">${b}</text>`;
+    });
+    USES.forEach((u, i) => {
+      const y = rowY(i), on = i === cur;
+      h += `<text x="8" y="${y + 4}" class="${on ? 't-ink' : 't-sm'}" style="font-size:${on ? 12 : 11}px">${u.name}</text>`;
+      u.f.forEach(([a, b]) => {
+        const xa = xf(a), xb = xf(b), st = on ? 'fill:var(--rc)' : 'fill:var(--muted);opacity:.45';
+        h += b > a * 1.0001 ? `<rect x="${f1(xa)}" y="${y - 4}" width="${f1(Math.max(4, xb - xa))}" height="8" rx="2" style="${st}"/>`
+          : `<circle cx="${f1(xa)}" cy="${y}" r="4" style="${st}"/>`;
+      });
+      if (on) {
+        const last = u.f[u.f.length - 1], xe = xf(last[1]) + 8, right = xe + 6.2 * u.tag.length < BX1 + 14;
+        h += `<text x="${f1(right ? xe : xf(u.f[0][0]) - 8)}" y="${y + 4}" text-anchor="${right ? 'start' : 'end'}" class="t-sm" style="fill:var(--ink)">${u.tag}</text>`;
+      }
+      h += `<rect class="muHit" data-i="${i}" x="0" y="${y - 8}" width="560" height="16" style="fill:transparent;cursor:pointer"><title>${u.name}</title></rect>`;
+    });
+    h += `<text x="${BX0}" y="${rowY(USES.length - 1) + 38}" class="t-sm">frequency above, wavelength below</text>`;
+    svg.innerHTML = h;
+  }
+  function pick(i) {
+    cur = i;
+    const u = USES[i];
+    chart();
+    [...$('#muSel').children].forEach((b, j) => b.setAttribute('aria-pressed', String(j === i)));
+    $('#muRo').innerHTML = statT('Use', u.name) + statT('Frequency', u.fr) + statT('Wavelength', u.wl)
+      + stat('Energy per photon', `${sci(H * u.rep, 2)} J`)
+      + statT('How it works', u.how, 'wide') + statT('Why this frequency', u.why, 'wide');
+  }
+  $('#muSel').innerHTML = USES.map((u, i) => `<button type="button" data-i="${i}" aria-pressed="false"><svg viewBox="0 0 32 32" aria-hidden="true">${ICON[u.icon]}</svg><span>${u.name}</span></button>`).join('');
+  $('#muSel').addEventListener('click', e => { const b = e.target.closest('button'); if (b) pick(+b.dataset.i); });
+  svg.addEventListener('click', e => { const r = e.target.closest ? e.target.closest('.muHit') : null; if (r) pick(+r.dataset.i); });
+  pick(0);
+})();
+
+/* ==================================================================== MICROWAVE: HOW AN OVEN HEATS FOOD */
+(() => {
+  const svg = $('#ovSvg');
+  if (!svg) return;
+  const ITEMS = [{key: 'soup', lab: 'Bowl of soup'}, {key: 'ice', lab: 'Ice cube'}, {key: 'plate', lab: 'Empty plate'}, {key: 'fork', lab: 'Metal fork'}];
+  const OX0 = 18, OY0 = 38, OX1 = 258, OY1 = 266, OCX = (OX0 + OX1) / 2, OCY = (OY0 + OY1) / 2, TR = 88, FR = 46;
+  const ZX = 434, ZY = 158, ZR = 100;
+  const SIM = 12;                         // simulated seconds per second on screen
+  const W = 2 * Math.PI * 0.9;            // the field's flips, slowed about three billion times
+  const f1 = v => v.toFixed(1);
+  let item = 0, on = false, turn = true, st = 0, ang = -0.6, prevT = null, S;
+  const reset = () => { st = 0; on = false; S = {hi: 5, lo: 5, ice: -18, melt: 0, plate: 20}; };
+  reset();
+
+  /* ---- static layer ---- */
+  let g = `<defs><radialGradient id="ovSpot"><stop offset="0" style="stop-color:var(--micro);stop-opacity:.55"/><stop offset="1" style="stop-color:var(--micro);stop-opacity:0"/></radialGradient>`
+    + `<clipPath id="ovClip"><circle cx="${ZX}" cy="${ZY}" r="${ZR}"/></clipPath></defs>`;
+  g += `<text x="${OX0}" y="24" class="t-ink" style="font-size:12px">The oven, seen from above</text>`;
+  g += `<rect x="${OX0 - 7}" y="${OY0 - 7}" width="${OX1 - OX0 + 14}" height="${OY1 - OY0 + 14}" rx="8" style="fill:var(--surface);stroke:var(--ink);stroke-width:2.5"/>`;
+  g += `<rect x="${OX0}" y="${OY0}" width="${OX1 - OX0}" height="${OY1 - OY0}" rx="3" style="fill:var(--surface-2);stroke:var(--muted);stroke-width:1"/>`;
+  g += `<g id="ovSpots" style="opacity:0">`;
+  for (let i = 0; i < 4; i++) for (let j = 0; j < 4; j++) g += `<circle cx="${OX0 + 30 + 60 * i}" cy="${f1(OY0 + 28.5 + 57 * j)}" r="27" style="fill:url(#ovSpot)"/>`;
+  g += `</g>`;
+  g += `<circle cx="${OCX}" cy="${OCY}" r="${TR}" style="fill:var(--surface);fill-opacity:.55;stroke:var(--muted);stroke-width:1.2"/><circle cx="${OCX}" cy="${OCY}" r="5" style="fill:var(--muted)"/>`;
+  // magnetron and waveguide on the right wall
+  g += `<rect x="${OX1 + 7}" y="${OCY - 13}" width="14" height="26" style="fill:var(--surface-2);stroke:var(--ink);stroke-width:1.3"/><rect x="${OX1 + 21}" y="${OCY - 19}" width="26" height="38" rx="3" style="fill:var(--surface);stroke:var(--ink);stroke-width:1.5"/>`;
+  g += `<text x="${OX1 + 34}" y="${OCY + 33}" text-anchor="middle" class="t-sm">magnetron</text>`;
+  g += `<text x="${OX0}" y="288" class="t-sm">Shaded patches are hot spots, about 6 cm apart.</text>`;
+  // zoom frame
+  g += `<g id="ovLink"></g><circle cx="${ZX}" cy="${ZY}" r="${ZR}" style="fill:var(--surface);stroke:var(--muted);stroke-width:1.2"/>`;
+  g += `<text id="ovZt" x="${ZX}" y="${ZY - ZR - 10}" text-anchor="middle" class="t-ink" style="font-size:12px"></text>`;
+  g += `<text x="${ZX}" y="${ZY + ZR + 18}" text-anchor="middle" class="t-sm">Zoomed in about ten million times</text><text id="ovZn" x="${ZX}" y="${ZY + ZR + 33}" text-anchor="middle" class="t-sm" style="fill:var(--ink)"></text>`;
+  g += `<g id="ovZoom" clip-path="url(#ovClip)"></g><g id="ovDyn"></g>`;
+  svg.innerHTML = g;
+  const spots = $('#ovSpots'), dyn = $('#ovDyn'), zoom = $('#ovZoom'), link = $('#ovLink'), zt = $('#ovZt'), zn = $('#ovZn');
+  let lastZn = '';
+
+  /* ---- pieces ---- */
+  const water = (x, y, th, lab) => {
+    const a = 0.912, d = 12.5, h1 = [x + d * Math.cos(th - a), y + d * Math.sin(th - a)], h2 = [x + d * Math.cos(th + a), y + d * Math.sin(th + a)];
+    let s = `<line x1="${f1(x)}" y1="${f1(y)}" x2="${f1(h1[0])}" y2="${f1(h1[1])}" style="stroke:var(--ink);stroke-width:2.2"/><line x1="${f1(x)}" y1="${f1(y)}" x2="${f1(h2[0])}" y2="${f1(h2[1])}" style="stroke:var(--ink);stroke-width:2.2"/>`
+      + `<circle cx="${f1(h1[0])}" cy="${f1(h1[1])}" r="4.6" style="fill:var(--surface);stroke:var(--ink);stroke-width:1.2"/><circle cx="${f1(h2[0])}" cy="${f1(h2[1])}" r="4.6" style="fill:var(--surface);stroke:var(--ink);stroke-width:1.2"/>`
+      + `<circle cx="${f1(x)}" cy="${f1(y)}" r="8" style="fill:var(--bad);stroke:var(--ink);stroke-width:1.2"/>`;
+    if (lab) {
+      const mx = x + 15 * Math.cos(th), my = y + 15 * Math.sin(th), ox = x - 17 * Math.cos(th), oy = y - 17 * Math.sin(th);
+      s += `<text x="${f1(ox)}" y="${f1(oy + 4)}" text-anchor="middle" class="t-ink halo" style="font-size:11px">δ−</text><text x="${f1(mx + 9 * Math.cos(th))}" y="${f1(my + 9 * Math.sin(th) + 4)}" text-anchor="middle" class="t-ink halo" style="font-size:11px">δ+</text>`;
+    }
+    return s;
+  };
+  // molecules in the zoom: a loose 3 x 3 arrangement with fixed random tilts
+  const MOL = [];
+  for (let i = 0; i < 3; i++) for (let j = 0; j < 3; j++) {
+    const k = i * 3 + j, base = (k * 2.399) % (2 * Math.PI);
+    MOL.push({x: ZX - 58 + 58 * j + ((k * 37) % 11) - 5, y: ZY - 56 + 56 * i + ((k * 53) % 13) - 6, base, dir: Math.sign(Math.sin(-Math.PI / 2 - base)) || 1, p1: k * 1.7, p2: k * 2.9});
+  }
+  function zoomSoup(t, temp) {
+    const s = on ? Math.sin(W * t - 0.6) : 0, J = 0.12 + 0.4 * Math.max(0, temp - 5) / 95;
+    return MOL.map((m, k) => {
+      const th = m.base + 0.75 * s * m.dir + J * 0.5 * (Math.sin(1.9 * t + m.p1) + Math.sin(3.1 * t + m.p2));
+      const jx = J * 3 * Math.sin(2.3 * t + m.p2), jy = J * 3 * Math.cos(2.7 * t + m.p1);
+      return water(m.x + jx, m.y + jy, th, k === 4);
+    }).join('');
+  }
+  function zoomIce(t) {
+    let s = '';
+    const P = [];
+    for (let i = -1; i <= 1; i++) for (let j = -1; j <= 1; j++) P.push([ZX + 56 * j + (i % 2 ? 28 : 0), ZY + 50 * i]);
+    P.forEach((a, i) => P.forEach((b, j) => { if (j > i && Math.hypot(a[0] - b[0], a[1] - b[1]) < 70) s += `<line x1="${a[0]}" y1="${a[1]}" x2="${b[0]}" y2="${b[1]}" style="stroke:var(--muted);stroke-width:1.2;stroke-dasharray:3 3"/>`; }));
+    const w = on ? 0.06 * Math.sin(W * t - 0.6) : 0;
+    P.forEach((a, k) => { s += water(a[0], a[1], (k % 2 ? 0.5 : -2.1) + (k % 3) * 0.7 + w, false); });
+    return s;
+  }
+  function zoomPlate(t) {
+    let s = '';
+    for (let i = -3; i <= 3; i++) for (let j = -3; j <= 3; j++) {
+      const x = ZX + 30 * j + (i % 2 ? 15 : 0), y = ZY + 26 * i;
+      s += (i + j) % 2 ? `<circle cx="${x}" cy="${y}" r="9" style="fill:var(--surface-2);stroke:var(--muted);stroke-width:1"/>` : `<circle cx="${x}" cy="${y}" r="5.5" style="fill:var(--muted)"/>`;
+    }
+    if (on) {
+      let d = '';
+      for (let x = ZX - ZR; x <= ZX + ZR; x += 3) d += (d ? ' ' : 'M') + x + ',' + f1(ZY + 12 * Math.sin((x - ZX) / 14 - 5 * t));
+      s += `<path d="${d}" style="fill:none;stroke:var(--micro);stroke-width:3;stroke-linecap:round"/>`;
+    }
+    return s;
+  }
+  function zoomMetal(t) {
+    let s = '';
+    const sx = on ? 11 * Math.sin(W * t - 0.6) : 0;
+    for (let i = -3; i <= 3; i++) for (let j = -3; j <= 3; j++) {
+      const x = ZX + 30 * j, y = ZY + 28 * i;
+      s += `<circle cx="${x}" cy="${y}" r="9" style="fill:var(--surface-2);stroke:var(--ink);stroke-width:1"/><text x="${x}" y="${y + 4}" text-anchor="middle" style="font-size:11px;fill:var(--ink)">+</text>`;
+    }
+    for (let k = 0; k < 30; k++) {
+      const x = ZX - 95 + (k * 47) % 190 + sx + 3 * Math.sin(3.3 * t + k), y = ZY - 84 + (k * 29) % 168 + 14;
+      s += `<circle cx="${f1(x)}" cy="${f1(y)}" r="3" style="fill:var(--data)"/>`;
+    }
+    return s;
+  }
+  const spark = (x, y, a, t, k) => {
+    const ca = Math.cos(a), sa = Math.sin(a), seed = Math.floor(t * 14) + k * 7;
+    let d = `M${f1(x)},${f1(y)}`;
+    for (let i = 1; i <= 4; i++) { const off = (i % 2 ? 1 : -1) * (2.5 + 2 * Math.abs(Math.sin(seed * 1.3 + i))), r = 5.5 * i; d += ` L${f1(x + r * ca - off * sa)},${f1(y + r * sa + off * ca)}`; }
+    return `<path d="${d}" style="fill:none;stroke:var(--warn);stroke-width:4;stroke-linecap:round;stroke-linejoin:round;opacity:.45"/><path d="${d}" style="fill:none;stroke:var(--warn);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round"/>`
+      + `<circle cx="${f1(x)}" cy="${f1(y)}" r="2.6" style="fill:var(--warn)"/>`;
+  };
+  function food(t) {
+    const k = ITEMS[item].key, fx = OCX + FR * Math.cos(ang), fy = OCY + FR * Math.sin(ang);
+    let s = '';
+    if (k === 'soup') {
+      s += `<circle cx="${f1(fx)}" cy="${f1(fy)}" r="25" style="fill:var(--surface);stroke:var(--ink);stroke-width:1.5"/><circle cx="${f1(fx)}" cy="${f1(fy)}" r="19.5" style="fill:color-mix(in srgb,var(--warn) 38%,var(--surface))"/>`;
+      if (S.hi - S.lo > 6 && S.hi > 50) {     // the hottest part bubbles
+        const hx = fx + 8 * Math.cos(ang + 2.2), hy = fy + 8 * Math.sin(ang + 2.2);
+        for (let b = 0; b < 4; b++) s += `<circle cx="${f1(hx + 5 * Math.cos(b * 1.7 + 3 * t))}" cy="${f1(hy + 5 * Math.sin(b * 2.3 + 2 * t))}" r="${f1(1.6 + Math.abs(Math.sin(4 * t + b)))}" style="fill:none;stroke:var(--ink);stroke-width:1"/>`;
+      }
+      const steam = Math.max(0, Math.min(1, (S.hi - 40) / 40));
+      if (steam > 0) for (let w = -1; w <= 1; w++) {
+        let d = '';
+        for (let k = 0; k <= 10; k++) { const yy = fy - 8 - 3 * k, xx = fx + 9 * w + 3 * Math.sin(k * 0.9 + 3 * t + w); d += (d ? ' ' : 'M') + f1(xx) + ',' + f1(yy); }
+        s += `<path d="${d}" style="fill:none;stroke:var(--muted);stroke-width:1.8;stroke-linecap:round;opacity:${f1(steam * (0.75 - 0.15 * Math.abs(w)))}"/>`;
+      }
+    } else if (k === 'ice') {
+      const c = Math.cos(ang + 0.4), sn = Math.sin(ang + 0.4), q = (u, v) => `${f1(fx + u * c - v * sn)},${f1(fy + u * sn + v * c)}`;
+      if (S.melt > 0) s += `<circle cx="${f1(fx)}" cy="${f1(fy)}" r="${f1(13 + 13 * S.melt)}" style="fill:color-mix(in srgb,var(--data) 22%,var(--surface));opacity:.85"/>`;
+      if (S.melt < 1) { const h = 13 * (1 - 0.7 * S.melt); s += `<path d="M${q(-h, -h)} L${q(h, -h)} L${q(h, h)} L${q(-h, h)} Z" style="fill:color-mix(in srgb,var(--data) 14%,var(--surface));stroke:var(--data);stroke-width:1.5;stroke-linejoin:round"/>`; }
+    } else if (k === 'plate') {
+      s += `<circle cx="${f1(fx)}" cy="${f1(fy)}" r="29" style="fill:var(--surface);stroke:var(--ink);stroke-width:1.5"/><circle cx="${f1(fx)}" cy="${f1(fy)}" r="20" style="fill:none;stroke:var(--line);stroke-width:1.2"/>`;
+    } else {
+      const ux = Math.cos(ang + 1.9), uy = Math.sin(ang + 1.9), nx = -uy, ny = ux, p = (u, v) => `${f1(fx + u * ux + v * nx)},${f1(fy + u * uy + v * ny)}`;
+      s += `<path d="M${p(-30, -2.5)} L${p(2, -2.5)} L${p(6, -7)} L${p(6, 7)} L${p(2, 2.5)} L${p(-30, 2.5)} Z" style="fill:var(--surface-2);stroke:var(--ink);stroke-width:1.4;stroke-linejoin:round"/>`;
+      for (let i = 0; i < 4; i++) { const v = -6 + 4 * i; s += `<path d="M${p(6, v)} L${p(24, v)}" style="stroke:var(--ink);stroke-width:2.2;stroke-linecap:round"/>`; if (on && Math.sin(23 * t + i * 1.7) > 0.1) s += spark(fx + 25 * ux + v * nx, fy + 25 * uy + v * ny, Math.atan2(uy, ux) + 0.5 * Math.sin(9 * t + i), t, i); }
+    }
+    return [s, fx, fy];
+  }
+
+  /* ---- what the readout and caption say ---- */
+  const mmss = s => `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}`;
+  const C = x => { const r = Math.round(x); return r < 0 ? '−' + -r : String(r); };
+  let lastCap = '', lastRo = '';
+  function words() {
+    const k = ITEMS[item].key;
+    if (k === 'soup') {
+      const cap = !st ? 'A bowl of soup straight from the fridge, at 5 °C. Press <b>Start the oven</b>.'
+        : on ? (turn ? 'The water molecules twist back and forth with the field and jostle their neighbors, so the soup heats up. The turntable carries the bowl through the hot spots, so it heats fairly evenly.'
+                     : 'Without the turntable the bowl sits still: the part in a hot spot heats fast while the rest stays cool. Turn the turntable back on, or stop and stir.')
+        : S.lo >= 74 ? 'Hot all the way through, above 74 °C (165 °F), which kills bacteria. Let it cool a little before eating.'
+        : 'Let it stand for a minute and stir: heat spreads from the hot parts into the cold ones. Leftovers should reach 74 °C (165 °F) all the way through to kill bacteria.';
+      return [cap, stat('Time in the oven', mmss(st)) + stat('Hottest part', `${C(S.hi)} °C`) + stat('Coldest part', `${C(S.lo)} °C`)];
+    }
+    if (k === 'ice') {
+      const cap = !st ? 'An ice cube from the freezer, at −18 °C. Press <b>Start the oven</b>.'
+        : S.ice < 0 ? 'Ice warms very slowly. Its water molecules are locked into a crystal by hydrogen bonds and can barely turn, so it absorbs little of the microwave energy.'
+        : S.melt < 1 ? 'Once a little ice melts, the liquid water absorbs strongly and heats fast, which melts more ice. That is why defrost settings switch the power on and off: the pauses let heat spread before the thawed parts start to cook.'
+        : 'All melted: a little water heats up very quickly.';
+      return [cap, stat('Time in the oven', mmss(st)) + stat('Temperature', `${C(S.ice)} °C`) + stat('Melted', `${C(100 * S.melt)}%`)];
+    }
+    if (k === 'plate') {
+      const cap = !st ? 'An empty ceramic plate. Press <b>Start the oven</b>.'
+        : 'The plate stays cool. Glass and most ceramics have nothing that can follow the field, so the microwaves pass straight through them. A plate only warms up from hot food sitting on it.';
+      return [cap, stat('Time in the oven', mmss(st)) + stat('Plate temperature', `${C(S.plate)} °C`)];
+    }
+    const cap = !st ? 'A metal fork. Press <b>Start the oven</b> to see why this is a bad idea.'
+      : on ? '<b>Sparks!</b> The field pushes the fork’s free electrons back and forth. Charge piles up at the sharp tips, where the field gets strong enough to tear electrons off air molecules and make sparks. Stop the oven.'
+      : 'Stopped. Sparks like these can scorch the oven, set food or paper alight, and damage the magnetron. Keep forks, foil and gold-trimmed dishes out of the microwave.';
+    return [cap, stat('Time in the oven', mmss(st)) + statT('Sparks', on ? 'yes' : 'none now')];
+  }
+
+  /* ---- the loop ---- */
+  function update(dt) {
+    const k = ITEMS[item].key, ds = dt * SIM;
+    if (on) {
+      st += ds;
+      if (k === 'soup') {
+        const r = 0.55, fh = turn ? 1.15 : 1.8, fl = turn ? 0.85 : 0.3;
+        S.hi = Math.min(100, S.hi + r * fh * ds); S.lo = Math.min(S.hi, S.lo + r * fl * ds);
+      } else if (k === 'ice') {
+        if (S.ice < 0) S.ice = Math.min(0, S.ice + 0.12 * ds);
+        else if (S.melt < 1) S.melt = Math.min(1, S.melt + (0.004 + 0.05 * S.melt) * ds);
+        else S.ice = Math.min(100, S.ice + 1.6 * ds);
+      } else if (k === 'plate') S.plate = Math.min(22, S.plate + 0.004 * ds);
+      if (turn) ang += 0.55 * dt;
+    } else if (k === 'soup' && S.hi - S.lo > 0.3) {     // standing time: the hot and cold parts even out
+      const m = (S.hi + S.lo) / 2, f = Math.exp(-ds / 25);
+      S.hi = m + (S.hi - m) * f; S.lo = m + (S.lo - m) * f;
+    }
+  }
+  function draw(t) {
+    const k = ITEMS[item].key;
+    spots.style.opacity = on ? (0.45 + 0.55 * Math.abs(Math.sin(W * t))).toFixed(2) : '0';
+    const [fs, fx, fy] = food(t);
+    let d = fs;
+    if (on) {     // microwaves coming in through the waveguide
+      let w = '';
+      for (let x = OX1 + 6; x >= OX1 - 46; x -= 2) w += (w ? ' ' : 'M') + x + ',' + f1(OCY + 6 * Math.sin((x - OX1) / 5 + 9 * t));
+      d += `<path d="${w}" style="fill:none;stroke:var(--micro);stroke-width:2.2;stroke-linecap:round"/>`;
+    }
+    const up = Math.sin(W * t) >= 0, ex = ZX + ZR + 14;
+    if (on) d += `<path d="M${ex},${up ? ZY + 26 : ZY - 26} V${up ? ZY - 18 : ZY + 18}" style="stroke:var(--ink);stroke-width:2"/><path d="M${ex - 5},${up ? ZY - 16 : ZY + 16} L${ex},${up ? ZY - 27 : ZY + 27} L${ex + 5},${up ? ZY - 16 : ZY + 16} Z" style="fill:var(--ink)"/><text x="${ex}" y="${ZY + (up ? 42 : -34)}" text-anchor="middle" class="t-ink" style="font-size:12px">E</text>`;
+    dyn.innerHTML = d;
+    link.innerHTML = `<path d="M${f1(fx)},${f1(fy)} L${ZX - ZR * 0.72},${f1(ZY - ZR * 0.69)} M${f1(fx)},${f1(fy)} L${ZX - ZR * 0.72},${f1(ZY + ZR * 0.69)}" style="stroke:var(--muted);stroke-width:1;stroke-dasharray:3 3;opacity:.7"/>`;
+    zoom.innerHTML = k === 'soup' ? zoomSoup(t, (S.hi + S.lo) / 2) : k === 'ice' ? zoomIce(t) : k === 'plate' ? zoomPlate(t) : zoomMetal(t);
+    const note = k === 'soup' ? 'Oxygen (red) is δ−; hydrogen (white) is δ+.' : k === 'ice' ? 'Dashed lines: hydrogen bonds.'
+      : k === 'plate' ? (on ? 'The microwaves pass straight through.' : 'Nothing here is free to turn with the field.') : 'Blue dots: free electrons, pushed back and forth.';
+    if (note !== lastZn) { zn.textContent = note; lastZn = note; }
+    const [cap, ro] = words();
+    if (cap !== lastCap) { $('#ovCap').innerHTML = cap; lastCap = cap; }
+    if (ro !== lastRo) { $('#ovRo').innerHTML = ro; lastRo = ro; }
+  }
+  const ZT = ['Water molecules in the soup', 'Water molecules locked in ice', 'Atoms in the ceramic plate', 'Metal atoms in the fork'];
+
+  /* ---- controls ---- */
+  const go = $('#ovGo'), tb = $('#ovTurn');
+  const sync = () => {
+    go.textContent = on ? 'Stop the oven' : 'Start the oven'; go.setAttribute('aria-pressed', String(on));
+    tb.textContent = turn ? 'Turntable: on' : 'Turntable: off'; tb.setAttribute('aria-pressed', String(turn));
+    [...$('#ovSel').children].forEach((b, j) => b.setAttribute('aria-pressed', String(j === item)));
+    zt.textContent = ZT[item];
+  };
+  $('#ovSel').innerHTML = ITEMS.map((it, i) => `<button type="button" data-i="${i}" aria-pressed="false">${it.lab}</button>`).join('');
+  $('#ovSel').addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; item = +b.dataset.i; reset(); sync(); draw(tNow); });
+  go.addEventListener('click', () => { on = !on; if (on && paused) $('#motion').click(); sync(); draw(tNow); });
+  tb.addEventListener('click', () => { turn = !turn; sync(); });
+  $('#ovReset').addEventListener('click', () => { reset(); sync(); draw(tNow); });
+  sync();
+  anim(svg, t => {
+    if (prevT !== null) update(Math.max(0, Math.min(0.05, t - prevT)));
+    prevT = t;
+    draw(t);
+  });
 })();
 
 /* ==================================================================== GLOSSARY: search */
