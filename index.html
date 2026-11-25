@@ -83,6 +83,7 @@ header .wrap{padding-block:36px 30px;display:grid;gap:12px}
 .terms dd{margin:0;color:var(--muted)}
 .card .terms{max-width:none}
 .eqn .terms{max-width:none;margin-top:4px}
+.bhead .terms{max-width:none;margin-top:6px}
 .reading .cap,.bfig figcaption{color:var(--muted);font-size:.92rem;line-height:1.5;text-align:left;align-self:start}
 @media (max-width:760px){.reading{grid-template-columns:minmax(0,1fr)} .bfig{width:100%;max-width:560px}}
 .bfig svg{width:100%;height:auto;display:block}
@@ -711,7 +712,14 @@ footer .wrap{padding-block:20px 48px}
 
     <div class="bench">
       <div class="bhead"><span class="tagi">Diagram · Structure</span><h3>Rotational levels of CO and the spectrum they give</h3>
-        <p class="note">Rotational energy grows as \(E_J = hcB\,J(J+1)\), so the steps get bigger as \(J\) climbs. Each absorption raises \(J\) by exactly one, so the lines fall at \(2B, 4B, 6B, \ldots\): evenly spaced, 115.3 GHz apart. The spacing is the measurement that gives the bond length.</p></div>
+        <p class="note">Rotational energy grows as \(E_J = hcB\,J(J+1)\), so the steps get bigger as \(J\) climbs. Each absorption raises \(J\) by exactly one, so the lines fall at \(2B, 4B, 6B, \ldots\): evenly spaced, 115.3 GHz apart. The spacing is the measurement that gives the bond length.</p>
+        <dl class="terms" aria-label="What each symbol means">
+          <div><dt>\(E_J\)</dt><dd>the rotational energy of the molecule when it is in level \(J\), in joules (J). The numbers on the right of the diagram give the same energy divided by \(hc\), in cm<sup>−1</sup>: for \(J = 1\), \(E_1/hc = 2B = 3.85\ \text{cm}^{-1}\).</dd></div>
+          <div><dt>\(h\)</dt><dd>Planck’s constant, \(6.626 \times 10^{-34}\ \text{J s}\)</dd></div>
+          <div><dt>\(c\)</dt><dd>the speed of light, written here as \(2.998 \times 10^{10}\ \text{cm s}^{-1}\) so that its centimeters cancel the cm<sup>−1</sup> of \(B\)</dd></div>
+          <div><dt>\(B\)</dt><dd>the rotational constant of the molecule, in cm<sup>−1</sup>: \(B = h/(8\pi^2 c I)\), where \(I\) is the molecule’s moment of inertia, so heavier atoms or a longer bond give a smaller \(B\). For CO, \(B = 1.9225\ \text{cm}^{-1}\).</dd></div>
+          <div><dt>\(J\)</dt><dd>the rotational quantum number, a whole number (0, 1, 2, 3, …) that labels each level in the diagram; each absorption raises it by exactly one. It is not the same as the unit J (joules).</dd></div>
+        </dl></div>
       <div class="figscroll"><svg class="plot" id="coSvg" viewBox="0 0 580 330" role="img" aria-label="Rotational energy levels J equals 0 to 5 for carbon monoxide, spreading further apart as J increases, with upward arrows for each absorption dropping to evenly spaced lines at 115, 231, 346, 461 and 576 gigahertz."></svg></div><p class="swipehint fig">Swipe the figure sideways to see all of it.</p>
     </div>
 
@@ -1164,6 +1172,7 @@ footer .wrap{padding-block:20px 48px}
       <div id="g-isotope"><dt>Isotope</dt><dd>Atoms of the same element with different numbers of neutrons, such as carbon-12 and carbon-13. A radioactive isotope such as cobalt-60 can be identified by the energies of the gamma rays it emits.</dd></div>
       <div id="g-b0"><dt>Magnetic field strength, \(B_0\)</dt><dd>How strong the steady magnetic field of an NMR spectrometer or MRI scanner is, measured in tesla (T). The subscript 0 marks this main field, to tell it apart from the much weaker oscillating field of the radio pulse. Both the energy gap between the spin states and the resonance frequency grow in proportion to \(B_0\).</dd></div>
       <div id="g-magnetron"><dt>Magnetron</dt><dd>The vacuum tube that makes the microwaves in a microwave oven. Electrons circling in a magnetic field sweep past cavities cut into a copper block and set them ringing at 2.45 GHz, rather like air blown across the top of a bottle.</dd></div>
+      <div id="g-inertia"><dt>Moment of inertia, \(I\)</dt><dd>How hard it is to set something spinning, which depends on its mass and how far that mass sits from the axis. For a diatomic molecule \(I = \mu r^2\), where \(\mu\) is the reduced mass of the two atoms and \(r\) is the bond length.</dd></div>
       <div id="g-nmr"><dt>NMR, nuclear magnetic resonance</dt><dd>A technique that puts a sample in a strong magnet and finds the radio frequencies at which its nuclei (usually <sup>1</sup>H or <sup>13</sup>C) flip their spins. The pattern of signals shows how the atoms in a molecule are connected. MRI uses the same physics to image the body.</dd></div>
       <div id="g-oscillator"><dt>Oscillator</dt><dd>An electronic circuit that makes an alternating current at a steady frequency, often kept exact by a vibrating quartz crystal. It drives the antenna of a radio transmitter.</dd></div>
       <div id="g-photon"><dt>Photon</dt><dd>A single packet (quantum) of electromagnetic radiation. Its energy depends only on its frequency, \(E = h\nu\).</dd></div>
@@ -1173,7 +1182,10 @@ footer .wrap{padding-block:20px 48px}
       <div id="g-radar"><dt>Radar</dt><dd>Short for radio detection and ranging. A dish sends out short pulses of microwaves or radio waves and times the echoes from objects such as raindrops, aircraft or cars. The delay gives the distance, and the Doppler shift gives the speed.</dd></div>
       <div id="g-bands"><dt>Radio bands: VLF, LF, MF, HF, VHF, UHF</dt><dd>Engineering names for ranges of radio frequency, each ten times higher than the one before: very low (3–30 kHz), low, medium, high, very high and ultra high frequency (300 MHz–3 GHz).</dd></div>
       <div id="g-resonance"><dt>Resonance</dt><dd>Strong absorption that happens only when the frequency of the radiation matches a natural frequency of the system, such as the precession frequency of a nucleus in NMR. There the resonance condition is \(\nu = \gamma B_0/2\pi\): only radio waves of this frequency flip the nuclear spin.</dd></div>
+      <div id="g-rotconst"><dt>Rotational constant, \(B\)</dt><dd>A constant for each molecule that sets the spacing of its rotational energy levels: \(B = h/(8\pi^2 c I)\), usually given in cm<sup>−1</sup>. Heavier atoms or a longer bond give a larger moment of inertia \(I\) and so a smaller \(B\). For CO, \(B = 1.9225\ \text{cm}^{-1}\).</dd></div>
+      <div id="g-rotj"><dt>Rotational quantum number, \(J\)</dt><dd>The whole number (0, 1, 2, 3, …) that labels the rotational energy levels of a molecule, \(E_J = hcB\,J(J+1)\). When a molecule absorbs a microwave photon it moves up exactly one level. Not to be confused with J, the symbol for joules.</dd></div>
       <div id="g-spectroscopy"><dt>Spectroscopy</dt><dd>Measuring which wavelengths a sample absorbs or emits, and using the pattern to identify the substance, work out its structure, or find how much of it is present.</dd></div>
+      <div id="g-lightspeed"><dt>Speed of light, \(c\)</dt><dd>The speed of all electromagnetic radiation in a vacuum: \(c = 2.998 \times 10^{8}\ \text{m s}^{-1}\), or \(2.998 \times 10^{10}\ \text{cm s}^{-1}\). It links wavelength and frequency, \(c = \lambda\nu\).</dd></div>
       <div id="g-standing"><dt>Standing wave, hot spot</dt><dd>A wave pattern that stays in one place, made when waves bouncing between walls overlap. In a microwave oven it leaves hot spots about 6 cm apart (half the 12.2 cm wavelength) with cooler spots between them; the turntable carries food through both.</dd></div>
       <div id="g-superheat"><dt>Superheated water</dt><dd>Water heated above its normal boiling point without boiling, which can happen in a smooth, clean container in a microwave. A small disturbance can then make it boil violently all at once.</dd></div>
       <div id="g-tesla"><dt>Tesla, T</dt><dd>The SI unit of magnetic field strength. For scale: the Earth’s field is about 0.00005 T, a fridge magnet about 0.005 T, an MRI scanner 1.5 to 3 T, and research NMR magnets about 7 to 28 T.</dd></div>
@@ -2457,15 +2469,16 @@ const arrowDown = (x, y, cls) => `<path d="M${x - 4.5},${y - 9} L${x},${y} L${x 
   const f1 = v => v.toFixed(1);
   const ptsStr = pts => pts.map(p => f1(p[0]) + ',' + f1(p[1])).join(' ');
   const INK = 'stroke:var(--ink);stroke-width:1.3;fill:var(--surface)';
+  const groundTop = (x, hw) => Math.min(sy(x - hw), sy(x + hw)) - 2;
 
   const icon = {
     mast: x => { const b = sy(x), t = b - 40;
       return `<path d="M${x - 8},${f1(b)} L${x},${f1(t)} L${x + 8},${f1(b)} M${x - 5.4},${f1(b - 13)} H${x + 5.4} M${x - 2.8},${f1(b - 26)} H${x + 2.8} M${x - 5.4},${f1(b - 13)} L${x + 2.8},${f1(b - 26)} M${x + 5.4},${f1(b - 13)} L${x - 2.8},${f1(b - 26)}" style="fill:none;stroke:var(--ink);stroke-width:1.3;stroke-linejoin:round"/><circle cx="${x}" cy="${f1(t)}" r="2.6" style="fill:var(--ink)"/>`; },
-    radio: (x, o = 1) => { const y = sy(x);
+    radio: (x, o = 1) => { const y = groundTop(x, 11);
       return `<g style="opacity:${o}"><rect x="${x - 11}" y="${f1(y - 14)}" width="22" height="13" rx="2.5" style="${INK}"/><circle cx="${x - 4.5}" cy="${f1(y - 7.5)}" r="3.3" style="fill:none;stroke:var(--ink);stroke-width:1.2"/><path d="M${x + 2},${f1(y - 10)} h6 M${x + 2},${f1(y - 6)} h6 M${x + 7},${f1(y - 14)} l5,-10" style="stroke:var(--ink);stroke-width:1.2"/></g>`; },
-    clock: x => { const y = sy(x) - 10;
+    clock: x => { const y = groundTop(x, 8.5) - 8.5;
       return `<circle cx="${x}" cy="${f1(y)}" r="8.5" style="${INK}"/><path d="M${x},${f1(y)} V${f1(y - 5.5)} M${x},${f1(y)} L${x + 4},${f1(y + 2)}" style="stroke:var(--ink);stroke-width:1.3;stroke-linecap:round"/>`; },
-    phone: x => { const y = sy(x);
+    phone: x => { const y = groundTop(x, 4.5);
       return `<rect x="${x - 4.5}" y="${f1(y - 16)}" width="9" height="15" rx="2" style="${INK}"/><path d="M${x - 1.5},${f1(y - 3.6)} h3" style="stroke:var(--ink);stroke-width:1.1"/>`; },
     sub: (x, y, th) => `<g transform="rotate(${f1(th * 180 / Math.PI)} ${f1(x)} ${f1(y)})"><ellipse cx="${f1(x)}" cy="${f1(y)}" rx="15" ry="4.2" style="fill:var(--ink)"/><rect x="${f1(x - 2)}" y="${f1(y - 8.5)}" width="6" height="5" rx="1" style="fill:var(--ink)"/></g>`,
     sat: (x, y) => `<rect x="${x - 4.5}" y="${y - 3.5}" width="9" height="7" rx="1" style="fill:var(--ink)"/><rect x="${x - 19}" y="${y - 2.5}" width="12" height="5" style="fill:none;stroke:var(--ink);stroke-width:1.1"/><rect x="${x + 7}" y="${y - 2.5}" width="12" height="5" style="fill:none;stroke:var(--ink);stroke-width:1.1"/><path d="M${x - 7},${y} h2.5 M${x + 4.5},${y} h2.5" style="stroke:var(--ink);stroke-width:1.1"/>`
@@ -2513,7 +2526,7 @@ const arrowDown = (x, y, cls) => `<path d="M${x - 4.5},${y - 9} L${x},${y} L${x 
       cap = 'Line of sight: reaches only to the horizon, and passes through the ionosphere';
     } else {
       R.push({pts: [MT, [201, sy(201) - 10]]});
-      R.push({pts: [[455, 141], [495, sy(495) - 17]]});
+      R.push({pts: [[455, 141], [495, groundTop(495, 4.5) - 18]]});
       h += icon.sat(455, 136) + `<text x="432" y="140" text-anchor="end" class="t-sm" style="fill:var(--ink)">GPS satellite</text>`;
       h += icon.phone(205) + under(205, 'phone') + icon.phone(495) + under(495, 'GPS receiver');
       mastLab = 'phone mast'; cap = 'Line of sight, and straight through the ionosphere to and from satellites';
