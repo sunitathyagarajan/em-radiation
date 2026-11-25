@@ -82,6 +82,7 @@ header .wrap{padding-block:36px 30px;display:grid;gap:12px}
 .terms dt{font-weight:600;text-align:right;min-width:1.2em;white-space:nowrap}
 .terms dd{margin:0;color:var(--muted)}
 .card .terms{max-width:none}
+.eqn .terms{max-width:none;margin-top:4px}
 .reading .cap,.bfig figcaption{color:var(--muted);font-size:.92rem;line-height:1.5;text-align:left;align-self:start}
 @media (max-width:760px){.reading{grid-template-columns:minmax(0,1fr)} .bfig{width:100%;max-width:560px}}
 .bfig svg{width:100%;height:auto;display:block}
@@ -577,7 +578,7 @@ footer .wrap{padding-block:20px 48px}
         <div class="figscroll"><svg class="plot" id="nmrSvg" viewBox="0 0 520 290" role="img" aria-label="Energy of the two nuclear spin states versus magnetic field. The lines start together at zero field and spread apart as the field grows. An arrow marks the gap at the chosen field."></svg></div><p class="swipehint fig">Swipe the figure sideways to see all of it.</p>
         <div style="display:grid;gap:12px">
           <div class="seg" id="nmrNuc" role="group" aria-label="Nucleus"></div>
-          <label class="ctl slider" for="nmrB">Magnetic field \(B_0\): <output id="nmrBO"></output>
+          <label class="ctl slider" for="nmrB"><span>Magnetic field \(B_0\):</span> <output id="nmrBO"></output>
             <input type="range" id="nmrB" min="0.5" max="30" step="0.01" value="9.40"></label>
           <div class="chips" id="nmrChips" role="group" aria-label="Common instruments"></div>
           <div class="statgrid" id="nmrRo"></div>
@@ -587,10 +588,20 @@ footer .wrap{padding-block:20px 48px}
 
     <div class="eqn">
       <span class="klabel">Equations</span>
-      <p class="note">No chemical reaction is involved: radio waves are produced electrically. The equation that matters is the resonance condition, which sets the frequency a nucleus absorbs (\(\gamma\) is the nucleus's gyromagnetic ratio; for <sup>1</sup>H, \(\gamma/2\pi = 42.58\ \text{MHz T}^{-1}\)).</p>
+      <p class="note">No chemical reaction is involved: radio waves are produced electrically. The equation that matters is the resonance condition, which sets the frequency a nucleus absorbs.</p>
       \[ \Delta E = h\nu \]
       \[ \nu = \frac{\gamma B_0}{2\pi} \]
       \[ \nu({}^{1}\text{H}) = (42.58\ \text{MHz T}^{-1})(9.40\ \text{T}) = 400\ \text{MHz} \]
+      <dl class="terms" aria-label="What each symbol means">
+        <div><dt>\(\Delta E\)</dt><dd>the energy gap between the two spin states of a nucleus in the magnet, in joules (J); it is also the energy of the radio photon that flips the spin</dd></div>
+        <div><dt>\(h\)</dt><dd>Planck’s constant, \(6.626 \times 10^{-34}\ \text{J s}\)</dd></div>
+        <div><dt>\(\nu\)</dt><dd>the frequency of the radio wave that flips the spin, in hertz (Hz, s<sup>−1</sup>); it equals the frequency at which the nucleus precesses</dd></div>
+        <div><dt>\(\gamma\)</dt><dd>the gyromagnetic ratio, a constant for each kind of nucleus that sets its resonance frequency in a given field</dd></div>
+        <div><dt>\(B_0\)</dt><dd>the strength of the spectrometer’s steady magnetic field, in tesla (T)</dd></div>
+        <div><dt>\(2\pi\)</dt><dd>converts \(\gamma B_0\), which is in radians per second, into cycles per second (Hz)</dd></div>
+        <div><dt><sup>1</sup>H</dt><dd>hydrogen-1, the nucleus of an ordinary hydrogen atom: a single proton</dd></div>
+        <div><dt>MHz T<sup>−1</sup></dt><dd>megahertz per tesla: how much the resonance frequency rises for each tesla of field (1 MHz = 10<sup>6</sup> Hz); for <sup>1</sup>H, \(\gamma/2\pi = 42.58\ \text{MHz T}^{-1}\)</dd></div>
+      </dl>
     </div>
   </div>
 </section>
@@ -788,8 +799,8 @@ footer .wrap{padding-block:20px 48px}
           <div class="figscroll"><svg class="plot" id="hStrip" viewBox="0 0 560 74" role="img" aria-label="The emission lines of the selected series on a wavelength scale, with the selected line highlighted."></svg></div><p class="swipehint fig">Swipe the figure sideways to see all of it.</p>
         </div>
         <div style="display:grid;gap:12px;align-content:start">
-          <div class="ctl">Lower level \(n_f\) (series)<span class="seg" id="hLow" role="group" aria-label="Lower level"></span></div>
-          <div class="ctl">Upper level \(n_i\)<span class="seg" id="hUp" role="group" aria-label="Upper level"></span></div>
+          <div class="ctl"><span>Lower level \(n_f\) (series)</span><span class="seg" id="hLow" role="group" aria-label="Lower level"></span></div>
+          <div class="ctl"><span>Upper level \(n_i\)</span><span class="seg" id="hUp" role="group" aria-label="Upper level"></span></div>
           <div class="statgrid" id="hRo"></div>
         </div>
       </div>
@@ -1079,21 +1090,27 @@ footer .wrap{padding-block:20px 48px}
       <div id="g-diffraction"><dt>Diffraction</dt><dd>The spreading and interference of waves that pass through gaps, or scatter from objects, about the size of their wavelength. X-rays diffract from crystals because their wavelength is similar to the spacing between atoms.</dd></div>
       <div id="g-dipole"><dt>Dipole</dt><dd>Equal and opposite charges a small distance apart. A molecular vibration absorbs infrared only if it changes the molecule’s dipole moment; a dipole antenna is a pair of rods whose ends charge up oppositely as the current swings back and forth.</dd></div>
       <div id="g-ev"><dt>Electronvolt, eV</dt><dd>The energy an electron gains moving through a potential difference of one volt: \(1\ \text{eV} = 1.602 \times 10^{-19}\ \text{J}\). A convenient size for one photon: visible photons carry about 1.8 to 3.1 eV.</dd></div>
+      <div id="g-gap"><dt>Energy gap, \(\Delta E\)</dt><dd>The difference in energy between two levels of an atom, molecule or nucleus, \(\Delta E = E_{\text{upper}} - E_{\text{lower}}\). A photon is absorbed or emitted only if its energy, \(h\nu\), equals this gap. In NMR it is the gap between the two orientations of a spinning nucleus in the magnet, and it grows in proportion to \(B_0\).</dd></div>
       <div id="g-frequency"><dt>Frequency, \(\nu\)</dt><dd>The number of wave crests passing a point each second, in hertz (1 Hz = 1 s<sup>−1</sup>). Frequency and wavelength are linked by \(c = \lambda\nu\).</dd></div>
       <div id="g-states"><dt>Ground state, excited state</dt><dd>The ground state is the lowest-energy arrangement of an atom, molecule or nucleus. An excited state is any higher one. It usually lasts only a short time before the system drops back and gives off the extra energy, often as a photon.</dd></div>
       <div id="g-ground-wave"><dt>Ground wave, skywave, line of sight</dt><dd>The main ways radio waves get from place to place. A ground wave follows the curve of the Earth (long waves, and medium waves by day). A skywave bounces off the ionosphere and comes down far away (short waves, and medium waves at night). Line-of-sight waves go in straight lines, so they reach only to the horizon or up to satellites (VHF and above). The very longest waves (VLF) are also guided around the planet in the gap between the ground and the ionosphere.</dd></div>
-      <div id="g-gamma-ratio"><dt>Gyromagnetic ratio, \(\gamma\)</dt><dd>A constant for each kind of nucleus that sets how fast it precesses in a magnetic field, and so which radio frequency it absorbs: \(\nu = \gamma B_0/2\pi\). For <sup>1</sup>H, \(\gamma/2\pi = 42.58\) MHz per tesla.</dd></div>
+      <div id="g-gamma-ratio"><dt>Gyromagnetic ratio, \(\gamma\)</dt><dd>A constant for each kind of nucleus that sets how fast it precesses in a magnetic field, and so which radio frequency it absorbs: \(\nu = \gamma B_0/2\pi\). For <sup>1</sup>H, \(\gamma/2\pi = 42.58\) MHz per tesla. Dividing by \(2\pi\) turns \(\gamma B_0\), which is in radians per second, into cycles per second (Hz).</dd></div>
+      <div id="g-hertz"><dt>Hertz, Hz; megahertz, MHz</dt><dd>The unit of frequency: 1 Hz is one cycle per second (1 s<sup>−1</sup>). 1 kHz = 10<sup>3</sup> Hz, 1 MHz = 10<sup>6</sup> Hz and 1 GHz = 10<sup>9</sup> Hz. An NMR spectrometer’s “MHz” rating is the frequency at which <sup>1</sup>H nuclei resonate in its magnet.</dd></div>
+      <div id="g-h1"><dt>Hydrogen-1, <sup>1</sup>H</dt><dd>The ordinary isotope of hydrogen, whose nucleus is a single proton; it makes up 99.98% of all hydrogen. It is the nucleus NMR studies most often, because nearly every organic molecule contains it and it gives a strong signal.</dd></div>
       <div id="g-ionizing"><dt>Ionizing radiation</dt><dd>Radiation whose photons carry enough energy to knock electrons out of atoms and molecules, turning them into ions: the short-wavelength end of the ultraviolet, X-rays and gamma rays. It can break bonds in DNA, which is why exposure is kept low.</dd></div>
       <div id="g-ionosphere"><dt>Ionosphere</dt><dd>A region of the upper atmosphere, from about 60 km up to several hundred kilometers, where ultraviolet light and X-rays from the Sun knock electrons off gas atoms and molecules. Its free electrons bend medium and short radio waves back down to the ground, but let VHF and higher frequencies pass straight through.</dd></div>
       <div id="g-isotope"><dt>Isotope</dt><dd>Atoms of the same element with different numbers of neutrons, such as carbon-12 and carbon-13. A radioactive isotope such as cobalt-60 can be identified by the energies of the gamma rays it emits.</dd></div>
+      <div id="g-b0"><dt>Magnetic field strength, \(B_0\)</dt><dd>How strong the steady magnetic field of an NMR spectrometer or MRI scanner is, measured in tesla (T). The subscript 0 marks this main field, to tell it apart from the much weaker oscillating field of the radio pulse. Both the energy gap between the spin states and the resonance frequency grow in proportion to \(B_0\).</dd></div>
       <div id="g-magnetron"><dt>Magnetron</dt><dd>The vacuum tube that makes the microwaves in a microwave oven. Electrons circling in a magnetic field sweep past cavities cut into a copper block and set them ringing at 2.45 GHz, rather like air blown across the top of a bottle.</dd></div>
       <div id="g-nmr"><dt>NMR, nuclear magnetic resonance</dt><dd>A technique that puts a sample in a strong magnet and finds the radio frequencies at which its nuclei (usually <sup>1</sup>H or <sup>13</sup>C) flip their spins. The pattern of signals shows how the atoms in a molecule are connected. MRI uses the same physics to image the body.</dd></div>
       <div id="g-oscillator"><dt>Oscillator</dt><dd>An electronic circuit that makes an alternating current at a steady frequency, often kept exact by a vibrating quartz crystal. It drives the antenna of a radio transmitter.</dd></div>
       <div id="g-photon"><dt>Photon</dt><dd>A single packet (quantum) of electromagnetic radiation. Its energy depends only on its frequency, \(E = h\nu\).</dd></div>
+      <div id="g-planck"><dt>Planck’s constant, \(h\)</dt><dd>The constant that links the energy of a photon to its frequency, \(E = h\nu\): \(h = 6.626 \times 10^{-34}\ \text{J s}\).</dd></div>
       <div id="g-precess"><dt>Precess, precession</dt><dd>To precess is to wobble so that the axis of a spinning object sweeps out a cone. A tilted spinning top does this: instead of falling over, its axis slowly circles around the vertical. A nucleus spinning in a magnetic field precesses around the field direction in the same way, at exactly the frequency it absorbs, \(\nu = \gamma B_0/2\pi\) (400 MHz for <sup>1</sup>H in a 9.40 T magnet). After a radio pulse tips the nuclei, their precessing magnetism induces the faint radio signal that an NMR spectrometer records.</dd></div>
       <div id="g-bands"><dt>Radio bands: VLF, LF, MF, HF, VHF, UHF</dt><dd>Engineering names for ranges of radio frequency, each ten times higher than the one before: very low (3–30 kHz), low, medium, high, very high and ultra high frequency (300 MHz–3 GHz).</dd></div>
-      <div id="g-resonance"><dt>Resonance</dt><dd>Strong absorption that happens only when the frequency of the radiation matches a natural frequency of the system, such as the precession frequency of a nucleus in NMR.</dd></div>
+      <div id="g-resonance"><dt>Resonance</dt><dd>Strong absorption that happens only when the frequency of the radiation matches a natural frequency of the system, such as the precession frequency of a nucleus in NMR. There the resonance condition is \(\nu = \gamma B_0/2\pi\): only radio waves of this frequency flip the nuclear spin.</dd></div>
       <div id="g-spectroscopy"><dt>Spectroscopy</dt><dd>Measuring which wavelengths a sample absorbs or emits, and using the pattern to identify the substance, work out its structure, or find how much of it is present.</dd></div>
+      <div id="g-tesla"><dt>Tesla, T</dt><dd>The SI unit of magnetic field strength. For scale: the Earth’s field is about 0.00005 T, a fridge magnet about 0.005 T, an MRI scanner 1.5 to 3 T, and research NMR magnets about 7 to 28 T.</dd></div>
       <div id="g-wavelength"><dt>Wavelength, \(\lambda\)</dt><dd>The distance from one crest of a wave to the next.</dd></div>
       <div id="g-wavenumber"><dt>Wavenumber, \(\tilde{\nu}\)</dt><dd>The number of waves per centimeter, \(1/\lambda\), in cm<sup>−1</sup>. Infrared and Raman spectra use it because it is proportional to energy.</dd></div>
     </dl>
