@@ -77,10 +77,11 @@ header .wrap{padding-block:36px 30px;display:grid;gap:12px}
 .rtext,.bfig{display:grid;grid-row:span 2;grid-template-rows:subgrid;gap:10px;margin:0}
 .reading .eqblock{align-self:center;justify-self:center;display:flex;flex-direction:column;align-items:center;gap:14px;min-width:0}
 .reading .big{font-family:var(--f-num);font-size:clamp(1.05rem,2.6vw,1.3rem);font-weight:600;text-align:center}
-.reading .terms{display:grid;grid-template-columns:auto minmax(0,1fr);gap:5px 10px;margin:0;font-size:.92rem;line-height:1.4;text-align:left;max-width:340px}
-.reading .terms > div{display:contents}
-.reading .terms dt{font-weight:600;text-align:right;min-width:1.2em}
-.reading .terms dd{margin:0;color:var(--muted)}
+.terms{display:grid;grid-template-columns:auto minmax(0,1fr);gap:5px 10px;margin:0;font-size:.92rem;line-height:1.4;text-align:left;max-width:340px}
+.terms > div{display:contents}
+.terms dt{font-weight:600;text-align:right;min-width:1.2em;white-space:nowrap}
+.terms dd{margin:0;color:var(--muted)}
+.card .terms{max-width:none}
 .reading .cap,.bfig figcaption{color:var(--muted);font-size:.92rem;line-height:1.5;text-align:left;align-self:start}
 @media (max-width:760px){.reading{grid-template-columns:minmax(0,1fr)} .bfig{width:100%;max-width:560px}}
 .bfig svg{width:100%;height:auto;display:block}
@@ -393,6 +394,11 @@ footer .wrap{padding-block:20px 48px}
         <div class="formula">\[ \nu = \frac{c}{\lambda} = \frac{2.998 \times 10^{8}\ \text{m s}^{-1}}{500 \times 10^{-9}\ \text{m}} = 6.00 \times 10^{14}\ \text{s}^{-1} \]</div>
         <div class="formula">\[ E = h\nu = (6.626 \times 10^{-34}\ \text{J s})(6.00 \times 10^{14}\ \text{s}^{-1}) = 3.97 \times 10^{-19}\ \text{J} \]</div>
         <div class="formula">\[ E_{\text{mol}} = E N_{\text{A}} = (3.97 \times 10^{-19}\ \text{J})(6.022 \times 10^{23}\ \text{mol}^{-1}) = 239\ \text{kJ mol}^{-1} \]</div>
+        <dl class="terms" aria-label="What each symbol means">
+          <div><dt>\(E\)</dt><dd>energy of one photon, in joules (J): the energy a single molecule absorbs when it takes in one photon of this light</dd></div>
+          <div><dt>\(N_{\text{A}}\)</dt><dd>Avogadro’s number, \(6.022 \times 10^{23}\ \text{mol}^{-1}\): the number of photons (or molecules) in one mole</dd></div>
+          <div><dt>\(E_{\text{mol}}\)</dt><dd>energy of one mole of photons, \(E \times N_{\text{A}}\), in kJ mol<sup>−1</sup> (\(2.39 \times 10^{5}\) J mol<sup>−1</sup> = 239 kJ mol<sup>−1</sup>): the same unit as bond energies, so the two can be compared directly</dd></div>
+        </dl>
         <p class="why">About two-thirds of a C–C bond (348 kJ/mol): enough to move an electron, not enough to break the bond.</p>
       </div>
     </div>
