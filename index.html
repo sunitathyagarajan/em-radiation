@@ -219,6 +219,8 @@ button:disabled{opacity:.45;cursor:default}
 #itRo .stat .v{font-weight:400;line-height:1.5}
 #vuRo .stat .v{font-weight:400;line-height:1.5}
 #xuRo .stat .v{font-weight:400;line-height:1.5}
+#uuRo .stat .v{font-weight:400;line-height:1.5}
+#guRo .stat .v{font-weight:400;line-height:1.5}
 #pesEl button{min-width:2.7em;padding:4px 8px;font-weight:600}
 #pesEl button[aria-pressed="true"]{background:var(--rc);border-color:var(--rc);color:#fff}
 .note{font-size:1rem;line-height:1.55;color:var(--muted)}
@@ -1029,6 +1031,15 @@ footer .wrap{padding-block:20px 48px}
       <div class="figscroll"><svg class="plot" id="d2Svg" viewBox="0 0 560 252" role="img" aria-label="A deuterium lamp: a glowing oxide-coated tungsten filament on the left emits electrons that stream to an anode, colliding with deuterium molecules on the way; ultraviolet photons leave through a quartz window on the right."></svg></div><p class="swipehint fig">Swipe the figure sideways to see all of it.</p>
     </div>
 
+    <div class="bench">
+      <div class="bhead"><span class="tagi">Interactive · Where ultraviolet light is used</span><h3>Ultraviolet light at work</h3>
+        <p class="note">UVA photons carry 3.1–3.9 eV, UVB 3.9–4.4 eV and UVC 4.4–12 eV: as much energy as a chemical bond, or more. So UV can excite molecules that then glow or react, break bonds on purpose and kill microbes, and it is also why too much sunlight harms the skin. We cannot see UV, so its bands are marked with tints of this section’s color; real colors are used only for visible light, at the right. Each curve is scaled to its own peak. Pick a use to see the wavelengths it works with.</p></div>
+      <div class="mwuses" id="uuSel" role="group" aria-label="Uses of ultraviolet light"></div>
+      <div class="figscroll"><svg class="plot" id="uuSvg" viewBox="0 0 560 246" role="img" aria-label="A wavelength axis from 150 to 460 nanometers divided into vacuum UV, UVC, UVB and UVA, with the start of the visible region in its real colors at the right. For the chosen use it shows the curves and lines involved: sunlight at the ground, how easily skin burns, and the sunburn they cause together; the absorption of three sunscreen ingredients; DNA absorption with germicidal lamps at 222 and 253.7 nanometers; DNA and protein absorption read at 260 and 280 nanometers; a black light and a brightener that absorbs UV and glows blue; the 193, 248 and 365 nanometer light used to make computer chips; the 193 nanometer laser of eye surgery against the absorption of proteins; and the ultraviolet and blue receptors of a bee compared with our blue cones."></svg></div><p class="swipehint fig">Swipe the figure sideways to see all of it.</p>
+      <div class="statgrid" id="uuRo"></div>
+      <p class="note"><b>Safety.</b> The UVC of germicidal lamps can burn the skin and the surface of the eye after only a short exposure (welders call this eye burn “arc eye”), so these lamps are used only inside closed units or in empty rooms. Never look straight into a UV lamp. Sun damage to the skin adds up over the years: shade, clothing, sunglasses that block UV and broad-spectrum sunscreen all cut the dose.</p>
+    </div>
+
     <div class="eqn">
       <span class="klabel">Balanced equations</span>
       <p class="note">An asterisk (*) marks an excited atom or molecule, \(h\nu\) is a photon, e<sup>−</sup> is an electron, and D is deuterium (hydrogen-2).</p>
@@ -1214,6 +1225,15 @@ footer .wrap{padding-block:20px 48px}
           <div class="statgrid" id="gsRo"></div>
         </div>
       </div>
+    </div>
+
+    <div class="bench">
+      <div class="bhead"><span class="tagi">Interactive · Where gamma rays are used</span><h3>Gamma rays at work</h3>
+        <p class="note">A gamma ray comes from an atomic nucleus, so each isotope gives off photons of a few exact energies (the fingerprints above), and a sealed source such as cobalt-60 works for years with no power supply. Gamma rays are penetrating enough to escape from deep inside the body and to pass through packaging and steel, and energetic enough to break the bonds of DNA. Pick a use to see the photon energies it works with and how much water or lead stops half of them.</p></div>
+      <div class="mwuses" id="guSel" role="group" aria-label="Uses of gamma rays"></div>
+      <div class="figscroll"><svg class="plot" id="guSvg" viewBox="0 0 560 210" role="img" aria-label="A chart of eight uses of gamma rays against photon energy from 10 keV to 30 MeV: PET scans at 511 keV, bone and heart scans at 140 keV, Gamma Knife surgery and the sterilizing of medical supplies and food at 1.17 and 1.33 MeV, weld inspection at 0.30 to 0.61 MeV, density and level gauges at 662 keV, Mössbauer spectroscopy of iron on Mars at 14.4 keV, and gamma-ray astronomy from 0.1 MeV to beyond the right edge. The gamma-ray region used on these pages, above 124 keV, is shaded."></svg></div><p class="swipehint fig">Swipe the figure sideways to see all of it.</p>
+      <div class="statgrid" id="guRo"></div>
+      <p class="note">The thicknesses are for a narrow beam, from NIST’s attenuation coefficients; soft tissue stops gamma rays about as well as water does. Each further half-thickness halves the beam again, so ten of them cut it to about a thousandth.</p>
     </div>
 
     <div class="eqn">
@@ -3641,6 +3661,242 @@ const arrowDown = (x, y, cls) => `<path d="M${x - 4.5},${y - 9} L${x},${y} L${x 
   svg.addEventListener('click', e => { const r = e.target.closest ? e.target.closest('.pesHit') : null; if (r) { sel = +r.dataset.i; draw(); } });
   $('#pesPk').addEventListener('click', e => { const b = e.target.closest('button'); if (b) { sel = +b.dataset.i; draw(); } });
   draw();
+})();
+
+/* ==================================================================== ULTRAVIOLET: WHERE UV LIGHT IS USED */
+(() => {
+  const svg = $('#uuSvg');
+  if (!svg) return;
+  const ICON = {
+    sun: '<circle cx="16" cy="16" r="6"/><path d="M16 2.5v4M16 25.5v4M2.5 16h4M25.5 16h4M6.5 6.5l2.8 2.8M22.7 22.7l2.8 2.8M6.5 25.5l2.8-2.8M22.7 9.3l2.8-2.8"/>',
+    tube: '<path d="M11.5 3h9l-1 5h-7z"/><path d="M12 8h8l2 18.5a2 2 0 0 1-2 2.5h-8a2 2 0 0 1-2-2.5z"/><path d="M11.3 15h9.4"/>',
+    lamp: '<rect x="3" y="5" width="26" height="6" rx="3"/><path d="M9 15.5c-2 3-3 4.6-3 6.2a3 3 0 0 0 6 0c0-1.6-1-3.2-3-6.2zM23 15.5c-2 3-3 4.6-3 6.2a3 3 0 0 0 6 0c0-1.6-1-3.2-3-6.2z"/>',
+    dna: '<path d="M10 3c0 7 12 7 12 13s-12 6-12 13M22 3c0 7-12 7-12 13s12 6 12 13"/><path d="M12.5 7.5h7M12.5 24.5h7M11 12h10M11 20h10"/>',
+    note: '<rect x="3" y="8" width="26" height="16" rx="1.5"/><circle cx="16" cy="16" r="4"/><path d="M7.5 12v8M24.5 12v8"/>',
+    chip: '<rect x="9" y="9" width="14" height="14" rx="1.5"/><path d="M12.5 9V4M16 9V4M19.5 9V4M12.5 28v-5M16 28v-5M19.5 28v-5M9 12.5H4M9 16H4M9 19.5H4M28 12.5h-5M28 16h-5M28 19.5h-5"/>',
+    eye: '<path d="M3 19c4-5.5 8-7.5 13-7.5s9 2 13 7.5c-4 5.5-8 7.5-13 7.5S7 24.5 3 19z"/><circle cx="16" cy="19" r="3.5"/><path d="M16 2v6.5M13 5.5l3 3 3-3"/>',
+    flower: '<circle cx="16" cy="16" r="3"/><ellipse cx="16" cy="6.5" rx="3.6" ry="4.5"/><ellipse cx="16" cy="25.5" rx="3.6" ry="4.5"/><ellipse cx="6.5" cy="16" rx="4.5" ry="3.6"/><ellipse cx="25.5" cy="16" rx="4.5" ry="3.6"/>'
+  };
+  const G = (x, m, w) => Math.exp(-0.5 * ((x - m) / w) ** 2);
+  const fall = (x, x0, w) => 1 / (1 + Math.exp((x - x0) / w));      // 1 below x0, 0 above
+  const rise = (x, x0, w) => 1 / (1 + Math.exp((x0 - x) / w));      // 0 below x0, 1 above
+  // Simplified shapes; each curve is scaled to its own peak in the chart.
+  // Sunlight at the ground: the Sun's output times the fraction that a typical ozone layer (300 DU, Sun high) lets through.
+  const sun = x => x < 250 ? 0 : (0.45 + 0.0105 * (x - 290)) * Math.exp(-9.3e18 * Math.pow(10, -17.41 - 0.052 * (x - 280)));
+  // The CIE reference action spectrum for sunburn (erythema) of human skin.
+  const ery = x => x <= 298 ? 1 : x <= 328 ? Math.pow(10, 0.094 * (298 - x)) : Math.pow(10, 0.015 * (140 - x));
+  const USES = [
+    {icon: 'sun', name: 'Sunlight and skin', rng: [280, 400], ylab: 'relative strength',
+     wl: 'UVB (280–315 nm) causes most sunburn and makes vitamin D; UVA (315–400 nm) tans and ages the skin',
+     fill: [{lab: 'sunburn it causes', f: x => sun(x) * ery(x), win: [286, 400]}],
+     curves: [{lab: 'sunlight at the ground', f: sun, win: [280, 460]}, {lab: 'how easily skin burns', dash: true, f: ery, win: [250, 400]}],
+     notes: [[212, 0.56, 'absorbed by ozone'], [212, 0.44, 'and oxygen in the air']],
+     how: 'The ozone layer absorbs almost all sunlight shorter than about 295 nm, so what reaches us is UVB and UVA. In skin cells, DNA absorbs UVB, and the energy can join neighboring bases into thymine dimers. The damage sets off the redness of sunburn, and mistakes in repairing it can lead to skin cancer. UVB also does something useful: it turns 7-dehydrocholesterol in the skin into previtamin D<sub>3</sub>, the first step in making vitamin D. UVA reaches deeper, darkens the pigment melanin (a tan) and ages the skin.',
+     why: 'Skin is about a thousand times more sensitive to UVB than to UVA, but sunlight holds far more UVA. Multiplying the two gives the shaded curve: most sunburn comes from a narrow band near 305–310 nm, right at the edge of what the ozone layer lets through. The UV index in weather reports is a measure of the area under this curve.'},
+    {icon: 'tube', name: 'Sunscreen', rng: [290, 400], ylab: 'absorption (relative)',
+     wl: 'octinoxate absorbs most near 311 nm (UVB) and avobenzone near 357 nm (UVA); zinc oxide absorbs everything shorter than about 370 nm',
+     curves: [{lab: 'octinoxate (UVB)', rc: true, f: x => G(x, 311, 19), win: [250, 390]}, {lab: 'avobenzone (UVA)', f: x => G(x, 357, 21), win: [290, 440]}, {lab: 'zinc oxide', dash: true, f: x => fall(x, 372, 5), win: [230, 440]}],
+     how: 'Chemical sunscreens contain conjugated organic molecules, like the polyenes above, chosen to absorb UVB or UVA strongly; each excited molecule sheds the energy as a little heat. Mineral sunscreens contain fine particles of zinc oxide or titanium dioxide, semiconductors that absorb every photon with more energy than their band gap. The SPF number measures protection from sunburn, which is mostly caused by UVB; “broad spectrum” on the label means the sunscreen also blocks UVA.',
+     why: 'A molecule absorbs a photon whose energy matches a gap between its energy levels. Octinoxate’s π system matches about 4.0 eV (311 nm), and avobenzone’s longer one about 3.5 eV (357 nm). The band gap of zinc oxide, 3.4 eV, puts its absorption edge near 370 nm. No single filter covers all of UVA and UVB, so sunscreens combine several.'},
+    {icon: 'lamp', name: 'Disinfecting water and air', rng: [222, 280], ylab: 'absorption (relative)',
+     wl: 'mercury lamps at 253.7 nm, UVC LEDs at 265–280 nm, and far-UVC lamps at 222 nm',
+     curves: [{lab: 'DNA absorbs', f: x => G(x, 260, 18), win: [230, 320]}],
+     lines: [[222, 'far-UVC lamp', 'end'], [253.7, 'mercury lamp', 'start']],
+     how: 'Water treatment plants pump water past rows of mercury lamps in quartz sleeves, and the same lamps disinfect the air in hospital ducts, the cabinets where biologists work with microbes, and empty operating rooms. The light kills bacteria, viruses and parasites such as <i>Cryptosporidium</i>, which chlorine kills poorly, and it adds no chemicals to the water. Small UVC LEDs now do the same in water bottles and purifiers.',
+     why: 'DNA and RNA absorb most strongly near 260 nm, very close to mercury’s 253.7 nm line. The absorbed energy joins neighboring bases (thymine dimers in DNA), and a microbe that cannot copy its genes cannot multiply. Germicidal UVC burns skin and eyes, so people must not be exposed to it. Far-UVC at 222 nm is being tested for occupied rooms: the dead outer layer of the skin and the tear film of the eye absorb it before it reaches living cells, yet it still kills microbes, which are far smaller.'},
+    {icon: 'dna', name: 'Measuring DNA and proteins', rng: [260, 280], ylab: 'absorption (relative)',
+     wl: 'DNA and RNA absorb most near 260 nm; proteins near 280 nm',
+     curves: [{lab: 'DNA', f: x => G(x, 260, 18), win: [230, 320]}, {lab: 'a protein', dash: true, f: x => G(x, 279, 11), win: [240, 320]}],
+     lines: [[260, '260 nm', 'end'], [280, '280 nm', 'start']],
+     how: 'A UV spectrophotometer, often one that needs only a 1 µL drop of sample, measures the absorbance at 260 and 280 nm. By Beer’s law, an absorbance of 1.0 at 260 nm (1 cm path) means about 50 µg/mL of double-stranded DNA. The ratio A<sub>260</sub>/A<sub>280</sub> checks purity: about 1.8 for clean DNA, lower when protein is left in. HPLC detectors read at 254 or 280 nm in the same way to spot compounds as they leave the column.',
+     why: 'The bases of DNA and RNA are flat rings with conjugated π systems whose π → π* gap matches photons near 260 nm (4.8 eV). In proteins, the rings of tryptophan and tyrosine absorb near 280 nm. Neither absorbs visible light, which is why solutions of DNA and most proteins look clear. Both absorb even more strongly below about 230 nm (proteins because of their peptide bonds).'},
+    {icon: 'note', name: 'Black lights and fluorescence', rng: [365, 365], ylab: 'relative strength',
+     wl: 'black lights give off UVA near 365 nm; the materials glow with visible light, often blue near 440 nm',
+     fill: [{lab: 'black light', f: x => G(x, 366, 9), win: [330, 405]}],
+     curves: [{lab: 'brightener absorbs', f: x => G(x, 350, 22), win: [280, 420]}, {lab: 'brightener glows', col: 440, f: x => G(x, 440, 18), win: [400, 460]}],
+     how: 'A black light gives off long-wave UVA and very little visible light. Fluorescent substances absorb the invisible UV and give back part of its energy as visible light, so they glow in a dark room: the security threads and fibers in banknotes, highlighter ink, the brighteners in laundry detergent and white paper, some minerals, and scorpions. Crime-scene investigators use UV to find fibers, fingerprints and body fluids. A fluorescent tube works the same way: the 254 nm UV from the mercury inside makes the white coating on the glass glow.',
+     why: 'An excited molecule loses a little energy as heat before it emits, so the light it gives off has less energy, and a longer wavelength, than the UV it absorbed (the Stokes shift). Here a brightener absorbs at 350 nm and glows blue near 440 nm, which makes yellowed fabric look whiter. UVA photons (3.1–3.9 eV) carry enough energy to excite these dyes but are far less harmful than UVB or UVC.'},
+    {icon: 'chip', name: 'Making computer chips', rng: [193, 365],
+     wl: '365 nm (mercury lamp) for older chips, 248 nm (KrF laser), and 193 nm (ArF laser) for the finest patterns; the newest chips use extreme UV at 13.5 nm, far to the left of this scale',
+     lines: [[193, 'ArF laser'], [248, 'KrF laser'], [365, 'mercury lamp']],
+     how: 'Photolithography prints circuit patterns onto a silicon wafer coated with a light-sensitive film, the photoresist. UV light passes through a mask carrying the pattern, and lenses shrink the image onto the wafer. Where the light lands, the chemistry of the resist changes (in modern resists, a photoacid generator releases an acid), so the exposed parts can be washed away and the pattern etched into the silicon. A modern processor is built up from dozens of such layers.',
+     why: 'The finest detail a lens can print is set by the wavelength of the light: the shorter the wavelength, the smaller the features. So chipmakers moved from mercury’s 436 and 365 nm lines to the 248 and 193 nm excimer lasers, and now to extreme UV at 13.5 nm, which has to travel in a vacuum and be focused with mirrors, because air and every lens material absorb it.'},
+    {icon: 'eye', name: 'Eye surgery (LASIK)', rng: [193, 193], ylab: 'absorption (relative)',
+     wl: '193 nm, from an argon fluoride (ArF) excimer laser',
+     curves: [{lab: 'proteins of the cornea absorb', f: x => fall(x, 215, 7) + 0.03 * G(x, 279, 11), win: [150, 330]}],
+     lines: [[193, 'ArF laser, 193 nm', 'start']],
+     marks: [[343.8, '344 nm photons carry 348 kJ/mol,', 'the energy of one C–C bond']],
+     how: 'To correct nearsightedness, the surgeon folds back a thin flap of the cornea and fires short pulses of 193 nm light at the tissue underneath. Each pulse removes a layer only about a quarter of a micrometer thick, and a computer places the pulses to flatten the cornea by just the right amount. The flap is then laid back in place.',
+     why: 'A 193 nm photon carries 6.4 eV, or 620 kJ/mol, nearly twice the energy of the C–C bonds (348 kJ/mol) and C–N bonds (about 300 kJ/mol) that hold the collagen of the cornea together. The proteins absorb the light within a fraction of a micrometer, the bonds break, and the fragments fly off with little heat reaching the tissue around the spot. Visible or infrared lasers would burn the tissue instead.'},
+    {icon: 'flower', name: 'How bees see flowers', rng: [300, 400], ylab: 'sensitivity (relative)',
+     wl: 'bees see from about 300 nm, with a UV receptor most sensitive near 344 nm; our eyes stop near 400 nm',
+     curves: [{lab: 'bee UV receptor', rc: true, f: x => G(x, 344, 26), win: [270, 430]}, {lab: 'bee blue receptor', col: 445, f: x => G(x, 436, 30), win: [360, 460]}, {lab: 'our blue cones', dash: true, f: x => G(x, 420, 28) * rise(x, 398, 5), win: [370, 460]}],
+     how: 'Many flowers carry patterns that show only in UV: petals that look plain yellow to us have dark UV “bull’s-eyes” or stripes that lead bees to the nectar. Bees see three primary colors, as we do, but shifted toward shorter wavelengths: ultraviolet, blue and green (their green receptor, most sensitive near 544 nm, is off this scale). Many birds, fish and reptiles also see UV, and reindeer use it to spot lichen, their winter food, against the snow.',
+     why: 'Pigments called flavonols in the center of the flower absorb UV while the outer petals reflect it, and the bee sees the contrast. In our eyes, the lens absorbs nearly all UV before it reaches the retina, so these patterns are hidden from us, even though our blue cones themselves would respond a little way into the UV.'}
+  ];
+  const X0 = 40, X1 = 540, YT = 44, YB = 176, LA = 150, LB = 460, TOP = 0.92, LY = 34;
+  const xs = v => X0 + (v - LA) / (LB - LA) * (X1 - X0);
+  const yv = v => YB - v * TOP * (YB - YT);
+  const f1 = v => v.toFixed(1);
+  const win = c => c.win || [LA, LB];
+  const peak = c => { const [a, b] = win(c); let m = 0; for (let x = a; x <= b; x += 0.5) m = Math.max(m, c.f(x)); return m || 1; };
+  const pts = (c, top) => { const [a, b] = win(c), m = peak(c), out = []; for (let x = a; x <= b + 1e-9; x += 1) out.push([xs(x), yv(top * c.f(x) / m)]); return out; };
+  const pathOf = p => p.map((q, i) => (i ? 'L' : 'M') + f1(q[0]) + ',' + f1(q[1])).join(' ');
+  // the UV bands, which are invisible, are marked with tints of this section's color; the visible strip is in its real colors
+  let base = '<defs><linearGradient id="uuVis" x1="0" x2="1" y1="0" y2="0">';
+  for (let i = 0; i <= 6; i++) base += `<stop offset="${(i / 6).toFixed(3)}" style="stop-color:${wlRGB(400 + 10 * i)}"/>`;
+  base += '</linearGradient></defs>';
+  [[150, 200, 'vacuum UV', 34], [200, 280, 'UVC', 26], [280, 315, 'UVB', 18], [315, 400, 'UVA', 10]].forEach(([a, b, l, p]) => {
+    base += `<rect x="${f1(xs(a))}" y="188" width="${f1(xs(b) - xs(a))}" height="18" style="fill:color-mix(in srgb,var(--rc) ${p}%,transparent)"/>`
+      + `<text x="${f1((xs(a) + xs(b)) / 2)}" y="201" text-anchor="middle" class="t-sm" style="fill:var(--ink);font-weight:600">${l}</text>`;
+  });
+  base += `<rect x="${f1(xs(400))}" y="188" width="${f1(xs(LB) - xs(400))}" height="18" style="fill:url(#uuVis)"/>`
+    + `<text x="${f1((xs(400) + xs(LB)) / 2)}" y="201" text-anchor="middle" class="t-sm" style="fill:#fff;font-weight:600">visible</text>`;
+  for (let v = 150; v <= 450; v += 50) base += `<line class="axis" x1="${f1(xs(v))}" y1="206" x2="${f1(xs(v))}" y2="211"/><text x="${f1(xs(v))}" y="224" text-anchor="middle" class="t-sm">${v}</text>`;
+  base += `<text x="${X1}" y="240" text-anchor="end" class="t-sm">wavelength (nm)</text><line class="axis" x1="${X0}" y1="${YB}" x2="${X1}" y2="${YB}"/>`;
+  svg.innerHTML = base + '<g id="uuDyn"></g>';
+  const dyn = $('#uuDyn');
+  function pick(i) {
+    const u = USES[i];
+    let h = '';
+    (u.fill || []).forEach(c => { const p = pts(c, 0.8); h += `<path d="${pathOf(p)} L${f1(p[p.length - 1][0])},${YB} L${f1(p[0][0])},${YB} Z" style="fill:var(--rc);opacity:.4"/>`; });
+    (u.marks || []).forEach(([v, a, b]) => {
+      const x = f1(xs(v));
+      h += `<line x1="${x}" y1="${YT}" x2="${x}" y2="${YB}" style="stroke:var(--muted);stroke-width:1.2;stroke-dasharray:4 3"/>`
+        + `<text x="${f1(xs(v) + 6)}" y="${YT + 40}" class="t-sm">${a}</text><text x="${f1(xs(v) + 6)}" y="${YT + 54}" class="t-sm">${b}</text>`;
+    });
+    (u.lines || []).forEach(([v, l, anc = 'middle']) => {
+      const x = xs(v), tx = anc === 'start' ? x + 5 : anc === 'end' ? x - 5 : x;
+      h += `<line x1="${f1(x)}" y1="${LY + 6}" x2="${f1(x)}" y2="${YB}" style="stroke:var(--ink);stroke-width:5;opacity:.2"/>`
+        + `<line x1="${f1(x)}" y1="${LY + 6}" x2="${f1(x)}" y2="${YB}" style="stroke:var(--rc);stroke-width:3"/>`
+        + `<text x="${f1(tx)}" y="${LY}" text-anchor="${anc}" class="t-ink">${l}</text>`;
+    });
+    let lx = X0;
+    const legend = (sample, lab) => { h += sample(lx) + `<text x="${f1(lx + 24)}" y="16" class="t-sm" style="fill:var(--ink)">${lab}</text>`; lx += 24 + 6.2 * lab.length + 18; };
+    (u.fill || []).forEach(c => legend(x => `<rect x="${f1(x)}" y="9" width="18" height="8" rx="1.5" style="fill:var(--rc);opacity:.45"/>`, c.lab));
+    (u.curves || []).forEach(c => {
+      const col = c.col ? wlRGB(c.col) : c.rc ? 'var(--rc)' : 'var(--ink)', st = `stroke:${col};stroke-width:${c.col || c.rc ? 2.6 : 2};${c.dash ? 'stroke-dasharray:6 4;' : ''}`;
+      h += `<path d="${pathOf(pts(c, c.dash ? 0.9 : 1))}" style="fill:none;${st}"/>`;
+      legend(x => `<line x1="${f1(x)}" y1="13" x2="${f1(x + 18)}" y2="13" style="${st}"/>`, c.lab);
+    });
+    (u.notes || []).forEach(([v, fr, t]) => { h += `<text x="${f1(xs(v))}" y="${f1(yv(fr))}" text-anchor="middle" class="t-sm">${t}</text>`; });
+    if (u.ylab) h += `<text x="30" y="${(YT + YB) / 2}" text-anchor="middle" transform="rotate(-90 30 ${(YT + YB) / 2})" class="t-sm">${u.ylab}</text>`;
+    dyn.innerHTML = h;
+    [...$('#uuSel').children].forEach((b, j) => b.setAttribute('aria-pressed', String(j === i)));
+    const [a, b] = u.rng, ev = nm => 1239.84 / nm, kj = nm => 119627 / nm;
+    const en = a === b ? `${num(ev(a), 3)} eV (${num(kj(a), 3)} kJ/mol)` : `${num(ev(b), 3)}–${num(ev(a), 3)} eV (${Math.round(kj(b))}–${Math.round(kj(a))} kJ/mol)`;
+    $('#uuRo').innerHTML = statT('Use', u.name) + stat('Energy per photon', en)
+      + statT('Wavelengths', u.wl, 'wide') + statT('How it works', u.how, 'wide') + statT('Why ultraviolet', u.why, 'wide');
+  }
+  $('#uuSel').innerHTML = USES.map((u, i) => `<button type="button" data-i="${i}" aria-pressed="false"><svg viewBox="0 0 32 32" aria-hidden="true">${ICON[u.icon]}</svg><span>${u.name}</span></button>`).join('');
+  $('#uuSel').addEventListener('click', e => { const b = e.target.closest('button'); if (b) pick(+b.dataset.i); });
+  pick(0);
+})();
+
+/* ==================================================================== GAMMA: WHERE GAMMA RAYS ARE USED */
+(() => {
+  const svg = $('#guSvg');
+  if (!svg) return;
+  const ICON = {
+    pet: '<circle cx="16" cy="16" r="12"/><circle cx="16" cy="16" r="2.2"/><path d="M14.4 14.4L9 9M17.6 17.6L23 23"/><path d="M9 12.5V9h3.5M23 19.5V23h-3.5"/>',
+    heart: '<path d="M16 27C9 21.5 4 17.2 4 11.8A5.6 5.6 0 0 1 16 9a5.6 5.6 0 0 1 12 2.8C28 17.2 23 21.5 16 27z"/>',
+    knife: '<circle cx="16" cy="19" r="10"/><circle cx="16" cy="19" r="1.8"/><path d="M16 2v15M4.5 5.5l10 12M27.5 5.5l-10 12"/>',
+    box: '<path d="M4 10l12-6 12 6v12l-12 6-12-6z"/><path d="M4 10l12 6 12-6M16 16v12"/>',
+    pipe: '<rect x="3" y="12" width="26" height="8" rx="2"/><path d="M16 12v8"/><circle cx="16" cy="5" r="2.2"/><path d="M8 27h16"/>',
+    gauge: '<rect x="10" y="4" width="12" height="24" rx="2"/><path d="M10 17h12"/><rect x="2" y="9" width="5" height="5" rx="1"/><rect x="25" y="9" width="5" height="5" rx="1"/>',
+    planet: '<circle cx="16" cy="16" r="11"/><path d="M8 11c3 1.5 5-1.5 8-.5s4 3 8 2M7 19c3-1 5 1 8 0s5-2 10-1"/>',
+    burst: '<path d="M16 3l2.6 10.4L29 16l-10.4 2.6L16 29l-2.6-10.4L3 16l10.4-2.6z"/>'
+  };
+  // energies in keV
+  const USES = [
+    {icon: 'pet', name: 'PET scans', tag: '511 keV', f: [[511, 511]], rep: 511, fr: '511 keV, always two at once',
+     how: 'The patient is given FDG, a look-alike of glucose in which one OH group is replaced by a fluorine-18 atom (half-life 110 minutes). Each positron that fluorine-18 emits travels about a millimeter before it meets an electron, and the two annihilate into a pair of 511 keV gamma rays that fly off in opposite directions. A ring of detectors records pairs that arrive at the same instant; each pair marks a line through the point where it began, and a computer builds a 3D map from millions of such lines.',
+     why: 'Tumors and busy regions of the brain take up more glucose than other tissue, so they light up. Gamma rays of 511 keV get out of the body easily, which lets detectors outside see in. The energy is fixed by E = mc²: 511 keV is the rest energy of an electron, and of a positron.'},
+    {icon: 'heart', name: 'Bone and heart scans', tag: '140 keV', f: [[140.5, 140.5]], rep: 140.5, fr: '140 keV (technetium-99m)',
+     how: 'Technetium-99m is attached to a molecule that collects where the doctor wants to look: in bone that is growing or repairing itself, in heart muscle that is getting blood, in the thyroid or the kidneys. A gamma camera, a large sodium iodide crystal behind a sheet of lead pierced by thousands of parallel holes, records where the 140 keV gamma rays come from. Turning the camera around the patient gives 3D images (SPECT).',
+     why: 'At 140 keV the gamma rays leave the body easily yet are stopped well by the camera’s crystal and by thin lead, which makes sharp images. A half-life of 6 hours is long enough for a scan and short enough that little radioactivity remains a day later, and the nucleus gives off no beta particles that would add to the dose. It is the most widely used medical isotope, in tens of millions of scans a year.'},
+    {icon: 'knife', name: 'Gamma Knife surgery', tag: '1.17 and 1.33 MeV', f: [[1173.2, 1332.5]], rep: 1250, fr: '1.17 and 1.33 MeV (cobalt-60)',
+     how: 'About 200 small cobalt-60 sources sit in a heavy shield shaped like a helmet around the patient’s head, each aiming a narrow beam through a channel in the shield. One beam alone does little harm, but where they all cross, at a spot a few millimeters across chosen from MRI or CT images, the dose is high enough to destroy a tumor or a tangle of faulty blood vessels in the brain, without opening the skull.',
+     why: 'Gamma rays of 1.17 and 1.33 MeV pass through the skull and brain with little scattering, so each beam stays narrow and the dose falls off steeply just outside the target. Cobalt-60’s half-life of 5.3 years means the sources need replacing only every several years.'},
+    {icon: 'box', name: 'Sterilizing supplies and food', tag: '1.17 and 1.33 MeV', f: [[1173.2, 1332.5]], rep: 1250, fr: '1.17 and 1.33 MeV (cobalt-60)',
+     how: 'Boxes of syringes, gloves, sutures and implants, already sealed in their final packaging, ride a conveyor around a rack of cobalt-60 inside a concrete vault with walls about 2 m thick. A dose of about 25 kGy (25 joules absorbed per gram) kills bacteria, spores and viruses. Food is treated the same way at lower doses: under 1 kGy slows sprouting and kills insects in fruit and grain, a few kGy kills salmonella and <i>E. coli</i> in meat and poultry, and up to 30 kGy is allowed for dried spices. In the United States, irradiated food carries the radura symbol.',
+     why: 'Gamma rays pass right through boxes and packaging, so products are sterilized after they are sealed and cannot be contaminated again, and without heat, so plastics that would melt in steam come through unharmed. The energy breaks bonds in the microbes’ DNA. Neither the supplies nor the food become radioactive: 1.17 and 1.33 MeV is less than the energy needed to knock a neutron out of any nucleus.'},
+    {icon: 'pipe', name: 'Inspecting welds', tag: '0.30–0.61 MeV', f: [[296, 612]], rep: 316.5, fr: '0.30–0.61 MeV (iridium-192; its strongest line is 316.5 keV)',
+     how: 'A pellet of iridium-192, about the size of a grain of rice, is cranked out of its shielded container through a tube to sit beside a weld, a pipeline or a casting, with film or a digital detector on the far side. Cracks, gas bubbles and gaps let more gamma rays through, so they show up as dark marks, just as bone shows up in a medical X-ray.',
+     why: 'The source needs no electricity and fits into tight spaces on pipelines, ships and refineries where an X-ray tube cannot go. Gamma rays of a few hundred keV get through several centimeters of steel; for thicker steel, cobalt-60 is used. Iridium-192’s half-life of 74 days means the sources are replaced a few times a year.'},
+    {icon: 'gauge', name: 'Density and level gauges', tag: '662 keV', f: [[661.7, 661.7]], rep: 661.7, fr: '662 keV (cesium-137)',
+     how: 'A sealed cesium-137 source on one side of a pipe or tank and a detector on the other count how many gamma rays get through: the more material in the way, the fewer arrive. Factories use such gauges to keep track of the level in tanks and silos and the density of slurries flowing in pipes, and road crews use portable ones to check that soil and asphalt are packed tightly enough.',
+     why: 'Gamma rays fade exponentially with the mass in their path, the same law as Beer’s law for light, so the count rate gives the density or thickness directly, without touching the material. Cesium-137 has a half-life of 30 years, so a source stays almost equally strong for many years.'},
+    {icon: 'planet', name: 'Iron chemistry on Mars', tag: '14.4 keV', f: [[14.41, 14.41]], rep: 14.41, fr: '14.4 keV (iron-57)',
+     stop: '3.7 mm of water, or a few micrometers of lead',
+     how: 'A cobalt-57 source makes iron-57 nuclei that give off 14.4 keV gamma rays. The source moves back and forth at a few millimeters per second, shifting the gamma-ray energy very slightly (the Doppler effect), while a detector records which shifts the iron in a sample absorbs. The rovers Spirit and Opportunity each carried a Mössbauer spectrometer small enough to hold in one hand on their robotic arms.',
+     why: 'The nuclear energy levels of iron-57 shift by a few trillionths of their energy depending on iron’s oxidation state and the atoms around it, so the spectrum tells Fe<sup>2+</sup> from Fe<sup>3+</sup> and identifies iron minerals. On Mars, Opportunity found jarosite, a mineral that forms in acidic water. At 14.4 keV these are gamma rays with X-ray energies: gamma rays are named for where they come from, the nucleus, not for their energy.'},
+    {icon: 'burst', name: 'Gamma-ray astronomy', tag: 'up to 300 GeV', f: [[100, 30000]], arrow: true, rep: 1000, fr: 'from about 0.1 MeV to more than 300 GeV',
+     stop: 'about 10 cm of water at 1 MeV and 30 cm at 10 MeV. Earth’s atmosphere, with as much mass as a 10 m layer of water, absorbs them all',
+     how: 'Telescopes in orbit, such as NASA’s Fermi Gamma-ray Space Telescope, track each high-energy gamma ray as it turns into an electron and a positron inside the detector, the reverse of the annihilation used in PET. They map pulsars, the jets of supermassive black holes, and gamma-ray bursts: brief flashes from merging neutron stars and collapsing giant stars, the most powerful explosions known.',
+     why: 'Only the most violent events, where particles are pushed close to the speed of light, make photons this energetic, so gamma rays pick those events out. Earth’s atmosphere absorbs them, which protects us but means the telescopes must work from space.'}
+  ];
+  // narrow-beam mass attenuation coefficients, cm²/g (NIST): [keV, water, lead]
+  const MU = [[100, 0.1707, 5.549], [150, 0.1505, 2.014], [200, 0.1370, 0.9985], [300, 0.1186, 0.4031], [400, 0.1061, 0.2323],
+              [500, 0.09687, 0.1614], [600, 0.08956, 0.1248], [800, 0.07865, 0.08870], [1000, 0.07072, 0.07102], [1250, 0.06323, 0.05876],
+              [1500, 0.05754, 0.05222], [2000, 0.04942, 0.04606]];
+  const mu = (e, k) => {
+    for (let i = 1; i < MU.length; i++) if (e <= MU[i][0]) {
+      const a = MU[i - 1], b = MU[i], t = Math.log(e / a[0]) / Math.log(b[0] / a[0]);
+      return Math.exp(Math.log(a[k]) + t * Math.log(b[k] / a[k]));
+    }
+    return MU[MU.length - 1][k];
+  };
+  // the thickness that stops half the photons: ln 2 / (μ/ρ × density)
+  const half = e => `${num(Math.LN2 / mu(e, 1), 2)} cm of water (or soft tissue), or ${num(10 * Math.LN2 / (mu(e, 2) * 11.35), 2)} mm of lead`;
+  const BX0 = 168, BX1 = 540, EMIN = 10, EMAX = 30000, DEC = (BX1 - BX0) / Math.log10(EMAX / EMIN);
+  const xe = e => BX0 + Math.log10(e / EMIN) * DEC;
+  const rowY = i => 44 + i * 16;
+  const f1 = v => v.toFixed(1);
+  const wlab = e => `${+(1239.84 / e).toPrecision(3)} pm`;
+  const elab = e => e >= 1000 ? `${+(e / 1000).toPrecision(3)} MeV` : `${+e.toPrecision(4)} keV`;
+  let cur = 0;
+  function chart() {
+    let h = '';
+    const yEnd = rowY(USES.length - 1) + 10;
+    // this module's gamma region, wavelengths below 10 pm (above 124 keV); lower-energy gamma rays share X-ray energies
+    h += `<rect x="${f1(xe(124))}" y="26" width="${f1(BX1 - xe(124))}" height="${yEnd - 26}" style="fill:color-mix(in srgb,var(--rc) 9%,transparent)"/>`;
+    h += `<text x="${f1((xe(124) + BX1) / 2)}" y="${yEnd + 34}" text-anchor="middle" class="t-sm">gamma-ray region on these pages</text><text x="${f1(xe(124) - 6)}" y="${yEnd + 34}" text-anchor="end" class="t-sm">← X-ray energies</text>`;
+    h += `<rect x="0" y="${rowY(cur) - 8}" width="560" height="16" style="fill:color-mix(in srgb,var(--rc) 14%,transparent)"/>`;
+    [[10, '10 keV'], [100, '100 keV'], [1000, '1 MeV'], [10000, '10 MeV']].forEach(([e, l]) => {
+      const x = f1(xe(e));
+      h += `<line x1="${x}" y1="26" x2="${x}" y2="${yEnd}" style="stroke:var(--grid)"/><text x="${x}" y="18" text-anchor="middle" class="t-sm">${l}</text>`
+        + `<text x="${x}" y="${yEnd + 16}" text-anchor="middle" class="t-sm">${wlab(e)}</text>`;
+    });
+    USES.forEach((u, i) => {
+      const y = rowY(i), on = i === cur, st = on ? 'fill:var(--rc)' : 'fill:var(--muted);opacity:.45';
+      h += `<text x="8" y="${y + 4}" class="${on ? 't-ink' : 't-sm'}" style="font-size:calc(${on ? 12 : 11}px * var(--k, 1))">${u.name}</text>`;
+      u.f.forEach(([a, b]) => {
+        h += b > a * 1.001 ? `<rect x="${f1(xe(a))}" y="${y - 4}" width="${f1(Math.max(4, xe(b) - xe(a)))}" height="8" rx="2" style="${st}"/>` : `<circle cx="${f1(xe(a))}" cy="${y}" r="4" style="${st}"/>`;
+      });
+      if (u.arrow) h += `<path d="M${BX1},${y - 6} L${BX1 + 9},${y} L${BX1},${y + 6} Z" style="${st}"/>`;
+      if (on) {
+        const last = u.f[u.f.length - 1], xr = xe(last[1]) + 8, right = !u.arrow && xr + 6.2 * u.tag.length < BX1 + 16;
+        h += `<text x="${f1(right ? xr : xe(u.f[0][0]) - 8)}" y="${y + 4}" text-anchor="${right ? 'start' : 'end'}" class="t-sm" style="fill:var(--ink)">${u.tag}</text>`;
+      }
+      h += `<rect class="guHit" data-i="${i}" x="0" y="${y - 8}" width="560" height="16" style="fill:transparent;cursor:pointer"><title>${u.name}</title></rect>`;
+    });
+    h += `<text x="8" y="18" class="t-sm">photon energy</text><text x="8" y="${yEnd + 16}" class="t-sm">wavelength</text>`;
+    svg.innerHTML = h;
+  }
+  function pick(i) {
+    cur = i;
+    const u = USES[i];
+    chart();
+    [...$('#guSel').children].forEach((b, j) => b.setAttribute('aria-pressed', String(j === i)));
+    $('#guRo').innerHTML = statT('Use', u.name) + statT('Photon energy', u.fr) + stat('Wavelength at ' + elab(u.rep), wlab(u.rep))
+      + statT('Half of the photons are stopped by', u.stop || half(u.rep), 'wide')
+      + statT('How it works', u.how, 'wide') + statT('Why gamma rays', u.why, 'wide');
+  }
+  $('#guSel').innerHTML = USES.map((u, i) => `<button type="button" data-i="${i}" aria-pressed="false"><svg viewBox="0 0 32 32" aria-hidden="true">${ICON[u.icon]}</svg><span>${u.name}</span></button>`).join('');
+  $('#guSel').addEventListener('click', e => { const b = e.target.closest('button'); if (b) pick(+b.dataset.i); });
+  svg.addEventListener('click', e => { const r = e.target.closest ? e.target.closest('.guHit') : null; if (r) pick(+r.dataset.i); });
+  pick(0);
 })();
 
 /* ==================================================================== GLOSSARY: search */
