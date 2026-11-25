@@ -217,6 +217,7 @@ button:disabled{opacity:.45;cursor:default}
 .mwuses button[aria-pressed="true"] svg{stroke:var(--rc)}
 #muRo .stat .v{font-weight:400;line-height:1.5}
 #itRo .stat .v{font-weight:400;line-height:1.5}
+#vuRo .stat .v{font-weight:400;line-height:1.5}
 .note{font-size:1rem;line-height:1.55;color:var(--muted)}
 .hint{font-size:.92rem;border-left:3px solid var(--data);padding:4px 0 4px 12px;color:var(--muted)}
 .hint b{color:var(--ink)}
@@ -929,7 +930,15 @@ footer .wrap{padding-block:20px 48px}
 
     <div class="bench">
       <div class="bhead"><span class="tagi">Interactive · How it is made and what it identifies</span><h3>The hydrogen fingerprint</h3>
-        <p class="note">An electron in a hydrogen atom can only have the energies \(E_n = -2.179 \times 10^{-18}\ \text{J}/n^2\), where \(n = 1, 2, 3, \ldots\) is the level, called the principal quantum number. When it drops from an upper level \(n_i\) (i for initial) to a lower level \(n_f\) (f for final), it emits one photon with exactly the difference. Drops to \(n = 2\) give the four visible Balmer lines; drops to \(n = 1\) are ultraviolet and to \(n = 3\) are infrared. Pick a transition with the buttons or tap an arrow.</p></div>
+        <p class="note">An electron in a hydrogen atom can only have the energies \(E_n = -2.179 \times 10^{-18}\ \text{J}/n^2\), where \(n = 1, 2, 3, \ldots\) is the level, called the principal quantum number. When it drops from an upper level \(n_i\) (i for initial) to a lower level \(n_f\) (f for final), it emits one photon with exactly the difference. Drops to \(n = 2\) give the four visible Balmer lines; drops to \(n = 1\) are ultraviolet and to \(n = 3\) are infrared. Pick a transition with the buttons or tap an arrow.</p>
+        <p class="note"><b>What the series mean.</b> A series is the family of lines from every drop that ends on the same lower level, named after the scientist who first measured it. The lower the level the electron lands on, the bigger the drops, so each series falls in its own part of the spectrum:</p>
+        <dl class="terms" aria-label="The spectral series of hydrogen">
+          <div><dt>Lyman</dt><dd>every drop that ends on \(n = 1\): ultraviolet, from 122 nm (2 → 1) down to 91 nm. Measured by Theodore Lyman, 1906–1914.</dd></div>
+          <div><dt>Balmer</dt><dd>every drop that ends on \(n = 2\): the four visible lines at 656, 486, 434 and 410 nm, then more in the near ultraviolet down to 365 nm. Described by Johann Balmer in 1885, the first series captured by a formula.</dd></div>
+          <div><dt>Paschen</dt><dd>every drop that ends on \(n = 3\): infrared, from 1875 nm (4 → 3) down to 820 nm. Measured by Friedrich Paschen, 1908.</dd></div>
+          <div><dt>series limit</dt><dd>the dashed line in the strip: the shortest wavelength in a series, given off when a free electron (from \(n = \infty\)) drops straight to that level.</dd></div>
+        </dl>
+        <p class="note">The series are the evidence that an electron’s energy comes only in fixed levels: if it could have any energy, hot hydrogen would glow with a smooth rainbow instead of sharp lines. Astronomers use the Balmer lines to find hydrogen in stars and in the glowing gas clouds where stars form. More series, Brackett (ending on n = 4) and Pfund (n = 5), lie farther out in the infrared.</p></div>
       <div class="bench-grid">
         <div style="display:grid;gap:10px">
           <div class="figscroll"><svg class="plot" id="hSvg" data-kmax="1.3" viewBox="0 0 560 380" role="img" aria-label="Energy levels of the hydrogen atom from n equals 1 to 7 with downward arrows for the Lyman, Balmer and Paschen series. The selected transition is highlighted."></svg></div><p class="swipehint fig">Swipe the figure sideways to see all of it.</p>
@@ -941,6 +950,14 @@ footer .wrap{padding-block:20px 48px}
           <div class="statgrid" id="hRo"></div>
         </div>
       </div>
+    </div>
+
+    <div class="bench">
+      <div class="bhead"><span class="tagi">Interactive · Where visible light is used</span><h3>Visible light at work</h3>
+        <p class="note">Visible light, 400 to 700 nm, is the narrow band our eyes evolved to use. Its photons, 1.8 to 3.1 eV, carry enough energy to move valence electrons between levels without breaking bonds, so living things and technology both use it to capture energy, carry information and measure. Unlike the other regions on these pages, the colors here are real: this is the light we see. Pick a use to see which wavelengths it absorbs or gives off.</p></div>
+      <div class="mwuses" id="vuSel" role="group" aria-label="Uses of visible light"></div>
+      <div class="figscroll"><svg class="plot" id="vuSvg" viewBox="0 0 560 246" role="img" aria-label="A visible spectrum from 380 to 750 nanometers in its real colors, with the wavelengths each use absorbs or gives off drawn above it: the absorption curves of chlorophyll a and b, the sensitivity curves of the eye's cones and rods, the red, green and blue pixels of a screen, laser lines at 405, 532 and 650 nanometers, a pulse oximeter's red LED, flame colors of sodium, lithium, barium and strontium, the blue light that treats newborn jaundice, and the absorption bands of three food dyes."></svg></div><p class="swipehint fig">Swipe the figure sideways to see all of it.</p>
+      <div class="statgrid" id="vuRo"></div>
     </div>
 
     <div class="eqn">
@@ -1243,6 +1260,7 @@ footer .wrap{padding-block:20px 48px}
       <div id="g-arc"><dt>Arcing (sparks)</dt><dd>A spark that jumps through air when the electric field becomes strong enough to tear electrons off air molecules. In a microwave oven it happens at the sharp points and thin edges of metal objects, where charge piles up.</dd></div>
       <div id="g-atomicnumber"><dt>Atomic number, \(Z\)</dt><dd>The number of protons in an atom’s nucleus, which decides which element it is. In a nuclear symbol it is written at the bottom left, as in \(^{60}_{27}\text{Co}\).</dd></div>
       <div id="g-avogadro"><dt>Avogadro’s number, \(N_{\text{A}}\)</dt><dd>The number of particles in one mole: \(N_{\text{A}} = 6.022 \times 10^{23}\ \text{mol}^{-1}\). Multiplying the energy of one photon by \(N_{\text{A}}\) gives the energy of a mole of photons, \(E_{\text{mol}}\).</dd></div>
+      <div id="g-balmer"><dt>Balmer series</dt><dd>The lines hydrogen gives off when an electron drops to \(n = 2\): four visible lines (656, 486, 434 and 410 nm) and more in the near ultraviolet, down to the series limit at 365 nm.</dd></div>
       <div id="g-beer"><dt>Beer’s law</dt><dd>\(A = \varepsilon b c\): absorbance equals the molar absorptivity \(\varepsilon\) times the path length \(b\) times the concentration \(c\). It lets a UV-visible spectrophotometer measure concentration.</dd></div>
       <div id="g-beta"><dt>Beta decay</dt><dd>A nucleus turns a neutron into a proton and throws out an electron (a beta particle, \(^{\;\,0}_{-1}\text{e}\)) and an antineutrino. In positron (β<sup>+</sup>) decay a proton becomes a neutron and a positron (\(^{\;\,0}_{+1}\text{e}\)) and a neutrino leave instead.</dd></div>
       <div id="g-binding"><dt>Binding energy</dt><dd>The energy needed to pull an electron out of its orbital in an atom. In X-ray photoelectron spectroscopy, \(E_{\text{binding}} = h\nu - E_{\text{kinetic}} - \varphi\).</dd></div>
@@ -1251,6 +1269,8 @@ footer .wrap{padding-block:20px 48px}
       <div id="g-bragg"><dt>Bragg’s law</dt><dd>\(n\lambda = 2d\sin\theta\), where \(n\) is the order (a whole number), \(\lambda\) the X-ray wavelength, \(d\) the spacing between planes of atoms and \(\theta\) the angle between the beam and the planes. X-rays reflected from neighboring planes of atoms in a crystal reinforce each other only at angles where the extra path, \(2d\sin\theta\), is a whole number of wavelengths. Measuring \(\theta\) gives the spacing \(d\). Diffractometers report \(2\theta\), the angle between the incoming and diffracted beams.</dd></div>
       <div id="g-bremsstrahlung"><dt>Bremsstrahlung</dt><dd>German for “braking radiation”: X-rays given off when fast electrons are slowed down by the nuclei of the target in an X-ray tube. It makes the smooth, continuous part of the X-ray spectrum.</dd></div>
       <div id="g-shift"><dt>Chemical shift, \(\delta\)</dt><dd>Where an NMR signal appears, in parts per million (ppm) from the reference compound TMS (tetramethylsilane). Nearby electronegative atoms and π bonds move a hydrogen’s signal to higher \(\delta\).</dd></div>
+      <div id="g-chlorophyll"><dt>Chlorophyll</dt><dd>The green pigment in plants and algae that absorbs blue and red light for photosynthesis. Its ring of alternating single and double bonds surrounds a magnesium ion; it reflects the green light it does not absorb.</dd></div>
+      <div id="g-cones"><dt>Cones and rods</dt><dd>The light-sensing cells of the retina. Three kinds of cone, most sensitive near 420, 534 and 564 nm, give color vision in bright light; rods, most sensitive near 498 nm, work in dim light but see no color.</dd></div>
       <div id="g-conjugation"><dt>Conjugation</dt><dd>A chain of alternating single and double bonds, which lets the π electrons spread over many atoms. The longer the conjugated chain, the smaller the energy gap and the longer the wavelength it absorbs; long chains such as the one in β-carotene absorb visible light and look colored.</dd></div>
       <div id="g-crystalfield"><dt>Crystal-field splitting, \(\Delta_{\text{o}}\)</dt><dd>The energy gap between two sets of d orbitals of a metal ion surrounded by six ligands (an octahedral complex, hence the “o”). The complex absorbs light whose photons match this gap, which gives many transition-metal compounds their color.</dd></div>
       <div id="g-deuterium"><dt>Deuterium, D</dt><dd>Hydrogen-2, \(^{2}\text{H}\): a hydrogen isotope whose nucleus holds one proton and one neutron. Deuterium gas, D<sub>2</sub>, gives off ultraviolet light in a deuterium lamp.</dd></div>
@@ -1282,6 +1302,9 @@ footer .wrap{padding-block:20px 48px}
       <div id="g-kelvin"><dt>Kelvin, K</dt><dd>The SI unit of temperature. It starts at absolute zero, so a temperature in kelvin is the Celsius temperature plus 273.15.</dd></div>
       <div id="g-kinetic"><dt>Kinetic energy</dt><dd>Energy of motion. In X-ray photoelectron spectroscopy, \(E_{\text{kinetic}}\) is the measured energy of the electron that the X-ray knocks out.</dd></div>
       <div id="g-lambdamax"><dt>Lambda max, \(\lambda_{\max}\)</dt><dd>The wavelength at which a substance absorbs most strongly (in UV-visible spectroscopy), or at which a hot object glows most brightly (Wien’s law).</dd></div>
+      <div id="g-laser"><dt>Laser</dt><dd>A light source that gives a narrow beam of a single wavelength with all its waves in step. The name stands for light amplification by stimulated emission of radiation.</dd></div>
+      <div id="g-led"><dt>LED, light-emitting diode</dt><dd>A semiconductor device that gives off light when electrons drop across its energy gap, so its color is set by the gap: \(\lambda = hc/E_{\text{gap}}\).</dd></div>
+      <div id="g-lyman"><dt>Lyman series</dt><dd>The lines hydrogen gives off when an electron drops to \(n = 1\): all ultraviolet, from 122 nm down to the series limit at 91 nm.</dd></div>
       <div id="g-b0"><dt>Magnetic field strength, \(B_0\)</dt><dd>How strong the steady magnetic field of an NMR spectrometer or MRI scanner is, measured in tesla (T). The subscript 0 marks this main field, to tell it apart from the much weaker oscillating field of the radio pulse. Both the energy gap between the spin states and the resonance frequency grow in proportion to \(B_0\).</dd></div>
       <div id="g-magnetron"><dt>Magnetron</dt><dd>The vacuum tube that makes the microwaves in a microwave oven. Electrons circling in a magnetic field sweep past cavities cut into a copper block and set them ringing at 2.45 GHz, rather like air blown across the top of a bottle.</dd></div>
       <div id="g-massnumber"><dt>Mass number, \(A\)</dt><dd>The total number of protons and neutrons in a nucleus, written at the top left of a nuclear symbol, as in \(^{60}\text{Co}\).</dd></div>
@@ -1295,15 +1318,19 @@ footer .wrap{padding-block:20px 48px}
       <div id="g-nvg"><dt>Night-vision goggles (image intensifier)</dt><dd>A device that amplifies the faint light around, including near-infrared, thousands of times and shows it on a green screen. It sees reflected light, not heat, and often carries its own infrared lamp.</dd></div>
       <div id="g-nmr"><dt>NMR, nuclear magnetic resonance</dt><dd>A technique that puts a sample in a strong magnet and finds the radio frequencies at which its nuclei (usually <sup>1</sup>H or <sup>13</sup>C) flip their spins. The pattern of signals shows how the atoms in a molecule are connected. MRI uses the same physics to image the body.</dd></div>
       <div id="g-oscillator"><dt>Oscillator</dt><dd>An electronic circuit that makes an alternating current at a steady frequency, often kept exact by a vibrating quartz crystal. It drives the antenna of a radio transmitter.</dd></div>
+      <div id="g-paschen"><dt>Paschen series</dt><dd>The lines hydrogen gives off when an electron drops to \(n = 3\): all infrared, from 1875 nm down to the series limit at 820 nm.</dd></div>
       <div id="g-penetration"><dt>Penetration depth</dt><dd>How far radiation travels into a material before about two-thirds of it (all but 1/e, or 37%) has been absorbed. In skin it is a few millimeters for near-infrared but only a tiny fraction of a millimeter for far-infrared.</dd></div>
+      <div id="g-phosphor"><dt>Phosphor</dt><dd>A material that absorbs light of one color and gives off another, usually longer, wavelength. White LEDs use a yellow phosphor over a blue LED.</dd></div>
       <div id="g-pbm"><dt>Photobiomodulation (low-level light therapy)</dt><dd>Treatment with weak red or near-infrared light, from LEDs or lasers, intended to ease pain and help tissue heal. Some trials show modest benefit and others none, so the evidence is mixed.</dd></div>
       <div id="g-photon"><dt>Photon</dt><dd>A single packet (quantum) of electromagnetic radiation. Its energy depends only on its frequency, \(E = h\nu\), so in equations a photon is often written simply as \(h\nu\).</dd></div>
+      <div id="g-phototherapy"><dt>Phototherapy</dt><dd>Treatment with light. Blue light, near 460 nm, treats newborn jaundice: bilirubin in the skin absorbs it and changes into forms the baby can get rid of without the liver.</dd></div>
       <div id="g-pit"><dt>Pit organ</dt><dd>A heat-sensing organ of pit vipers, boas and pythons: a thin membrane over an air space, warmed by the infrared from nearby warm animals and wired to heat-sensitive nerve endings.</dd></div>
       <div id="g-planck"><dt>Planck’s constant, \(h\)</dt><dd>The constant that links the energy of a photon to its frequency, \(E = h\nu\): \(h = 6.626 \times 10^{-34}\ \text{J s}\).</dd></div>
       <div id="g-polar"><dt>Polar molecule</dt><dd>A molecule with a permanent dipole: one end slightly negative (δ−) and the other slightly positive (δ+), as in H<sub>2</sub>O and HCl. Polar molecules absorb microwaves; nonpolar ones such as N<sub>2</sub>, O<sub>2</sub> and CO<sub>2</sub> do not.</dd></div>
       <div id="g-positron"><dt>Positron</dt><dd>The antimatter partner of the electron: the same mass, but a positive charge. Written \(^{\;\,0}_{+1}\text{e}\) or e<sup>+</sup>.</dd></div>
       <div id="g-precess"><dt>Precess, precession</dt><dd>To precess is to wobble so that the axis of a spinning object sweeps out a cone. A tilted spinning top does this: instead of falling over, its axis slowly circles around the vertical. A nucleus spinning in a magnetic field precesses around the field direction in the same way, at exactly the frequency it absorbs, \(\nu = \gamma B_0/2\pi\) (400 MHz for <sup>1</sup>H in a 9.40 T magnet). After a radio pulse tips the nuclei, their precessing magnetism induces the faint radio signal that an NMR spectrometer records.</dd></div>
       <div id="g-principal"><dt>Principal quantum number, \(n\)</dt><dd>The whole number (1, 2, 3, …) that labels the energy levels of an electron in an atom. In hydrogen, \(E_n = -2.179 \times 10^{-18}\ \text{J}/n^2\). A jump from an upper level \(n_i\) to a lower level \(n_f\) gives off one photon.</dd></div>
+      <div id="g-oximeter"><dt>Pulse oximeter</dt><dd>A clip-on sensor that shines red (660 nm) and infrared (940 nm) light through a finger. Hemoglobin with and without oxygen absorbs these differently, so the ratio of the signals gives the blood’s oxygen level.</dd></div>
       <div id="g-radar"><dt>Radar</dt><dd>Short for radio detection and ranging. A dish sends out short pulses of microwaves or radio waves and times the echoes from objects such as raindrops, aircraft or cars. The delay gives the distance, and the Doppler shift gives the speed.</dd></div>
       <div id="g-bands"><dt>Radio bands: VLF, LF, MF, HF, VHF, UHF</dt><dd>Engineering names for ranges of radio frequency, each ten times higher than the one before: very low (3–30 kHz), low, medium, high, very high and ultra high frequency (300 MHz–3 GHz).</dd></div>
       <div id="g-reducedmass"><dt>Reduced mass, \(\mu\)</dt><dd>The effective mass of two bonded atoms vibrating or rotating about their center: \(\mu = \dfrac{m_1 m_2}{m_1 + m_2}\). It is always smaller than the lighter of the two masses.</dd></div>
@@ -1311,6 +1338,7 @@ footer .wrap{padding-block:20px 48px}
       <div id="g-rotconst"><dt>Rotational constant, \(B\)</dt><dd>A constant for each molecule that sets the spacing of its rotational energy levels: \(B = h/(8\pi^2 c I)\), usually given in cm<sup>−1</sup>. Heavier atoms or a longer bond give a larger moment of inertia \(I\) and so a smaller \(B\). For CO, \(B = 1.9225\ \text{cm}^{-1}\).</dd></div>
       <div id="g-rotj"><dt>Rotational quantum number, \(J\)</dt><dd>The whole number (0, 1, 2, 3, …) that labels the rotational energy levels of a molecule, \(E_J = hcB\,J(J+1)\). When a molecule absorbs a microwave photon it moves up exactly one level. Not to be confused with J, the symbol for joules.</dd></div>
       <div id="g-rydberg"><dt>Rydberg constant, \(R_{\text{H}}\)</dt><dd>The constant in the formula for hydrogen’s spectral lines, \(1/\lambda = R_{\text{H}}(1/n_f^2 - 1/n_i^2)\): \(R_{\text{H}} = 1.0968 \times 10^{7}\ \text{m}^{-1}\).</dd></div>
+      <div id="g-serieslimit"><dt>Series limit</dt><dd>The shortest wavelength (highest energy) line of a spectral series, given off when a free electron, from \(n = \infty\), drops straight to the series’ lower level. The lines of a series crowd closer and closer together toward it.</dd></div>
       <div id="g-spectroscopy"><dt>Spectroscopy</dt><dd>Measuring which wavelengths a sample absorbs or emits, and using the pattern to identify the substance, work out its structure, or find how much of it is present.</dd></div>
       <div id="g-lightspeed"><dt>Speed of light, \(c\)</dt><dd>The speed of all electromagnetic radiation in a vacuum: \(c = 2.998 \times 10^{8}\ \text{m s}^{-1}\), or \(2.998 \times 10^{10}\ \text{cm s}^{-1}\). It links wavelength and frequency, \(c = \lambda\nu\).</dd></div>
       <div id="g-standing"><dt>Standing wave, hot spot</dt><dd>A wave pattern that stays in one place, made when waves bouncing between walls overlap. In a microwave oven it leaves hot spots about 6 cm apart (half the 12.2 cm wavelength) with cooler spots between them; the turntable carries food through both.</dd></div>
@@ -3284,6 +3312,105 @@ const arrowDown = (x, y, cls) => `<path d="M${x - 4.5},${y - 9} L${x},${y} L${x 
   $('#nvSel').innerHTML = MODES.map((m, i) => `<button type="button" data-i="${i}" aria-pressed="false">${m}</button>`).join('');
   $('#nvSel').addEventListener('click', e => { const b = e.target.closest('button'); if (b) { mode = +b.dataset.i; draw(); } });
   draw();
+})();
+
+/* ==================================================================== VISIBLE: WHERE VISIBLE LIGHT IS USED */
+(() => {
+  const svg = $('#vuSvg');
+  if (!svg) return;
+  const ICON = {
+    leaf: '<path d="M6 26C6 13 15 5 27 5c0 13-8 21-21 21z"/><path d="M6 26L19 13"/>',
+    eye: '<path d="M2.5 16C6.5 9.5 11 7 16 7s9.5 2.5 13.5 9c-4 6.5-8.5 9-13.5 9S6.5 22.5 2.5 16z"/><circle cx="16" cy="16" r="4.5"/>',
+    screen: '<rect x="3" y="5" width="26" height="17" rx="1.5"/><path d="M12 27h8M16 22v5"/><path d="M8 10v7M12 10v7M16 10v7"/>',
+    laser: '<rect x="2" y="13" width="13" height="6" rx="1.5"/><path d="M15 16h15"/><path d="M24 11l3 5-3 5"/>',
+    oxi: '<path d="M9 9h14v14H9z"/><path d="M16 2v7M16 23v7"/><circle cx="16" cy="16" r="3"/>',
+    flame: '<path d="M16 3c2 6 9 9 9 16a9 9 0 0 1-18 0c0-4 2-6 4-8 0 4 2 5 3 5-1-5 0-9 2-13z"/>',
+    lamp: '<path d="M5 9h22l-4 6H9z"/><path d="M10 19l-1.5 3M16 19v3.5M22 19l1.5 3"/><path d="M5 28h22"/>',
+    cuvette: '<rect x="11" y="4" width="10" height="24" rx="1"/><path d="M11 14h10"/><path d="M2 20h7M23 20h7"/>'
+  };
+  const G = (x, m, w) => Math.exp(-0.5 * ((x - m) / w) ** 2);
+  // each use: what it does with visible light. curves are absorption or sensitivity shapes, simplified; lines are sharp emissions
+  const USES = [
+    {icon: 'leaf', name: 'Photosynthesis', rng: [400, 700], ylab: 'absorption (relative)', wl: 'absorbs most strongly near 430 nm (blue) and 662 nm (red)',
+     curves: [{lab: 'chlorophyll a', f: x => G(x, 430, 13) + 0.22 * G(x, 412, 15) + 0.78 * G(x, 662, 10) + 0.12 * G(x, 615, 14)},
+              {lab: 'chlorophyll b', dash: true, f: x => 0.9 * G(x, 453, 13) + 0.2 * G(x, 430, 16) + 0.55 * G(x, 642, 10) + 0.1 * G(x, 595, 14)}],
+     how: 'Chlorophyll in leaves absorbs blue and red light and passes the energy on to split water and turn carbon dioxide into sugar: 6CO<sub>2</sub> + 6H<sub>2</sub>O → C<sub>6</sub>H<sub>12</sub>O<sub>6</sub> + 6O<sub>2</sub>.',
+     why: 'Its ring of alternating single and double bonds around a magnesium ion has energy gaps that match red photons (about 1.9 eV) and blue ones (about 2.9 eV). It absorbs little green light, which is reflected, so leaves look green.'},
+    {icon: 'eye', name: 'Vision', rng: [400, 700], wl: 'rods near 498 nm; cones near 420, 534 and 564 nm',
+     ylab: 'sensitivity (relative)', curves: [{lab: 'blue cones', col: 445, f: x => G(x, 420, 28)}, {lab: 'green cones', col: 525, f: x => G(x, 534, 42)}, {lab: 'red cones', col: 615, f: x => G(x, 564, 45)}, {lab: 'rods (dim light)', dash: true, f: x => 0.9 * G(x, 498, 40)}],
+     how: 'In the retina, a photon flips the shape of a molecule called retinal inside a protein (an opsin), which sets off a nerve signal. Three kinds of cones, most sensitive to blue, green and red light, let us see color; rods work in dim light but see no color.',
+     why: 'Visible photons (1.7–3.1 eV) have just enough energy to flip retinal without breaking it. Sunlight is brightest in this range, and water, which fills the eye, lets it through.'},
+    {icon: 'screen', name: 'Screens and LEDs', rng: [420, 680], wl: 'pixels near 450, 530 and 630 nm; white LEDs 450 nm plus a broad yellow glow',
+     lines: [[450, 'blue pixel'], [530, 'green pixel'], [630, 'red pixel']], ylab: 'light given off (relative)', curves: [{lab: 'white LED', dash: true, f: x => 0.85 * G(x, 450, 10) + 0.55 * G(x, 565, 45)}],
+     how: 'Each pixel holds tiny red, green and blue light sources; mixing them in different amounts makes every color on the screen. An LED makes light when electrons drop across a gap in a semiconductor, and a white LED is a blue one coated with a phosphor that turns some of the blue into yellow.',
+     why: 'The color of an LED is set by its energy gap, E = hc/λ: a 2.7 eV gap gives blue light, a 2.0 eV gap red. Red, green and blue are used because they match the three kinds of cone in the eye.'},
+    {icon: 'laser', name: 'Lasers', rng: [405, 650], wl: '405 nm (Blu-ray), 532 nm (green pointer), 650 nm (DVD, red pointer)',
+     lines: [[405, 'Blu-ray'], [532, 'green pointer'], [650, 'DVD, red pointer']],
+     how: 'A laser makes light of a single wavelength, with every wave in step, in a narrow beam. Barcode scanners, laser pointers, disc players and laser surgery all rely on this.',
+     why: 'A beam can be focused to a spot about as small as its wavelength, so violet 405 nm light reads the smaller pits of a Blu-ray disc, which holds about five times as much as a DVD read with 650 nm red.'},
+    {icon: 'oxi', name: 'Pulse oximeters', rng: [660, 660], wl: 'a red LED at 660 nm, plus an infrared LED at 940 nm',
+     lines: [[660, 'red LED, 660 nm']], note: '+ an infrared LED at 940 nm (off this scale)',
+     how: 'A clip on the finger shines red and infrared light through the skin and measures how much gets through as the blood pulses. Hemoglobin carrying oxygen absorbs less red light than hemoglobin without it, so the ratio of the two signals gives the oxygen level.',
+     why: 'Red and near-infrared light pass through a finger, and at these two wavelengths the two forms of hemoglobin differ most. Studies have found the readings can be too high in people with darker skin, which is being addressed with new standards.'},
+    {icon: 'flame', name: 'Flame tests and fireworks', rng: [520, 671], wl: 'Na 589 nm, Li 671 nm; Sr red bands near 650 nm; Ba green bands near 520 nm',
+     lines: [[589, 'Na'], [671, 'Li']], bands: [[505, 535, 'Ba'], [620, 680, 'Sr']],
+     how: 'Heat lifts electrons in metal atoms to higher levels; when they fall back, each element gives off light of its own colors. Chemists use this to identify metals, and fireworks use strontium for red, barium for green and sodium for yellow.',
+     why: 'Every element has its own set of energy levels, so its lines fall at its own wavelengths, like the hydrogen lines above. Sodium’s 589 nm yellow is so bright that a trace of salt colors any flame.'},
+    {icon: 'lamp', name: 'Treating newborn jaundice', rng: [430, 490], wl: 'blue light, 430–490 nm',
+     ylab: 'relative strength', curves: [{lab: 'bilirubin absorbs', f: x => G(x, 460, 32)}], fill: [{lab: 'blue lamp gives off', f: x => 0.8 * G(x, 462, 12), col: 462}],
+     how: 'Many newborns have too much bilirubin, a yellow product of the breakdown of red blood cells, because their liver cannot yet clear it. Under blue lamps, the bilirubin in the skin absorbs the light and changes into forms that dissolve in water, so the baby can get rid of them without the liver.',
+     why: 'Bilirubin is yellow because it absorbs blue light most strongly, near 460 nm, so blue light is what it can use. Blue also reaches the blood vessels just under a baby’s thin skin.'},
+    {icon: 'cuvette', name: 'Measuring concentration', rng: [427, 630], wl: 'each dye at its own λmax: 427, 504 or 630 nm',
+     ylab: 'absorption (relative)', curves: [{lab: 'Yellow 5 (yellow dye)', col: 580, f: x => G(x, 427, 34)}, {lab: 'Red 40 (red dye)', col: 640, f: x => G(x, 504, 38)}, {lab: 'Blue 1 (blue dye)', col: 470, f: x => G(x, 630, 25) + 0.25 * G(x, 585, 20)}],
+     how: 'A spectrophotometer sends light of one wavelength through a sample and measures how much is absorbed. By Beer’s law the absorbance rises in step with concentration, which is how labs measure food dyes, drugs, or the colored products of blood tests.',
+     why: 'A dye looks like the color it does not absorb: a red dye absorbs blue-green near 504 nm. Measuring at the wavelength of strongest absorption, λmax, gives the most sensitive reading.'}
+  ];
+  const X0 = 40, X1 = 540, YT = 44, YB = 176, LA = 380, LB = 750;
+  const xs = v => X0 + (v - LA) / (LB - LA) * (X1 - X0);
+  const yv = v => YB - v * (YB - YT);
+  const f1 = v => v.toFixed(1);
+  // the spectrum strip in its real colors
+  let base = `<defs><linearGradient id="vuRain" x1="0" x2="1" y1="0" y2="0">`;
+  for (let i = 0; i <= 24; i++) { const nm = LA + (LB - LA) * i / 24; base += `<stop offset="${(i / 24).toFixed(3)}" style="stop-color:${wlRGB(nm)}"/>`; }
+  base += `</linearGradient></defs>`;
+  base += `<rect x="${X0}" y="188" width="${X1 - X0}" height="18" rx="2" style="fill:url(#vuRain)"/>`;
+  for (let v = 400; v <= 750; v += 50) base += `<line class="axis" x1="${f1(xs(v))}" y1="206" x2="${f1(xs(v))}" y2="211"/><text x="${f1(xs(v))}" y="224" text-anchor="middle" class="t-sm">${v}</text>`;
+  base += `<text x="${X1}" y="240" text-anchor="end" class="t-sm">wavelength (nm)</text><line class="axis" x1="${X0}" y1="${YB}" x2="${X1}" y2="${YB}"/>`;
+  svg.innerHTML = base + '<g id="vuDyn"></g>';
+  const dyn = $('#vuDyn');
+  let cur = 0;
+  function pick(i) {
+    cur = i;
+    const u = USES[i];
+    let h = '';
+    const peak = f => { let m = 0; for (let x = LA; x <= LB; x += 1) m = Math.max(m, f(x)); return m || 1; };
+    const path = (f, top = 1) => { const m = peak(f); let d = ''; for (let x = LA; x <= LB; x += 2) d += (d ? ' L' : 'M') + f1(xs(x)) + ',' + f1(yv(top * f(x) / m)); return d; };
+    (u.fill || []).forEach(c => { h += `<path d="${path(c.f, 0.8)} L${X1},${YB} L${X0},${YB} Z" style="fill:${wlRGB(c.col)};opacity:.45"/>`; });
+    (u.bands || []).forEach(([a, b, l]) => { h += `<rect x="${f1(xs(a))}" y="${YT + 30}" width="${f1(xs(b) - xs(a))}" height="${YB - YT - 30}" style="fill:${wlRGB((a + b) / 2)};opacity:.5"/><text x="${f1(xs((a + b) / 2))}" y="${YT + 24}" text-anchor="middle" class="t-ink">${l}</text>`; });
+    (u.lines || []).forEach(([v, l], k) => {
+      const x = f1(xs(v));
+      h += `<line x1="${x}" y1="${YT + 12}" x2="${x}" y2="${YB}" style="stroke:var(--ink);stroke-width:5;opacity:.25"/><line x1="${x}" y1="${YT + 12}" x2="${x}" y2="${YB}" style="stroke:${wlRGB(v)};stroke-width:3.5"/>`
+        + `<text x="${x}" y="${YT + 6}" text-anchor="middle" class="t-ink">${l}</text>`;
+    });
+    let lx = X0;
+    const legend = (sample, lab) => { h += sample(lx) + `<text x="${f1(lx + 24)}" y="16" class="t-sm" style="fill:var(--ink)">${lab}</text>`; lx += 24 + 6.2 * lab.length + 18; };
+    (u.fill || []).forEach(c => legend(x => `<rect x="${f1(x)}" y="9" width="18" height="8" rx="1.5" style="fill:${wlRGB(c.col)};opacity:.55"/>`, c.lab));
+    (u.curves || []).forEach(c => {
+      const col = c.col ? wlRGB(c.col) : 'var(--ink)', st = `stroke:${col};stroke-width:${c.col ? 2.6 : 2};${c.dash ? 'stroke-dasharray:6 4;' : ''}`;
+      h += `<path d="${path(c.f, c.dash ? 0.9 : 1)}" style="fill:none;${st}"/>`;
+      legend(x => `<line x1="${f1(x)}" y1="13" x2="${f1(x + 18)}" y2="13" style="${st}"/>`, c.lab);
+    });
+    if (u.ylab) h += `<text x="30" y="${(YT + YB) / 2}" text-anchor="middle" transform="rotate(-90 30 ${(YT + YB) / 2})" class="t-sm">${u.ylab}</text>`;
+    if (u.note) h += `<text x="${f1(xs(u.lines[0][0]) - 10)}" y="${YT + 70}" text-anchor="end" class="t-sm" style="fill:var(--ink)">${u.note}</text>`;
+    dyn.innerHTML = h;
+    [...$('#vuSel').children].forEach((b, j) => b.setAttribute('aria-pressed', String(j === i)));
+    const e1 = 1239.84 / u.rng[1], e0 = 1239.84 / u.rng[0];
+    $('#vuRo').innerHTML = statT('Use', u.name) + stat('Energy per photon', u.rng[0] === u.rng[1] ? `${num(e0, 3)} eV` : `${num(e1, 2)}–${num(e0, 2)} eV`)
+      + statT('Wavelengths', u.wl, 'wide') + statT('How it works', u.how, 'wide') + statT('Why this light', u.why, 'wide');
+  }
+  $('#vuSel').innerHTML = USES.map((u, i) => `<button type="button" data-i="${i}" aria-pressed="false"><svg viewBox="0 0 32 32" aria-hidden="true">${ICON[u.icon]}</svg><span>${u.name}</span></button>`).join('');
+  $('#vuSel').addEventListener('click', e => { const b = e.target.closest('button'); if (b) pick(+b.dataset.i); });
+  pick(0);
 })();
 
 /* ==================================================================== GLOSSARY: search */
